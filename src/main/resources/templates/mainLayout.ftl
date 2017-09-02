@@ -3,33 +3,38 @@
 
 <#include "head.ftl"/>
 
-<body class="nav-md">
+<body>
 
-<div class="container body">
+<#include "top_nav.ftl"/>
+<#include "left_nav.ftl"/>
+<#include "left_nav_icon_only.ftl"/>
 
-    <div class="main_container">
+<div class="container-fluid main-panel">
 
-        <div class="col-md-3 left_col">
 
-            <ul class="app-logo">
-                <li><a><i class="fa fa-btc"></i></a></li>
-            </ul>
 
-            <#include "left_nav.ftl"/>
+    <div class="card card-body col-md-6">
 
-        </div>
-
-        <#include "top_nav.ftl"/>
-
-        <!-- page content -->
-        <div class="right_col" role="main">
-            <div ui-view="content"></div>
-        </div>
+        <form>
+            <div class="form-group">
+                <label for="formGroupExampleInput">Example label</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Another label</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+            </div>
+        </form>
 
     </div>
 
+
 </div>
 
+
+
+
+<#include "scripts.ftl"/>
 
 </body>
 </html>

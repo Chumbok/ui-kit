@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
 
     <meta charset="utf-8"/>
@@ -5,7 +8,7 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
 
-    <title>UI Kit Example App</title>
+    <title>Login</title>
 
     <base href="../../">
 
@@ -27,3 +30,36 @@
     <link rel="icon" href="assets/image/favicon.ico">
 
 </head>
+
+<body>
+
+
+<div class="container-fluid">
+
+
+    <div class="card card-body col-md-6">
+
+        <form>
+            <div class="form-group">
+                <label for="formGroupExampleInput">Example label</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Another label</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+            </div>
+        </form>
+
+    </div>
+
+
+</div>
+
+
+
+
+<#include "scripts.ftl"/>
+
+</body>
+</html>
+

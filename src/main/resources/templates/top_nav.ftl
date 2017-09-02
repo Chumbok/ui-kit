@@ -1,43 +1,50 @@
-<!-- top navigation -->
-<div class="top_nav">
+<div class="navbar navbar-expand-lg topnav">
 
-    <div class="nav_menu">
-        <nav>
-            <div class="nav toggle">
-                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+    <a class="navbar-brand" href="#">
+        <i class="fa fa-odnoklassniki"></i>&nbsp;&nbsp;<span><b>Chumbok UI Kit</b></span>
+    </a>
+
+    <div class="nav ">
+
+        <div class="collapse navbar-collapse">
+
+            <div class="navbar-nav mr-auto"></div>
+
+            <div class="dropdown show my-2 my-lg-0">
+
+                <a href="#" class="white-link" data-toggle="dropdown">
+
+                    <div class="username dropdown-toggle">
+                        <img src="assets/image/user.png" height="28px" width="28px">
+                        <span>&nbsp;&nbsp;<b>Mossaddeque</b></span>&nbsp;
+                    </div>
+                </a>
+
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">
+                        <i class="fa fa-user text-primary"></i> <span class="hidden-sm-down">&nbsp;Account Details</span>
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <i class="fa fa-info text-info" aria-hidden="true"></i> <span class="hidden-sm-down">&nbsp;&nbsp;How to</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+                        <i class="fa fa-life-ring text-info" aria-hidden="true"></i> <span class="hidden-sm-down">&nbsp;Support</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+                        <i class="fa fa-sign-out text-danger" aria-hidden="true"></i> <span class="hidden-sm-down">&nbsp;Sign Out</span>
+                    </a>
+                </div>
             </div>
 
-            <ul class="nav navbar-nav navbar-right">
-                <li class="">
-                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        <!--TODO:read from service-->
-                        {{username}}
-                        <span class=" fa fa-angle-down"></span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-usermenu pull-right">
-                        <li><a href="javascript:;"> Profile</a></li>
-                        <li>
-                            <a href="javascript:;">
-                                <span>Settings</span>
-                            </a>
-                        </li>
-                        <li><a href="javascript:;">Help</a></li>
-                        <li><a href="" ng-click="logout()"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
-                    </ul>
-                </li>
+            <div class="my-2 my-lg-0 notification">
+                <a href="#" class="white-link"><i class="fa fa-bell" aria-hidden="true"></i></a>
+            </div>
 
-                <li class="">
-                    <a href="javascript:;" class="dropdown-toggle info-lang" data-toggle="dropdown" aria-expanded="false">
-                        <span id="selected">Language</span>
-                        <span class="fa fa-angle-down"></span>
-                    </a>
-                    <ul class="dropdown-menu list-unstyled" role="menu">
-                        <li><a ng-click="changeLanguage('bn')">Bengali</a></li>-->
-                    </ul>
-                </li>
+        </div>
 
-            </ul>
-        </nav>
+
     </div>
+
 </div>
-<!-- /top navigation -->
