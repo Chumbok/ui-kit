@@ -21,20 +21,27 @@
                 </a>
 
                 <div class="dropdown-menu">
+
                     <a class="dropdown-item" href="#">
                         <i class="fa fa-user text-primary"></i> <span class="hidden-sm-down">&nbsp;Account Details</span>
                     </a>
-                    <a class="dropdown-item" href="#">
-                        <i class="fa fa-info text-info" aria-hidden="true"></i> <span class="hidden-sm-down">&nbsp;&nbsp;How to</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
+
                     <a class="dropdown-item" href="#">
                         <i class="fa fa-life-ring text-info" aria-hidden="true"></i> <span class="hidden-sm-down">&nbsp;Support</span>
                     </a>
+
                     <div class="dropdown-divider"></div>
+
+                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#themeChooserModal">
+                        <i class="fa fa-hashtag" aria-hidden="true"></i> <span class="hidden-sm-down">&nbsp;Change theme</span>
+                    </a>
+
+                    <div class="dropdown-divider"></div>
+
                     <a class="dropdown-item" href="#">
                         <i class="fa fa-sign-out text-danger" aria-hidden="true"></i> <span class="hidden-sm-down">&nbsp;Sign Out</span>
                     </a>
+
                 </div>
             </div>
 
@@ -48,3 +55,5 @@
     </div>
 
 </div>
+
+<#include "theme_changer_modal.ftl"/>
