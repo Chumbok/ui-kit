@@ -45,7 +45,7 @@ a {
     width: 260px;
     height: 50px;
     padding: 0 20px;
-    margin-right: 0px;
+    margin-right: 0;
 }
 
 .navbar-brand > img {
@@ -65,7 +65,7 @@ a {
 .topnav {
     height: 50px;
     line-height: 50px;
-    padding: 0rem;
+    padding: 0;
 }
 
 .topnav > .nav {
@@ -91,4 +91,9 @@ a {
 
 .topnav .dropdown-item {
     line-height: 30px;
+}
+
+.dropdown-menu-right {
+    right: 0;
+    left: auto;
 }
