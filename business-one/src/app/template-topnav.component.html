@@ -1,0 +1,154 @@
+<div class="navbar navbar-expand-lg topnav">
+
+  <a class="navbar-brand" href="#">
+    <i class="fa fa-odnoklassniki"></i>&nbsp;&nbsp;<span><b>Business ONE</b></span>
+  </a>
+
+  <div class="nav ">
+
+    <div class="collapse navbar-collapse">
+
+      <div class="navbar-nav mr-auto"></div>
+
+      <div class="my-2 my-lg-0 notification">
+        <a href="#" class="white-link"><i class="fa fa-bullhorn"></i></a>
+      </div>
+
+      <div class="dropdown show my-2 my-lg-0">
+
+        <a href="#" class="white-link" data-toggle="dropdown">
+
+          <div class="username dropdown-toggle" aria-expanded="false">
+            <img src="../assets/image/user.png" height="28px" width="28px">
+          </div>
+        </a>
+
+        <div class="dropdown-menu dropdown-menu-right">
+
+          <a class="dropdown-item" href="#">
+            <span class="hidden-sm-down">&nbsp;Mossaddeque Mahmood</span>
+          </a>
+
+          <div class="dropdown-divider"></div>
+
+          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#themeChooserModal">
+            <i class="fa fa-hashtag"></i> <span class="hidden-sm-down">&nbsp;Change theme</span>
+          </a>
+
+          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#languageChooserModal">
+            <i class="fa fa-language"></i> <span class="hidden-sm-down">&nbsp;Change language</span>
+          </a>
+
+
+          <a class="dropdown-item" href="#">
+            <i class="fa fa-cog"></i> <span class="hidden-sm-down">&nbsp;Settings</span>
+          </a>
+
+          <div class="dropdown-divider"></div>
+
+          <a class="dropdown-item" href="#">
+            <i class="fa fa-life-ring text-info"></i> <span class="hidden-sm-down">&nbsp;Support</span>
+          </a>
+
+          <div class="dropdown-divider"></div>
+
+          <a class="dropdown-item" href="#">
+            <i class="fa fa-sign-out text-danger"></i> <span class="hidden-sm-down">&nbsp;Sign Out</span>
+          </a>
+
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+</div>
+
+
+<div class="modal fade" id="themeChooserModal" tabindex="-1" role="dialog" aria-labelledby="themeChooserModalLabel">
+
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="themeChooserModalLabel">Change Theme</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span>&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+
+        <form>
+          <div class="form-group">
+
+            <div class="currentTheme">
+              <label for="currentThemeName" class="col-form-label">Current theme: </label>
+              <input readonly class="form-control-plaintext font-weight-bold" id="currentThemeName" value="Rebecca Purple">
+            </div>
+
+            <label for="themeChooserDropdown">Choose theme: </label>
+            <select class="form-control" id="themeChooserDropdown">
+              <option>Rebecca Purple</option>
+              <option>Dark Slate Blue</option>
+              <option>Orange Red</option>
+            </select>
+          </div>
+        </form>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="languageChooserModal" tabindex="-1" role="dialog" aria-labelledby="languageChooserModalLabel">
+
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="languageChooserModalLabel">Change Language</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span>&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+
+        <form>
+          <div class="form-group">
+
+            <div class="currentLanguage">
+              <label for="currentLanguageName" class="col-form-label">Current language: </label>
+              <input readonly class="form-control-plaintext font-weight-bold" id="currentLanguageName" value="US English">
+            </div>
+
+            <label for="languageChooserDropdown">Choose language: </label>
+            <select class="form-control" id="languageChooserDropdown">
+              <option>US English</option>
+              <option>UK English</option>
+              <option>Bangla</option>
+            </select>
+          </div>
+        </form>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+
+    </div>
+  </div>
+</div>
