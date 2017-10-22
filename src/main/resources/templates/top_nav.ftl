@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-lg topnav">
 
     <a class="navbar-brand" href="#">
-        <i class="fa fa-odnoklassniki"></i>&nbsp;&nbsp;<span><b>Chumbok UI Kit</b></span>
+        <i class="fa fa-odnoklassniki"></i>&nbsp;&nbsp;<span><b>Business ONE</b></span>
     </a>
 
     <div class="nav ">
