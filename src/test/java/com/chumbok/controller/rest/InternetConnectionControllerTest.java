@@ -1,4 +1,4 @@
-package com.chumbok.controller;
+package com.chumbok.controller.rest;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
