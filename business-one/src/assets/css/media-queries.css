@@ -2,7 +2,7 @@
 @media only screen and (min-width : 992px) {
     .dash-navbar-left { display: none !important; }
     .dash-navbar-left-icon-only { display: block !important; }
-    .main-panel {
+    #chumbok-ui .main-panel {
         width: calc(100% - 60px);
     }
 }
@@ -10,7 +10,7 @@
 @media only screen and (min-width : 1200px) {
     .dash-navbar-left { display: block !important; }
     .dash-navbar-left-icon-only { display: none !important; }
-    .main-panel {
+    #chumbok-ui .main-panel {
         width: calc(100% - 260px);
     }
 }
