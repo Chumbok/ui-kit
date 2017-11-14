@@ -40,7 +40,7 @@ a {
     transition: left 300ms;
 }
 
-.navbar-brand {
+#chumbok-ui .navbar-brand {
     display: block;
     width: 260px;
     height: 50px;
@@ -48,7 +48,7 @@ a {
     margin-right: 0;
 }
 
-.navbar-brand > img {
+#chumbok-ui .navbar-brand > img {
     margin-top: 15px;
 }
 
@@ -62,20 +62,20 @@ a {
     padding-bottom: 30px;
 }
 
-.topnav {
+#chumbok-ui .topnav {
     height: 50px;
     line-height: 50px;
     padding: 0;
 }
 
-.topnav > .nav {
+#chumbok-ui .topnav > .nav {
     width: calc(100% - 260px);
     display: flex;
     align-items: center;
     height: 100%;
 }
 
-.nav .white-link {
+#chumbok-ui .nav .white-link {
     text-decoration: none;
 }
 

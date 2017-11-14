@@ -3,15 +3,15 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { TemplateHeadComponent } from './template-head.component';
-import { TemplateScriptsComponent } from './template-scripts.component';
 import { TemplateTopnavComponent } from './template-topnav.component';
+import { TemplateSidenavComponent } from './template-sidenav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TemplateHeadComponent,
-    TemplateScriptsComponent,
-    TemplateTopnavComponent
+    TemplateTopnavComponent,
+    TemplateSidenavComponent
   ],
   imports: [
     BrowserModule
@@ -20,8 +20,8 @@ import { TemplateTopnavComponent } from './template-topnav.component';
   bootstrap: [
     AppComponent,
     TemplateHeadComponent,
-    TemplateScriptsComponent,
-    TemplateTopnavComponent
+    TemplateTopnavComponent,
+    TemplateSidenavComponent
   ]
 })
 export class AppModule { }
