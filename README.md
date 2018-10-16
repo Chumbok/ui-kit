@@ -1,1 +1,3 @@
 # Chumbok UI Kit
+
+Base Angular app for Chumbok Application
