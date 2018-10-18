@@ -1,18 +1,25 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {UserComponent} from "./user/user.component";
-import {User1Component} from "./user1/user1.component";
+import {LoginComponent} from "./login/login.component";
+import {AppLayoutComponent} from "./app-layout/app-layout.component";
 
 const routes: Routes = [
+
+  // App routes goes here here
   {
     path: '',
-    component: UserComponent,
+    component: AppLayoutComponent,
+    children: [
+      { path: 'user', component: UserComponent }
+    ]
   },
-  {
-    path: 'user',
-    component: User1Component,
-  },
+
+  //no layout routes
+  { path: 'login', component: LoginComponent },
+
+  // otherwise redirect to home
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

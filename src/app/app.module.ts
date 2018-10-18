@@ -1,13 +1,14 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {AppRoutingModule} from './app-routing.module';
 
-import { AppComponent } from './app.component';
-import { TemplateHeadComponent } from './template-head.component';
-import { TemplateTopnavComponent } from './template-topnav.component';
-import { TemplateSidenavComponent } from './template-sidenav.component';
-import { UserComponent } from './user/user.component';
-import { User1Component } from './user1/user1.component';
+import {AppComponent} from './app.component';
+import {TemplateHeadComponent} from './template-head/template-head.component';
+import {TemplateTopnavComponent} from './template-topnav/template-topnav.component';
+import {TemplateSidenavComponent} from './template-sidenav/template-sidenav.component';
+import {UserComponent} from './user/user.component';
+import {LoginComponent} from './login/login.component';
+import {AppLayoutComponent} from './app-layout/app-layout.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { User1Component } from './user1/user1.component';
     TemplateTopnavComponent,
     TemplateSidenavComponent,
     UserComponent,
-    User1Component
+    LoginComponent,
+    AppLayoutComponent
   ],
   imports: [
     BrowserModule,
@@ -24,10 +26,7 @@ import { User1Component } from './user1/user1.component';
   ],
   providers: [],
   bootstrap: [
-    AppComponent,
-    TemplateHeadComponent,
-    TemplateTopnavComponent,
-    TemplateSidenavComponent
+    AppComponent
   ]
 })
 export class AppModule { }
