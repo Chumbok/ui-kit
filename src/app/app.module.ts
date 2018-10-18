@@ -9,9 +9,10 @@ import {TemplateSidenavComponent} from './template-sidenav/template-sidenav.comp
 import {UserComponent} from './user/user.component';
 import {LoginComponent} from './login/login.component';
 import {AppLayoutComponent} from './app-layout/app-layout.component';
-import { SiteLayoutComponent } from './site-layout/site-layout.component';
-import { SiteHomeComponent } from './site-home/site-home.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import {SiteLayoutComponent} from './site-layout/site-layout.component';
+import {SiteHomeComponent} from './site-home/site-home.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
+import {FlushMessageComponent} from './flush-message/flush-message.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AppLayoutComponent,
     SiteLayoutComponent,
     SiteHomeComponent,
-    DashboardComponent
+    DashboardComponent,
+    FlushMessageComponent
   ],
   imports: [
     BrowserModule,
