@@ -9,6 +9,9 @@ import {TemplateSidenavComponent} from './template-sidenav/template-sidenav.comp
 import {UserComponent} from './user/user.component';
 import {LoginComponent} from './login/login.component';
 import {AppLayoutComponent} from './app-layout/app-layout.component';
+import { SiteLayoutComponent } from './site-layout/site-layout.component';
+import { SiteHomeComponent } from './site-home/site-home.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import {AppLayoutComponent} from './app-layout/app-layout.component';
     TemplateSidenavComponent,
     UserComponent,
     LoginComponent,
-    AppLayoutComponent
+    AppLayoutComponent,
+    SiteLayoutComponent,
+    SiteHomeComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
