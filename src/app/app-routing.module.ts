@@ -6,6 +6,7 @@ import {AppLayoutComponent} from "./app-layout/app-layout.component";
 import {SiteLayoutComponent} from "./site-layout/site-layout.component";
 import {SiteHomeComponent} from "./site-home/site-home.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
+import {AuthGuard} from "./guard/auth.guard";
 
 const routes: Routes = [
 
@@ -23,26 +24,29 @@ const routes: Routes = [
     path: '',
     component: AppLayoutComponent,
     children: [
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'user', component: UserComponent }
+      { path: 'dashboard', component: DashboardComponent, canActivate: [ AuthGuard ] },
+      { path: 'user', component: UserComponent, canActivate: [ AuthGuard ] }
     ]
   },
 
-  //no layout routes
+  // No layout routes
   { path: 'login', component: LoginComponent },
 
   // otherwise redirect to home
   { path: '**', redirectTo: '' }
 ];
 
-@NgModule({
-  imports: [
-    RouterModule.forRoot(routes, {useHash: true})
-  ],
-  exports: [
-    RouterModule
-  ],
-  declarations: []
-})
+// @NgModule({
+//   imports: [
+//     RouterModule.forRoot(routes, {useHash: true})
+//   ],
+//   exports: [
+//     RouterModule
+//   ],
+//   declarations: [],
+//
+//   // Add AuthGuard to the providers array
+//   providers: [AuthGuard]
+// })
 
-export class AppRoutingModule { }
+export const routing = RouterModule.forRoot(routes, {useHash: true});

@@ -1,0 +1,10 @@
+.login-container{
+  max-width: 400px;
+  margin: 60px auto 0;
+}
+
+.error{
+  color: tomato;
+  font-size: 12px;
+  padding-top: 4px
+}
