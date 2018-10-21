@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
       password: ['admin', Validators.required]
     });
 
-    this.authService.logout();
+    this.authService.removeAuthToken();
 
     this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/dashboard';
   }

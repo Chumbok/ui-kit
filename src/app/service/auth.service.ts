@@ -37,8 +37,12 @@ export class AuthService {
     };
 
     this.http.get(this.logoutEndpoint, httpOptions).subscribe(res => {
-      localStorage.removeItem('token');
+      this.removeAuthToken();
     });
+  }
+
+  public removeAuthToken(): void {
+    localStorage.removeItem('token');
   }
 
   public isLoggedIn(): boolean {
