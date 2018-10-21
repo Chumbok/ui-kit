@@ -7,6 +7,7 @@ import {SiteHomeComponent} from './site-home/site-home.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {AuthGuard} from './guard/auth.guard';
 import {LogoutComponent} from './logout/logout.component';
+import {NgModule} from '@angular/core';
 
 const routes: Routes = [
 
@@ -37,17 +38,15 @@ const routes: Routes = [
   { path: '**', redirectTo: '' }
 ];
 
-// @NgModule({
-//   imports: [
-//     RouterModule.forRoot(routes, {useHash: true})
-//   ],
-//   exports: [
-//     RouterModule
-//   ],
-//   declarations: [],
-//
-//   // Add AuthGuard to the providers array
-//   providers: [AuthGuard]
-// })
+@NgModule({
+  imports: [
+    RouterModule.forRoot(routes, {useHash: true})
+  ],
+  exports: [
+    RouterModule
+  ],
+  declarations: []
+})
 
-export const routing = RouterModule.forRoot(routes, {useHash: true});
+export class AppRoutingModule { }
+

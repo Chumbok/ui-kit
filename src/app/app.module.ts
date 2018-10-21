@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {routing} from './app-routing.module';
+import {AppRoutingModule} from './app-routing.module';
 
 import {AppComponent} from './app.component';
 import {TemplateHeadComponent} from './template-head/template-head.component';
@@ -23,11 +23,10 @@ import {LogoutComponent} from './logout/logout.component';
 @NgModule({
   imports: [
     BrowserModule,
-    // AppRoutingModule,
+    AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
-    routing
+    ReactiveFormsModule
   ],
   declarations: [
     AppComponent,
