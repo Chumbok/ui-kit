@@ -13,11 +13,12 @@ import {SiteLayoutComponent} from './site-layout/site-layout.component';
 import {SiteHomeComponent} from './site-home/site-home.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {FlushMessageComponent} from './flush-message/flush-message.component';
-import {LoginService} from "./service/login.service";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
-import {CookieService} from "ngx-cookie-service";
-import {AuthGuard} from "./guard/auth.guard";
+import {AuthService} from './service/auth.service';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {CookieService} from 'ngx-cookie-service';
+import {AuthGuard} from './guard/auth.guard';
+import {LogoutComponent} from './logout/logout.component';
 
 @NgModule({
   imports: [
@@ -39,10 +40,11 @@ import {AuthGuard} from "./guard/auth.guard";
     SiteLayoutComponent,
     SiteHomeComponent,
     DashboardComponent,
-    FlushMessageComponent
+    FlushMessageComponent,
+    LogoutComponent
   ],
   providers: [
-    LoginService,
+    AuthService,
     CookieService,
     AuthGuard
   ],

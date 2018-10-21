@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {LoginService} from "../service/login.service";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {first} from "rxjs/operators";
+import {ActivatedRoute, Router} from '@angular/router';
+import {AuthService} from '../service/auth.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {first} from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
 
   constructor(private formBuilder: FormBuilder,
-              private loginService: LoginService,
+              private authService: AuthService,
               private router: Router,
               private activatedRoute: ActivatedRoute) {
   }
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
       password: ['admin', Validators.required]
     });
 
-    this.loginService.logout();
+    this.authService.logout();
 
     this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/dashboard';
   }
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.loginService.login(this.f.username.value, this.f.password.value)
+    this.authService.login(this.f.username.value, this.f.password.value)
       .pipe(first())
       .subscribe(
 

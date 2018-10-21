@@ -1,12 +1,12 @@
-import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {UserComponent} from "./user/user.component";
-import {LoginComponent} from "./login/login.component";
-import {AppLayoutComponent} from "./app-layout/app-layout.component";
-import {SiteLayoutComponent} from "./site-layout/site-layout.component";
-import {SiteHomeComponent} from "./site-home/site-home.component";
-import {DashboardComponent} from "./dashboard/dashboard.component";
-import {AuthGuard} from "./guard/auth.guard";
+import {UserComponent} from './user/user.component';
+import {LoginComponent} from './login/login.component';
+import {AppLayoutComponent} from './app-layout/app-layout.component';
+import {SiteLayoutComponent} from './site-layout/site-layout.component';
+import {SiteHomeComponent} from './site-home/site-home.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
+import {AuthGuard} from './guard/auth.guard';
+import {LogoutComponent} from './logout/logout.component';
 
 const routes: Routes = [
 
@@ -31,6 +31,7 @@ const routes: Routes = [
 
   // No layout routes
   { path: 'login', component: LoginComponent },
+  {path: 'logout', component: LogoutComponent},
 
   // otherwise redirect to home
   { path: '**', redirectTo: '' }
