@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FlushMessageComponent } from './flush-message.component';
+import { FlashMessageComponent } from './flash-message.component';
 
 describe('FlushMessageComponent', () => {
-  let component: FlushMessageComponent;
-  let fixture: ComponentFixture<FlushMessageComponent>;
+  let component: FlashMessageComponent;
+  let fixture: ComponentFixture<FlashMessageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FlushMessageComponent ]
+      declarations: [ FlashMessageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FlushMessageComponent);
+    fixture = TestBed.createComponent(FlashMessageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
