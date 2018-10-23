@@ -9,10 +9,15 @@ import {CookieService} from 'ngx-cookie-service';
 export class AuthService {
 
   private callThroughGateway: boolean = environment.chumbok.apiCallThroughGateway;
+
   private loginEndpoint: string = this.callThroughGateway ?
     environment.chumbok.apiBaseEndpoint + '/uaa/login' : environment.chumbok.apiBaseEndpoint + '/login';
+
   private logoutEndpoint: string = this.callThroughGateway ?
     environment.chumbok.apiBaseEndpoint + '/uaa/logout' : environment.chumbok.apiBaseEndpoint + '/logout';
+
+  private refreshEndpoint: string = this.callThroughGateway ?
+    environment.chumbok.apiBaseEndpoint + '/uaa/refresh' : environment.chumbok.apiBaseEndpoint + '/refresh';
 
   constructor(private cookieService: CookieService, private http: HttpClient) {
   }
@@ -41,6 +46,19 @@ export class AuthService {
     });
   }
 
+  public refreshToken() {
+
+    const httpOptions = {
+      headers: new HttpHeaders({'Authorization': 'Bearer ' + this.getAuthToken()})
+    };
+
+    return this.http.get(this.refreshEndpoint, httpOptions).pipe(map(
+      res => {
+        localStorage.setItem('token', res['accessToken']);
+      }
+    ));
+  }
+
   public removeAuthToken(): void {
     localStorage.removeItem('token');
   }
@@ -49,7 +67,7 @@ export class AuthService {
     return localStorage.getItem('token') != null;
   }
 
-  private getAuthToken(): string {
+  public getAuthToken(): string {
     return localStorage.getItem('token');
   }
 

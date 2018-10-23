@@ -46,14 +46,10 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.f.username.value, this.f.password.value)
       .pipe(first())
       .subscribe(
-
         data => {
-          // console.log(data);
-          // console.log(data.headers.keys());
           this.router.navigate([this.returnUrl]);
         },
         error => {
-          // this.alertService.error(error);
         });
   }
 
