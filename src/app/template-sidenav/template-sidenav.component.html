@@ -2,8 +2,24 @@
 
   <div class="list-group panel">
 
-    <a href="#menu1" class="list-group-item collapsed" data-toggle="collapse" data-parent="#menu1"
-       aria-expanded="false"><i class="fa fa-dashboard"></i> <span class="hidden-sm-down">&nbsp;Dashboard</span> </a>
+    <a href="#usermanagement" class="list-group-item collapsed" data-toggle="collapse" data-parent="#usermanagement"
+       aria-expanded="false"><i class="fa fa-users"></i> <span class="hidden-sm-down">&nbsp;User Management</span>
+    </a>
+
+    <div class="collapse" id="usermanagement">
+      <a [routerLink]="['/orgs']" class="list-group-item" data-parent="#usermanagement">
+        <i class="fa fa-umbrella"></i> <span class="hidden-sm-down">&nbsp;Organizations</span></a>
+      <a [routerLink]="['/tetants']" class="list-group-item" data-parent="#usermanagement">
+        <i class="fa fa-home"></i> <span class="hidden-sm-down">&nbsp;Tetants</span></a>
+      <a [routerLink]="['/users']" class="list-group-item" data-parent="#usermanagement">
+        <i class="fa fa-user"></i> <span class="hidden-sm-down">&nbsp;Users</span></a>
+    </div>
+
+    <!--
+
+    <a href="#menu1" class="list-group-item collapsed"
+       data-toggle="collapse" data-parent="#menu1" aria-expanded="false">
+      <i class="fa fa-dashboard"></i> <span class="hidden-sm-down">&nbsp;Dashboard</span> </a>
 
     <div class="collapse" id="menu1">
       <a href="#menu1sub1" class="list-group-item" data-toggle="collapse" aria-expanded="false">Subitem 1 </a>
@@ -50,6 +66,8 @@
 
     <a href="#" class="list-group-item collapsed" data-parent="#sidebar"><i class="fa fa-list"></i> <span
       class="hidden-sm-down">&nbsp;Item 5</span></a>
+
+    -->
 
     <a href="#" class="list-group-item collapsed" data-parent="#sidebar"><i class="fa fa-cog"></i> <span
       class="hidden-sm-down">&nbsp;Settings</span></a>
