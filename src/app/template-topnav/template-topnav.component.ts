@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {LoggedInUserInfoService} from '../service/logged-in-user-info.service';
 
 @Component({
-  selector: 'template-topnav',
+  selector: 'app-template-topnav',
   templateUrl: './template-topnav.component.html'
 })
 export class TemplateTopnavComponent implements OnInit {
