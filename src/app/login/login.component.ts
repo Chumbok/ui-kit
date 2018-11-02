@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../service/auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {first} from 'rxjs/operators';
+import {LoggedInUserInfoService} from '../service/logged-in-user-info.service';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private authService: AuthService,
+              private loggedInUserInfoService: LoggedInUserInfoService,
               private router: Router,
               private activatedRoute: ActivatedRoute) {
   }
@@ -47,7 +49,9 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.router.navigate([this.returnUrl]);
+          this.loggedInUserInfoService.fetchLoggedInUserInfo().subscribe(res => {
+            this.router.navigate([this.returnUrl]);
+          });
         },
         error => {
         });

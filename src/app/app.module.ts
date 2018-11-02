@@ -15,13 +15,15 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {FlashMessageComponent} from './flash-message/flash-message.component';
 import {AuthService} from './service/auth.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {CookieService} from 'ngx-cookie-service';
 import {AuthGuard} from './guard/auth.guard';
 import {LogoutComponent} from './logout/logout.component';
 import {PingService} from './service/ping.service';
 import {FlashMessageService} from './service/flash-message.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {Http401Interceptor} from './interceptor/Http401Interceptor';
+import {LoggedInUserInfoService} from './service/logged-in-user-info.service';
 
 @NgModule({
   imports: [
@@ -51,7 +53,13 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     CookieService,
     PingService,
     FlashMessageService,
-    AuthGuard
+    LoggedInUserInfoService,
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: Http401Interceptor,
+      multi: true
+    }
   ],
   bootstrap: [
     AppComponent
