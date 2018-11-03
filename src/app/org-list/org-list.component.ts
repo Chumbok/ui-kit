@@ -15,7 +15,7 @@ export class OrgListComponent implements OnInit {
   constructor(private orgService: OrgService) { }
 
   ngOnInit() {
-    this.orgService.getOrgListMock().subscribe(res => {
+    this.orgService.getOrgList().subscribe(res => {
       this.orgsResp = res;
       this.orgs = res['items']
       console.log(this.orgsResp);
