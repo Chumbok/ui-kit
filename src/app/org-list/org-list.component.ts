@@ -17,9 +17,7 @@ export class OrgListComponent implements OnInit {
   ngOnInit() {
     this.orgService.getOrgList().subscribe(res => {
       this.orgsResp = res;
-      this.orgs = res['items']
-      console.log(this.orgsResp);
-      console.log(this.orgs);
+      this.orgs = res['items'];
     });
 
   }
