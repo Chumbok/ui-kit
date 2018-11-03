@@ -10,6 +10,11 @@ a {
     cursor: pointer;
 }
 
+table caption {
+  font-size: 1.3rem;
+  caption-side: top;
+}
+
 .dash-navbar-left {
     position: absolute;
     top: 50px;

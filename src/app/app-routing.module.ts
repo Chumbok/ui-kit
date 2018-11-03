@@ -8,6 +8,7 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {AuthGuard} from './guard/auth.guard';
 import {LogoutComponent} from './logout/logout.component';
 import {NgModule} from '@angular/core';
+import {OrgListComponent} from './org-list/org-list.component';
 
 const routes: Routes = [
 
@@ -26,6 +27,7 @@ const routes: Routes = [
     component: AppLayoutComponent,
     children: [
       { path: 'dashboard', component: DashboardComponent, canActivate: [ AuthGuard ] },
+      { path: 'orgs', component: OrgListComponent, canActivate: [ AuthGuard ] },
       { path: 'user', component: UserComponent, canActivate: [ AuthGuard ] }
     ]
   },
