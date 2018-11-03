@@ -9,6 +9,8 @@ import {AuthGuard} from './guard/auth.guard';
 import {LogoutComponent} from './logout/logout.component';
 import {NgModule} from '@angular/core';
 import {OrgListComponent} from './org-list/org-list.component';
+import {TenantListComponent} from './tenant-list/tenant-list.component';
+import {UserListComponent} from './user-list/user-list.component';
 
 const routes: Routes = [
 
@@ -28,6 +30,8 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', component: DashboardComponent, canActivate: [ AuthGuard ] },
       { path: 'orgs', component: OrgListComponent, canActivate: [ AuthGuard ] },
+      { path: 'orgs/:id/tenants', component: TenantListComponent, canActivate: [AuthGuard] },
+      { path: 'orgs/:id/tenants/:tid/users', component: UserListComponent, canActivate: [AuthGuard] },
       { path: 'user', component: UserComponent, canActivate: [ AuthGuard ] }
     ]
   },

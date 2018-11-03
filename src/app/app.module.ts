@@ -24,8 +24,10 @@ import {FlashMessageService} from './service/flash-message.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {Http401Interceptor} from './interceptor/Http401Interceptor';
 import {LoggedInUserInfoService} from './service/logged-in-user-info.service';
-import { OrgListComponent } from './org-list/org-list.component';
-import {OrgService} from './service/org.service';
+import {OrgListComponent} from './org-list/org-list.component';
+import {TenantListComponent} from './tenant-list/tenant-list.component';
+import {UserListComponent} from './user-list/user-list.component';
+import {OrgTenantUserService} from './service/org-tenant-user.service';
 
 @NgModule({
   imports: [
@@ -49,7 +51,9 @@ import {OrgService} from './service/org.service';
     DashboardComponent,
     FlashMessageComponent,
     LogoutComponent,
-    OrgListComponent
+    OrgListComponent,
+    TenantListComponent,
+    UserListComponent
   ],
   providers: [
     AuthService,
@@ -57,7 +61,7 @@ import {OrgService} from './service/org.service';
     PingService,
     FlashMessageService,
     LoggedInUserInfoService,
-    OrgService,
+    OrgTenantUserService,
     AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,

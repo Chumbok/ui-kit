@@ -1,0 +1,25 @@
+<div class="ibox">
+  <div class="ibox-head">
+    <div class="ibox-title">Tenant List</div>
+  </div>
+  <div class="ibox-body">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Options</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let tenant of tenants">
+        <td style="width: 20%">{{ tenant.name }}</td>
+        <td>
+          <a [routerLink]="[tenant.id, 'users']">User List</a> |
+          <a [routerLink]="[tenant.id]">Delete</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

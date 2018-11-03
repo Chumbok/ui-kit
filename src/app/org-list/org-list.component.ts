@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {OrgService} from '../service/org.service';
-import {map} from 'rxjs/operators';
+import {Component, OnInit} from '@angular/core';
+import {OrgTenantUserService} from '../service/org-tenant-user.service';
+
 
 @Component({
   selector: 'app-org-list',
@@ -12,10 +12,11 @@ export class OrgListComponent implements OnInit {
   orgsResp: any;
   orgs: Array<any>;
 
-  constructor(private orgService: OrgService) { }
+  constructor(private orgTenantUserService: OrgTenantUserService) {
+  }
 
   ngOnInit() {
-    this.orgService.getOrgList().subscribe(res => {
+    this.orgTenantUserService.getOrgList().subscribe(res => {
       this.orgsResp = res;
       this.orgs = res['items'];
     });
