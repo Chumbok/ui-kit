@@ -1,18 +1,25 @@
-<table class="table">
-  <caption>Org List</caption>
-  <thead class="thead-light">
-  <tr>
-    <th scope="col">Name</th>
-    <th scope="col"></th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let org of orgs">
-    <td style="width: 20%">{{ org.name }}</td>
-    <td>
-      <a [routerLink]="[org.id, 'tenants']">Tenant List</a> |
-      <a [routerLink]="[org.id]">Delete</a>
-    </td>
-  </tr>
-  </tbody>
-</table>
+<div class="ibox">
+  <div class="ibox-head">
+    <div class="ibox-title">Org List</div>
+  </div>
+  <div class="ibox-body">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Options</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let org of orgs">
+        <td style="width: 20%">{{ org.name }}</td>
+        <td>
+          <a [routerLink]="[org.id, 'tenants']">Tenant List</a> |
+          <a [routerLink]="[org.id]">Delete</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

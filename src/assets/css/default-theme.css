@@ -1,11 +1,38 @@
+body {
+  font-family: Poppins !important;
+}
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+  order-collapse: collapse;
+}
+
+.table thead th {
+  border-bottom-width: 1px;
+  border-top: 0;
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+
+.table thead th {
+  border-bottom: 2px solid #e9ecef;
+}
+
+
 .main-panel,
 .dropdown-item:focus,
 .dropdown-item:hover {
-  background-color: #ffffff;
+  /*background-color: #ffffff;*/
+  background-color: #f2f3fa;
+  color: #34495f;
 }
 
 .navbar-brand {
-  background: #ecefed;
+  background-color: #fafaff;
   color: #393939;
 }
 
@@ -35,7 +62,7 @@
 .dash-navbar-left .list-group-item,
 .dash-navbar-left-icon-only,
 .dash-navbar-left-icon-only .list-group-item {
-  background-color: #f1f1f1;
+  background-color: #ededf5;
   border: 1px solid #e9ecef;
 }
 
@@ -45,7 +72,7 @@
 
 @media only screen and (min-width : 992px) {
     .navbar-brand {
-      background-color: #c5c8c6;
+      background-color: #fafaff;
     }
 }
 
@@ -53,4 +80,35 @@
   color: #4a4a4a;
   background-color: #f9f9f9;
   border-color: #d4d4d4;
+}
+
+.ibox {
+  position: relative;
+  margin-bottom: 25px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,.08);
+}
+
+.ibox .ibox-head {
+  padding: 0 20px;
+  border-bottom: 1px solid #eee;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  min-height: 60px;
+}
+
+.ibox .ibox-body {
+  padding: 25px 25px 25px;
+}
+
+.ibox .ibox-head .ibox-title {
+  font-size: 16px;
+  font-weight: 500;
 }
