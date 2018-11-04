@@ -20,11 +20,18 @@ export class OrgTenantUserService {
     headers: new HttpHeaders({'Authorization': 'Bearer ' + this.authService.getAuthToken()})
   };
 
+  private authHeader = new HttpHeaders({'Authorization': 'Bearer ' + this.authService.getAuthToken()});
+
   constructor(private authService: AuthService, private http: HttpClient) {
   }
 
   public getOrgList(): Observable<any> {
     return this.enableMock ? this.getOrgListMock() : this.getOrgListReal();
+  }
+
+  public createOrg(name: string): Observable<any> {
+    return this.http.post<any>(this.serviceBaseEndpoint + '/orgs', {name: name},
+      {withCredentials: true, headers: this.authHeader});
   }
 
   public getTenantList(orgId: string): Observable<any> {

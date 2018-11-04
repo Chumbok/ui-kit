@@ -15,7 +15,7 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {FlashMessageComponent} from './flash-message/flash-message.component';
 import {AuthService} from './service/auth.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule, HttpClientXsrfModule} from '@angular/common/http';
 import {CookieService} from 'ngx-cookie-service';
 import {AuthGuard} from './guard/auth.guard';
 import {LogoutComponent} from './logout/logout.component';
@@ -28,6 +28,9 @@ import {OrgListComponent} from './org-list/org-list.component';
 import {TenantListComponent} from './tenant-list/tenant-list.component';
 import {UserListComponent} from './user-list/user-list.component';
 import {OrgTenantUserService} from './service/org-tenant-user.service';
+import { CreateOrgComponent } from './create-org/create-org.component';
+import { CreateTenantComponent } from './create-tenant/create-tenant.component';
+import { CreateUserComponent } from './create-user/create-user.component';
 
 @NgModule({
   imports: [
@@ -36,7 +39,11 @@ import {OrgTenantUserService} from './service/org-tenant-user.service';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'XSRF-TOKEN',
+      headerName: 'X-XSRF-TOKEN'
+    })
   ],
   declarations: [
     AppComponent,
@@ -53,7 +60,10 @@ import {OrgTenantUserService} from './service/org-tenant-user.service';
     LogoutComponent,
     OrgListComponent,
     TenantListComponent,
-    UserListComponent
+    UserListComponent,
+    CreateOrgComponent,
+    CreateTenantComponent,
+    CreateUserComponent
   ],
   providers: [
     AuthService,

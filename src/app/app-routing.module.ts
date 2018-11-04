@@ -11,6 +11,7 @@ import {NgModule} from '@angular/core';
 import {OrgListComponent} from './org-list/org-list.component';
 import {TenantListComponent} from './tenant-list/tenant-list.component';
 import {UserListComponent} from './user-list/user-list.component';
+import {CreateOrgComponent} from './create-org/create-org.component';
 
 const routes: Routes = [
 
@@ -30,8 +31,9 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', component: DashboardComponent, canActivate: [ AuthGuard ] },
       { path: 'orgs', component: OrgListComponent, canActivate: [ AuthGuard ] },
-      { path: 'orgs/:id/tenants', component: TenantListComponent, canActivate: [AuthGuard] },
-      { path: 'orgs/:id/tenants/:tid/users', component: UserListComponent, canActivate: [AuthGuard] },
+      { path: 'create-org', component: CreateOrgComponent, canActivate: [ AuthGuard ]},
+      { path: 'orgs/:id/tenants', component: TenantListComponent, canActivate: [ AuthGuard ] },
+      { path: 'orgs/:id/tenants/:tid/users', component: UserListComponent, canActivate: [ AuthGuard ] },
       { path: 'user', component: UserComponent, canActivate: [ AuthGuard ] }
     ]
   },
