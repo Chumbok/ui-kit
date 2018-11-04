@@ -32,7 +32,7 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', component: DashboardComponent, canActivate: [ AuthGuard ] },
       { path: 'orgs', component: OrgListComponent, canActivate: [ AuthGuard ] },
-      { path: 'create-org', component: CreateOrgComponent, canActivate: [ AuthGuard ]},
+      { path: 'orgs/create', component: CreateOrgComponent, canActivate: [ AuthGuard ]},
       { path: 'orgs/:id/tenants', component: TenantListComponent, canActivate: [ AuthGuard ] },
       { path: 'orgs/:id/tenants/create', component: CreateTenantComponent, canActivate: [ AuthGuard ]},
       { path: 'orgs/:id/tenants/:tid/users', component: UserListComponent, canActivate: [ AuthGuard ] },
