@@ -1,5 +1,6 @@
 body {
   font-family: Poppins !important;
+  background-color: #f2f3fa;
 }
 
 .table {
@@ -66,6 +67,17 @@ body {
   border: 1px solid #e9ecef;
 }
 
+.dash-navbar-left .list-group {
+  padding-top: 1rem;
+}
+
+.dash-navbar-left .list-group .list-group-item {
+  padding-top: 0.5rem;
+  padding-right: 1.25rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1.25rem;
+}
+
 .nav .white-link {
   color: #575757;
 }
@@ -109,6 +121,35 @@ body {
 }
 
 .ibox .ibox-head .ibox-title {
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.ibox.ibox-fullheight {
+  height: calc(100% - 25px);
+}
+
+.ibox .ibox-footer {
+  padding: 25px;
+  border-top: 1px solid #eee;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #5c6bc0;
+  border-color: #5c6bc0;
+}
+.btn-secondary {
+  color: #485b6f;
+  background-color: #e9ecef;
+  border-color: #e9ecef;
+}
+
+.btn {
+  border-radius: 2px;
+  outline: 0!important;
+  transition: all .15s ease-in-out;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
 }

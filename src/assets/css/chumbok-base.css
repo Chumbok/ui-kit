@@ -71,6 +71,8 @@ a {
     height: 50px;
     line-height: 50px;
     padding: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .08);
+    z-index: 800;
 }
 
 #chumbok-ui .topnav > .nav {
