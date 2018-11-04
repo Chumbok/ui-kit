@@ -16,6 +16,7 @@ export class UserListComponent implements OnInit {
   users: Array<any>;
   itemFrom: number;
   itemTo: number;
+  totalElements: number;
 
   constructor(private orgTenantUserService: OrgTenantUserService, private route: ActivatedRoute) {
     this.route.params.subscribe(params => {
@@ -30,6 +31,7 @@ export class UserListComponent implements OnInit {
       this.users = res['items'];
       this.itemFrom = this.usersResp.page + 1;
       this.itemTo = (this.usersResp.page + 1) * this.usersResp.size;
+      this.totalElements = this.usersResp.totalElements;
     });
 
   }
