@@ -3,6 +3,7 @@ import {environment} from '../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AuthService} from './auth.service';
 import {Observable, of} from 'rxjs';
+import {User} from '../model/user';
 
 @Injectable()
 export class OrgTenantUserService {
@@ -45,6 +46,11 @@ export class OrgTenantUserService {
 
   public getUserList(orgId: string, tenantId: string): Observable<any> {
     return this.enableMock ? this.getUserListMock() : this.getUserListReal(orgId, tenantId);
+  }
+
+  public createUser(orgId: string, tenantId: string, user: User): Observable<any> {
+    return this.http.post<any>(this.serviceBaseEndpoint + '/orgs/' + orgId + '/tenants/' + tenantId + '/users', user,
+      {withCredentials: true, headers: this.authHeader});
   }
 
   private getOrgListReal(): Observable<any> {

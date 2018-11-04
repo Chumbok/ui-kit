@@ -13,6 +13,7 @@ import {TenantListComponent} from './tenant-list/tenant-list.component';
 import {UserListComponent} from './user-list/user-list.component';
 import {CreateOrgComponent} from './create-org/create-org.component';
 import {CreateTenantComponent} from './create-tenant/create-tenant.component';
+import {CreateUserComponent} from './create-user/create-user.component';
 
 const routes: Routes = [
 
@@ -36,6 +37,7 @@ const routes: Routes = [
       { path: 'orgs/:id/tenants', component: TenantListComponent, canActivate: [ AuthGuard ] },
       { path: 'orgs/:id/tenants/create', component: CreateTenantComponent, canActivate: [ AuthGuard ]},
       { path: 'orgs/:id/tenants/:tid/users', component: UserListComponent, canActivate: [ AuthGuard ] },
+      { path: 'orgs/:id/tenants/:tid/users/create', component: CreateUserComponent, canActivate: [ AuthGuard ]},
       { path: 'user', component: UserComponent, canActivate: [ AuthGuard ] }
     ]
   },
