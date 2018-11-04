@@ -38,6 +38,11 @@ export class OrgTenantUserService {
     return this.enableMock ? this.getTenantListMock() : this.getTenantListReal(orgId);
   }
 
+  public createTenant(orgId: string, name: string): Observable<any> {
+    return this.http.post<any>(this.serviceBaseEndpoint + '/orgs/' + orgId + '/tenants', {name: name},
+      {withCredentials: true, headers: this.authHeader});
+  }
+
   public getUserList(orgId: string, tenantId: string): Observable<any> {
     return this.enableMock ? this.getUserListMock() : this.getUserListReal(orgId, tenantId);
   }

@@ -1,0 +1,35 @@
+<div class="col-md-6 ibox">
+
+  <div class="ibox-head">
+    <div class="ibox-title">Create Tenant</div>
+  </div>
+
+  <form name="form" class="form-horizontal" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <div class="ibox-body">
+
+      <div class="form-group mb-4 row">
+
+        <label class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+          <input type="text" formControlName="name" class="form-control"
+                 [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+          <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+            <div *ngIf="f.name.errors.required">Name is required</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="ibox-footer row">
+      <div class="col-sm-10 ml-sm-auto">
+        <button class="btn btn-primary mr-2">Submit</button>
+        <button class="btn btn-secondary">Cancel</button>
+      </div>
+    </div>
+
+  </form>
+
+</div>
