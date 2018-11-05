@@ -1,4 +1,4 @@
-<div class="ibox">
+<div class="col-md-8 ibox">
   <div class="ibox-head">
     <div class="ibox-title">User List</div>
     <a [routerLink]="['create']">Add User</a>
@@ -9,10 +9,6 @@
       <tr>
         <th scope="col">Username</th>
         <th scope="col">Display Name</th>
-        <th scope="col">First Name</th>
-        <th scope="col">Last Name</th>
-        <th scope="col">Language</th>
-        <th scope="col">Timezone</th>
         <th scope="col">Roles</th>
         <th scope="col">Enabled</th>
         <th scope="col">Options</th>
@@ -22,10 +18,6 @@
       <tr *ngFor="let user of users">
         <td>{{ user.username }}</td>
         <td>{{ user.displayName }}</td>
-        <td>{{ user.firstName }}</td>
-        <td>{{ user.lastName }}</td>
-        <td>{{ user.preferredLanguage }}</td>
-        <td>{{ user.timezoneId }}</td>
         <td>{{ user.roles }}</td>
         <td>{{ user.enabled }}</td>
         <td>
