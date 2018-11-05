@@ -1,4 +1,6 @@
-import 'rxjs/add/operator/do';
+
+import {tap} from 'rxjs/operators';
+
 import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
@@ -12,7 +14,7 @@ export class Http401Interceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    return next.handle(request).do((event: HttpEvent<any>) => {
+    return next.handle(request).pipe(tap((event: HttpEvent<any>) => {
       if (event instanceof HttpResponse) {
         // do stuff with response if you want
       }
@@ -22,6 +24,6 @@ export class Http401Interceptor implements HttpInterceptor {
           this.router.navigate(['login'], {queryParams: {returnUrl: this.router.url}});
         }
       }
-    });
+    }));
   }
 }
