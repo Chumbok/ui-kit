@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../service/auth.service';
+import {AuthService} from '../../service/auth.service';
 import {timer} from 'rxjs';
 import {first} from 'rxjs/operators';
-import {PingService} from '../service/ping.service';
-import {FlashMessageService} from '../service/flash-message.service';
+import {PingService} from '../../service/ping.service';
+import {FlashMessageService} from '../../service/flash-message.service';
 
 
 @Component({

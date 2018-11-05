@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FlashMessageService} from '../service/flash-message.service';
-import {FlashMessage} from '../model/flash-message';
+import {FlashMessageService} from '../../service/flash-message.service';
+import {FlashMessage} from '../../model/flash-message';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({

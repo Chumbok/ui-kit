@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {OrgTenantUserService} from '../service/org-tenant-user.service';
-import {User} from '../model/user';
+import {OrgTenantUserService} from '../../service/org-tenant-user.service';
+import {User} from '../../model/user';
 
 @Component({
   selector: 'app-create-user',

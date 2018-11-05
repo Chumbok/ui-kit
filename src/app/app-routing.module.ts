@@ -1,19 +1,18 @@
 import {RouterModule, Routes} from '@angular/router';
-import {UserComponent} from './user/user.component';
-import {LoginComponent} from './login/login.component';
-import {AppLayoutComponent} from './app-layout/app-layout.component';
-import {SiteLayoutComponent} from './site-layout/site-layout.component';
-import {SiteHomeComponent} from './site-home/site-home.component';
-import {DashboardComponent} from './dashboard/dashboard.component';
+import {LoginComponent} from './componant/login/login.component';
+import {AppLayoutComponent} from './componant/app-layout/app-layout.component';
+import {SiteLayoutComponent} from './componant/site-layout/site-layout.component';
+import {SiteHomeComponent} from './componant/site-home/site-home.component';
+import {DashboardComponent} from './componant/dashboard/dashboard.component';
 import {AuthGuard} from './guard/auth.guard';
-import {LogoutComponent} from './logout/logout.component';
+import {LogoutComponent} from './componant/logout/logout.component';
 import {NgModule} from '@angular/core';
-import {OrgListComponent} from './org-list/org-list.component';
-import {TenantListComponent} from './tenant-list/tenant-list.component';
-import {UserListComponent} from './user-list/user-list.component';
-import {CreateOrgComponent} from './create-org/create-org.component';
-import {CreateTenantComponent} from './create-tenant/create-tenant.component';
-import {CreateUserComponent} from './create-user/create-user.component';
+import {OrgListComponent} from './componant/org-list/org-list.component';
+import {TenantListComponent} from './componant/tenant-list/tenant-list.component';
+import {UserListComponent} from './componant/user-list/user-list.component';
+import {CreateOrgComponent} from './componant/create-org/create-org.component';
+import {CreateTenantComponent} from './componant/create-tenant/create-tenant.component';
+import {CreateUserComponent} from './componant/create-user/create-user.component';
 
 const routes: Routes = [
 
@@ -37,8 +36,7 @@ const routes: Routes = [
       { path: 'orgs/:id/tenants', component: TenantListComponent, canActivate: [ AuthGuard ] },
       { path: 'orgs/:id/tenants/create', component: CreateTenantComponent, canActivate: [ AuthGuard ]},
       { path: 'orgs/:id/tenants/:tid/users', component: UserListComponent, canActivate: [ AuthGuard ] },
-      { path: 'orgs/:id/tenants/:tid/users/create', component: CreateUserComponent, canActivate: [ AuthGuard ]},
-      { path: 'user', component: UserComponent, canActivate: [ AuthGuard ] }
+      {path: 'orgs/:id/tenants/:tid/users/create', component: CreateUserComponent, canActivate: [AuthGuard]}
     ]
   },
 

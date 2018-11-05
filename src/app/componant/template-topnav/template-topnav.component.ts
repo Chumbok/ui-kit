@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {LoggedInUserInfoService} from '../service/logged-in-user-info.service';
+import {LoggedInUserInfoService} from '../../service/logged-in-user-info.service';
 
 @Component({
   selector: 'app-template-topnav',
