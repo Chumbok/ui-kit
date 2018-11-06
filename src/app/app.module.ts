@@ -30,6 +30,7 @@ import {OrgTenantUserService} from './service/org-tenant-user.service';
 import { CreateOrgComponent } from './componant/org/create-org/create-org.component';
 import { CreateTenantComponent } from './componant/tenant/create-tenant/create-tenant.component';
 import { CreateUserComponent } from './componant/user/create-user/create-user.component';
+import {CreatePrescriptionComponent} from './componant/dentist-point/create-prescription/create-prescription.component';
 
 @NgModule({
   imports: [
@@ -61,7 +62,8 @@ import { CreateUserComponent } from './componant/user/create-user/create-user.co
     UserListComponent,
     CreateOrgComponent,
     CreateTenantComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    CreatePrescriptionComponent
   ],
   providers: [
     AuthService,
