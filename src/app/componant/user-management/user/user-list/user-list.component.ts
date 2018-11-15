@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {OrgTenantUserService} from '../../../service/org-tenant-user.service';
+import {OrgTenantUserService} from '../../../../service/org-tenant-user.service';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({

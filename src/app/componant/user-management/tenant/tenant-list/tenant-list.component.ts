@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {OrgTenantUserService} from '../../../service/org-tenant-user.service';
 import {ActivatedRoute} from '@angular/router';
+import {OrgTenantUserService} from '../../../../service/org-tenant-user.service';
 
 @Component({
   selector: 'app-tenant-list',

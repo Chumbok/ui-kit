@@ -7,12 +7,12 @@ import {DashboardComponent} from './componant/dashboard/dashboard.component';
 import {AuthGuard} from './guard/auth.guard';
 import {LogoutComponent} from './componant/auth/logout/logout.component';
 import {NgModule} from '@angular/core';
-import {OrgListComponent} from './componant/org/org-list/org-list.component';
-import {TenantListComponent} from './componant/tenant/tenant-list/tenant-list.component';
-import {UserListComponent} from './componant/user/user-list/user-list.component';
-import {CreateOrgComponent} from './componant/org/create-org/create-org.component';
-import {CreateTenantComponent} from './componant/tenant/create-tenant/create-tenant.component';
-import {CreateUserComponent} from './componant/user/create-user/create-user.component';
+import {OrgListComponent} from './componant/user-management/org/org-list/org-list.component';
+import {TenantListComponent} from './componant/user-management/tenant/tenant-list/tenant-list.component';
+import {UserListComponent} from './componant/user-management/user/user-list/user-list.component';
+import {CreateOrgComponent} from './componant/user-management/org/create-org/create-org.component';
+import {CreateTenantComponent} from './componant/user-management/tenant/create-tenant/create-tenant.component';
+import {CreateUserComponent} from './componant/user-management/user/create-user/create-user.component';
 
 const routes: Routes = [
 
