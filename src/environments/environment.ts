@@ -4,5 +4,15 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  chumbok: {
+    enableMock: false,
+
+    //apiCallThroughGateway: true,
+    //apiBaseEndpoint: 'http://localhost:33001/gateway'
+
+    apiCallThroughGateway: false,
+    apiBaseEndpoint: '//localhost:33002'
+
+  }
 };
