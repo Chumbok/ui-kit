@@ -13,6 +13,7 @@ import {UserListComponent} from './componant/user-management/user/user-list/user
 import {CreateOrgComponent} from './componant/user-management/org/create-org/create-org.component';
 import {CreateTenantComponent} from './componant/user-management/tenant/create-tenant/create-tenant.component';
 import {CreateUserComponent} from './componant/user-management/user/create-user/create-user.component';
+import {CalendarComponent} from './componant/dentist-point/calendar/calendar.component';
 
 const routes: Routes = [
 
@@ -32,17 +33,18 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', component: DashboardComponent, canActivate: [ AuthGuard ] },
       { path: 'orgs', component: OrgListComponent, canActivate: [ AuthGuard ] },
-      { path: 'orgs/create', component: CreateOrgComponent, canActivate: [ AuthGuard ]},
+      { path: 'orgs/create', component: CreateOrgComponent, canActivate: [ AuthGuard ] },
       { path: 'orgs/:id/tenants', component: TenantListComponent, canActivate: [ AuthGuard ] },
-      { path: 'orgs/:id/tenants/create', component: CreateTenantComponent, canActivate: [ AuthGuard ]},
+      { path: 'orgs/:id/tenants/create', component: CreateTenantComponent, canActivate: [ AuthGuard ] },
       { path: 'orgs/:id/tenants/:tid/users', component: UserListComponent, canActivate: [ AuthGuard ] },
-      {path: 'orgs/:id/tenants/:tid/users/create', component: CreateUserComponent, canActivate: [AuthGuard]}
+      { path: 'orgs/:id/tenants/:tid/users/create', component: CreateUserComponent, canActivate: [AuthGuard] },
+      { path: 'doctors/calendar-view', component: CalendarComponent, canActivate: [AuthGuard] }
     ]
   },
 
   // No layout routes
   { path: 'login', component: LoginComponent },
-  {path: 'logout', component: LogoutComponent},
+  { path: 'logout', component: LogoutComponent },
 
   // otherwise redirect to home
   { path: '**', redirectTo: '' }

@@ -32,6 +32,10 @@ import { CreateTenantComponent } from './componant/user-management/tenant/create
 import { CreateUserComponent } from './componant/user-management/user/create-user/create-user.component';
 import {CreatePrescriptionComponent} from './componant/dentist-point/create-prescription/create-prescription.component';
 import { CreatePatientComponent } from './componant/dentist-point/create-patient/create-patient.component';
+import { CalendarComponent } from './componant/dentist-point/calendar/calendar.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -44,7 +48,13 @@ import { CreatePatientComponent } from './componant/dentist-point/create-patient
     HttpClientXsrfModule.withOptions({
       cookieName: 'XSRF-TOKEN',
       headerName: 'X-XSRF-TOKEN'
-    })
+    }),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    }),
+    NgbModalModule
+
   ],
   declarations: [
     AppComponent,
@@ -65,7 +75,8 @@ import { CreatePatientComponent } from './componant/dentist-point/create-patient
     CreateTenantComponent,
     CreateUserComponent,
     CreatePrescriptionComponent,
-    CreatePatientComponent
+    CreatePatientComponent,
+    CalendarComponent
   ],
   providers: [
     AuthService,
