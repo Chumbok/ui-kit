@@ -36,6 +36,7 @@ import { CalendarComponent } from './componant/dentist-point/calendar/calendar.c
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import {AppointmentService} from './service/appointment.service';
 
 @NgModule({
   imports: [
@@ -85,6 +86,7 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
     FlashMessageService,
     LoggedInUserInfoService,
     OrgTenantUserService,
+    AppointmentService,
     AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,

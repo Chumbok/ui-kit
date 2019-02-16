@@ -14,6 +14,7 @@ import {CreateOrgComponent} from './componant/user-management/org/create-org/cre
 import {CreateTenantComponent} from './componant/user-management/tenant/create-tenant/create-tenant.component';
 import {CreateUserComponent} from './componant/user-management/user/create-user/create-user.component';
 import {CalendarComponent} from './componant/dentist-point/calendar/calendar.component';
+import {CreatePrescriptionComponent} from './componant/dentist-point/create-prescription/create-prescription.component';
 
 const routes: Routes = [
 
@@ -38,7 +39,8 @@ const routes: Routes = [
       { path: 'orgs/:id/tenants/create', component: CreateTenantComponent, canActivate: [ AuthGuard ] },
       { path: 'orgs/:id/tenants/:tid/users', component: UserListComponent, canActivate: [ AuthGuard ] },
       { path: 'orgs/:id/tenants/:tid/users/create', component: CreateUserComponent, canActivate: [AuthGuard] },
-      { path: 'doctors/calendar-view', component: CalendarComponent, canActivate: [AuthGuard] }
+      { path: 'doctors/calendar-view', component: CalendarComponent, canActivate: [AuthGuard] },
+      { path: 'doctors/create-prescription', component: CreatePrescriptionComponent, canActivate: [AuthGuard] }
     ]
   },
 
