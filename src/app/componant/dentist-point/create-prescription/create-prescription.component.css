@@ -1,0 +1,75 @@
+
+
+
+.mainContainer .card-header{
+  border: none;
+  background: none;
+}
+
+.mainContainer .card-footer{
+  border: none;
+  background: none;
+}
+
+
+.list-inline h4{
+  font-family: 'Nunito', sans-serif;
+}
+
+ textarea{
+  box-shadow: none;
+  border-radius: 0px;
+  padding: 4px;
+  background: none;
+  font-size: 12px;
+   font-family: 'Roboto Slab', serif;
+}
+  textarea:focus{
+    box-shadow: none;
+    color: black;
+  }
+
+  input{
+    box-shadow: none;
+    border-radius: 0px;
+    padding: 4px;
+    background: none;
+    font-size: 12px;
+    font-family: 'Roboto Slab', serif;
+  }
+  input:focus{
+    box-shadow: none;
+    color: black;
+  }
+
+  .secondColumn h5 span{
+    font-family: 'Pacifico', cursive;
+  }
+
+  .btn{
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .custom-select{
+    border-radius: 0px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-size: 12px;
+    font-family: 'Raleway', sans-serif;
+  }
+  .custom-select:focus{
+    box-shadow: none;
+  }
+
+  .lastColumn{
+    margin-top: 32px;
+  }
+
+  .lastColumn .signature{
+    background: #e8eaed;
+    width: 60%;
+    height: 100px;
+  }
+
+

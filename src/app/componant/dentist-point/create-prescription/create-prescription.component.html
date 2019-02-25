@@ -1,3 +1,135 @@
-<p>
-  create-prescription works!
-</p>
+<div class="container-fluid mainContainer">
+  <div class="row">
+
+
+    <div class="col-12 col-md-6 m-auto">
+
+      <div class="card bg-white border px-3 pt-3 pb-5 shadow">
+        <div class="card-header pb-1">
+          <ul class="list-inline">
+            <li class="list-inline-item"><i class="fas fa-file-signature text-warning fa-3x"></i></li>
+            <li class="list-inline-item"><h4 class="h4-responsive">New prescription</h4></li>
+          </ul>
+        </div>
+
+
+        <div class="card-body py-2" *ngIf="reportBox">
+
+          <form>
+
+            <div class="form-group mb-1">
+              <textarea class="form-control" rows="3" placeholder="Chief Complains"></textarea>
+            </div>
+
+            <div class="form-group mb-1">
+              <textarea class="form-control" rows="3" placeholder="On examioations"></textarea>
+            </div>
+
+            <div class="form-group mb-1">
+              <textarea class="form-control" rows="3" placeholder="Provisional Diagnosis"></textarea>
+            </div>
+
+            <div class="form-group mb-1">
+              <textarea class="form-control" rows="3" placeholder="Differential Diagnosis"></textarea>
+            </div>
+
+            <div class="form-group mb-1">
+              <textarea class="form-control" rows="3" placeholder="Lab Workup"></textarea>
+            </div>
+
+            <div class="form-group mb-1">
+              <textarea class="form-control" rows="3" placeholder="Advice"></textarea>
+            </div>
+
+            <div class="form-group mb-1">
+              <textarea class="form-control" rows="3" placeholder="Next Visit"></textarea>
+            </div>
+
+
+          </form>
+          <button type="button" (click)="showme()"  class="btn btn-primary float-right py-2 px-3">Next</button>
+        </div>
+
+        <div class="card-body" *ngIf="prescriptionBox">
+          <form>
+            <h5 class="h5-responsive">R<span>x</span></h5>
+
+            <div class="row mb-2">
+              <div class="col-6">
+                <select class="custom-select px-1">
+                  <option selected>Please select drug Type</option>
+                  <option value="1">Tab</option>
+                  <option value="2">Cap</option>
+                  <option value="3">Liquid</option>
+                </select>
+              </div>
+              <div class="col-6">
+                <input class="form-control" rows="3" placeholder="medicin name">
+              </div>
+            </div>
+
+            <div class="row mb-2">
+              <div class="col-10">
+                <select class="custom-select px-1">
+                  <option selected>Please select drug Strength</option>
+                  <option value="1">10mg</option>
+                  <option value="1">250mg</option>
+                  <option value="1">500mg</option>
+                  <option value="1">40mg</option>
+                </select>
+              </div>
+              <div class="col-2">
+                <button type="button" class="btn btn-info float-right px-4 py-2"><i class="fas fa-plus"></i></button>
+              </div>
+            </div>
+
+            <div class="row mb-1">
+              <div class="col">
+                <div class="form-group mb-1">
+                  <select class="custom-select px-1">
+                    <option selected>Please select drug Dose</option>
+                    <option value="1">1+1+1</option>
+                    <option value="2">1+1+0</option>
+                    <option value="3">1+0+1</option>
+                    <option value="1">1+0+0</option>
+                    <option value="2">0+1+1</option>
+                    <option value="3">0+1+0</option>
+                    <option value="2">0+0+1</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group mb-1">
+                  <select class="custom-select px-1">
+                    <option selected>Please select drug Duration</option>
+                    <option value="1">1 day</option>
+                    <option value="2">3 days</option>
+                    <option value="3">7 days</option>
+                    <option value="1">10 days</option>
+                    <option value="2">15 days</option>
+                    <option value="3">20 days</option>
+                    <option value="2">30 days</option>
+                  </select>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group mb-1">
+              <textarea class="form-control" rows="3" placeholder="Advice"></textarea>
+            </div>
+
+
+          </form>
+          <button type="button" (click)="saveData()"  class="btn btn-primary float-right py-2 px-3">Save</button>
+          <button type="button" (click)="viewReport()"  class="btn btn-danger float-right py-2 px-3 mr-2">Cancle</button>
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+  </div>
+</div>
