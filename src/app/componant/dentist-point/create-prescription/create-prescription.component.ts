@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 
+
 @Component({
   selector: 'app-create-prescription',
   templateUrl: './create-prescription.component.html',
@@ -26,11 +27,6 @@ export class CreatePrescriptionComponent implements OnInit {
   {
     this.reportBox = true;
     this.prescriptionBox = false;
-  }
-
-  saveData()
-  {
-    alert('Hei I am save option');
   }
 
 
