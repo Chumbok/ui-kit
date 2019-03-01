@@ -1,3 +1,310 @@
-<p>
-  site-home works!
-</p>
+<section >
+
+  <div >
+
+    <div class="row">
+      <div >
+
+        <div class="clearfix"></div>
+      </div>
+    </div>
+
+    <li index="0" heading="Chief Complaint">
+      <table class="table" >
+        <thead>
+        <tr>
+          <th class="col-md-11">Chief Complaint </th>
+          <th class="col-md-1"></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr >
+          <td class="col-md-11">
+            <input type="text"
+                   class="form-control"
+            ></td>
+          <td class="col-md-1"><button
+            class="btn btn-sm btn-danger">Delete</button> </td>
+        </tr>
+        </tbody>
+
+        <tfoot>
+        <tr>
+          <td colspan="6"><button >Add New Complain</button> </td>
+        </tr>
+        </tfoot>
+
+      </table>
+    </li>
+    <table class="table">
+      <thead>
+      <tr>
+        <th class="col-lg-8">Parameters</th>
+        <th class="col-lg-3">Remarks</th>
+        <th class="col-lg-1"></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr ng-repeat="onExamination in prescription.onExaminations">
+        <td><textarea ng-blur="addNewRow(prescription.onExaminations)"
+                      ng-model="onExamination.parameter"
+                      class="form-control" rows="4"></textarea></td>
+        <td><textarea class="form-control"
+                      ng-model="onExamination.remark"
+                      rows="4"></textarea></td>
+        <td><button ng-click="removeRow(prescription.onExaminations, onExamination)"
+                    class="btn btn-sm btn-danger">Delete</button> </td>
+      </tr>
+      </tbody>
+
+      <tfoot>
+      <tr>
+        <td colspan="4"><button ng-click="addNewRow(prescription.onExaminations)" class="btn btn-primary pull-left">Add New Examination</button></td>
+      </tr>
+      </tfoot>
+    </table>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th class="">Medical & Dental History</th>
+        <th class="">Drug & Vaccination History</th>
+        <th class="">Investigation</th>
+        <th class="">Rediological/Clinical Finding</th>
+        <th class="">Final Diagnosis & Treatment Planning</th>
+        <th></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr ng-repeat="diagnosise in prescription.diagnosises">
+        <td><textarea ng-model="diagnosise.medicalHistory" ng-blur="addNewRow(prescription.diagnosises)" class="form-control" rows="5"></textarea></td>
+        <td><textarea ng-model="diagnosise.drugHistory" class="form-control " rows="5"></textarea></td>
+        <td><textarea ng-model="diagnosise.investigation" class="form-control " rows="5"></textarea> </td>
+        <td><textarea ng-model="diagnosise.clinicalFinDing" class="form-control " rows="5"></textarea> </td>
+        <td><textarea ng-model="diagnosise.finalDiagnosis"  class="form-control " rows="5"></textarea></td>
+        <td><button ng-click="removeRow(prescription.diagnosises, diagnosise)"
+                    class="btn btn-sm btn-danger">Delete</button> </td>
+      </tr>
+      </tbody>
+
+      <tfoot>
+      <tr>
+        <td colspan="5"><button ng-click="addNewRow(prescription.diagnosises)" class="btn btn-primary pull-left">Add New</button></td>
+      </tr>
+      </tfoot>
+    </table>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Service Name</th>
+        <th>Service Cost</th>
+        <th></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr ng-repeat="service in prescription.treatmentServices">
+        <td>
+        </td>
+
+        <td>
+      </tr>
+      </tbody>
+
+      <tfoot>
+      <tr>
+        <td>
+          <button ng-click="addMoreService()" class="btn btn-primary">Add service</button>
+          <span class="pull-right">Total Item = <span id="items"></span></span>
+        </td>
+        <td>Total Cost = <span id="costs"></span></td>
+        <td></td>
+        <td></td>
+      </tr>
+      </tfoot>
+    </table>
+
+    <table class="table" id="pharmacy_tbl">
+      <thead>
+      <tr>
+        <th class="input-large">Medicine Name</th>
+        <th class="input-small">No of time</th>
+        <th class="input-large">Instruction</th>
+        <th class="input-small">Continue</th>
+        <th></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr ng-repeat="pharmacy in prescription.pharmacies" >
+        <td><input ng-model="pharmacy.medicine" ng-blur="addNewRow(prescription.pharmacies)" type="text" class="form-control"></td>
+        <td><input ng-model="pharmacy.instruction" type="text" class="form-control"></td>
+        <td><input ng-model="pharmacy.noOfTime" type="text" class="form-control"></td>
+        <td>
+          <input ng-model="pharmacy.continueTime" type="text" class="form-control">
+        </td>
+        <td>
+          <select ng-model="pharmacy.timeUnit" class="form-control">
+            <option value="DAY" selected="selected">Day</option>
+            <option value="WEEK">Week</option>
+            <option value="MONTH">Month</option>
+            <option value="YEAR">Year</option>
+            <option value="CONTINUE">Continue</option>
+          </select>
+        </td>
+        <td><button ng-click="removeRow(prescription.pharmacies, pharmacy)" class="btn-sm btn-danger">Delete</button> </td>
+      </tr>
+      </tbody>
+
+      <tfoot>
+      <tr>
+        <td colspan="7"><button ng-click="addNewRow(prescription.pharmacies)" class="btn btn-primary pull-left">Add New</button></td>
+      </tr>
+
+      </tfoot>
+    </table>
+
+    <h5 class="alert alert-warning">Please do not entry fresh appointment from here. Next appoint is used for service only</h5>
+    <div class="row" style="margin-left: 50px;">
+      <div class="form-group">
+        <label class="col-md-2 control-label">Date*</label>
+        <div class="col-md-4">
+          <input type="text" id="app_date"  placeholder=""	class="form-control">
+        </div>
+      </div>
+      <br>
+      <br>
+      <div class="form-group">
+        <label class="col-md-2 control-label">Serial*</label>
+        <div class="col-md-4">
+          <select id="app_serial" class="form-control">
+          </select>
+        </div>
+      </div>
+      <br>
+      <br>
+
+      <div class="form-group">
+        <label class="col-md-2 control-label">Approximate Time</label>
+        <div class="col-md-4">
+          <input type="text" id="app_time" name="time" disabled="disabled"  placeholder=""  class="form-control">
+        </div>
+      </div>
+
+      <br>
+      <br>
+
+    </div>
+
+    <table id="print_prescription">
+      <thead>
+      <tr id="doctor_info" class="row" style="height: 110px"></tr>
+      </thead>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="pull-left" style="text-align: center">
+            <span>patient#</span>
+            <div id="barcode_ptn" ></div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="pull-right" style="text-align: center;">
+            <div>Appointment#</div>
+            <div id="barcode_app" ></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div id = "ps_patient" class="row" style="margin-top: 10px; border-bottom: 1px solid black; text-align: center;">
+                            <span>
+                                <label>Patient Name : <b>{{prescription.appointment.patient.name}}</b></label>
+                            </span>
+
+        <span style="margin-left:20px">
+                                <label>Age: <b>{{prescription.appointment.patient.age}}</b> Years</label>
+                            </span>
+
+        <span style="margin-left:20px">
+                                <label>Date: <b>{{prescription.date | date }}</b></label>
+                            </span>
+      </div>
+
+
+      <div class="ps" style="margin-top: 20px;">
+        <div style="float: left; width: 35%; margin-left: 5px;">
+          <div id="ps_history">
+            <h4 style="border-bottom: 1px solid black">Chief Complaint</h4>
+            <ol>
+              <li ng-repeat="chiefComplain in prescription.chiefComplains">
+                {{chiefComplain.complain}}
+              </li>
+            </ol>
+          </div>
+
+
+
+          <br>
+          <div id = "ps_oe">
+            <h4 style="border-bottom: 1px solid black">On Examination</h4>
+            <ol>
+              <li ng-repeat="onExamination in prescription.onExaminations">
+                {{onExamination.parameter}} {{onExamination.remark}}
+              </li>
+            </ol>
+          </div>
+          <br>
+          <div id="ps_inv">
+            <h4 style="border-bottom: 1px solid black">Investigation</h4>
+            <ol>
+              <li ng-repeat="diagnosise in prescription.diagnosises" ng-if="diagnosise.investigation.length > 0">
+                {{diagnosise.investigation}}
+              </li>
+            </ol>
+          </div>
+          <br>
+          <div id = "ps_mh">
+            <h4 style="border-bottom: 1px solid black">Medical & Dental History</h4>
+            <ol>
+              <li ng-repeat="diagnosise in prescription.diagnosises" ng-if="diagnosise.medicalHistory.length > 0">
+                {{diagnosise.medicalHistory}}
+              </li>
+            </ol>
+          </div>
+          <br>
+          <div id = "ps_diag">
+            <h4 style="border-bottom: 1px solid black">Diagnosis & Treatment Planning</h4>
+            <ol>
+              <li ng-repeat="diagnosise in prescription.diagnosises" ng-if="diagnosise.finalDiagnosis.length > 0">
+                {{diagnosise.finalDiagnosis}}
+              </li>
+            </ol>
+          </div>
+        </div>
+        <div style="float: left; width: 60%; margin-left: 10px; ">
+          <div id = "ps_medicine" >
+            <h4 style="border-bottom: 1px solid black">Rx</h4>
+            <ol>
+              <li ng-repeat="pharmacy in prescription.pharmacies">
+                {{pharmacy.medicine}} {{pharmacy.noOfTime}} {{pharmacy.continueTime}} {{pharmacy.timeUnit}} {{pharmacy.instruction}}
+              </li>
+            </ol>
+          </div>
+
+          <div id="next_app" style="position: absolute;bottom: 0" ></div>
+          <!-- <div id = "ps_advice"></div> -->
+        </div>
+      </div>
+    </table>
+
+    <br>
+    <div style="width: 100%; clear: both; padding: 20px;" >
+      <button id="print_btn" class="btn btn-primary pull-right" ng-click="submit(prescription)"> Save </button>
+    </div>
+
+  </div>
+</section>
