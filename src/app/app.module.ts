@@ -37,6 +37,7 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import {AppointmentService} from './service/appointment.service';
+import {PrescriptionService} from "./service/prescription.service";
 
 @NgModule({
   imports: [
@@ -87,6 +88,7 @@ import {AppointmentService} from './service/appointment.service';
     LoggedInUserInfoService,
     OrgTenantUserService,
     AppointmentService,
+    PrescriptionService,
     AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
