@@ -16,7 +16,8 @@ export class OrgListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.orgTenantUserService.getOrgList().subscribe(res => {
+    this.orgTenantUserService.getOrgList().subscribe(
+      res => {
       this.orgsResp = res;
       this.orgs = res['items'];
     });

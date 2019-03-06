@@ -1,7 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
-
 import {AppComponent} from './app.component';
 import {TemplateHeadComponent} from './layout/app-layout/template-head/template-head.component';
 import {TemplateTopnavComponent} from './layout/app-layout/template-topnav/template-topnav.component';
@@ -27,16 +26,17 @@ import {OrgListComponent} from './componant/user-management/org/org-list/org-lis
 import {TenantListComponent} from './componant/user-management/tenant/tenant-list/tenant-list.component';
 import {UserListComponent} from './componant/user-management/user/user-list/user-list.component';
 import {OrgTenantUserService} from './service/org-tenant-user.service';
-import { CreateOrgComponent } from './componant/user-management/org/create-org/create-org.component';
-import { CreateTenantComponent } from './componant/user-management/tenant/create-tenant/create-tenant.component';
-import { CreateUserComponent } from './componant/user-management/user/create-user/create-user.component';
+import {CreateOrgComponent} from './componant/user-management/org/create-org/create-org.component';
+import {CreateTenantComponent} from './componant/user-management/tenant/create-tenant/create-tenant.component';
+import {CreateUserComponent} from './componant/user-management/user/create-user/create-user.component';
 import {CreatePrescriptionComponent} from './componant/dentist-point/create-prescription/create-prescription.component';
-import { CreatePatientComponent } from './componant/dentist-point/create-patient/create-patient.component';
-import { CalendarComponent } from './componant/dentist-point/calendar/calendar.component';
-import { CalendarModule, DateAdapter } from 'angular-calendar';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import {CreatePatientComponent} from './componant/dentist-point/create-patient/create-patient.component';
+import {CalendarComponent} from './componant/dentist-point/calendar/calendar.component';
+import {CalendarModule, DateAdapter} from 'angular-calendar';
+import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
+import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 import {AppointmentService} from './service/appointment.service';
+import {HttpModule} from '@angular/http';
 
 @NgModule({
   imports: [
@@ -44,6 +44,7 @@ import {AppointmentService} from './service/appointment.service';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    HttpModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientXsrfModule.withOptions({
