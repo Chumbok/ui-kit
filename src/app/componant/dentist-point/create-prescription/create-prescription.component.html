@@ -23,11 +23,20 @@
                 <!-- Tab panes -->
                 <div class="tab-content border-0 tabs">
                   <div  role="tab" class="tab-pane fade in active" id="Section1">
-                    <form >
-                      <textarea class="w-100 h-50 mt-5" placeholder="Chief Complain"></textarea>
-                      <button type="button"   class="btn btn-primary float-right py-2 px-3 mt-4">Save</button>
+
+                    <form name="form" [formGroup]="form" (click)="onSubmit()">
+
+                      <textarea class="form-control" formControlName="complain"  placeholder="Chief Complain"
+                                [ngClass]="{ 'is-invalid': submitted && f.complain.errors }"></textarea>
+                      <div *ngIf="submitted && f.complain.errors" class="invalid-feedback">
+                        <div *ngIf="f.complain.errors.required">Name is required</div>
+                      </div>
+
+                      <button type="button"   class="btn btn-primary float-right py-2 px-3 mt-4" >Save</button>
                       <button type="button"   class="btn btn-danger float-right py-2 px-3 mr-2 mt-4">Refresh</button>
+
                     </form>
+
                   </div>
                   <div role="tabpanel" class="tab-pane fade" id="Section2">
                     <form >
