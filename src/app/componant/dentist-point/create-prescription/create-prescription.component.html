@@ -24,7 +24,7 @@
                 <div class="tab-content border-0 tabs">
                   <div  role="tab" class="tab-pane fade in active" id="Section1">
 
-                    <form name="form" [formGroup]="form" (click)="onSubmit()">
+                    <form name="form" [formGroup]="form">
 
                       <textarea class="form-control" formControlName="complain"  placeholder="Chief Complain"
                                 [ngClass]="{ 'is-invalid': submitted && f.complain.errors }"></textarea>
@@ -32,58 +32,71 @@
                         <div *ngIf="f.complain.errors.required">Name is required</div>
                       </div>
 
-                      <button type="button"   class="btn btn-primary float-right py-2 px-3 mt-4" >Save</button>
+                      <button type="button" (click)="onSubmit()" class="btn btn-primary float-right py-2 px-3 mt-4">
+                        Save
+                      </button>
                       <button type="button"   class="btn btn-danger float-right py-2 px-3 mr-2 mt-4">Refresh</button>
 
                     </form>
 
                   </div>
                   <div role="tabpanel" class="tab-pane fade" id="Section2">
-                    <form >
-                      <textarea class="w-100 h-50 mt-5" placeholder="Parameters"></textarea>
-                      <textarea class="w-100 h-35 mt-3" placeholder="Remarks"></textarea>
-                      <button type="button"   class="btn btn-primary float-right py-2 px-3 mt-4">Save</button>
+                    <form name="form" [formGroup]="form">
+                      <textarea class="w-100 h-50 mt-5" formControlName="parameters" class="form-control"
+                                placeholder="Parameters"></textarea>
+                      <textarea class="w-100 h-35 mt-3" formControlName="remarks" class="form-control"
+                                placeholder="Remarks"></textarea>
+                      <button type="button" (click)="onSubmit()" class="btn btn-primary float-right py-2 px-3 mt-4">
+                        Save
+                      </button>
                       <button type="button"   class="btn btn-danger float-right py-2 px-3 mr-2 mt-4">Refresh</button>
                     </form>
                   </div>
                   <div role="tabpanel" class="tab-pane fade" id="Section3">
-                    <form>
-                    <textarea class="w-100 h-15 mt-auto" placeholder="Medical & Dental History"></textarea>
-                    <textarea class="w-100 h-15 mt-3" placeholder="Drug & Vaccination History"></textarea>
-                    <textarea class="w-100 h-15 mt-3" placeholder="Investigation"></textarea>
-                    <textarea class="w-100 h-15 mt-3" placeholder="Rediological/Clinical Finding"></textarea>
-                    <textarea class="w-100 h-15 mt-3" placeholder="Final Diagnosis & Treatment Planning"></textarea>
+                    <form name="form" [formGroup]="form">
+                      <textarea class="w-100 h-15 mt-auto" formControlName="dentalHistory" class="form-control"
+                                placeholder="Medical & Dental History"></textarea>
+                      <textarea class="w-100 h-15 mt-3" formControlName="vaccinationHistory" class="form-control"
+                                placeholder="Drug & Vaccination History"></textarea>
+                      <textarea class="w-100 h-15 mt-3" formControlName="investigation" class="form-control"
+                                placeholder="Investigation"></textarea>
+                      <textarea class="w-100 h-15 mt-3" formControlName="rediological" class="form-control"
+                                placeholder="Rediological/Clinical Finding"></textarea>
+                      <textarea class="w-100 h-15 mt-3" formControlName="planning" class="form-control"
+                                placeholder="Final Diagnosis & Treatment Planning"></textarea>
 
-                      <button type="button"   class="btn btn-primary float-right py-2 px-3 mt-4">Save</button>
+                      <button type="button" (click)="onSubmit()" class="btn btn-primary float-right py-2 px-3 mt-4">
+                        Save
+                      </button>
                       <button type="button"   class="btn btn-danger float-right py-2 px-3 mr-2 mt-4">Refresh</button>
                     </form>
                   </div>
                   <div role="tabpanel" class="tab-pane fade" id="rx">
-                    <form>
+                    <form name="form" [formGroup]="form">
                       <h5 class="h5-responsive"><span>&#8478;</span></h5>
 
                       <div class="row mb-2 mt-4">
                         <div class="col-6">
-                          <select class="custom-select px-1">
+                          <select class="custom-select px-1" formControlName="drugType" class="form-control">
                             <option selected>Please select drug Type</option>
-                            <option value="1">Tab</option>
-                            <option value="2">Cap</option>
-                            <option value="3">Liquid</option>
+                            <option value="Tab">Tab</option>
+                            <option value="Cap">Cap</option>
+                            <option value="Liquid">Liquid</option>
                           </select>
                         </div>
                         <div class="col-6">
-                          <input class="form-control" rows="3" placeholder="medicin name">
+                          <input class="form-control" formControlName="medicinName" rows="3" placeholder="medicin name">
                         </div>
                       </div>
 
                       <div class="row mb-2">
                         <div class="col-12">
-                          <select class="custom-select px-1">
+                          <select class="custom-select px-1" formControlName="drugStrength" class="form-control">
                             <option selected>Please select drug Strength</option>
-                            <option value="1">10mg</option>
-                            <option value="1">250mg</option>
-                            <option value="1">500mg</option>
-                            <option value="1">40mg</option>
+                            <option value="10">10mg</option>
+                            <option value="250">250mg</option>
+                            <option value="500">500mg</option>
+                            <option value="40">40mg</option>
                           </select>
                         </div>
 
@@ -92,36 +105,38 @@
                       <div class="row mb-1">
                         <div class="col">
                           <div class="form-group mb-1">
-                            <select class="custom-select px-1">
+                            <select class="custom-select px-1" formControlName="drugDose" class="form-control">
                               <option selected>Please select drug Dose</option>
-                              <option value="1">1+1+1</option>
-                              <option value="2">1+1+0</option>
-                              <option value="3">1+0+1</option>
-                              <option value="1">1+0+0</option>
-                              <option value="2">0+1+1</option>
-                              <option value="3">0+1+0</option>
-                              <option value="2">0+0+1</option>
+                              <option value="1+1+1">1+1+1</option>
+                              <option value="1+1+0">1+1+0</option>
+                              <option value="1+0+1">1+0+1</option>
+                              <option value="1+0+0">1+0+0</option>
+                              <option value="0+1+1">0+1+1</option>
+                              <option value="0+1+0">0+1+0</option>
+                              <option value="0+0+1">0+0+1</option>
                             </select>
                           </div>
                         </div>
                         <div class="col">
                           <div class="form-group mb-1">
-                            <select class="custom-select px-1">
+                            <select class="custom-select px-1" formControlName="drugDuration" class="form-control">
                               <option selected>Please select drug Duration</option>
                               <option value="1">1 day</option>
-                              <option value="2">3 days</option>
-                              <option value="3">7 days</option>
-                              <option value="1">10 days</option>
-                              <option value="2">15 days</option>
-                              <option value="3">20 days</option>
-                              <option value="2">30 days</option>
+                              <option value="3">3 days</option>
+                              <option value="7">7 days</option>
+                              <option value="10">10 days</option>
+                              <option value="15">15 days</option>
+                              <option value="20">20 days</option>
+                              <option value="30">30 days</option>
                             </select>
 
                           </div>
                         </div>
                       </div>
 
-                      <button type="button"    class="btn btn-primary float-right py-2 px-3 mt-4">Save</button>
+                      <button type="button" (click)="onSubmit()" class="btn btn-primary float-right py-2 px-3 mt-4">
+                        Save
+                      </button>
                       <button type="button"   class="btn btn-danger float-right py-2 px-3 mr-2 mt-4">Refresh</button>
 
                     </form>
