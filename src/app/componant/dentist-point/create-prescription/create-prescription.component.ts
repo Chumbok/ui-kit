@@ -57,7 +57,6 @@ export class CreatePrescriptionComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-
     const prescription: CreatePrescription = new CreatePrescription();
     prescription.chiefComplain = this.form.controls['complain'].value;
     prescription.parameters = this.form.controls['parameters'].value;
@@ -72,8 +71,9 @@ export class CreatePrescriptionComponent implements OnInit {
     prescription.drugStrength = this.form.controls['drugStrength'].value;
     prescription.drugDose = this.form.controls['drugDose'].value;
     prescription.drugDuration = this.form.controls['drugDuration'].value;
-    this.prescriptionService.createPrescription(prescription.chiefComplain, prescription.parameters, prescription.remarks, prescription.dentalHistory,
-      prescription.vaccinationHistory, prescription.investigation, prescription.rediological, prescription.planning, prescription.drugType, prescription.medicinName, prescription.drugStrength,
+    this.prescriptionService.createPrescription(prescription.chiefComplain, prescription.parameters, prescription.remarks,
+      prescription.dentalHistory, prescription.vaccinationHistory, prescription.investigation, prescription.rediological,
+      prescription.planning, prescription.drugType, prescription.medicinName, prescription.drugStrength,
       prescription.drugDose, prescription.drugDuration).subscribe(res => {
 
     }, error => {

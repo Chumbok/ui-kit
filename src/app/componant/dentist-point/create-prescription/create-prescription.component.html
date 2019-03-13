@@ -26,49 +26,49 @@
 
                     <form name="form" [formGroup]="form">
 
-                      <textarea class="form-control" formControlName="complain"  placeholder="Chief Complain"
+                      <textarea class="form-control h-50" formControlName="complain" placeholder="Chief Complain"
                                 [ngClass]="{ 'is-invalid': submitted && f.complain.errors }"></textarea>
                       <div *ngIf="submitted && f.complain.errors" class="invalid-feedback">
                         <div *ngIf="f.complain.errors.required">Name is required</div>
                       </div>
 
-                      <button type="button" (click)="onSubmit()" class="btn btn-primary float-right py-2 px-3 mt-4">
-                        Save
-                      </button>
-                      <button type="button"   class="btn btn-danger float-right py-2 px-3 mr-2 mt-4">Refresh</button>
+                      <!--<button type="button" (click)="onSubmit()" class="btn btn-primary float-right py-2 px-3 mt-4">-->
+                      <!--Save-->
+                      <!--</button>-->
+                      <!--<button type="button"   class="btn btn-danger float-right py-2 px-3 mr-2 mt-4">Refresh</button>-->
 
                     </form>
 
                   </div>
                   <div role="tabpanel" class="tab-pane fade" id="Section2">
                     <form name="form" [formGroup]="form">
-                      <textarea class="w-100 h-50 mt-5" formControlName="parameters" class="form-control"
+                      <textarea class="w-100 h-50 mb-3 form-control" formControlName="parameters"
                                 placeholder="Parameters"></textarea>
-                      <textarea class="w-100 h-35 mt-3" formControlName="remarks" class="form-control"
+                      <textarea class="w-100 h-50 form-control" formControlName="remarks"
                                 placeholder="Remarks"></textarea>
-                      <button type="button" (click)="onSubmit()" class="btn btn-primary float-right py-2 px-3 mt-4">
-                        Save
-                      </button>
-                      <button type="button"   class="btn btn-danger float-right py-2 px-3 mr-2 mt-4">Refresh</button>
+                      <!--<button type="button" (click)="onSubmit()" class="btn btn-primary float-right py-2 px-3 mt-4">-->
+                      <!--Save-->
+                      <!--</button>-->
+                      <!--<button type="button"   class="btn btn-danger float-right py-2 px-3 mr-2 mt-4">Refresh</button>-->
                     </form>
                   </div>
                   <div role="tabpanel" class="tab-pane fade" id="Section3">
                     <form name="form" [formGroup]="form">
-                      <textarea class="w-100 h-15 mt-auto" formControlName="dentalHistory" class="form-control"
+                      <textarea class="w-100 h-15 mt-auto form-control" formControlName="dentalHistory"
                                 placeholder="Medical & Dental History"></textarea>
-                      <textarea class="w-100 h-15 mt-3" formControlName="vaccinationHistory" class="form-control"
+                      <textarea class="w-100 h-15 mt-3 form-control" formControlName="vaccinationHistory"
                                 placeholder="Drug & Vaccination History"></textarea>
-                      <textarea class="w-100 h-15 mt-3" formControlName="investigation" class="form-control"
+                      <textarea class="w-100 h-15 mt-3 form-control" formControlName="investigation"
                                 placeholder="Investigation"></textarea>
-                      <textarea class="w-100 h-15 mt-3" formControlName="rediological" class="form-control"
+                      <textarea class="w-100 h-15 mt-3 form-control" formControlName="rediological"
                                 placeholder="Rediological/Clinical Finding"></textarea>
-                      <textarea class="w-100 h-15 mt-3" formControlName="planning" class="form-control"
+                      <textarea class="w-100 h-15 mt-3 form-control" formControlName="planning"
                                 placeholder="Final Diagnosis & Treatment Planning"></textarea>
 
-                      <button type="button" (click)="onSubmit()" class="btn btn-primary float-right py-2 px-3 mt-4">
-                        Save
-                      </button>
-                      <button type="button"   class="btn btn-danger float-right py-2 px-3 mr-2 mt-4">Refresh</button>
+                      <!--<button type="button" (click)="onSubmit()" class="btn btn-primary float-right py-2 px-3 mt-4">-->
+                      <!--Save-->
+                      <!--</button>-->
+                      <!--<button type="button"   class="btn btn-danger float-right py-2 px-3 mr-2 mt-4">Refresh</button>-->
                     </form>
                   </div>
                   <div role="tabpanel" class="tab-pane fade" id="rx">
