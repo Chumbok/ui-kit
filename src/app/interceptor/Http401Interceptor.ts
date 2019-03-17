@@ -5,14 +5,22 @@ import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest,
 import {Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
+import {environment} from '../../environments/environment';
+import {EmptyObservable} from 'rxjs-compat/observable/EmptyObservable';
 
 @Injectable()
 export class Http401Interceptor implements HttpInterceptor {
+
+  private enableMock: boolean = environment.chumbok.enableMock;
 
   constructor(private router: Router) {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
+    if (this.enableMock) {
+      return new EmptyObservable<HttpEvent<any>>();
+    }
 
     return next.handle(request).pipe(tap((event: HttpEvent<any>) => {
       if (event instanceof HttpResponse) {
