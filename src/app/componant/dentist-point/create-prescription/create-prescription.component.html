@@ -1,10 +1,7 @@
+
 <div class="container-fluid mainContainer">
   <div class="row">
-
-
-    <div class="col-12 col-md-6 m-auto">
-
-      <div class="card bg-white border px-3 pt-3 pb-5 shadow">
+      <div class="card bg-white border px-3 pt-3 pb-5 shadow h-75 w-75">
         <div class="card-header pb-1">
           <ul class="list-inline">
             <li class="list-inline-item"><i class="fas fa-file-signature text-warning fa-3x"></i></li>
@@ -12,124 +9,149 @@
           </ul>
         </div>
 
+        <div class="container ">
+          <div class="row">
+            <div class="col h-75 w-75">
+              <div class="tab border-0" role="tabpanel">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                  <li role="presentation" ><a href="#Section1" aria-controls="profile" role="tab" data-toggle="tab" class="font-italic font-weight-bold text-primary">Chief Complain</a></li>
+                  <li role="presentation"><a href="#Section2" aria-controls="messages" role="tab" data-toggle="tab" class="font-italic font-weight-bold text-primary">On Examination</a></li>
+                  <li role="presentation"><a href="#Section3" aria-controls="profile" role="tab" data-toggle="tab" class="font-italic font-weight-bold text-primary">Diginist</a></li>
+                  <li role="presentation"><a href="#rx" aria-controls="messages" role="tab" data-toggle="tab" class="font-italic font-weight-bold text-primary">Prescription</a></li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content border-0 tabs">
+                  <div  role="tab" class="tab-pane fade in active" id="Section1">
 
-        <div class="card-body py-2" *ngIf="reportBox">
+                    <form name="form" [formGroup]="form">
 
-          <form>
+                      <textarea class="form-control h-50" formControlName="complain" placeholder="Chief Complain"
+                                [ngClass]="{ 'is-invalid': submitted && f.complain.errors }"></textarea>
+                      <div *ngIf="submitted && f.complain.errors" class="invalid-feedback">
+                        <div *ngIf="f.complain.errors.required">Name is required</div>
+                      </div>
 
-            <div class="form-group mb-1">
-              <textarea class="form-control" rows="3" placeholder="Chief Complains"></textarea>
+                      <!--<button type="button" (click)="onSubmit()" class="btn btn-primary float-right py-2 px-3 mt-4">-->
+                      <!--Save-->
+                      <!--</button>-->
+                      <!--<button type="button"   class="btn btn-danger float-right py-2 px-3 mr-2 mt-4">Refresh</button>-->
+
+                    </form>
+
+                  </div>
+                  <div role="tabpanel" class="tab-pane fade" id="Section2">
+                    <form name="form" [formGroup]="form">
+                      <textarea class="w-100 h-50 mb-3 form-control" formControlName="parameters"
+                                placeholder="Parameters"></textarea>
+                      <textarea class="w-100 h-50 form-control" formControlName="remarks"
+                                placeholder="Remarks"></textarea>
+                      <!--<button type="button" (click)="onSubmit()" class="btn btn-primary float-right py-2 px-3 mt-4">-->
+                      <!--Save-->
+                      <!--</button>-->
+                      <!--<button type="button"   class="btn btn-danger float-right py-2 px-3 mr-2 mt-4">Refresh</button>-->
+                    </form>
+                  </div>
+                  <div role="tabpanel" class="tab-pane fade" id="Section3">
+                    <form name="form" [formGroup]="form">
+                      <textarea class="w-100 h-15 mt-auto form-control" formControlName="dentalHistory"
+                                placeholder="Medical & Dental History"></textarea>
+                      <textarea class="w-100 h-15 mt-3 form-control" formControlName="vaccinationHistory"
+                                placeholder="Drug & Vaccination History"></textarea>
+                      <textarea class="w-100 h-15 mt-3 form-control" formControlName="investigation"
+                                placeholder="Investigation"></textarea>
+                      <textarea class="w-100 h-15 mt-3 form-control" formControlName="rediological"
+                                placeholder="Rediological/Clinical Finding"></textarea>
+                      <textarea class="w-100 h-15 mt-3 form-control" formControlName="planning"
+                                placeholder="Final Diagnosis & Treatment Planning"></textarea>
+
+                      <!--<button type="button" (click)="onSubmit()" class="btn btn-primary float-right py-2 px-3 mt-4">-->
+                      <!--Save-->
+                      <!--</button>-->
+                      <!--<button type="button"   class="btn btn-danger float-right py-2 px-3 mr-2 mt-4">Refresh</button>-->
+                    </form>
+                  </div>
+                  <div role="tabpanel" class="tab-pane fade" id="rx">
+                    <form name="form" [formGroup]="form">
+                      <h5 class="h5-responsive"><span>&#8478;</span></h5>
+
+                      <div class="row mb-2 mt-4">
+                        <div class="col-6">
+                          <select class="custom-select px-1" formControlName="drugType" class="form-control">
+                            <option selected>Please select drug Type</option>
+                            <option value="Tab">Tab</option>
+                            <option value="Cap">Cap</option>
+                            <option value="Liquid">Liquid</option>
+                          </select>
+                        </div>
+                        <div class="col-6">
+                          <input class="form-control" formControlName="medicinName" rows="3" placeholder="medicin name">
+                        </div>
+                      </div>
+
+                      <div class="row mb-2">
+                        <div class="col-12">
+                          <select class="custom-select px-1" formControlName="drugStrength" class="form-control">
+                            <option selected>Please select drug Strength</option>
+                            <option value="10">10mg</option>
+                            <option value="250">250mg</option>
+                            <option value="500">500mg</option>
+                            <option value="40">40mg</option>
+                          </select>
+                        </div>
+
+                      </div>
+
+                      <div class="row mb-1">
+                        <div class="col">
+                          <div class="form-group mb-1">
+                            <select class="custom-select px-1" formControlName="drugDose" class="form-control">
+                              <option selected>Please select drug Dose</option>
+                              <option value="1+1+1">1+1+1</option>
+                              <option value="1+1+0">1+1+0</option>
+                              <option value="1+0+1">1+0+1</option>
+                              <option value="1+0+0">1+0+0</option>
+                              <option value="0+1+1">0+1+1</option>
+                              <option value="0+1+0">0+1+0</option>
+                              <option value="0+0+1">0+0+1</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="form-group mb-1">
+                            <select class="custom-select px-1" formControlName="drugDuration" class="form-control">
+                              <option selected>Please select drug Duration</option>
+                              <option value="1">1 day</option>
+                              <option value="3">3 days</option>
+                              <option value="7">7 days</option>
+                              <option value="10">10 days</option>
+                              <option value="15">15 days</option>
+                              <option value="20">20 days</option>
+                              <option value="30">30 days</option>
+                            </select>
+
+                          </div>
+                        </div>
+                      </div>
+
+                      <button type="button" (click)="onSubmit()" class="btn btn-primary float-right py-2 px-3 mt-4">
+                        Save
+                      </button>
+                      <button type="button"   class="btn btn-danger float-right py-2 px-3 mr-2 mt-4">Refresh</button>
+
+                    </form>
+                  </div>
+              </div>
             </div>
-
-            <div class="form-group mb-1">
-              <textarea class="form-control" rows="3" placeholder="On examioations"></textarea>
-            </div>
-
-            <div class="form-group mb-1">
-              <textarea class="form-control" rows="3" placeholder="Provisional Diagnosis"></textarea>
-            </div>
-
-            <div class="form-group mb-1">
-              <textarea class="form-control" rows="3" placeholder="Differential Diagnosis"></textarea>
-            </div>
-
-            <div class="form-group mb-1">
-              <textarea class="form-control" rows="3" placeholder="Lab Workup"></textarea>
-            </div>
-
-            <div class="form-group mb-1">
-              <textarea class="form-control" rows="3" placeholder="Advice"></textarea>
-            </div>
-
-            <div class="form-group mb-1">
-              <textarea class="form-control" rows="3" placeholder="Next Visit"></textarea>
-            </div>
-
-
-          </form>
-          <button type="button" (click)="showme()"  class="btn btn-primary float-right py-2 px-3">Next</button>
+          </div>
         </div>
-
-        <div class="card-body" *ngIf="prescriptionBox">
-          <form>
-            <h5 class="h5-responsive">R<span>x</span></h5>
-
-            <div class="row mb-2">
-              <div class="col-6">
-                <select class="custom-select px-1">
-                  <option selected>Please select drug Type</option>
-                  <option value="1">Tab</option>
-                  <option value="2">Cap</option>
-                  <option value="3">Liquid</option>
-                </select>
-              </div>
-              <div class="col-6">
-                <input class="form-control" rows="3" placeholder="medicin name">
-              </div>
-            </div>
-
-            <div class="row mb-2">
-              <div class="col-10">
-                <select class="custom-select px-1">
-                  <option selected>Please select drug Strength</option>
-                  <option value="1">10mg</option>
-                  <option value="1">250mg</option>
-                  <option value="1">500mg</option>
-                  <option value="1">40mg</option>
-                </select>
-              </div>
-              <div class="col-2">
-                <button type="button" class="btn btn-info float-right px-4 py-2"><i class="fas fa-plus"></i></button>
-              </div>
-            </div>
-
-            <div class="row mb-1">
-              <div class="col">
-                <div class="form-group mb-1">
-                  <select class="custom-select px-1">
-                    <option selected>Please select drug Dose</option>
-                    <option value="1">1+1+1</option>
-                    <option value="2">1+1+0</option>
-                    <option value="3">1+0+1</option>
-                    <option value="1">1+0+0</option>
-                    <option value="2">0+1+1</option>
-                    <option value="3">0+1+0</option>
-                    <option value="2">0+0+1</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-group mb-1">
-                  <select class="custom-select px-1">
-                    <option selected>Please select drug Duration</option>
-                    <option value="1">1 day</option>
-                    <option value="2">3 days</option>
-                    <option value="3">7 days</option>
-                    <option value="1">10 days</option>
-                    <option value="2">15 days</option>
-                    <option value="3">20 days</option>
-                    <option value="2">30 days</option>
-                  </select>
-
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group mb-1">
-              <textarea class="form-control" rows="3" placeholder="Advice"></textarea>
-            </div>
-
-
-          </form>
-          <button type="button" (click)="saveData()"  class="btn btn-primary float-right py-2 px-3">Save</button>
-          <button type="button" (click)="viewReport()"  class="btn btn-danger float-right py-2 px-3 mr-2">Cancle</button>
-        </div>
-
       </div>
 
-    </div>
 
 
+
+</div>
 
   </div>
 </div>
+

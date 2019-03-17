@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {OrgTenantUserService} from '../../../../service/org-tenant-user.service';
 import {User} from '../../../../model/user';
 
+
 @Component({
   selector: 'app-create-user',
   templateUrl: './create-user.component.html',

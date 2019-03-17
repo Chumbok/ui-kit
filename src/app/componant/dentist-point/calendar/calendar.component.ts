@@ -4,8 +4,9 @@ import {Subject} from 'rxjs';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, CalendarView} from 'angular-calendar';
 import {AppointmentService} from '../../../service/appointment.service';
+
 import {Router} from '@angular/router';
-import {TimelineAnimationEngine} from "@angular/animations/browser/src/render/timeline_animation_engine";
+
 
 const colors: any = {
   red: {
@@ -41,7 +42,7 @@ export class CalendarComponent implements OnInit {
       res['items'].forEach((appointment) => {
 
         var timeEpisode = new Date(appointment.startDateTime);
-        
+
         this.events.push({
           id: appointment.id,
           start: new Date(appointment.startDateTime),
