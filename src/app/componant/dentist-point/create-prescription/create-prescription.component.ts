@@ -12,21 +12,18 @@ import {PrescriptionService} from '../../../service/prescription.service';
 })
 export class CreatePrescriptionComponent implements OnInit {
 
-  chief
   form: FormGroup;
   submitted = false;
   serverError = '';
-  permitar: string;
-  remark: string;
+
 
   constructor(private formBuilder: FormBuilder, private prescriptionService: PrescriptionService, private route: ActivatedRoute,
               private router: Router) {
-   /* this.route.params.subscribe(params => {
+    /* this.route.params.subscribe(params => {
 
 
-    });*/
+     });*/
   }
-
 
 
   ngOnInit() {
@@ -58,22 +55,24 @@ export class CreatePrescriptionComponent implements OnInit {
       return;
     }
     const prescription: CreatePrescription = new CreatePrescription();
+    prescription.patientId = "9388c9ea-f453-41de-96cb-d388dedbf091";
     prescription.chiefComplain = this.form.controls['complain'].value;
     prescription.parameters = this.form.controls['parameters'].value;
     prescription.remarks = this.form.controls['remarks'].value;
     prescription.dentalHistory = this.form.controls['dentalHistory'].value;
     prescription.vaccinationHistory = this.form.controls['vaccinationHistory'].value;
     prescription.investigation = this.form.controls['investigation'].value;
-    prescription.rediological = this.form.controls['rediological'].value;
+    prescription.radiological = this.form.controls['rediological'].value;
     prescription.planning = this.form.controls['planning'].value;
     prescription.drugType = this.form.controls['drugType'].value;
-    prescription.medicinName = this.form.controls['medicinName'].value;
+    prescription.medicineName = this.form.controls['medicinName'].value;
     prescription.drugStrength = this.form.controls['drugStrength'].value;
     prescription.drugDose = this.form.controls['drugDose'].value;
     prescription.drugDuration = this.form.controls['drugDuration'].value;
-    this.prescriptionService.createPrescription(prescription.chiefComplain, prescription.parameters, prescription.remarks,
-      prescription.dentalHistory, prescription.vaccinationHistory, prescription.investigation, prescription.rediological,
-      prescription.planning, prescription.drugType, prescription.medicinName, prescription.drugStrength,
+
+    this.prescriptionService.createPrescription(prescription.patientId, prescription.chiefComplain, prescription.parameters, prescription.remarks,
+      prescription.dentalHistory, prescription.vaccinationHistory, prescription.investigation, prescription.radiological,
+      prescription.planning, prescription.drugType, prescription.medicineName, prescription.drugStrength,
       prescription.drugDose, prescription.drugDuration).subscribe(res => {
 
     }, error => {
@@ -83,6 +82,10 @@ export class CreatePrescriptionComponent implements OnInit {
     });
   }
 
+  onClickPrescription() {
+    this.router.navigate(['doctors/prescription-list']);
+
+  }
 
 
 }

@@ -1,0 +1,95 @@
+<div class="col-12 m-auto ibox">
+  <div class="ibox-head">
+    <div class="ibox-title">Prescription View</div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-lg-7">
+      <div class="ibox-body">
+
+        <ul class="list-group mb-2">
+          <li class="list-group-item">Chief Complain</li>
+          <li class="list-group-item" *ngFor="let prescriptionElements of prescriptions">
+            <p>{{ prescriptionElements.chiefComplain }}</p>
+          </li>
+        </ul>
+
+        <ul class="list-group mb-2">
+          <li class="list-group-item">On Examination</li>
+          <li class="list-group-item" *ngFor="let prescriptionElements of prescriptions">
+            <p>Parameter : {{ prescriptionElements.parameters }}</p>
+            <p>Remark : {{prescriptionElements.remarks}}</p>
+          </li>
+        </ul>
+
+        <ul class="list-group mb-2">
+          <li class="list-group-item">Diginist</li>
+          <li class="list-group-item" *ngFor="let prescriptionElements of prescriptions">
+            <p>Medical & Dental History : {{ prescriptionElements.dentalHistory }}</p>
+            <p>Drug & Vaccination History : {{ prescriptionElements.vaccinationHistory }}</p>
+            <p>Investigation : {{ prescriptionElements.investigation }}</p>
+            <p>Rediological/Clinical Finding : {{ prescriptionElements.rediological }}</p>
+            <p>Final Diagnosis n& Treatment Planning : {{ prescriptionElements.planning }}</p>
+          </li>
+        </ul>
+
+        <div>Showing {{ itemFrom }} to {{ itemTo }} of {{ totalElements }} entries</div>
+
+      </div>
+    </div>
+
+
+    <div class="col-12 col-lg-5">
+
+      <div class="card-body">
+        <h4 class="h4-responsive mb-3">Rx</h4>
+
+        <div class="row" *ngFor="let prescriptionElements of prescriptions">
+
+          <div class="col-6">
+            <ul class="list-group mb-2">
+              <li class="list-group-item">Please select drug Type</li>
+              <li class="list-group-item" *ngFor="let prescriptionElements of prescriptions">
+                <p>{{ prescriptionElements.drugType }}</p>
+              </li>
+            </ul>
+          </div>
+          <div class="col-6">
+            <ul class="list-group mb-2">
+              <li class="list-group-item">medicine name</li>
+              <li class="list-group-item" *ngFor="let prescriptionElements of prescriptions">
+                <p>{{ prescriptionElements.medicineName }}</p>
+              </li>
+            </ul>
+          </div>
+          <div class="col-12">
+            <ul class="list-group mb-2">
+              <li class="list-group-item">Please select drug Strength</li>
+              <li class="list-group-item" *ngFor="let prescriptionElements of prescriptions">
+                <p>{{ prescriptionElements.drugStrength }}</p>
+              </li>
+            </ul>
+          </div>
+          <div class="col-6">
+            <ul class="list-group mb-2">
+              <li class="list-group-item">Please select drug Dose</li>
+              <li class="list-group-item" *ngFor="let prescriptionElements of prescriptions">
+                <p>{{ prescriptionElements.drugDose }}</p>
+              </li>
+            </ul>
+          </div>
+          <div class="col-6">
+            <ul class="list-group mb-2">
+              <li class="list-group-item">Please select drug Duration</li>
+              <li class="list-group-item" *ngFor="let prescriptionElements of prescriptions">
+                <p>{{ prescriptionElements.drugDuration }}</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
