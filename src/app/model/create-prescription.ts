@@ -1,4 +1,5 @@
 export class CreatePrescription {
+  patientId?: string;
   chiefComplain?: string;
   complain?: string;
   parameters?: string;
@@ -6,10 +7,10 @@ export class CreatePrescription {
   dentalHistory?: string;
   vaccinationHistory?: string;
   investigation?: string;
-  rediological?: string;
+  radiological?: string;
   planning?: string;
   drugType?: string;
-  medicinName?: string;
+  medicineName?: string;
   drugStrength?: string;
   drugDose?: string;
   drugDuration?: string;
