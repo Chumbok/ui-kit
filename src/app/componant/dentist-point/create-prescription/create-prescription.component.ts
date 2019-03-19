@@ -69,10 +69,9 @@ export class CreatePrescriptionComponent implements OnInit {
     prescription.drugStrength = this.form.controls['drugStrength'].value;
     prescription.drugDose = this.form.controls['drugDose'].value;
     prescription.drugDuration = this.form.controls['drugDuration'].value;
-
-    this.prescriptionService.createPrescription(prescription.patientId, prescription.chiefComplain, prescription.parameters, prescription.remarks,
-      prescription.dentalHistory, prescription.vaccinationHistory, prescription.investigation, prescription.radiological,
-      prescription.planning, prescription.drugType, prescription.medicineName, prescription.drugStrength,
+    this.prescriptionService.createPrescription(prescription.patientId, prescription.chiefComplain, prescription.parameters,
+      prescription.remarks, prescription.dentalHistory, prescription.vaccinationHistory, prescription.investigation,
+      prescription.radiological, prescription.planning, prescription.drugType, prescription.medicineName, prescription.drugStrength,
       prescription.drugDose, prescription.drugDuration).subscribe(res => {
 
     }, error => {

@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
-import {getTime, isSameDay, isSameMonth} from 'date-fns';
+import {isSameDay, isSameMonth} from 'date-fns';
 import {Subject} from 'rxjs';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, CalendarView} from 'angular-calendar';
@@ -101,5 +101,10 @@ export class CalendarComponent implements OnInit {
 
   handleEvent(action: string, event: CalendarEvent): void {
     this.router.navigate(['doctors/create-prescription']);
+  }
+
+  onCreareAppointment() {
+    this.router.navigate(['patient/create-appointment']);
+
   }
 }

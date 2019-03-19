@@ -37,9 +37,12 @@ import {CalendarModule, DateAdapter} from 'angular-calendar';
 import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
 import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
 import {AppointmentService} from './service/appointment.service';
-import {PrescriptionService} from "./service/prescription.service";
+import {PrescriptionService} from './service/prescription.service';
 import {PrescriptionListComponent} from './componant/dentist-point/prescription-list/prescription-list.component';
 import {PrescriptionViewComponent} from './componant/dentist-point/prescription-view/prescription-view.component';
+import {CreateAppointmentComponent} from './componant/dentist-point/create-appointment/create-appointment.component';
+import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
+
 
 @NgModule({
   imports: [
@@ -49,6 +52,8 @@ import {PrescriptionViewComponent} from './componant/dentist-point/prescription-
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
     HttpClientXsrfModule.withOptions({
       cookieName: 'XSRF-TOKEN',
       headerName: 'X-XSRF-TOKEN'
@@ -82,7 +87,8 @@ import {PrescriptionViewComponent} from './componant/dentist-point/prescription-
     CreatePatientComponent,
     CalendarComponent,
     PrescriptionListComponent,
-    PrescriptionViewComponent
+    PrescriptionViewComponent,
+    CreateAppointmentComponent
   ],
   providers: [
     AuthService,
