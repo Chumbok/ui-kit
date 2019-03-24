@@ -6,3 +6,7 @@ pre {
   background-color: #f5f5f5;
   padding: 15px;
 }
+
+.cal-month-view .cal-day-cell {
+  min-height: 70px;
+}
