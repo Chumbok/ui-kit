@@ -5,8 +5,18 @@
     <a [routerLink]="['/orgs']" class="list-group-item collapsed" data-parent="#sidebar"><i class="fas fa-user-astronaut"></i> <span
       class="hidden-sm-down">&nbsp;User Management</span></a>
 
-    <a [routerLink]="['/doctors/calendar-view']" class="list-group-item collapsed" data-parent="#sidebar"><i class="fas fa-user-astronaut"></i> <span
-      class="hidden-sm-down">&nbsp;Dentist Management</span></a>
+
+    <a href="#dentistmanagement" class="list-group-item collapsed" data-toggle="collapse" data-parent="#dentistmanagement"
+    aria-expanded="false"><i class="fas fa-user-astronaut"></i> <span class="hidden-sm-down">&nbsp;Dentist Management</span>
+    </a>
+
+    <div class="collapse" id="dentistmanagement">
+      <a [routerLink]="['/doctors/calendar-view']" class="list-group-item" data-parent="#dentistmanagement">
+      <i class="far fa-building"></i> <span class="hidden-sm-down">&nbsp;Calendar View</span></a>
+
+      <a [routerLink]="['/patient/create-appointment']" class="list-group-item" data-parent="#dentistmanagement">
+      <i class="fas fa-university"></i> <span class="hidden-sm-down">&nbsp;Create Appointment</span></a>
+    </div>
 
     <!--<a href="#usermanagement" class="list-group-item collapsed" data-toggle="collapse" data-parent="#usermanagement"-->
        <!--aria-expanded="false"><i class="fas fa-user-astronaut"></i> <span class="hidden-sm-down">&nbsp;User Management</span>-->

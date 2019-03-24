@@ -45,10 +45,10 @@ const routes: Routes = [
       { path: 'orgs/:id/tenants/:tid/users/create', component: CreateUserComponent, canActivate: [AuthGuard] },
       { path: 'doctors/calendar-view', component: CalendarComponent, canActivate: [AuthGuard] },
       { path: 'doctors/create-prescription', component: CreatePrescriptionComponent, canActivate: [AuthGuard] },
-      {path: 'doctors/prescription-list', component: PrescriptionListComponent, canActivate: [AuthGuard]},
-      {path: 'doctors/prescription-view', component: PrescriptionViewComponent, canActivate: [AuthGuard]},
-      {path: 'patient/create-patient', component: CreatePatientComponent, canActivate: [AuthGuard]},
-      {path: 'patient/create-appointment', component: CreateAppointmentComponent, canActivate: [AuthGuard]}
+      { path: 'doctors/prescription-list', component: PrescriptionListComponent, canActivate: [AuthGuard] },
+      { path: 'doctors/prescription-view', component: PrescriptionViewComponent, canActivate: [AuthGuard] },
+      { path: 'patient/create-patient', component: CreatePatientComponent, canActivate: [AuthGuard] },
+      { path: 'patient/create-appointment', component: CreateAppointmentComponent, canActivate: [AuthGuard] }
     ]
   },
 
