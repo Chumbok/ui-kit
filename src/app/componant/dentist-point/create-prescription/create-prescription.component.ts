@@ -34,10 +34,10 @@ export class CreatePrescriptionComponent implements OnInit {
       dentalHistory: [''],
       vaccinationHistory: [''],
       investigation: [''],
-      rediological: [''],
+      radiological: [''],
       planning: [''],
       drugType: [''],
-      medicinName: [''],
+      medicineName: [''],
       drugStrength: [''],
       drugDose: [''],
       drugDuration: ['']
@@ -52,7 +52,7 @@ export class CreatePrescriptionComponent implements OnInit {
     this.submitted = true;
 
     if (this.form.invalid) {
-      return;
+      return true;
     }
     const prescription: CreatePrescription = new CreatePrescription();
     prescription.patientId = "9388c9ea-f453-41de-96cb-d388dedbf091";
@@ -62,10 +62,10 @@ export class CreatePrescriptionComponent implements OnInit {
     prescription.dentalHistory = this.form.controls['dentalHistory'].value;
     prescription.vaccinationHistory = this.form.controls['vaccinationHistory'].value;
     prescription.investigation = this.form.controls['investigation'].value;
-    prescription.radiological = this.form.controls['rediological'].value;
+    prescription.radiological = this.form.controls['radiological'].value;
     prescription.planning = this.form.controls['planning'].value;
     prescription.drugType = this.form.controls['drugType'].value;
-    prescription.medicineName = this.form.controls['medicinName'].value;
+    prescription.medicineName = this.form.controls['medicineName'].value;
     prescription.drugStrength = this.form.controls['drugStrength'].value;
     prescription.drugDose = this.form.controls['drugDose'].value;
     prescription.drugDuration = this.form.controls['drugDuration'].value;
