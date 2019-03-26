@@ -14,8 +14,8 @@
       </thead>
       <tbody>
       <tr *ngFor="let prescriptionlist of prescription">
-        <td style="width: 20%">{{ prescriptionlist.id }}</td>
-        <td style="width: 20%">{{ prescriptionlist.patientName }}</td>
+        <td style="width: 50%">{{ prescriptionlist.id }}</td>
+        <td style="width: 10%">{{ prescriptionlist.patientName }}</td>
         <td style="width: 20%">{{ prescriptionlist.chiefComplain }}</td>
         <td>
           <a [routerLink]="[prescriptionlist.id]" (click)="onPrescriptionView()">View</a> |

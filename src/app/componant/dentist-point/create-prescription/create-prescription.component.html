@@ -1,7 +1,7 @@
 <div class="col-md-8 ibox">
 
   <div class="ibox-head">
-    <div class="ibox-title">Create Appointment</div>
+    <div class="ibox-title">Create Prescription</div>
     <ul class="nav" role="tablist">
       <li class="text-right">
         <a href="#rx" aria-controls="messages" role="tab" data-toggle="tab"
@@ -31,35 +31,103 @@
         <div class="col-sm-12">
           <!-- Tab panes -->
           <div class="tab-content border-0 tabs">
-            <div role="tab" class="tab-pane fade in active" id="Section1">
-
-                      <textarea class="form-control h-25" formControlName="complain" placeholder="Chief Complain"
-                                [ngClass]="{ 'is-invalid': submitted && f.complain.errors }"></textarea>
-              <div *ngIf="submitted && f.complain.errors" class="invalid-feedback">
-                <div *ngIf="f.complain.errors.required">Name is required</div>
+            <div role="tab" class="tab-pane fade n active" id="Section1">
+              <div class="form-group mb-4 row mt-5">
+                <label class="col-sm-3 col-form-label">Chief Complain</label>
+                <div class="col-sm-9">
+                <textarea type="text" formControlName="complain" class="form-control"
+                          [ngClass]="{ 'is-invalid': submitted && f.complain.errors }"></textarea>
+                  <div *ngIf="submitted && f.complain.errors" class="invalid-feedback">
+                    <div *ngIf="f.complain.errors.required">Chief Complain is required</div>
+                  </div>
+                </div>
               </div>
-
             </div>
+            <!--<div role="tab" class="tab-pane fade in active" id="Section1">-->
+
+            <!--<textarea class="form-control h-25" formControlName="complain" placeholder="Chief Complain"-->
+            <!--[ngClass]="{ 'is-invalid': submitted && f.complain.errors }"></textarea>-->
+            <!--<div *ngIf="submitted && f.complain.errors" class="invalid-feedback">-->
+            <!--<div *ngIf="f.complain.errors.required">Name is required</div>-->
+            <!--</div>-->
+
+            <!--</div>-->
             <div role="tabpanel" class="tab-pane fade" id="Section2">
-
-                      <textarea class="w-100 h-25 mb-3 form-control" formControlName="parameters"
-                                placeholder="Parameters"></textarea>
-              <textarea class="w-100 h-25 form-control" formControlName="remarks"
-                        placeholder="Remarks"></textarea>
-
+              <div class="form-group mb-4 row mt-5">
+                <label class="col-sm-3 col-form-label">Parameters</label>
+                <div class="col-sm-9">
+                <textarea type="text" formControlName="parameters" class="form-control"
+                          [ngClass]="{ 'is-invalid': submitted && f.parameters.errors }"></textarea>
+                  <div *ngIf="submitted && f.parameters.errors" class="invalid-feedback">
+                    <div *ngIf="f.parameters.errors.required">Parameters is required</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mb-4 row mt-5">
+                <label class="col-sm-3 col-form-label">Remarks</label>
+                <div class="col-sm-9">
+                <textarea type="text" formControlName="remarks" class="form-control"
+                          [ngClass]="{ 'is-invalid': submitted && f.remarks.errors }"></textarea>
+                  <div *ngIf="submitted && f.remarks.errors" class="invalid-feedback">
+                    <div *ngIf="f.remarks.errors.required">Remarks is required</div>
+                  </div>
+                </div>
+              </div>
             </div>
+
             <div role="tabpanel" class="tab-pane fade" id="Section3">
 
-                      <textarea class="w-100 h-15 mt-auto form-control" formControlName="dentalHistory"
-                                placeholder="Medical & Dental History"></textarea>
-              <textarea class="w-100 h-15 mt-3 form-control" formControlName="vaccinationHistory"
-                        placeholder="Drug & Vaccination History"></textarea>
-              <textarea class="w-100 h-15 mt-3 form-control" formControlName="investigation"
-                        placeholder="Investigation"></textarea>
-              <textarea class="w-100 h-15 mt-3 form-control" formControlName="radiological"
-                        placeholder="Rediological/Clinical Finding"></textarea>
-              <textarea class="w-100 h-15 mt-3 form-control" formControlName="planning"
-                        placeholder="Final Diagnosis & Treatment Planning"></textarea>
+              <div class="form-group mb-4 row mt-5">
+                <label class="col-sm-3 col-form-label">Medical & Dental History</label>
+                <div class="col-sm-9">
+                <textarea type="text" formControlName="dentalHistory" class="form-control"
+                          [ngClass]="{ 'is-invalid': submitted && f.dentalHistory.errors }"></textarea>
+                  <div *ngIf="submitted && f.dentalHistory.errors" class="invalid-feedback">
+                    <div *ngIf="f.dentalHistory.errors.required">Medical & Dental History is required</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mb-4 row mt-5">
+                <label class="col-sm-3 col-form-label">Drug & Vaccination History</label>
+                <div class="col-sm-9">
+                <textarea type="text" formControlName="vaccinationHistory" class="form-control"
+                          [ngClass]="{ 'is-invalid': submitted && f.vaccinationHistory.errors }"></textarea>
+                  <div *ngIf="submitted && f.vaccinationHistory.errors" class="invalid-feedback">
+                    <div *ngIf="f.vaccinationHistory.errors.required">Drug & Vaccination History is required</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mb-4 row mt-5">
+                <label class="col-sm-3 col-form-label">Investigation History</label>
+                <div class="col-sm-9">
+                <textarea type="text" formControlName="investigation" class="form-control"
+                          [ngClass]="{ 'is-invalid': submitted && f.investigation.errors }"></textarea>
+                  <div *ngIf="submitted && f.investigation.errors" class="invalid-feedback">
+                    <div *ngIf="f.investigation.errors.required">Investigation is required</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mb-4 row mt-5">
+                <label class="col-sm-3 col-form-label">Rediological/Clinical Finding</label>
+                <div class="col-sm-9">
+                <textarea type="text" formControlName="radiological" class="form-control"
+                          [ngClass]="{ 'is-invalid': submitted && f.radiological.errors }"></textarea>
+                  <div *ngIf="submitted && f.radiological.errors" class="invalid-feedback">
+                    <div *ngIf="f.radiological.errors.required">Rediological/Clinical Finding is required</div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mb-4 row mt-5">
+                <label class="col-sm-3 col-form-label">Final Diagnosis & Treatment Planning</label>
+                <div class="col-sm-9">
+                <textarea type="text" formControlName="planning" class="form-control"
+                          [ngClass]="{ 'is-invalid': submitted && f.planning.errors }"></textarea>
+                  <div *ngIf="submitted && f.planning.errors" class="invalid-feedback">
+                    <div *ngIf="f.planning.errors.required">Rediological/Clinical Finding is required</div>
+                  </div>
+                </div>
+              </div>
+
             </div>
             <div role="tabpanel" class="tab-pane fade" id="rx">
               <h3 class="h5-responsive"><span>&#8478;</span></h3>
@@ -117,16 +185,17 @@
                   </div>
                 </div>
               </div>
+              <div class="ibox-footer row ">
+                <div class="col-sm-12 text-right">
+                  <button class="btn btn-primary mr-2" (click)="onSubmit()">Submit</button>
+                  <button class="btn btn-secondary">Cancel</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="ibox-footer row">
-      <div class="col-sm-10 ml-sm-auto">
-        <button class="btn btn-primary mr-2" (click)="onSubmit()">Submit</button>
-        <button class="btn btn-secondary">Cancel</button>
-      </div>
-    </div>
+
   </form>
 </div>
