@@ -42,6 +42,7 @@ import {PrescriptionListComponent} from './componant/dentist-point/prescription-
 import {PrescriptionViewComponent} from './componant/dentist-point/prescription-view/prescription-view.component';
 import {CreateAppointmentComponent} from './componant/dentist-point/create-appointment/create-appointment.component';
 import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
+import {CreateTemplateComponent} from './componant/dentist-point/create-template/create-template.component';
 
 
 @NgModule({
@@ -88,7 +89,8 @@ import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
     CalendarComponent,
     PrescriptionListComponent,
     PrescriptionViewComponent,
-    CreateAppointmentComponent
+    CreateAppointmentComponent,
+    CreateTemplateComponent
   ],
   providers: [
     AuthService,

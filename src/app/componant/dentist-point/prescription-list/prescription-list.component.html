@@ -6,7 +6,6 @@
     <table class="table">
       <thead>
       <tr>
-        <th scope="col">Prescriptions Id</th>
         <th scope="col">Patient Name</th>
         <th scope="col">Chief Complain</th>
         <th scope="col">Options</th>
@@ -14,9 +13,8 @@
       </thead>
       <tbody>
       <tr *ngFor="let prescriptionlist of prescription">
-        <td style="width: 50%">{{ prescriptionlist.id }}</td>
-        <td style="width: 10%">{{ prescriptionlist.patientName }}</td>
-        <td style="width: 20%">{{ prescriptionlist.chiefComplain }}</td>
+        <td style="width: 30%">{{ prescriptionlist.patientName }}</td>
+        <td style="width: 50%">{{ prescriptionlist.chiefComplain }}</td>
         <td>
           <a [routerLink]="[prescriptionlist.id]" (click)="onPrescriptionView()">View</a> |
           <a [routerLink]="[prescriptionlist.id ]">Delete</a>

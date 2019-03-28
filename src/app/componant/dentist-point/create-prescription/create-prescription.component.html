@@ -13,15 +13,20 @@
   <form name="form" class="form-horizontal" [formGroup]="form">
     <div class="ibox-body">
       <ul class="nav nav-tabs" role="tablist">
+        <li class="mr-3" role="presentation"><a href="#Section0" aria-controls="Template" role="tab" data-toggle="tab"
+                                                class="-font-awesome font-weight-bold text-secondary">Select
+          Template</a>
+        </li>
         <li class="mr-3" role="presentation"><a href="#Section1" aria-controls="profile" role="tab" data-toggle="tab"
                                                 class="-font-awesome font-weight-bold text-secondary">Chief Complain</a>
         </li>
         <li class="mr-3" role="presentation"><a href="#Section2" aria-controls="messages" role="tab" data-toggle="tab"
                                                 class="-font-awesome font-weight-bold text-secondary">On Examination</a>
         </li>
-        <li class="mr-3" role="presentation"><a href="#Section3" aria-controls="profile" role="tab" data-toggle="tab"
+        <li class="mr-3" role="presentation"><a href="#Section3" aria-controls="Diginist" role="tab" data-toggle="tab"
                                                 class="-font-awesome font-weight-bold text-secondary">Diginist</a></li>
-        <li class="mr-3" role="presentation"><a href="#rx" aria-controls="messages" role="tab" data-toggle="tab"
+        <li class="mr-3" role="presentation"><a href="#Section4" aria-controls="Prescription" role="tab"
+                                                data-toggle="tab"
                                                 class="-font-awesome font-weight-bold text-secondary">Prescription</a>
         </li>
       </ul>
@@ -31,6 +36,17 @@
         <div class="col-sm-12">
           <!-- Tab panes -->
           <div class="tab-content border-0 tabs">
+            <div role="tab" class="tab-pane fade n active" id="Section0">
+              <div class="form-group mb-4 row mt-5">
+                <div class="list-group col-sm-12">
+                  <button type="button" class="list-group-item list-group-item-action">Template 1</button>
+                  <button type="button" class="list-group-item list-group-item-action">Template 2</button>
+                  <button type="button" class="list-group-item list-group-item-action">Template 3</button>
+                  <button type="button" class="list-group-item list-group-item-action">Template 4</button>
+                </div>
+              </div>
+            </div>
+
             <div role="tab" class="tab-pane fade n active" id="Section1">
               <div class="form-group mb-4 row mt-5">
                 <label class="col-sm-3 col-form-label">Chief Complain</label>
@@ -129,8 +145,7 @@
               </div>
 
             </div>
-            <div role="tabpanel" class="tab-pane fade" id="rx">
-              <h3 class="h5-responsive"><span>&#8478;</span></h3>
+            <div role="tabpanel" class="tab-pane fade" id="Section4">
               <div class="row mb-2 mt-4">
                 <div class="col-6">
                   <select class="custom-select px-1" formControlName="drugType" class="form-control">
@@ -187,6 +202,7 @@
               </div>
               <div class="ibox-footer row ">
                 <div class="col-sm-12 text-right">
+                  <button class="btn btn-danger mr-2" (click)="onSubmit()">Add Medicine</button>
                   <button class="btn btn-primary mr-2" (click)="onSubmit()">Submit</button>
                   <button class="btn btn-secondary">Cancel</button>
                 </div>
