@@ -15,14 +15,15 @@ export class CreatePrescriptionComponent implements OnInit {
   form: FormGroup;
   submitted = false;
   serverError = '';
-
+  patientId: string;
 
   constructor(private formBuilder: FormBuilder, private prescriptionService: PrescriptionService, private route: ActivatedRoute,
               private router: Router) {
-    /* this.route.params.subscribe(params => {
 
+    this.route.params.subscribe(params => {
+      this.patientId = params['id'];
+    });
 
-     });*/
   }
 
 

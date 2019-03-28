@@ -46,6 +46,7 @@ export class AppointmentService {
       '          "roomId": "FTGee89b-e89b-12d3-a456-556642440000",\n' +
       '          "attendees": [\n' +
       '              { \n' +
+      '                  "id": "64244067-e89b-12d3-a456-556642444444",  \n' +
       '                  "required": true,  \n' +
       '                  "name": "Mahmood",\n' +
       '                  "email": "mahmood@chumbok.com",\n' +
@@ -57,6 +58,7 @@ export class AppointmentService {
       '                  }\n' +
       '              },\n' +
       '              {\n' +
+      '                  "id": "64244067-e89b-12d3-a456-556642441111",  \n' +
       '                  "required": false,  \n' +
       '                  "name": "Roni",\n' +
       '                  "email": "roni@chumbok.com",\n' +
@@ -80,6 +82,7 @@ export class AppointmentService {
       '          "roomId": "FTGee89b-e89b-12d3-a456-556642440000",\n' +
       '          "attendees": [\n' +
       '              { \n' +
+      '                  "id": "64244067-e89b-12d3-a456-556642443333",  \n' +
       '                  "required": true,  \n' +
       '                  "name": "Ashraful",\n' +
       '                  "email": "mahmood@chumbok.com",\n' +
@@ -91,6 +94,7 @@ export class AppointmentService {
       '                  }\n' +
       '              },\n' +
       '              {\n' +
+      '                  "id": "64244067-e89b-12d3-a456-556642442133",  \n' +
       '                  "required": false,  \n' +
       '                  "name": "Roni",\n' +
       '                  "email": "roni@chumbok.com",\n' +

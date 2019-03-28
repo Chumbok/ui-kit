@@ -19,7 +19,7 @@ import {PrescriptionListComponent} from './componant/dentist-point/prescription-
 import {PrescriptionViewComponent} from './componant/dentist-point/prescription-view/prescription-view.component';
 import {CreatePatientComponent} from './componant/dentist-point/create-patient/create-patient.component';
 import {CreateAppointmentComponent} from './componant/dentist-point/create-appointment/create-appointment.component';
-import {CreateTemplateComponent} from './componant/dentist-point/create-template/create-template.component';
+// import {CreateTemplateComponent} from './componant/dentist-point/create-template/create-template.component';
 
 const routes: Routes = [
 
@@ -45,12 +45,12 @@ const routes: Routes = [
       { path: 'orgs/:id/tenants/:tid/users', component: UserListComponent, canActivate: [ AuthGuard ] },
       { path: 'orgs/:id/tenants/:tid/users/create', component: CreateUserComponent, canActivate: [AuthGuard] },
       { path: 'doctors/calendar-view', component: CalendarComponent, canActivate: [AuthGuard] },
-      { path: 'doctors/create-prescription', component: CreatePrescriptionComponent, canActivate: [AuthGuard] },
+      { path: 'patients/:id/create-prescription', component: CreatePrescriptionComponent, canActivate: [AuthGuard] },
       { path: 'doctors/prescription-list', component: PrescriptionListComponent, canActivate: [AuthGuard] },
       { path: 'doctors/prescription-view', component: PrescriptionViewComponent, canActivate: [AuthGuard] },
       { path: 'patient/create-patient', component: CreatePatientComponent, canActivate: [AuthGuard] },
       {path: 'patient/create-appointment', component: CreateAppointmentComponent, canActivate: [AuthGuard]},
-      {path: 'doctors/create-template', component: CreateTemplateComponent, canActivate: [AuthGuard]}
+      // {path: 'doctors/create-template', component: CreateTemplateComponent, canActivate: [AuthGuard]}
     ]
   },
 

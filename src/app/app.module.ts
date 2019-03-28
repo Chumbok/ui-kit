@@ -42,7 +42,7 @@ import {PrescriptionListComponent} from './componant/dentist-point/prescription-
 import {PrescriptionViewComponent} from './componant/dentist-point/prescription-view/prescription-view.component';
 import {CreateAppointmentComponent} from './componant/dentist-point/create-appointment/create-appointment.component';
 import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
-import {CreateTemplateComponent} from './componant/dentist-point/create-template/create-template.component';
+// import {CreateTemplateComponent} from './componant/dentist-point/create-template/create-template.component';
 
 
 @NgModule({
@@ -90,7 +90,7 @@ import {CreateTemplateComponent} from './componant/dentist-point/create-template
     PrescriptionListComponent,
     PrescriptionViewComponent,
     CreateAppointmentComponent,
-    CreateTemplateComponent
+    // CreateTemplateComponent
   ],
   providers: [
     AuthService,

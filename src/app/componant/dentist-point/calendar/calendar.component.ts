@@ -38,20 +38,18 @@ export class CalendarComponent implements OnInit {
   ngOnInit() {
     this.appointmentService.getAppointmentList().subscribe(res => {
 
-
-
       res['items'].forEach((appointment) => {
 
         var timeEpisode = new Date(appointment.startDateTime);
 
         this.events.push({
-          id: appointment.id,
+          id: appointment.attendees[1].id,
           start: new Date(appointment.startDateTime),
           end: new Date(appointment.endDateTime),
-          title: 'Appointment with  ' + appointment.attendees[0].name + '\n'+ 'at\n' + timeEpisode.toLocaleTimeString('en-GB'),
+          title: 'Appointment with  ' + appointment.attendees[1].name + '\n' + 'at\n' + timeEpisode.toLocaleTimeString('en-GB'),
           color: colors.blue,
           actions: this.actions,
-          allDay: false
+          allDay: false,
         });
       });
 
@@ -101,7 +99,7 @@ export class CalendarComponent implements OnInit {
   }
 
   handleEvent(action: string, event: CalendarEvent): void {
-    this.router.navigate(['doctors/create-prescription']);
+    this.router.navigate(['patients/' + event.id + '/create-prescription']);
   }
 
   onCreareAppointment() {
