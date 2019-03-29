@@ -82,10 +82,10 @@ export class CreatePrescriptionComponent implements OnInit {
     });
   }
 
-  onClickPrescription() {
+  /*onClickPrescription() {
     this.router.navigate(['doctors/prescription-list']);
 
-  }
+  }*/
 
 
 }
