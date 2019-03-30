@@ -43,6 +43,7 @@ import {PrescriptionViewComponent} from './componant/dentist-point/prescription-
 import {CreateAppointmentComponent} from './componant/dentist-point/create-appointment/create-appointment.component';
 import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
 import {CreateTemplateComponent} from "./componant/dentist-point/create-template/create-template.component";
+import {TemplateService} from "./service/template.service";
 
 
 @NgModule({
@@ -101,6 +102,7 @@ import {CreateTemplateComponent} from "./componant/dentist-point/create-template
     LoggedInUserInfoService,
     OrgTenantUserService,
     AppointmentService,
+    TemplateService,
     PrescriptionService,
     AuthGuard,
     {
