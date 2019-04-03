@@ -1,5 +1,6 @@
+import {CreateDrug} from "./create-medicine";
+
 export class CreateTemplate {
-  templateId?: string;
   templateName?: string;
   chiefComplain?: string;
   complain?: string;
@@ -10,9 +11,5 @@ export class CreateTemplate {
   investigation?: string;
   radiological?: string;
   planning?: string;
-  drugType?: string;
-  medicineName?: string;
-  drugStrength?: string;
-  drugDose?: string;
-  drugDuration?: string;
+  prescriptionList: Array<CreateDrug> = [];
 }
