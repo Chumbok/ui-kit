@@ -1,94 +1,157 @@
-<div class="col-md-11 ibox">
+<div class="col-md-9 ibox">
+
   <div class="ibox-head">
-    <div class="ibox-title">Prescription View</div>
+    <div class="ibox-title">Create Prescription</div>
+
+
   </div>
+  <div class="ibox-body">
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="mr-3" role="presentation"><a href="#Section0" aria-controls="Template" role="tab" data-toggle="tab"
+                                              class="-font-awesome font-weight-bold text-secondary">Select
+        Template</a>
+      </li>
+      <li class="mr-3" role="presentation"><a href="#Section1" aria-controls="profile" role="tab" data-toggle="tab"
+                                              class="-font-awesome font-weight-bold text-secondary">Chief Complain</a>
+      </li>
+      <li class="mr-3" role="presentation"><a href="#Section2" aria-controls="messages" role="tab" data-toggle="tab"
+                                              class="-font-awesome font-weight-bold text-secondary">On Examination</a>
+      </li>
+      <li class="mr-3" role="presentation"><a href="#Section3" aria-controls="Diginist" role="tab" data-toggle="tab"
+                                              class="-font-awesome font-weight-bold text-secondary">Diginist</a></li>
+      <li class="mr-3" role="presentation"><a href="#Section4" aria-controls="Prescription" role="tab"
+                                              data-toggle="tab"
+                                              class="-font-awesome font-weight-bold text-secondary">Prescription</a>
+      </li>
+    </ul>
 
-
-  <div class="row">
-    <div class="col-12 col-lg-7">
-      <div class="ibox-body">
-
-        <div class="form-group mb-4 row">
-          <label class="col-sm-3 col-form-label">Chief Complain : </label>
-          <div class="col-sm-9">
-            <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
-              <p>{{ prescriptionElements.chiefComplain}}</p></li>
-
+    <div class="form-group mb-4 row">
+      <label class="col-sm-0 col-form-label"></label>
+      <div class="col-sm-12">
+        <!-- Tab panes -->
+        <div class="tab-content border-0 tabs">
+          <div role="tab" class="tab-pane fade n active" id="Section0">
+            <div class="form-group mb-4 row mt-5">
+              <div class="list-group col-sm-12">
+                <button type="button" class="list-group-item list-group-item-action">Template 1</button>
+                <button type="button" class="list-group-item list-group-item-action">Template 2</button>
+                <button type="button" class="list-group-item list-group-item-action">Template 3</button>
+                <button type="button" class="list-group-item list-group-item-action">Template 4</button>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div class="form-group mb-4 row">
-          <label class="col-sm-3 col-form-label">On Examination : </label>
-          <div class="col-sm-9">
-            <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
-              <p>Parameter :{{ prescriptionElements.parameters }}</p>
-              <p>Remark : {{prescriptionElements.remarks}}</p>
+          <div role="tab" class="tab-pane fade n active" id="Section1">
+            <div class="form-group mb-4 row mt-5">
+              <label class="col-sm-3 col-form-label">Chief Complain</label>
+              <div class="col-sm-9">
+                <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
+                  <p><textarea type="text" class="form-control">{{ prescriptionElements.chiefComplain}}</textarea></p>
+                </li>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div class="form-group mb-4 row">
-          <label class="col-sm-3 col-form-label">Diginist : </label>
-          <div class="col-sm-9">
-            <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
-              <p>Medical & Dental History : {{ prescriptionElements.dentalHistory }}</p>
-              <p>Drug & Vaccination History : {{ prescriptionElements.vaccinationHistory }}</p>
-              <p>Investigation : {{ prescriptionElements.investigation }}</p>
-              <p>Rediological/Clinical Finding : {{ prescriptionElements.radiological }}</p>
-              <p>Final Diagnosis n& Treatment Planning : {{ prescriptionElements.planning }}</p>
+          <div role="tabpanel" class="tab-pane fade" id="Section2">
+            <div class="form-group mb-4 row mt-5">
+              <label class="col-sm-3 col-form-label">Parameters</label>
+              <div class="col-sm-9">
+                <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
+                  <p><textarea type="text" class="form-control">{{ prescriptionElements.parameters}}</textarea></p>
+              </div>
+            </div>
+
+            <div class="form-group mb-4 row mt-5">
+              <label class="col-sm-3 col-form-label">Remarks</label>
+              <div class="col-sm-9">
+                <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
+                  <p><textarea type="text" class="form-control">{{ prescriptionElements.remarks}}</textarea></p>
+              </div>
+            </div>
           </div>
-        </div>
 
+          <div role="tabpanel" class="tab-pane fade" id="Section3">
+            <div class="form-group mb-4 row mt-5">
+              <label class="col-sm-3 col-form-label">Medical & Dental History</label>
+              <div class="col-sm-9">
+                <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
+                  <p><textarea type="text" class="form-control">{{ prescriptionElements.dentalHistory}}</textarea></p>
+              </div>
+            </div>
+            <div class="form-group mb-4 row mt-5">
+              <label class="col-sm-3 col-form-label">Drug & Vaccination History</label>
+              <div class="col-sm-9">
+                <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
+                  <p><textarea type="text" class="form-control">{{ prescriptionElements.vaccinationHistory}}</textarea>
+                  </p>
+              </div>
+            </div>
 
-        <!-- <div>Showing {{ itemFrom }} to {{ itemTo }} of {{ totalElements }} entries</div>-->
+            <div class="form-group mb-4 row mt-5">
+              <label class="col-sm-3 col-form-label">Investigation History</label>
+              <div class="col-sm-9">
+                <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
+                  <p><textarea type="text" class="form-control">{{ prescriptionElements.investigation}}</textarea></p>
+              </div>
+            </div>
+            <div class="form-group mb-4 row mt-5">
+              <label class="col-sm-3 col-form-label">Radiological/Clinical Finding</label>
+              <div class="col-sm-9">
+                <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
+                  <p><textarea type="text" class="form-control">{{ prescriptionElements.radiological}}</textarea></p>
+              </div>
+            </div>
 
-      </div>
-    </div>
-    <div class="vl"></div>
-
-    <div class="col-12 col-lg-5">
-
-      <div class="card-body ">
-        <h4 class="h4-responsive mb-3">Rx</h4>
-        <div class="form-group mb-4 row">
-          <label class="col-sm-3 col-form-label">Drug Type : </label>
-          <div class="col-sm-9">
-            <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
-              <p>{{ prescriptionElements.drugType }}</p>
+            <div class="form-group mb-4 row mt-5">
+              <label class="col-sm-3 col-form-label">Final Diagnosis & Treatment Planning</label>
+              <div class="col-sm-9">
+                <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
+                  <p><textarea type="text" class="form-control">{{ prescriptionElements.planning }}</textarea></p>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div class="form-group mb-4 row">
-          <label class="col-sm-3 col-form-label">Medicine name : </label>
-          <div class="col-sm-9">
-            <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
-              <p>{{ prescriptionElements.medicineName }}</p>
-          </div>
-        </div>
-        <div class="form-group mb-4 row">
-          <label class="col-sm-3 col-form-label">Drug Strength : </label>
-          <div class="col-sm-9">
-            <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
-              <p>{{ prescriptionElements.drugStrength }}</p>
-          </div>
-        </div>
-        <div class="form-group mb-4 row">
-          <label class="col-sm-3 col-form-label">Drug Dose : </label>
-          <div class="col-sm-9">
-            <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
-              <p>{{ prescriptionElements.drugDose }}</p>
-          </div>
-        </div>
-        <div class="form-group mb-4 row">
-          <label class="col-sm-3 col-form-label">Drug Duration : </label>
-          <div class="col-sm-9">
-            <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
-              <p>{{ prescriptionElements.drugDuration }}</p>
+
+          <div role="tabpanel" class="tab-pane fade" id="Section4">
+            <div class="row mb-2 mt-4">
+              <label class="col-sm-2 col-form-label">Drug Type</label>
+              <div class="col-6">
+                <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
+                  <p><textarea type="text" class="form-control">{{ prescriptionElements.drugType }}</textarea></p>
+              </div>
+            </div>
+            <div class="row mb-2 mt-4">
+              <label class="col-sm-2 col-form-label">MedicineName</label>
+              <div class="col-6">
+                <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
+                  <p><textarea type="text" class="form-control">{{ prescriptionElements.medicineName }}</textarea></p>
+              </div>
+            </div>
+            <div class="row mb-2 mt-4">
+              <label class="col-sm-2 col-form-label">Drug Strength</label>
+              <div class="col-6">
+                <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
+                  <p><textarea type="text" class="form-control">{{ prescriptionElements.drugStrength }}</textarea></p>
+              </div>
+            </div>
+            <div class="row mb-2 mt-4">
+              <label class="col-sm-2 col-form-label">Drug Dose</label>
+              <div class="col-6">
+                <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
+                  <p><textarea type="text" class="form-control">{{ prescriptionElements.drugDose }}</textarea></p>
+              </div>
+            </div>
+            <div class="row mb-2 mt-4">
+              <label class="col-sm-2 col-form-label">Drug Duration</label>
+              <div class="col-6">
+                <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
+                  <p><textarea type="text" class="form-control">{{ prescriptionElements.drugDuration }}</textarea></p>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
-

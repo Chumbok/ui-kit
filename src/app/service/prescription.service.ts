@@ -4,6 +4,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AuthService} from './auth.service';
 import {Observable, of} from 'rxjs';
 import {EmptyObservable} from "rxjs-compat/observable/EmptyObservable";
+import {CreateDrug} from "../model/create-medicine";
+
 
 @Injectable()
 export class PrescriptionService {
@@ -28,8 +30,7 @@ export class PrescriptionService {
 
 
   public createPrescription(id: string, complain: string, parameters: string, remarks: string, dentalHistory: string, vaccinationHistory: string,
-                            investigation: string, rediological: string, planning: string, drugType: string, medicinName: string,
-                            drugStrength: string, drugDose: string, drugDuration: string): Observable<any> {
+                            investigation: string, rediological: string, planning: string, prescriptionList: Array<CreateDrug>): Observable<any> {
     console.log(id);
     console.log(complain);
     console.log(parameters);
@@ -38,15 +39,13 @@ export class PrescriptionService {
     console.log(vaccinationHistory);
     console.log(investigation);
     console.log(rediological);
-    console.log(drugType);
-    console.log(medicinName);
-    console.log(drugStrength);
-    console.log(drugDose);
-    console.log(drugDuration);
+    console.log(prescriptionList)
+
     return new EmptyObservable<Response>();
 
 
   }
+
 
 
   public getPrescriptionList(patientId: string): Observable<any> {

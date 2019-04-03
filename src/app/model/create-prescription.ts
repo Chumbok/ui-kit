@@ -1,3 +1,5 @@
+import {CreateDrug} from "./create-medicine";
+
 export class CreatePrescription {
   patientId?: string;
   chiefComplain?: string;
@@ -9,9 +11,5 @@ export class CreatePrescription {
   investigation?: string;
   radiological?: string;
   planning?: string;
-  drugType?: string;
-  medicineName?: string;
-  drugStrength?: string;
-  drugDose?: string;
-  drugDuration?: string;
+  prescriptionList: Array<CreateDrug> = [];
 }
