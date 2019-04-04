@@ -46,7 +46,7 @@
       <div class="form-group mb-4 row">
         <label class="col-sm-3 col-form-label">Date</label>
         <div class="col-sm-9">
-          <input formControlName="date" [(ngModel)]="dateTime1"
+          <input formControlName="date" [(ngModel)]="dateTime1" (click)="onFindFreeTimeSlotByDate()"
                  [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" class="form-control">
           <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
         </div>
@@ -55,7 +55,7 @@
       <div class="form-group mb-4 row">
         <label class="col-sm-3 col-form-label">Free Slots</label>
         <div class="col-sm-9">
-          <input type="button" class=" btn btn-secondary" (click)="onTimes()" value="10:15">&nbsp;
+          <input type="button" class=" btn btn-secondary" value="10:00">&nbsp;
           <input type="button" class=" btn btn-secondary" value="10:30">
         </div>
       </div>
@@ -64,7 +64,7 @@
 
     <div class="ibox-footer row">
       <div class="col-sm-12 text-center">
-        <button class="btn btn-primary mr-2">Submit</button>
+        <button class="btn btn-primary mr-2" (click)="onSubmit()">Submit</button>
         <button class="btn btn-secondary">Cancel</button>
       </div>
     </div>

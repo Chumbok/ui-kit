@@ -13,7 +13,6 @@ import {CreateDrug} from "../../../model/create-medicine";
 })
 export class CreatePrescriptionComponent implements OnInit {
   prescriptions: Array<any> =[];
-  prescriptions1: Array<any> =[];
   prescriptionResp: any;
 
   form: FormGroup;

@@ -44,6 +44,8 @@ import {CreateAppointmentComponent} from './componant/dentist-point/create-appoi
 import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
 import {CreateTemplateComponent} from "./componant/dentist-point/create-template/create-template.component";
 import {TemplateService} from "./service/template.service";
+import {CreateAppointmentService} from "./service/create-appointment.service";
+import {TimeslotService} from "./service/timeslot.service";
 
 
 @NgModule({
@@ -91,8 +93,8 @@ import {TemplateService} from "./service/template.service";
     PrescriptionListComponent,
     PrescriptionViewComponent,
     CreateAppointmentComponent,
-    CreateTemplateComponent,
-    // CreateTemplateComponent
+    CreateTemplateComponent
+
   ],
   providers: [
     AuthService,
@@ -103,7 +105,9 @@ import {TemplateService} from "./service/template.service";
     OrgTenantUserService,
     AppointmentService,
     TemplateService,
+    TimeslotService,
     PrescriptionService,
+    CreateAppointmentService,
     AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
