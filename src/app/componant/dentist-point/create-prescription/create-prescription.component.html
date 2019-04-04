@@ -34,20 +34,24 @@
             <div role="tab" class="tab-pane fade n active" id="Section0">
               <div class="form-group mb-4 row mt-5">
                 <div class="list-group col-sm-12">
-                  <button type="button" class="list-group-item list-group-item-action">Template 1</button>
+                  <button type="button" class="list-group-item list-group-item-action" (click)="template()">Template 1</button>
                   <button type="button" class="list-group-item list-group-item-action">Template 2</button>
                   <button type="button" class="list-group-item list-group-item-action">Template 3</button>
                   <button type="button" class="list-group-item list-group-item-action">Template 4</button>
                 </div>
               </div>
             </div>
-
             <div role="tab" class="tab-pane fade n active" id="Section1">
               <div class="form-group mb-4 row mt-5">
                 <label class="col-sm-3 col-form-label">Chief Complain</label>
                 <div class="col-sm-9">
+                 <!-- <label  *ngFor="let prescriptionElements of prescriptions">
+                    <textarea type="text" formControlName="complain"  [value]="prescriptionElements.chiefComplain"></textarea>
+                  </label>-->
+                  <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
                 <textarea type="text" formControlName="complain" class="form-control"
-                          [ngClass]="{ 'is-invalid': submitted && f.complain.errors }"></textarea>
+                          [value]="prescriptionElements.chiefComplain"
+                          [ngClass]="{ 'is-invalid': submitted && f.complain.errors }"></textarea></li>
                   <div *ngIf="submitted && f.complain.errors" class="invalid-feedback">
                     <div *ngIf="f.complain.errors.required">Chief Complain is required</div>
                   </div>
@@ -67,8 +71,10 @@
               <div class="form-group mb-4 row mt-5">
                 <label class="col-sm-3 col-form-label">Parameters</label>
                 <div class="col-sm-9">
+                  <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
                 <textarea type="text" formControlName="parameters" class="form-control"
-                          [ngClass]="{ 'is-invalid': submitted && f.parameters.errors }"></textarea>
+                          [value]="prescriptionElements.parameters"
+                          [ngClass]="{ 'is-invalid': submitted && f.parameters.errors }"></textarea></li>
                   <div *ngIf="submitted && f.parameters.errors" class="invalid-feedback">
                     <div *ngIf="f.parameters.errors.required">Parameters is required</div>
                   </div>
@@ -77,8 +83,10 @@
               <div class="form-group mb-4 row mt-5">
                 <label class="col-sm-3 col-form-label">Remarks</label>
                 <div class="col-sm-9">
+                  <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
                 <textarea type="text" formControlName="remarks" class="form-control"
-                          [ngClass]="{ 'is-invalid': submitted && f.remarks.errors }"></textarea>
+                          [value]="prescriptionElements.remarks"
+                          [ngClass]="{ 'is-invalid': submitted && f.remarks.errors }"></textarea></li>
                   <div *ngIf="submitted && f.remarks.errors" class="invalid-feedback">
                     <div *ngIf="f.remarks.errors.required">Remarks is required</div>
                   </div>
@@ -91,8 +99,10 @@
               <div class="form-group mb-4 row mt-5">
                 <label class="col-sm-3 col-form-label">Medical & Dental History</label>
                 <div class="col-sm-9">
+                  <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
                 <textarea type="text" formControlName="dentalHistory" class="form-control"
-                          [ngClass]="{ 'is-invalid': submitted && f.dentalHistory.errors }"></textarea>
+                          [value]="prescriptionElements.dentalHistory"
+                          [ngClass]="{ 'is-invalid': submitted && f.dentalHistory.errors }"></textarea></li>
                   <div *ngIf="submitted && f.dentalHistory.errors" class="invalid-feedback">
                     <div *ngIf="f.dentalHistory.errors.required">Medical & Dental History is required</div>
                   </div>
@@ -101,8 +111,10 @@
               <div class="form-group mb-4 row mt-5">
                 <label class="col-sm-3 col-form-label">Drug & Vaccination History</label>
                 <div class="col-sm-9">
+                  <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
                 <textarea type="text" formControlName="vaccinationHistory" class="form-control"
-                          [ngClass]="{ 'is-invalid': submitted && f.vaccinationHistory.errors }"></textarea>
+                          [value]="prescriptionElements.vaccinationHistory"
+                          [ngClass]="{ 'is-invalid': submitted && f.vaccinationHistory.errors }"></textarea></li>
                   <div *ngIf="submitted && f.vaccinationHistory.errors" class="invalid-feedback">
                     <div *ngIf="f.vaccinationHistory.errors.required">Drug & Vaccination History is required</div>
                   </div>
@@ -111,8 +123,10 @@
               <div class="form-group mb-4 row mt-5">
                 <label class="col-sm-3 col-form-label">Investigation History</label>
                 <div class="col-sm-9">
+                  <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
                 <textarea type="text" formControlName="investigation" class="form-control"
-                          [ngClass]="{ 'is-invalid': submitted && f.investigation.errors }"></textarea>
+                          [value]="prescriptionElements.vaccinationHistory"
+                          [ngClass]="{ 'is-invalid': submitted && f.investigation.errors }"></textarea></li>
                   <div *ngIf="submitted && f.investigation.errors" class="invalid-feedback">
                     <div *ngIf="f.investigation.errors.required">Investigation is required</div>
                   </div>
@@ -121,8 +135,10 @@
               <div class="form-group mb-4 row mt-5">
                 <label class="col-sm-3 col-form-label">Rediological/Clinical Finding</label>
                 <div class="col-sm-9">
+                  <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
                 <textarea type="text" formControlName="radiological" class="form-control"
-                          [ngClass]="{ 'is-invalid': submitted && f.radiological.errors }"></textarea>
+                          [value]="prescriptionElements.radiological"
+                          [ngClass]="{ 'is-invalid': submitted && f.radiological.errors }"></textarea></li>
                   <div *ngIf="submitted && f.radiological.errors" class="invalid-feedback">
                     <div *ngIf="f.radiological.errors.required">Rediological/Clinical Finding is required</div>
                   </div>
@@ -131,8 +147,10 @@
               <div class="form-group mb-4 row mt-5">
                 <label class="col-sm-3 col-form-label">Final Diagnosis & Treatment Planning</label>
                 <div class="col-sm-9">
+                  <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
                 <textarea type="text" formControlName="planning" class="form-control"
-                          [ngClass]="{ 'is-invalid': submitted && f.planning.errors }"></textarea>
+                          [value]="prescriptionElements.planning"
+                          [ngClass]="{ 'is-invalid': submitted && f.planning.errors }"></textarea></li>
                   <div *ngIf="submitted && f.planning.errors" class="invalid-feedback">
                     <div *ngIf="f.planning.errors.required">Rediological/Clinical Finding is required</div>
                   </div>
@@ -218,12 +236,12 @@
                       </tr>
                       </thead>
                       <tbody>
-                      <tr *ngFor="let hero of prescriptionList">
-                        <td style="width: 20%">{{ hero.drugType }}</td>
-                        <td style="width: 20%">{{ hero.medicineName }}</td>
-                        <td style="width: 20%">{{ hero.drugStrength }}</td>
-                        <td style="width: 20%">{{ hero.drugDose }}</td>
-                        <td style="width: 20%">{{ hero.drugDuration }}</td>
+                      <tr *ngFor="let createMedicine of createMedicinePrescription">
+                        <td style="width: 20%">{{ createMedicine.drugType }}</td>
+                        <td style="width: 20%">{{ createMedicine.medicineName }}</td>
+                        <td style="width: 20%">{{ createMedicine.drugStrength }}</td>
+                        <td style="width: 20%">{{ createMedicine.drugDose }}</td>
+                        <td style="width: 20%">{{ createMedicine.drugDuration }}</td>
                         <td>
                           <a >Edit</a> |
                           <a >Delete</a>

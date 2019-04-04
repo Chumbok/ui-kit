@@ -11,5 +11,5 @@ export class CreatePrescription {
   investigation?: string;
   radiological?: string;
   planning?: string;
-  prescriptionList: Array<CreateDrug> = [];
+  createMedicinePrescription: Array<CreateDrug> = [];
 }
