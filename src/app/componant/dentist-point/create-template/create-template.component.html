@@ -228,12 +228,12 @@
                       </tr>
                       </thead>
                       <tbody>
-                      <tr *ngFor="let hero of prescriptionList">
-                        <td style="width: 20%">{{ hero.drugType }}</td>
-                        <td style="width: 20%">{{ hero.medicineName }}</td>
-                        <td style="width: 20%">{{ hero.drugStrength }}</td>
-                        <td style="width: 20%">{{ hero.drugDose }}</td>
-                        <td style="width: 20%">{{ hero.drugDuration }}</td>
+                      <tr *ngFor="let createMedicine of createMedicinePrescription">
+                        <td style="width: 20%">{{ createMedicine.drugType }}</td>
+                        <td style="width: 20%">{{ createMedicine.medicineName }}</td>
+                        <td style="width: 20%">{{ createMedicine.drugStrength }}</td>
+                        <td style="width: 20%">{{ createMedicine.drugDose }}</td>
+                        <td style="width: 20%">{{ createMedicine.drugDuration }}</td>
                         <td>
                           <a >Edit</a> |
                           <a >Delete</a>

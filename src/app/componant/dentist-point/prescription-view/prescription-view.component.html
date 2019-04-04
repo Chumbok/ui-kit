@@ -1,25 +1,22 @@
-<div class="col-md-9 ibox">
+<div class="col-md-8 ibox">
 
   <div class="ibox-head">
-    <div class="ibox-title">Create Prescription</div>
+    <div class="ibox-title">Prescription View</div>
 
 
   </div>
   <div class="ibox-body">
+
     <ul class="nav nav-tabs" role="tablist">
-      <li class="mr-3" role="presentation"><a href="#Section0" aria-controls="Template" role="tab" data-toggle="tab"
-                                              class="-font-awesome font-weight-bold text-secondary">Select
-        Template</a>
-      </li>
-      <li class="mr-3" role="presentation"><a href="#Section1" aria-controls="profile" role="tab" data-toggle="tab"
+      <li class="mr-5" role="presentation"><a href="#Section1" aria-controls="profile" role="tab" data-toggle="tab"
                                               class="-font-awesome font-weight-bold text-secondary">Chief Complain</a>
       </li>
-      <li class="mr-3" role="presentation"><a href="#Section2" aria-controls="messages" role="tab" data-toggle="tab"
+      <li class="mr-5" role="presentation"><a href="#Section2" aria-controls="messages" role="tab" data-toggle="tab"
                                               class="-font-awesome font-weight-bold text-secondary">On Examination</a>
       </li>
-      <li class="mr-3" role="presentation"><a href="#Section3" aria-controls="Diginist" role="tab" data-toggle="tab"
+      <li class="mr-5" role="presentation"><a href="#Section3" aria-controls="Diginist" role="tab" data-toggle="tab"
                                               class="-font-awesome font-weight-bold text-secondary">Diginist</a></li>
-      <li class="mr-3" role="presentation"><a href="#Section4" aria-controls="Prescription" role="tab"
+      <li class="mr-5" role="presentation"><a href="#Section4" aria-controls="Prescription" role="tab"
                                               data-toggle="tab"
                                               class="-font-awesome font-weight-bold text-secondary">Prescription</a>
       </li>
@@ -30,16 +27,7 @@
       <div class="col-sm-12">
         <!-- Tab panes -->
         <div class="tab-content border-0 tabs">
-          <div role="tab" class="tab-pane fade n active" id="Section0">
-            <div class="form-group mb-4 row mt-5">
-              <div class="list-group col-sm-12">
-                <button type="button" class="list-group-item list-group-item-action">Template 1</button>
-                <button type="button" class="list-group-item list-group-item-action">Template 2</button>
-                <button type="button" class="list-group-item list-group-item-action">Template 3</button>
-                <button type="button" class="list-group-item list-group-item-action">Template 4</button>
-              </div>
-            </div>
-          </div>
+
 
           <div role="tab" class="tab-pane fade n active" id="Section1">
             <div class="form-group mb-4 row mt-5">
@@ -110,45 +98,33 @@
               </div>
             </div>
           </div>
-
-
           <div role="tabpanel" class="tab-pane fade" id="Section4">
-            <div class="row mb-2 mt-4">
-              <label class="col-sm-2 col-form-label">Drug Type</label>
-              <div class="col-6">
-                <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
-                  <p><textarea type="text" class="form-control">{{ prescriptionElements.drugType }}</textarea></p>
+            <div class="card" >
+              <div class="card-body">
+                <div>
+                  <table class="table">
+                    <thead>
+                    <tr>
+                      <th scope="col">Drug Type</th>
+                      <th scope="col">Medicine Name</th>
+                      <th scope="col">Drug Strength</th>
+                      <th scope="col">Drug Dose</th>
+                      <th scope="col">Drug Duration</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let prescriptionElements of prescrip">
+                      <td style="width: 20%">{{ prescriptionElements.drugType }}</td>
+                      <td style="width: 20%">{{ prescriptionElements.medicineName }}</td>
+                      <td style="width: 20%">{{ prescriptionElements.drugStrength }}</td>
+                      <td style="width: 20%">{{ prescriptionElements.drugDose }}</td>
+                      <td style="width: 20%">{{ prescriptionElements.drugDuration }}</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
-            <div class="row mb-2 mt-4">
-              <label class="col-sm-2 col-form-label">MedicineName</label>
-              <div class="col-6">
-                <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
-                  <p><textarea type="text" class="form-control">{{ prescriptionElements.medicineName }}</textarea></p>
-              </div>
-            </div>
-            <div class="row mb-2 mt-4">
-              <label class="col-sm-2 col-form-label">Drug Strength</label>
-              <div class="col-6">
-                <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
-                  <p><textarea type="text" class="form-control">{{ prescriptionElements.drugStrength }}</textarea></p>
-              </div>
-            </div>
-            <div class="row mb-2 mt-4">
-              <label class="col-sm-2 col-form-label">Drug Dose</label>
-              <div class="col-6">
-                <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
-                  <p><textarea type="text" class="form-control">{{ prescriptionElements.drugDose }}</textarea></p>
-              </div>
-            </div>
-            <div class="row mb-2 mt-4">
-              <label class="col-sm-2 col-form-label">Drug Duration</label>
-              <div class="col-6">
-                <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
-                  <p><textarea type="text" class="form-control">{{ prescriptionElements.drugDuration }}</textarea></p>
-              </div>
-            </div>
-
           </div>
         </div>
       </div>

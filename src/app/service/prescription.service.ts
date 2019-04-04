@@ -72,21 +72,38 @@ export class PrescriptionService {
   }
 
 
-  public getPrescriptionView(prescriptionId: string): Observable<any> {
-    return this.enableMock ? this.getPrescriptionViewMock() : this.getPrescriptionViewReal(prescriptionId);
+  public getPrescriptionView(): Observable<any> {
+    return this.enableMock ? this.getPrescriptionViewMock() : this.getPrescriptionViewReal();
   }
 
-  private getPrescriptionViewReal(prescriptionId: string): Observable<any> {
-    return this.http.get<any>(this.serviceBaseEndpoint + prescriptionId + '/prescription/', this.httpOptions);
+  private getPrescriptionViewReal(): Observable<any> {
+    return this.http.get<any>(this.serviceBaseEndpoint , this.httpOptions);
   }
 
   private getPrescriptionViewMock(): Observable<any> {
 
-    const mockResp = '{"page":0,"size":10,"totalPages":1,"totalElements":1,"items":[{"id":"9388c9ea-f453-41de-96cb-d388dedbf091","chiefComplain":"Please maintain roles","parameters":"Somethings write JSON",' +
-      '"remarks":"Somethings write JSON","dentalHistory":"Somethings write JSON","vaccinationHistory":" Somethings write JSON","investigation":"Somethings write JSON","radiological":"Somethings write JSON","planning":"Somethings write JSON",' +
-      '"drugType":"Tab","medicineName":"Napa","drugStrength":"10mg","drugDose":"1+1+1","drugDuration":"1 day","roles":["SUPERADMIN"],"enabled":true}]}';
+    const mockResp = '{"page":0,' +
+      '"size":10,' +
+      '"totalPages":1,' +
+      '"totalElements":1,' +
+      '"items":[' +
+      '{' +
+      '"id":"9388c9ea-f453-41de-96cb-d388dedbf091",' +
+      '"chiefComplain":"Please maintain roles",' +
+      '"parameters":"Somethings write JSON",' +
+      '"remarks":"Somethings write JSON",' +
+      '"dentalHistory":"Somethings write JSON",' +
+      '"vaccinationHistory":" Somethings write JSON",' +
+      '"investigation":"Somethings write JSON",' +
+      '"radiological":"Somethings write JSON",' +
+      '"planning":"Somethings write JSON",' +
+      '"medicine":[{"drugType":"Tab","medicineName":"Napa","drugStrength":"10mg","drugDose":"1+1+1","drugDuration":"1 day"},' +
+      '{"drugType":"cap","medicineName":"Napa","drugStrength":"10mg","drugDose":"1+1+1","drugDuration":"1 day"}]' +
+      ',"roles":["SUPERADMIN"],"enabled":true' +
+      '}' +
+      ']}';
     return of(JSON.parse(mockResp));
   }
-
-
 }
+
+

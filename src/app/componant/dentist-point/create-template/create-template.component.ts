@@ -16,9 +16,7 @@ export class CreateTemplateComponent implements OnInit{
   submitted = false;
   serverError = '';
   patientId: string;
-  CreatePrescription: Array<any>;
-  prescriptionResp: any;
-  prescriptionList: Array<CreateDrug> = [];
+  createMedicinePrescription: Array<CreateDrug> = [];
 
   constructor(private formBuilder: FormBuilder, private prescriptionService: TemplateService, private route: ActivatedRoute,
               private router: Router) {
@@ -78,12 +76,12 @@ export class CreateTemplateComponent implements OnInit{
     createDrug.drugStrength = this.form.controls['drugStrength'].value;
     createDrug.drugDose = this.form.controls['drugDose'].value;
     createDrug.drugDuration = this.form.controls['drugDuration'].value;
-    prescription.prescriptionList.push(createDrug);
+    prescription.createMedicinePrescription.push(createDrug);
 
 
 
     this.prescriptionService.createTemplate(prescription.templateName, prescription.chiefComplain, prescription.parameters, prescription.remarks, prescription.dentalHistory,
-      prescription.vaccinationHistory, prescription.investigation, prescription.radiological, prescription.planning, this.prescriptionList).subscribe(res => {
+      prescription.vaccinationHistory, prescription.investigation, prescription.radiological, prescription.planning, this.createMedicinePrescription).subscribe(res => {
 
     }, error => {
       if (error.status === 400) {
@@ -99,8 +97,8 @@ export class CreateTemplateComponent implements OnInit{
     createDrug.drugStrength = this.form.controls['drugStrength'].value;
     createDrug.drugDose = this.form.controls['drugDose'].value;
     createDrug.drugDuration = this.form.controls['drugDuration'].value;
-    this.prescriptionList.push(createDrug)
-    console.log(this.prescriptionList);
+    this.createMedicinePrescription.push(createDrug)
+    console.log(this.createMedicinePrescription);
   }
 
 
