@@ -1,48 +1,59 @@
-<div class="col-md-9 ibox">
+<div class="col-md-12 ibox">
 
   <div class="ibox-head">
     <div class="ibox-title">Create Prescription</div>
-
-
   </div>
-  <form name="form" class="form-horizontal" [formGroup]="form">
-    <div class="ibox-body">
-      <ul class="nav nav-tabs" role="tablist">
-        <li class="mr-3" role="presentation"><a href="#Section0" aria-controls="Template" role="tab" data-toggle="tab"
-                                                class="-font-awesome font-weight-bold text-secondary">Select
-          Template</a>
-        </li>
-        <li class="mr-3" role="presentation"><a href="#Section1" aria-controls="profile" role="tab" data-toggle="tab"
-                                                class="-font-awesome font-weight-bold text-secondary">Chief Complain</a>
-        </li>
-        <li class="mr-3" role="presentation"><a href="#Section2" aria-controls="messages" role="tab" data-toggle="tab"
-                                                class="-font-awesome font-weight-bold text-secondary">On Examination</a>
-        </li>
-        <li class="mr-3" role="presentation"><a href="#Section3" aria-controls="Diginist" role="tab" data-toggle="tab"
-                                                class="-font-awesome font-weight-bold text-secondary">Diginist</a></li>
-        <li class="mr-3" role="presentation"><a href="#Section4" aria-controls="Prescription" role="tab"
-                                                data-toggle="tab"
-                                                class="-font-awesome font-weight-bold text-secondary">Prescription</a>
-        </li>
-      </ul>
 
-      <div class="form-group mb-4 row">
-        <label class="col-sm-0 col-form-label"></label>
-        <div class="col-sm-12">
-          <!-- Tab panes -->
-          <div class="tab-content border-0 tabs">
-            <div role="tab" class="tab-pane fade n active" id="Section0">
-              <div class="form-group mb-4 row mt-5">
-                <div class="list-group col-sm-12">
-                  <button type="button" class="list-group-item list-group-item-action" (click)="template()">Template 1</button>
-                  <button type="button" class="list-group-item list-group-item-action">Template 2</button>
-                  <button type="button" class="list-group-item list-group-item-action">Template 3</button>
-                  <button type="button" class="list-group-item list-group-item-action">Template 4</button>
-                </div>
+  <form name="form" class="form-horizontal" [formGroup]="form">
+
+    <div class="ibox-body">
+
+      <ul class="nav nav-tabs" role="tablist">
+          <li class="mr-3 nav-item" role="presentation">
+            <a href="#Section0" aria-controls="Template" role="tab" data-toggle="tab"
+               class="nav-link active">Select Template</a>
+          </li>
+          <li class="mr-3 nav-item" role="presentation">
+            <a href="#Section1" aria-controls="profile" role="tab" data-toggle="tab"
+               class="nav-link">Chief Complain</a>
+          </li>
+          <li class="mr-3 nav-item" role="presentation">
+            <a href="#Section2" aria-controls="messages" role="tab" data-toggle="tab"
+               class="nav-link">On Examination</a>
+          </li>
+          <li class="mr-3 nav-item" role="presentation">
+            <a href="#Section3" aria-controls="Diginist" role="tab" data-toggle="tab"
+               class="nav-link">Diginist</a></li>
+          <li class="mr-3 nav-item" role="presentation">
+            <a href="#Section4" aria-controls="Prescription" role="tab" data-toggle="tab"
+               class="nav-link">Prescription</a>
+          </li>
+        </ul>
+
+      <div class="tab-content">
+
+            <div role="tabpanel" class="tab-pane fade active show" id="Section0">
+
+              <br>
+
+              <div class="list-group">
+                <button (click)="template()"
+                   class="list-group-item list-group-item-action">Template 1</button>
+                <button (click)="template()"
+                   class="list-group-item list-group-item-action">Template 2</button>
+                <button (click)="template()"
+                   class="list-group-item list-group-item-action">Template 3</button>
+                <button (click)="template()"
+                   class="list-group-item list-group-item-action">Template 4</button>
+                <button (click)="template()"
+                   class="list-group-item list-group-item-action">Template 5</button>
               </div>
+
             </div>
-            <div role="tab" class="tab-pane fade n active" id="Section1">
-              <div class="form-group mb-4 row mt-5">
+
+            <div role="tabpanel" class="tab-pane fade" id="Section1">
+
+              <div class="form-group mb-4 row">
                 <label class="col-sm-3 col-form-label">Chief Complain</label>
                 <div class="col-sm-9">
                  <!-- <label  *ngFor="let prescriptionElements of prescriptions">
@@ -57,7 +68,10 @@
                   </div>
                 </div>
               </div>
+
             </div>
+
+
             <!--<div role="tab" class="tab-pane fade in active" id="Section1">-->
 
             <!--<textarea class="form-control h-25" formControlName="complain" placeholder="Chief Complain"-->
@@ -254,8 +268,9 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
+
     </div>
+
   </form>
+
 </div>
