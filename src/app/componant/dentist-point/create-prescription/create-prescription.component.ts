@@ -12,7 +12,7 @@ import {CreateDrug} from "../../../model/create-medicine";
   styleUrls: ['./create-prescription.component.css']
 })
 export class CreatePrescriptionComponent implements OnInit {
-  prescriptions: Array<any> =[];
+  selectedTemplate: any;
   prescriptionResp: any;
 
   form: FormGroup;
@@ -34,7 +34,7 @@ export class CreatePrescriptionComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      complain: ['', Validators.required],
+      chiefComplain: ['', Validators.required],
       parameters: ['',Validators.required],
       remarks: ['',Validators.required],
       dentalHistory: ['',Validators.required],
@@ -64,7 +64,7 @@ export class CreatePrescriptionComponent implements OnInit {
     }
     const prescription: CreatePrescription = new CreatePrescription();
     prescription.patientId = "9388c9ea-f453-41de-96cb-d388dedbf091";
-    prescription.chiefComplain = this.form.controls['complain'].value;
+    prescription.chiefComplain = this.form.controls['chiefComplain'].value;
     prescription.parameters = this.form.controls['parameters'].value;
     prescription.remarks = this.form.controls['remarks'].value;
     prescription.dentalHistory = this.form.controls['dentalHistory'].value;
@@ -103,24 +103,25 @@ export class CreatePrescriptionComponent implements OnInit {
     console.log(this.createMedicinePrescription);
   }
 
-  template(){
+  selectTemplate(id) {
     this.prescriptionService.getPrescriptionView().subscribe(res => {
 
+      this.createMedicinePrescription = [];
+
       this.prescriptionResp = res;
-      res['items'].forEach((medicineList) => {
+      this.selectedTemplate = res['items'][id];
+
+      this.selectedTemplate['medicine'].forEach((medicine) => {
 
         const createDrug: CreateDrug = new CreateDrug();
-        createDrug.drugType = medicineList.medicine[0].drugType;
-        createDrug.medicineName =  medicineList.medicine[0].medicineName;
-        createDrug.drugStrength =  medicineList.medicine[0].drugStrength;
-        createDrug.drugDose =  medicineList.medicine[0].drugDose;
-        createDrug.drugDuration =  medicineList.medicine[0].drugDuration;
-        this.createMedicinePrescription.push(createDrug)
+        createDrug.drugType = medicine.drugType;
+        createDrug.medicineName =  medicine.medicineName;
+        createDrug.drugStrength =  medicine.drugStrength;
+        createDrug.drugDose =  medicine.drugDose;
+        createDrug.drugDuration =  medicine.drugDuration;
+        this.createMedicinePrescription.push(createDrug);
 
       });
-      this.prescriptions = res['items'];
-
-
 
     });
   }

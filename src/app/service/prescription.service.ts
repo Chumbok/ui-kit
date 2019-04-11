@@ -89,7 +89,7 @@ export class PrescriptionService {
       '"items":[' +
       '{' +
       '"id":"9388c9ea-f453-41de-96cb-d388dedbf091",' +
-      '"chiefComplain":"Please maintain roles",' +
+      '"chiefComplain":"Headache",' +
       '"parameters":"Somethings write JSON",' +
       '"remarks":"Somethings write JSON",' +
       '"dentalHistory":"Somethings write JSON",' +
@@ -99,6 +99,19 @@ export class PrescriptionService {
       '"planning":"Somethings write JSON",' +
       '"medicine":[{"drugType":"Tab","medicineName":"Napa","drugStrength":"10mg","drugDose":"1+1+1","drugDuration":"1 day"},' +
       '{"drugType":"cap","medicineName":"Napa","drugStrength":"10mg","drugDose":"1+1+1","drugDuration":"1 day"}]' +
+      ',"roles":["SUPERADMIN"],"enabled":true' +
+      '},' +
+      '{' +
+      '"id":"9388c9ea-f453-41de-96cb-d388dedbf091",' +
+      '"chiefComplain":"Fever",' +
+      '"parameters":"Somethings write JSON",' +
+      '"remarks":"Somethings write JSON",' +
+      '"dentalHistory":"Somethings write JSON",' +
+      '"vaccinationHistory":" Somethings write JSON",' +
+      '"investigation":"Somethings write JSON",' +
+      '"radiological":"Somethings write JSON",' +
+      '"planning":"Somethings write JSON",' +
+      '"medicine":[{"drugType":"Tab","medicineName":"Napa Extra","drugStrength":"10mg","drugDose":"1+1+1","drugDuration":"1 day"}]' +
       ',"roles":["SUPERADMIN"],"enabled":true' +
       '}' +
       ']}';

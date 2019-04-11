@@ -8,264 +8,255 @@
     </div>
   </div>
 
-  <form name="form" class="form-horizontal" [formGroup]="form">
+  <form name="form" [formGroup]="form">
 
     <div class="ibox-body">
 
       <ul class="nav nav-tabs" role="tablist">
-          <li class="mr-3 nav-item" role="presentation">
-            <a href="#Section0" aria-controls="Template" role="tab" data-toggle="tab"
-               class="nav-link active">Select Template</a>
-          </li>
-          <li class="mr-3 nav-item" role="presentation">
-            <a href="#Section1" aria-controls="profile" role="tab" data-toggle="tab"
-               class="nav-link">Chief Complain</a>
-          </li>
-          <li class="mr-3 nav-item" role="presentation">
-            <a href="#Section2" aria-controls="messages" role="tab" data-toggle="tab"
-               class="nav-link">On Examination</a>
-          </li>
-          <li class="mr-3 nav-item" role="presentation">
-            <a href="#Section3" aria-controls="Diginist" role="tab" data-toggle="tab"
-               class="nav-link">Diginist</a></li>
-          <li class="mr-3 nav-item" role="presentation">
-            <a href="#Section4" aria-controls="Prescription" role="tab" data-toggle="tab"
-               class="nav-link">Prescription</a>
-          </li>
-        </ul>
+        <li class="mr-3 nav-item" role="presentation">
+          <a href="#Section0" aria-controls="Template" role="tab" data-toggle="tab"
+             class="nav-link active">Select Template</a>
+        </li>
+        <li class="mr-3 nav-item" role="presentation">
+          <a href="#Section1" aria-controls="profile" role="tab" data-toggle="tab"
+             class="nav-link">Chief Complain</a>
+        </li>
+        <li class="mr-3 nav-item" role="presentation">
+          <a href="#Section2" aria-controls="messages" role="tab" data-toggle="tab"
+             class="nav-link">On Examination</a>
+        </li>
+        <li class="mr-3 nav-item" role="presentation">
+          <a href="#Section3" aria-controls="Diginist" role="tab" data-toggle="tab"
+             class="nav-link">Diginist</a></li>
+        <li class="mr-3 nav-item" role="presentation">
+          <a href="#Section4" aria-controls="Prescription" role="tab" data-toggle="tab"
+             class="nav-link">Prescription</a>
+        </li>
+      </ul>
 
       <div class="tab-content">
 
-            <div role="tabpanel" class="tab-pane fade active show" id="Section0">
+        <div role="tabpanel" class="tab-pane fade active show" id="Section0">
 
-              <br>
+          <div class="list-group mt-3">
+            <button (click)="selectTemplate(0)"
+                    class="list-group-item list-group-item-action">Template 1
+            </button>
+            <button (click)="selectTemplate(1)"
+                    class="list-group-item list-group-item-action">Template 2
+            </button>
+            <button (click)="selectTemplate(0)"
+                    class="list-group-item list-group-item-action">Template 3
+            </button>
+            <button (click)="selectTemplate(0)"
+                    class="list-group-item list-group-item-action">Template 4
+            </button>
+            <button (click)="selectTemplate(0)"
+                    class="list-group-item list-group-item-action">Template 5
+            </button>
+          </div>
 
-              <div class="list-group">
-                <button (click)="template()"
-                   class="list-group-item list-group-item-action">Template 1</button>
-                <button (click)="template()"
-                   class="list-group-item list-group-item-action">Template 2</button>
-                <button (click)="template()"
-                   class="list-group-item list-group-item-action">Template 3</button>
-                <button (click)="template()"
-                   class="list-group-item list-group-item-action">Template 4</button>
-                <button (click)="template()"
-                   class="list-group-item list-group-item-action">Template 5</button>
-              </div>
+        </div>
 
-            </div>
-
-            <div role="tabpanel" class="tab-pane fade" id="Section1">
-
-              <div class="form-group mb-4 row">
-                <label class="col-sm-3 col-form-label">Chief Complain</label>
-                <div class="col-sm-9">
-                 <!-- <label  *ngFor="let prescriptionElements of prescriptions">
-                    <textarea type="text" formControlName="complain"  [value]="prescriptionElements.chiefComplain"></textarea>
-                  </label>-->
-                  <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
-                <textarea type="text" formControlName="complain" class="form-control"
-                          [value]="prescriptionElements.chiefComplain"
-                          [ngClass]="{ 'is-invalid': submitted && f.complain.errors }"></textarea></li>
-                  <div *ngIf="submitted && f.complain.errors" class="invalid-feedback">
-                    <div *ngIf="f.complain.errors.required">Chief Complain is required</div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
+        <div role="tabpanel" class="tab-pane fade" id="Section1">
 
 
-            <!--<div role="tab" class="tab-pane fade in active" id="Section1">-->
-
-            <!--<textarea class="form-control h-25" formControlName="complain" placeholder="Chief Complain"-->
-            <!--[ngClass]="{ 'is-invalid': submitted && f.complain.errors }"></textarea>-->
-            <!--<div *ngIf="submitted && f.complain.errors" class="invalid-feedback">-->
-            <!--<div *ngIf="f.complain.errors.required">Name is required</div>-->
-            <!--</div>-->
-
-            <!--</div>-->
-            <div role="tabpanel" class="tab-pane fade" id="Section2">
-              <div class="form-group mb-4 row mt-5">
-                <label class="col-sm-3 col-form-label">Parameters</label>
-                <div class="col-sm-9">
-                  <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
-                <textarea type="text" formControlName="parameters" class="form-control"
-                          [value]="prescriptionElements.parameters"
-                          [ngClass]="{ 'is-invalid': submitted && f.parameters.errors }"></textarea></li>
-                  <div *ngIf="submitted && f.parameters.errors" class="invalid-feedback">
-                    <div *ngIf="f.parameters.errors.required">Parameters is required</div>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group mb-4 row mt-5">
-                <label class="col-sm-3 col-form-label">Remarks</label>
-                <div class="col-sm-9">
-                  <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
-                <textarea type="text" formControlName="remarks" class="form-control"
-                          [value]="prescriptionElements.remarks"
-                          [ngClass]="{ 'is-invalid': submitted && f.remarks.errors }"></textarea></li>
-                  <div *ngIf="submitted && f.remarks.errors" class="invalid-feedback">
-                    <div *ngIf="f.remarks.errors.required">Remarks is required</div>
-                  </div>
-                </div>
+          <div class="form-group mb-4 row mt-4">
+            <label class="col-sm-2 col-form-label">Chief Complain</label>
+            <div class="col-sm-10">
+              <textarea type="text" formControlName="chiefComplain" class="form-control"
+                        value="{{ selectedTemplate?.chiefComplain }}"
+                        [ngClass]="{ 'is-invalid': submitted && f.chiefComplain.errors }"></textarea>
+              <div *ngIf="submitted && f.chiefComplain.errors" class="invalid-feedback">
+                <div *ngIf="f.chiefComplain.errors.required">Chief Complain is required</div>
               </div>
             </div>
+          </div>
 
-            <div role="tabpanel" class="tab-pane fade" id="Section3">
+        </div>
 
-              <div class="form-group mb-4 row mt-5">
-                <label class="col-sm-3 col-form-label">Medical & Dental History</label>
-                <div class="col-sm-9">
-                  <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
-                <textarea type="text" formControlName="dentalHistory" class="form-control"
-                          [value]="prescriptionElements.dentalHistory"
-                          [ngClass]="{ 'is-invalid': submitted && f.dentalHistory.errors }"></textarea></li>
-                  <div *ngIf="submitted && f.dentalHistory.errors" class="invalid-feedback">
-                    <div *ngIf="f.dentalHistory.errors.required">Medical & Dental History is required</div>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group mb-4 row mt-5">
-                <label class="col-sm-3 col-form-label">Drug & Vaccination History</label>
-                <div class="col-sm-9">
-                  <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
-                <textarea type="text" formControlName="vaccinationHistory" class="form-control"
-                          [value]="prescriptionElements.vaccinationHistory"
-                          [ngClass]="{ 'is-invalid': submitted && f.vaccinationHistory.errors }"></textarea></li>
-                  <div *ngIf="submitted && f.vaccinationHistory.errors" class="invalid-feedback">
-                    <div *ngIf="f.vaccinationHistory.errors.required">Drug & Vaccination History is required</div>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group mb-4 row mt-5">
-                <label class="col-sm-3 col-form-label">Investigation History</label>
-                <div class="col-sm-9">
-                  <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
-                <textarea type="text" formControlName="investigation" class="form-control"
-                          [value]="prescriptionElements.vaccinationHistory"
-                          [ngClass]="{ 'is-invalid': submitted && f.investigation.errors }"></textarea></li>
-                  <div *ngIf="submitted && f.investigation.errors" class="invalid-feedback">
-                    <div *ngIf="f.investigation.errors.required">Investigation is required</div>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group mb-4 row mt-5">
-                <label class="col-sm-3 col-form-label">Rediological/Clinical Finding</label>
-                <div class="col-sm-9">
-                  <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
-                <textarea type="text" formControlName="radiological" class="form-control"
-                          [value]="prescriptionElements.radiological"
-                          [ngClass]="{ 'is-invalid': submitted && f.radiological.errors }"></textarea></li>
-                  <div *ngIf="submitted && f.radiological.errors" class="invalid-feedback">
-                    <div *ngIf="f.radiological.errors.required">Rediological/Clinical Finding is required</div>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group mb-4 row mt-5">
-                <label class="col-sm-3 col-form-label">Final Diagnosis & Treatment Planning</label>
-                <div class="col-sm-9">
-                  <li class="list-group m-2" *ngFor="let prescriptionElements of prescriptions">
-                <textarea type="text" formControlName="planning" class="form-control"
-                          [value]="prescriptionElements.planning"
-                          [ngClass]="{ 'is-invalid': submitted && f.planning.errors }"></textarea></li>
-                  <div *ngIf="submitted && f.planning.errors" class="invalid-feedback">
-                    <div *ngIf="f.planning.errors.required">Rediological/Clinical Finding is required</div>
-                  </div>
-                </div>
-              </div>
 
+
+        <div role="tabpanel" class="tab-pane fade" id="Section2">
+
+          <div class="form-group mb-4 row mt-4">
+            <label class="col-sm-2 col-form-label">Parameters</label>
+            <div class="col-sm-10">
+              <textarea type="text" formControlName="parameters" class="form-control"
+                        value="{{ selectedTemplate?.parameters }}"
+                        [ngClass]="{ 'is-invalid': submitted && f.parameters.errors }"></textarea>
+              <div *ngIf="submitted && f.parameters.errors" class="invalid-feedback">
+                <div *ngIf="f.parameters.errors.required">Parameters is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group mb-4 row">
+            <label class="col-sm-2 col-form-label">Remarks</label>
+            <div class="col-sm-10">
+              <textarea type="text" formControlName="remarks" class="form-control"
+                        value="{{ selectedTemplate?.remarks }}"
+                        [ngClass]="{ 'is-invalid': submitted && f.remarks.errors }"></textarea>
+              <div *ngIf="submitted && f.remarks.errors" class="invalid-feedback">
+                <div *ngIf="f.remarks.errors.required">Remarks is required</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade" id="Section3">
+
+          <div class="form-group mb-4 row mt-4">
+            <label class="col-sm-3 col-form-label">Medical & Dental History</label>
+            <div class="col-sm-9">
+              <textarea type="text" formControlName="dentalHistory" class="form-control"
+                        value="{{ selectedTemplate?.dentalHistory }}"
+                        [ngClass]="{ 'is-invalid': submitted && f.dentalHistory.errors }"></textarea>
+              <div *ngIf="submitted && f.dentalHistory.errors" class="invalid-feedback">
+                <div *ngIf="f.dentalHistory.errors.required">Medical & Dental History is required</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group mb-4 row">
+            <label class="col-sm-3 col-form-label">Drug & Vaccination History</label>
+            <div class="col-sm-9">
+              <textarea type="text" formControlName="vaccinationHistory" class="form-control"
+                        value="{{ selectedTemplate?.vaccinationHistory }}"
+                        [ngClass]="{ 'is-invalid': submitted && f.vaccinationHistory.errors }"></textarea>
+              <div *ngIf="submitted && f.vaccinationHistory.errors" class="invalid-feedback">
+                <div *ngIf="f.vaccinationHistory.errors.required">Drug & Vaccination History is required</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group mb-4 row">
+            <label class="col-sm-3 col-form-label">Investigation History</label>
+            <div class="col-sm-9">
+              <textarea type="text" formControlName="investigation" class="form-control"
+                        value="{{ selectedTemplate?.vaccinationHistory }}"
+                        [ngClass]="{ 'is-invalid': submitted && f.investigation.errors }"></textarea>
+              <div *ngIf="submitted && f.investigation.errors" class="invalid-feedback">
+                <div *ngIf="f.investigation.errors.required">Investigation is required</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group mb-4 row">
+            <label class="col-sm-3 col-form-label">Rediological/Clinical Finding</label>
+            <div class="col-sm-9">
+              <textarea type="text" formControlName="radiological" class="form-control"
+                        value="{{ selectedTemplate?.radiological }}"
+                        [ngClass]="{ 'is-invalid': submitted && f.radiological.errors }"></textarea>
+              <div *ngIf="submitted && f.radiological.errors" class="invalid-feedback">
+                <div *ngIf="f.radiological.errors.required">Rediological/Clinical Finding is required</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group mb-4 row">
+            <label class="col-sm-3 col-form-label">Final Diagnosis & Treatment Planning</label>
+            <div class="col-sm-9">
+              <textarea type="text" formControlName="planning" class="form-control"
+                        value="{{ selectedTemplate?.planning }}"
+                        [ngClass]="{ 'is-invalid': submitted && f.planning.errors }"></textarea>
+              <div *ngIf="submitted && f.planning.errors" class="invalid-feedback">
+                <div *ngIf="f.planning.errors.required">Rediological/Clinical Finding is required</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade" id="Section4">
+
+          <div class="row mb-2 mt-4">
+
+            <div class="col-3">
+              <input class="form-control" formControlName="medicineName" rows="3" placeholder="medicine name">
             </div>
 
-            <div role="tabpanel" class="tab-pane fade" id="Section4">
+            <div class="col-2">
+              <select class="custom-select px-1" formControlName="drugType" class="form-control">
+                <option value="Tab">Tab</option>
+                <option value="Cap">Cap</option>
+                <option value="Liquid">Liquid</option>
+              </select>
+            </div>
 
-              <div class="row mb-2 mt-4">
+            <div class="col-2">
+              <select class="custom-select px-1" formControlName="drugStrength" class="form-control">
+                <option value="10">10mg</option>
+                <option value="250">250mg</option>
+                <option value="500">500mg</option>
+                <option value="40">40mg</option>
+              </select>
+            </div>
 
-                <div class="col-3">
-                  <input class="form-control" formControlName="medicineName" rows="3" placeholder="medicine name">
-                </div>
-
-                <div class="col-2">
-                  <select class="custom-select px-1" formControlName="drugType" class="form-control">
-                    <option value="Tab">Tab</option>
-                    <option value="Cap">Cap</option>
-                    <option value="Liquid">Liquid</option>
-                  </select>
-                </div>
-
-                <div class="col-2">
-                  <select class="custom-select px-1" formControlName="drugStrength" class="form-control">
-                    <option value="10">10mg</option>
-                    <option value="250">250mg</option>
-                    <option value="500">500mg</option>
-                    <option value="40">40mg</option>
-                  </select>
-                </div>
-
-                <div class="col-2">
-                  <div class="form-group mb-1">
-                    <select class="custom-select px-1" formControlName="drugDose" class="form-control">
-                      <option value="1+1+1">1+1+1</option>
-                      <option value="1+1+0">1+1+0</option>
-                      <option value="1+0+1">1+0+1</option>
-                      <option value="1+0+0">1+0+0</option>
-                      <option value="0+1+1">0+1+1</option>
-                      <option value="0+1+0">0+1+0</option>
-                      <option value="0+0+1">0+0+1</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="col-2">
-                  <div class="form-group mb-1">
-                    <select class="custom-select px-1" formControlName="drugDuration" class="form-control">
-                      <option value="1">1 day</option>
-                      <option value="3">3 days</option>
-                      <option value="7">7 days</option>
-                      <option value="10">10 days</option>
-                      <option value="15">15 days</option>
-                      <option value="20">20 days</option>
-                      <option value="30">30 days</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="col-1">
-                  <div class="form-group mb-1">
-                    <button class="btn btn-secondary float-right" (click)="addMedicine()">Add</button>
-                  </div>
-                </div>
-
+            <div class="col-2">
+              <div class="form-group mb-1">
+                <select class="custom-select px-1" formControlName="drugDose" class="form-control">
+                  <option value="1+1+1">1+1+1</option>
+                  <option value="1+1+0">1+1+0</option>
+                  <option value="1+0+1">1+0+1</option>
+                  <option value="1+0+0">1+0+0</option>
+                  <option value="0+1+1">0+1+1</option>
+                  <option value="0+1+0">0+1+0</option>
+                  <option value="0+0+1">0+0+1</option>
+                </select>
               </div>
+            </div>
 
-              <br>
+            <div class="col-2">
+              <div class="form-group mb-1">
+                <select class="custom-select px-1" formControlName="drugDuration" class="form-control">
+                  <option value="1">1 day</option>
+                  <option value="3">3 days</option>
+                  <option value="7">7 days</option>
+                  <option value="10">10 days</option>
+                  <option value="15">15 days</option>
+                  <option value="20">20 days</option>
+                  <option value="30">30 days</option>
+                </select>
+              </div>
+            </div>
 
-              <table class="table">
-                <thead class="thead-light">
-                <tr>
-                  <th scope="col">Medicine Name</th>
-                  <th scope="col">Drug Type</th>
-                  <th scope="col">Drug Strength</th>
-                  <th scope="col">Drug Dose</th>
-                  <th scope="col">Drug Duration</th>
-                  <th scope="col"></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr *ngFor="let createMedicine of createMedicinePrescription">
-                  <td>{{ createMedicine.medicineName }}</td>
-                  <td>{{ createMedicine.drugType }}</td>
-                  <td>{{ createMedicine.drugStrength }}</td>
-                  <td>{{ createMedicine.drugDose }}</td>
-                  <td>{{ createMedicine.drugDuration }}</td>
-                  <td><a>Delete</a></td>
-                </tr>
-                </tbody>
-              </table>
-
+            <div class="col-1">
+              <div class="form-group mb-1">
+                <button class="btn btn-secondary float-right" (click)="addMedicine()">Add</button>
+              </div>
             </div>
 
           </div>
+
+          <br>
+
+          <table class="table">
+            <thead class="thead-light">
+            <tr>
+              <th scope="col">Medicine Name</th>
+              <th scope="col">Drug Type</th>
+              <th scope="col">Drug Strength</th>
+              <th scope="col">Drug Dose</th>
+              <th scope="col">Drug Duration</th>
+              <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let createMedicine of createMedicinePrescription">
+              <td>{{ createMedicine.medicineName }}</td>
+              <td>{{ createMedicine.drugType }}</td>
+              <td>{{ createMedicine.drugStrength }}</td>
+              <td>{{ createMedicine.drugDose }}</td>
+              <td>{{ createMedicine.drugDuration }}</td>
+              <td><a>Delete</a></td>
+            </tr>
+            </tbody>
+          </table>
+
+        </div>
+
+      </div>
 
     </div>
 
