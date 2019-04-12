@@ -12,11 +12,10 @@
       <div class="form-group mb-4 row">
         <label class="col-sm-3 col-form-label">Phone number</label>
         <div class="col-sm-9">
-          <input type="text" formControlName="phoneNumber" class="form-control"
-                 placeholder="Type number to search"
-                 [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }" />
-          <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
-            <div *ngIf="f.phoneNumber.errors.required">Phone number is required</div>
+          <input type="text" matInput placeholder="Search by phone number" aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl"
+                 class="form-control"   [ngClass]="{ 'is-invalid': submitted && f.stateCtrl.errors }"/>
+          <div *ngIf="submitted && f.stateCtrl.errors" class="invalid-feedback">
+            <div *ngIf="f.stateCtrl.errors.required">Phone number is required</div>
           </div>
         </div>
       </div>
@@ -24,8 +23,8 @@
       <div class="form-group mb-4 row">
         <label class="col-sm-3 col-form-label">Patient Name</label>
         <div class="col-sm-9">
-          <input type="text" formControlName="patientName" class="form-control"
-                 [ngClass]="{ 'is-invalid': submitted && f.patientName.errors }" />
+          <input type="text" formControlName="patientName"  class="form-control"
+                 [ngClass]="{ 'is-invalid': submitted && f.patientName.errors }"/>
           <div *ngIf="submitted && f.patientName.errors" class="invalid-feedback">
             <div *ngIf="f.patientName.errors.required">Patient Name is required</div>
           </div>
@@ -36,7 +35,7 @@
         <label class="col-sm-3 col-form-label">Address</label>
         <div class="col-sm-9">
           <input type="text" formControlName="address" class="form-control"
-                 [ngClass]="{ 'is-invalid': submitted && f.address.errors }" />
+                 [ngClass]="{ 'is-invalid': submitted && f.address.errors }"/>
           <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
             <div *ngIf="f.address.errors.required">Address is required</div>
           </div>
@@ -70,4 +69,28 @@
     </div>
 
   </form>
+
+
 </div>
+<div>
+
+  <form class="example-form">
+
+
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let state of filteredStates | async" [value]="state.phoneno">
+          <div class="card">
+            <div class="card-body">
+              <span>{{state.phoneno}}</span> |
+              <small>Name: {{state.nameP}}</small>
+            </div>
+          </div>
+        </mat-option>
+      </mat-autocomplete>
+
+
+
+
+  </form>
+</div>
+
