@@ -14,7 +14,7 @@ import {CreateDrug} from "../../../model/create-medicine";
 export class CreatePrescriptionComponent implements OnInit {
   selectedTemplate: any;
   prescriptionResp: any;
-
+  selectedTemplateName: Array<any> = [];
   form: FormGroup;
   submitted = false;
   serverError = '';
@@ -35,19 +35,30 @@ export class CreatePrescriptionComponent implements OnInit {
   ngOnInit() {
     this.form = this.formBuilder.group({
       chiefComplain: ['', Validators.required],
-      parameters: ['',Validators.required],
-      remarks: ['',Validators.required],
-      dentalHistory: ['',Validators.required],
-      vaccinationHistory: ['',Validators.required],
-      investigation: ['',Validators.required],
-      radiological: ['',Validators.required],
-      planning: ['',Validators.required],
+      parameters: ['', Validators.required],
+      remarks: ['', Validators.required],
+      dentalHistory: ['', Validators.required],
+      vaccinationHistory: ['', Validators.required],
+      investigation: ['', Validators.required],
+      radiological: ['', Validators.required],
+      planning: ['', Validators.required],
       drugType: [''],
       medicineName: [''],
       drugStrength: [''],
       drugDose: [''],
       drugDuration: ['']
 
+
+    });
+    this.prescriptionService.getPrescriptionView().subscribe(res => {
+      this.prescriptionResp = res;
+      this.selectedTemplateName = [];
+
+      this.selectedTemplate = res['items'].forEach((template) => {
+        const prescription: CreatePrescription = new CreatePrescription();
+        prescription.templateName = template.templateName;
+        this.selectedTemplateName.push(prescription);
+      });
 
     });
   }
@@ -115,16 +126,15 @@ export class CreatePrescriptionComponent implements OnInit {
 
         const createDrug: CreateDrug = new CreateDrug();
         createDrug.drugType = medicine.drugType;
-        createDrug.medicineName =  medicine.medicineName;
-        createDrug.drugStrength =  medicine.drugStrength;
-        createDrug.drugDose =  medicine.drugDose;
-        createDrug.drugDuration =  medicine.drugDuration;
+        createDrug.medicineName = medicine.medicineName;
+        createDrug.drugStrength = medicine.drugStrength;
+        createDrug.drugDose = medicine.drugDose;
+        createDrug.drugDuration = medicine.drugDuration;
         this.createMedicinePrescription.push(createDrug);
 
       });
 
     });
   }
-
 
 }

@@ -37,25 +37,11 @@
       <div class="tab-content">
 
         <div role="tabpanel" class="tab-pane fade active show" id="Section0">
-
           <div class="list-group mt-3">
-            <button (click)="selectTemplate(0)"
-                    class="list-group-item list-group-item-action">Template 1
-            </button>
-            <button (click)="selectTemplate(1)"
-                    class="list-group-item list-group-item-action">Template 2
-            </button>
-            <button (click)="selectTemplate(0)"
-                    class="list-group-item list-group-item-action">Template 3
-            </button>
-            <button (click)="selectTemplate(0)"
-                    class="list-group-item list-group-item-action">Template 4
-            </button>
-            <button (click)="selectTemplate(0)"
-                    class="list-group-item list-group-item-action">Template 5
-            </button>
+            <li class="list-group m-2" *ngFor="let collectTemplateName of selectedTemplateName; let i = index">
+              <input type="button" (click)="selectTemplate(i)"
+                     class="list-group-item list-group-item-action" [value]="collectTemplateName.templateName"></li>
           </div>
-
         </div>
 
         <div role="tabpanel" class="tab-pane fade" id="Section1">
@@ -65,7 +51,7 @@
             <label class="col-sm-2 col-form-label">Chief Complain</label>
             <div class="col-sm-10">
               <textarea type="text" formControlName="chiefComplain" class="form-control"
-                        value="{{ selectedTemplate?.chiefComplain }}"
+                        value="{{selectedTemplate?.chiefComplain}}"
                         [ngClass]="{ 'is-invalid': submitted && f.chiefComplain.errors }"></textarea>
               <div *ngIf="submitted && f.chiefComplain.errors" class="invalid-feedback">
                 <div *ngIf="f.chiefComplain.errors.required">Chief Complain is required</div>
@@ -74,7 +60,6 @@
           </div>
 
         </div>
-
 
 
         <div role="tabpanel" class="tab-pane fade" id="Section2">
