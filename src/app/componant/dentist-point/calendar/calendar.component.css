@@ -10,3 +10,31 @@ pre {
 .cal-month-view .cal-day-cell {
   min-height: 95px;
 }
+
+
+.cal-month-view .cal-day-cell.cal-today {
+  background-color: #f2f3fa;
+}
+
+.cal-month-view .cal-open-day-events {
+  color: #34495f;
+  background-color: #f2f3fa;
+  box-shadow: none;
+}
+
+/* Replace ugly dot */
+.cal-month-view .cal-event {
+  background-color: inherit !important;
+}
+.cal-month-view .cal-cell.cal-has-events.cal-open {
+  background-color: #ededed;
+}
+
+.cal-month-view .cal-open-day-events .cal-event {
+  background-color: #34495f !important;
+}
+
+.cal-month-view .cal-day-badge {
+  background-color: #f2f3fa;
+  color: #34495f;
+}
