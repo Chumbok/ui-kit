@@ -38,10 +38,10 @@ export class TimeslotService {
       '{' +
 
       '"availableTimeSlots":[' +
-      '{"startDateTime":"2016-07-08 18:00:00","endDateTime":"2019-07-08 18:00:00"},' +
-      '{"startDateTime":"2018-07-08 18:00:00","endDateTime":"20109-07-08 18:00:00"},' +
-      '{"startDateTime":"2016-07-08 18:00:00","endDateTime":"2019-07-08 18:00:00"},' +
-      '{"startDateTime":"2018-07-08 18:00:00","endDateTime":"20109-07-08 18:00:00"}' +
+      '{"startDate":"Tue Apr 23 2019 00:00:00 GMT+0600 (Bangladesh Standard Time)","startTime":"10:00","endDate":"Tue Apr 23 2019 00:00:00 GMT+0600 (Bangladesh Standard Time)","endTime":"11:00"},' +
+      '{"startDate":"Tue Apr 24 2019 00:00:00 GMT+0600 (Bangladesh Standard Time)","startTime":"11:00","endDate":"Tue Apr 23 2019 00:00:00 GMT+0600 (Bangladesh Standard Time)","endTime":"12:00"},' +
+      '{"startDate":"Tue Apr 24 2019 00:00:00 GMT+0600 (Bangladesh Standard Time)","startTime":"13:00","endDate":"Tue Apr 23 2019 00:00:00 GMT+0600 (Bangladesh Standard Time)","endTime":"14:00"},' +
+      '{"startDate":"Tue Apr 23 2019 00:00:00 GMT+0600 (Bangladesh Standard Time)","startTime":"14:00","endDate":"Tue Apr 23 2019 00:00:00 GMT+0600 (Bangladesh Standard Time)","endTime":"15:00"}' +
       ']' +
       '}' +
       ']}';
