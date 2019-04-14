@@ -1,36 +1,31 @@
 <div class="col-md-8 ibox">
-
   <div class="ibox-head">
     <div class="ibox-title">Create Appointment</div>
   </div>
-
-
   <form name="form" class="form-horizontal" [formGroup]="form">
 
     <div class="ibox-body">
-
       <div class="form-group mb-4 row">
         <label class="col-sm-3 col-form-label">Phone number</label>
         <div class="col-sm-9">
-          <input type="text" matInput placeholder="Search by phone number" aria-label="State" [matAutocomplete]="auto" [formControl]="stateCtrl"
-                 class="form-control"   [ngClass]="{ 'is-invalid': submitted && f.stateCtrl.errors }"/>
+          <input type="text" matInput placeholder="Search by phone number" aria-label="State" [matAutocomplete]="auto"
+                 [formControl]="stateCtrl"
+                 class="form-control" [ngClass]="{ 'is-invalid': submitted && f.stateCtrl.errors }"/>
           <div *ngIf="submitted && f.stateCtrl.errors" class="invalid-feedback">
             <div *ngIf="f.stateCtrl.errors.required">Phone number is required</div>
           </div>
         </div>
       </div>
-
       <div class="form-group mb-4 row">
         <label class="col-sm-3 col-form-label">Patient Name</label>
         <div class="col-sm-9">
-          <input type="text" formControlName="patientName"  class="form-control"
+          <input type="text" formControlName="patientName" class="form-control"
                  [ngClass]="{ 'is-invalid': submitted && f.patientName.errors }"/>
           <div *ngIf="submitted && f.patientName.errors" class="invalid-feedback">
             <div *ngIf="f.patientName.errors.required">Patient Name is required</div>
           </div>
         </div>
       </div>
-
       <div class="form-group mb-4 row">
         <label class="col-sm-3 col-form-label">Address</label>
         <div class="col-sm-9">
@@ -44,52 +39,44 @@
 
       <div class="form-group mb-4 row">
         <label class="col-sm-3 col-form-label">Date</label>
-        <div class="col-sm-9">
-          <input formControlName="date" [(ngModel)]="dateTime1" (click)="onFindFreeTimeSlotByDate()"
+        <div class="col-sm-9 input-group-prepend">
+          <input formControlName="date" [(ngModel)]="dateTime1"
                  [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" class="form-control">
+          <div>
+            <button type="button" class="btn btn-secondary" (click)="onFindFreeTimeSlotByDate()">Show</button>
+          </div>
           <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
         </div>
       </div>
-
       <div class="form-group mb-4 row">
         <label class="col-sm-3 col-form-label">Free Slots</label>
-        <div class="col-sm-9">
-          <input type="button" class=" btn btn-secondary" value="10:00">&nbsp;
-          <input type="button" class=" btn btn-secondary" value="10:30">
+        <div class="col-sm-9" class="btn-group" role="group" aria-label="Basic example"
+             *ngFor="let TimeSlotArrayValue of TimeSlotArray; let i = index">
+          <input type="submit" class=" btn btn-secondary ml-1" [formControl]="getFreeTime" [value]="TimeSlotArrayValue">&nbsp;
         </div>
       </div>
-
     </div>
-
     <div class="ibox-footer row">
       <div class="col-sm-12 text-center">
         <button class="btn btn-primary mr-2" (click)="onSubmit()">Submit</button>
         <button class="btn btn-secondary">Cancel</button>
       </div>
     </div>
-
   </form>
-
-
 </div>
 <div>
 
   <form class="example-form">
-
-
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let state of filteredStates | async" [value]="state.phoneno">
-          <div class="card">
-            <div class="card-body">
-              <span>{{state.phoneno}}</span> |
-              <small>Name: {{state.nameP}}</small>
-            </div>
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let state of filteredStates | async" [value]="state.phoneno">
+        <div class="card">
+          <div class="card-body">
+            <span>{{state.phoneno}}</span> |
+            <small>Name: {{state.nameP}}</small>
           </div>
-        </mat-option>
-      </mat-autocomplete>
-
-
-
+        </div>
+      </mat-option>
+    </mat-autocomplete>
 
   </form>
 </div>
