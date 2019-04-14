@@ -1,16 +1,13 @@
-<div class="col-md-6 ibox">
+<div class="col-md-9 ibox">
   <div class="ibox-head">
     <div class="ibox-title">Prescription List</div>
     <!--Search Option -->
     <ul class="nav" role="tablist">
       <li class="text-right">
         <div class="form-group m-0 row">
-          <div class="col-sm-12">
-            <input type="text" placeholder="Search By Phone No" formControlName="templateName" class="form-control"
-                   [ngClass]="{ 'is-invalid': submitted && f.templateName.errors }"/>
-            <div *ngIf="submitted && f.templateName.errors" class="invalid-feedback">
-              <div *ngIf="f.templateName.errors.required">Template Name is required</div>
-            </div>
+          <label class="col-sm-4 col-form-label">Phone number</label>
+          <div class="col-sm-8">
+            <input type="text" placeholder="Search By Phone No" class="form-control"/>
           </div>
         </div>
       </li>

@@ -16,6 +16,8 @@ export class PrescriptionListComponent implements OnInit {
   itemFrom: number;
   itemTo: number;
   totalElements: number;
+  prescriptions: Array<any> = [];
+  prescrip: Array<any> = [];
 
   constructor(private prescriptionService: PrescriptionService, private router: Router) {
   }
@@ -34,6 +36,7 @@ export class PrescriptionListComponent implements OnInit {
   }
 
   onPrescriptionView() {
+
     this.router.navigate(['doctors/prescription-view']);
 
   }

@@ -28,9 +28,9 @@ export class TemplateService {
   }
 
 
-  public createTemplate(id: string, complain: string, parameters: string, remarks: string, dentalHistory: string, vaccinationHistory: string,
+  public createTemplate(tempName: string, complain: string, parameters: string, remarks: string, dentalHistory: string, vaccinationHistory: string,
                         investigation: string, radiological: string, planning: string, prescriptionList: Array<CreateDrug>): Observable<any> {
-    console.log("template",id);
+    console.log("template", tempName);
     console.log(complain);
     console.log(parameters);
     console.log(remarks);
