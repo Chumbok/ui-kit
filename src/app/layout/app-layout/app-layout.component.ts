@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../service/auth.service';
 import {timer} from 'rxjs';
-import {first} from 'rxjs/operators';
 import {PingService} from '../../service/ping.service';
 import {FlashMessageService} from '../../service/flash-message.service';
+import {first} from 'rxjs/operators';
 
 
 @Component({
@@ -42,9 +42,8 @@ export class AppLayoutComponent implements OnInit {
     timer(5000, 5 * 1000).subscribe(x => {
       if (!this.pingInProgress) {
         this.pingInProgress = true;
-        this.pingService.ping('uaa').pipe(first()).subscribe(
-          res => {
-            this.pingInProgress = false;
+        this.pingService.ping('uaa')
+          .subscribe(res => {
             if (this.internetGotDisconnected) {
               this.flashMessageService.showFlashMessage({
                 messages: ['Internet connection.'],
@@ -52,15 +51,15 @@ export class AppLayoutComponent implements OnInit {
               });
               this.internetGotDisconnected = false;
             }
-          },
-          error => {
+          }, error => {
             this.flashMessageService.showFlashMessage({
               messages: ['No internet connection!'],
               dismissible: true,
               type: 'danger'
             });
-            this.pingInProgress = false;
             this.internetGotDisconnected = true;
+          }, () => {
+            this.pingInProgress = false;
           });
       }
     });
