@@ -86,6 +86,10 @@ import {environment} from '../environments/environment';
 import {PingHttpService} from './service/ping-http.service';
 import {PingMockService} from './service/ping-mock.service';
 import {PingService} from './service/ping.service';
+import {AuthHttpService} from './service/auth-http.service';
+import {AuthMockService} from './service/auth-mock.service';
+import {LoggedInUserInfoHttpService} from './service/logged-in-user-info-http.service';
+import {LoggedInUserInfoMockService} from './service/logged-in-user-info-mock.service';
 
 
 @NgModule({
@@ -172,14 +176,20 @@ import {PingService} from './service/ping.service';
 
   ],
   providers: [
-    AuthService,
+    {
+      provide: AuthService,
+      useClass: environment.chumbok.enableMock ? AuthMockService : AuthHttpService
+    },
     CookieService,
     {
       provide: PingService,
       useClass: environment.chumbok.enableMock ? PingMockService : PingHttpService
     },
     FlashMessageService,
-    LoggedInUserInfoService,
+    {
+      provide: LoggedInUserInfoService,
+      useClass: environment.chumbok.enableMock ? LoggedInUserInfoMockService : LoggedInUserInfoHttpService
+    },
     OrgTenantUserService,
     AppointmentService,
     TemplateService,
