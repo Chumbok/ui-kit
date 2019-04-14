@@ -18,7 +18,6 @@ import {HTTP_INTERCEPTORS, HttpClientModule, HttpClientXsrfModule} from '@angula
 import {CookieService} from 'ngx-cookie-service';
 import {AuthGuard} from './guard/auth.guard';
 import {LogoutComponent} from './componant/auth/logout/logout.component';
-import {PingService} from './service/ping.service';
 import {FlashMessageService} from './service/flash-message.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {Http401Interceptor} from './interceptor/Http401Interceptor';
@@ -42,10 +41,10 @@ import {PrescriptionListComponent} from './componant/dentist-point/prescription-
 import {PrescriptionViewComponent} from './componant/dentist-point/prescription-view/prescription-view.component';
 import {CreateAppointmentComponent} from './componant/dentist-point/create-appointment/create-appointment.component';
 import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
-import {CreateTemplateComponent} from "./componant/dentist-point/create-template/create-template.component";
-import {TemplateService} from "./service/template.service";
-import {CreateAppointmentService} from "./service/create-appointment.service";
-import {TimeslotService} from "./service/timeslot.service";
+import {CreateTemplateComponent} from './componant/dentist-point/create-template/create-template.component';
+import {TemplateService} from './service/template.service';
+import {CreateAppointmentService} from './service/create-appointment.service';
+import {TimeslotService} from './service/timeslot.service';
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -83,6 +82,10 @@ import {
   MatTooltipModule,
   MatTreeModule,
 } from '@angular/material';
+import {environment} from '../environments/environment';
+import {PingHttpService} from './service/ping-http.service';
+import {PingMockService} from './service/ping-mock.service';
+import {PingService} from './service/ping.service';
 
 
 @NgModule({
@@ -171,7 +174,10 @@ import {
   providers: [
     AuthService,
     CookieService,
-    PingService,
+    {
+      provide: PingService,
+      useClass: environment.chumbok.enableMock ? PingMockService : PingHttpService
+    },
     FlashMessageService,
     LoggedInUserInfoService,
     OrgTenantUserService,
