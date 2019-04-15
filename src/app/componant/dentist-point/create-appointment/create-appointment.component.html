@@ -40,19 +40,16 @@
       <div class="form-group mb-4 row">
         <label class="col-sm-3 col-form-label">Date</label>
         <div class="col-sm-9 input-group-prepend">
-          <input formControlName="date" [(ngModel)]="dateTime1"
+          <input id="dateff" formControlName="date" (ngModelChange)="fetchFreeTimeSlots()"
                  [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" class="form-control">
-          <div>
-            <button type="button" class="btn btn-secondary" (click)="onFindFreeTimeSlotByDate()">Show</button>
-          </div>
           <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
         </div>
       </div>
       <div class="form-group mb-4 row">
         <label class="col-sm-3 col-form-label">Free Slots</label>
         <div class="col-sm-9" class="btn-group" role="group" aria-label="Basic example"
-             *ngFor="let TimeSlotArrayValue of TimeSlotArray; let i = index">
-          <input type="submit" class=" btn btn-secondary ml-1" [formControl]="getFreeTime" [value]="TimeSlotArrayValue">&nbsp;
+             *ngFor="let timeSlotArrayValue of timeSlotArray; let i = index">
+          <input type="submit" class=" btn btn-secondary ml-1" [formControl]="getFreeTime" [value]="timeSlotArrayValue">&nbsp;
         </div>
       </div>
     </div>

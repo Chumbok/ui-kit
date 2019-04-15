@@ -16,7 +16,7 @@ export class CreateAppointmentComponent implements OnInit {
   submitted = false;
   form: FormGroup;
   serverError = '';
-  TimeSlotArray: Array<String> = [];
+  timeSlotArray: Array<String> = [];
   stateCtrl = new FormControl();
   getFreeTime = new FormControl();
   filteredStates: Observable<SearchByPhoneAppointment[]>;
@@ -54,7 +54,7 @@ export class CreateAppointmentComponent implements OnInit {
     }
   ];
 
-  constructor(private createAppointmentService: CreateAppointmentService, private createTimeSlot: TimeslotService,
+  constructor(private createAppointmentService: CreateAppointmentService, private timeSlotService: TimeslotService,
               private formBuilder: FormBuilder) {
     this.filteredStates = this.stateCtrl.valueChanges
       .pipe(
@@ -104,15 +104,11 @@ export class CreateAppointmentComponent implements OnInit {
     });
   }
 
-  onFindFreeTimeSlotByDate() {
-    this.dateFromInput = this.form.controls['date'].value;
-    this.createTimeSlot.getTimeSlot().subscribe(res => {
-      res['items'].forEach((freeSlot, index) => {
-        for (var item in freeSlot.availableTimeSlots) {
-          if (this.dateFromInput == freeSlot.availableTimeSlots[item].startDate) {
-            this.TimeSlotArray.push(freeSlot.availableTimeSlots[item].startTime);
-          }
-        }
+  fetchFreeTimeSlots() {
+    this.timeSlotService.getFreeTimeSlots(this.form.controls['date'].value).subscribe(res => {
+      this.timeSlotArray = [];
+      res.forEach(freeSlot => {
+        this.timeSlotArray.push(freeSlot.startTime);
       });
     });
   }

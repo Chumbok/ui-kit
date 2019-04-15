@@ -25,28 +25,23 @@ export class TimeslotService {
   constructor(private authService: AuthService, private http: HttpClient) {
   }
 
-  public getTimeSlot(): Observable<any> {
-    return this.enableMock ? this.getTimeSlotMock() : null;
+  public getFreeTimeSlots(selectedDate: string): Observable<any> {
+    return this.enableMock ? this.getFreeTimeSlotsMock(selectedDate) : null;
   }
 
-  private getTimeSlotMock(): Observable<any> {
-    const mockResp = '{"page":0,' +
-      '"size":10,' +
-      '"totalPages":1,' +
-      '"totalElements":1,' +
-      '"items":[' +
-      '{' +
+  private getFreeTimeSlotsMock(selectedDate: string): Observable<any> {
 
-      '"availableTimeSlots":[' +
-      '{"startDate":"Tue Apr 23 2019 00:00:00 GMT+0600 (Bangladesh Standard Time)","startTime":"10:00","endDate":"Tue Apr 23 2019 00:00:00 GMT+0600 (Bangladesh Standard Time)","endTime":"11:00"},' +
-      '{"startDate":"Mon Apr 01 2019 00:00:00 GMT+0600 (Bangladesh Standard Time)","startTime":"11:00","endDate":"Tue Apr 23 2019 00:00:00 GMT+0600 (Bangladesh Standard Time)","endTime":"12:00"},' +
-      '{"startDate":"Mon Apr 01 2019 00:00:00 GMT+0600 (Bangladesh Standard Time)","startTime":"13:00","endDate":"Tue Apr 23 2019 00:00:00 GMT+0600 (Bangladesh Standard Time)","endTime":"14:00"},' +
-      '{"startDate":"Tue Apr 23 2019 00:00:00 GMT+0600 (Bangladesh Standard Time)","startTime":"14:00","endDate":"Tue Apr 23 2019 00:00:00 GMT+0600 (Bangladesh Standard Time)","endTime":"15:00"}' +
-      ']' +
-      '}' +
-      ']}';
-    return of(JSON.parse(mockResp));
-
+    const freeSlots = [
+      {
+        startTime: '10:00',
+        endTime: '10:30',
+      },
+      {
+        startTime: '10:30',
+        endTime: '11:00',
+      },
+    ];
+    return of(freeSlots);
   }
 
 
