@@ -20,7 +20,7 @@ export class CreateAppointmentComponent implements OnInit {
   stateCtrl = new FormControl();
   getFreeTime = new FormControl();
   filteredStates: Observable<SearchByPhoneAppointment[]>;
-
+  dateFromInput: string;
   states: SearchByPhoneAppointment[] = [
     {
       phoneno: '01988851890',
@@ -93,6 +93,7 @@ export class CreateAppointmentComponent implements OnInit {
     createAppointment.patientName = this.form.controls['patientName'].value;
     createAppointment.address = this.form.controls['address'].value;
     createAppointment.date = this.form.controls['date'].value;
+
     this.createAppointmentService.createAppointment(createAppointment.phoneNumber, createAppointment.patientName, createAppointment.address,
       createAppointment.date, createAppointment.timeSlot).subscribe(res => {
     }, error => {
@@ -104,10 +105,11 @@ export class CreateAppointmentComponent implements OnInit {
   }
 
   onFindFreeTimeSlotByDate() {
+    this.dateFromInput = this.form.controls['date'].value;
     this.createTimeSlot.getTimeSlot().subscribe(res => {
       res['items'].forEach((freeSlot, index) => {
         for (var item in freeSlot.availableTimeSlots) {
-          if ("Tue Apr 23 2019 00:00:00 GMT+0600 (Bangladesh Standard Time)" == freeSlot.availableTimeSlots[item].startDate) {
+          if (this.dateFromInput == freeSlot.availableTimeSlots[item].startDate) {
             this.TimeSlotArray.push(freeSlot.availableTimeSlots[item].startTime);
           }
         }
