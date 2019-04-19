@@ -6,19 +6,7 @@
 
       <ul class="nav" role="tablist">
         <li class="text-right">
-          <div class="form-group m-4 row">
-            <label class="col-sm-5 col-form-label">Template Name</label>
-            <div class="col-sm-7">
 
-              <input type="text" formControlName="templateName" class="form-control"
-                     [ngClass]="{ 'is-invalid': submitted && f.templateName.errors }"/>
-              <div *ngIf="submitted && f.templateName.errors" class="invalid-feedback">
-                <div *ngIf="f.templateName.errors.required">Template Name is required</div>
-              </div>
-
-            </div>
-
-          </div>
         </li>
       </ul>
       <div>
@@ -29,10 +17,22 @@
 
 
     <div class="ibox-body">
+      <div class="form-group row text-right">
+        <label class="mt-1">Template Name :</label>
+        <div class="col-sm-2">
+
+          <input type="text" formControlName="templateName" class="form-control sm"
+                 placeholder="Enter Your Template Name"
+                 [ngClass]="{ 'is-invalid': submitted && f.templateName.errors }"/>
+          <div *ngIf="submitted && f.templateName.errors" class="invalid-feedback">
+            <div *ngIf="f.templateName.errors.required">Template Name is required</div>
+          </div>
+        </div>
+      </div>
       <ul class="nav nav-tabs" role="tablist">
         <li class="mr-3 nav-item" role="presentation">
           <a href="#Section1" aria-controls="profile" role="tab" data-toggle="tab"
-             class="nav-link">Chief Complain</a>
+             class="nav-link active">Chief Complain</a>
         </li>
         <li class="mr-3 nav-item" role="presentation">
           <a href="#Section2" aria-controls="messages" role="tab" data-toggle="tab"
@@ -49,7 +49,7 @@
 
       <div class="tab-content">
 
-        <div role="tabpanel" class="tab-pane fade" id="Section1">
+        <div role="tabpanel" class="tab-pane fade active show" id="Section1">
 
 
           <div class="form-group mb-4 row mt-4">

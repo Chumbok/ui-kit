@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {CreateAppointment} from "../../../model/create-appointment";
 import {CreateAppointmentService} from "../../../service/create-appointment.service";
-import {TimeslotService} from "../../../service/timeslot.service";
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {SearchByPhoneAppointment} from "../../../model/search-by-phone-appointment";
@@ -20,68 +19,21 @@ export class CreateAppointmentComponent implements OnInit {
   stateCtrl = new FormControl();
   getFreeTime = new FormControl();
   filteredStates: Observable<SearchByPhoneAppointment[]>;
-  dateFromInput: string;
-  states: SearchByPhoneAppointment[] = [
-    {
-      phoneno: '01988851890',
-      nameP: 'monirozzaman roni',
-      addressP: 'gazipur'
-    },
-    {
-      phoneno: '01788851890',
-      nameP: 'roni',
-      addressP: 'gazipur'
-    },
-    {
-      phoneno: '01998851890',
-      nameP: 'monirozzaman roni',
-      addressP: 'gazipur'
-    },
-    {
-      phoneno: '01708851890',
-      nameP: 'roni',
-      addressP: 'gazipur'
-    },
-    {
-      phoneno: '01938851890',
-      nameP: 'monirozzaman roni',
-      addressP: 'gazipur'
-    },
-    {
-      phoneno: '01748851890',
-      nameP: 'roni',
-      addressP: 'gazipur'
-    }
-  ];
+  startTimeOfFreeSlots: string;
 
-  constructor(private createAppointmentService: CreateAppointmentService, private timeSlotService: TimeslotService,
+  constructor(private createAppointmentService: CreateAppointmentService,
               private formBuilder: FormBuilder) {
     this.filteredStates = this.stateCtrl.valueChanges
       .pipe(
         startWith(''),
-        map(state => state ? this._filterStates(state) : this.states.slice())
+        map(state => state ? this._filterStates(state) : this.createAppointmentService.getAppointmentDetails().slice())
       );
   }
 
-  private _filterStates(value: string): SearchByPhoneAppointment[] {
-    const filterValue = value.toLowerCase();
-    return this.states.filter(state => state.phoneno.toLowerCase().indexOf(filterValue) === 0);
-  }
-
-  get f()
-  {
+  get f() {
     return this.form.controls;
   }
 
-  ngOnInit() {
-    this.form = this.formBuilder.group({
-      stateCtrl: ['',],
-      patientName: [''],
-      address: [''],
-      date: [''],
-      timeSlot: ['']
-    });
-  }
   onSubmit() {
     this.submitted = true;
 
@@ -93,23 +45,43 @@ export class CreateAppointmentComponent implements OnInit {
     createAppointment.patientName = this.form.controls['patientName'].value;
     createAppointment.address = this.form.controls['address'].value;
     createAppointment.date = this.form.controls['date'].value;
+    createAppointment.timeSlot = this.startTimeOfFreeSlots;
 
     this.createAppointmentService.createAppointment(createAppointment.phoneNumber, createAppointment.patientName, createAppointment.address,
       createAppointment.date, createAppointment.timeSlot).subscribe(res => {
     }, error => {
-      if (error.status === 400)
-      {
+      if (error.status === 400) {
         this.serverError = error.error.message;
       }
+    });
+
+  }
+
+  ngOnInit() {
+    this.form = this.formBuilder.group({
+      stateCtrl: ['',],
+      patientName: [''],
+      address: [''],
+      date: [''],
+      timeSlot: ['']
     });
   }
 
   fetchFreeTimeSlots() {
-    this.timeSlotService.getFreeTimeSlots(this.form.controls['date'].value).subscribe(res => {
+    this.createAppointmentService.getFreeTimeSlots(this.form.controls['date'].value).subscribe(res => {
       this.timeSlotArray = [];
       res.forEach(freeSlot => {
         this.timeSlotArray.push(freeSlot.startTime);
       });
     });
+  }
+
+  getFreeSlotsValue(startTime) {
+    this.startTimeOfFreeSlots = startTime;
+  }
+
+  private _filterStates(value: string): SearchByPhoneAppointment[] {
+    const filterValue = value.toLowerCase();
+    return this.createAppointmentService.getAppointmentDetails().filter(state => state.phoneno.toLowerCase().indexOf(filterValue) === 0);
   }
 }

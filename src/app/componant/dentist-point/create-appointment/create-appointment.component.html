@@ -48,8 +48,9 @@
       <div class="form-group mb-4 row">
         <label class="col-sm-3 col-form-label">Free Slots</label>
         <div class="col-sm-9" class="btn-group" role="group" aria-label="Basic example"
-             *ngFor="let timeSlotArrayValue of timeSlotArray; let i = index">
-          <input type="submit" class=" btn btn-secondary ml-1" [formControl]="getFreeTime" [value]="timeSlotArrayValue">&nbsp;
+             *ngFor="let timeSlotArrayValue of timeSlotArray;">
+          <input type="submit" class=" btn btn-secondary ml-1" [formControl]="getFreeTime"
+                 (click)="getFreeSlotsValue(timeSlotArrayValue)" [value]="timeSlotArrayValue">&nbsp;
         </div>
       </div>
     </div>
@@ -66,7 +67,7 @@
   <form class="example-form">
     <mat-autocomplete #auto="matAutocomplete">
       <mat-option *ngFor="let state of filteredStates | async" [value]="state.phoneno">
-        <div class="card">
+        <div class="card col-sm-9">
           <div class="card-body">
             <span>{{state.phoneno}}</span> |
             <small>Name: {{state.nameP}}</small>

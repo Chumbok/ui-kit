@@ -111,7 +111,7 @@ export class CreatePrescriptionComponent implements OnInit {
     createDrug.drugDose = this.form.controls['drugDose'].value;
     createDrug.drugDuration = this.form.controls['drugDuration'].value;
     this.createMedicinePrescription.push(createDrug)
-    console.log(this.createMedicinePrescription);
+
   }
 
   selectTemplate(id) {
@@ -137,4 +137,7 @@ export class CreatePrescriptionComponent implements OnInit {
     });
   }
 
+  onCancel() {
+    this.router.navigate(['doctors/calendar-view']);
+  }
 }

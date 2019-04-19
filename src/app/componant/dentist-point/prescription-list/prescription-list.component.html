@@ -7,7 +7,8 @@
         <div class="form-group m-0 row">
           <label class="col-sm-4 col-form-label">Phone number</label>
           <div class="col-sm-8">
-            <input type="text" placeholder="Search By Phone No" class="form-control"/>
+            <input type="text" [(ngModel)]="searchText" autocomplete="on" placeholder="&#61442;Search By Phone No"
+                   class="form-control"/>
           </div>
         </div>
       </li>
@@ -24,13 +25,12 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let prescriptionlist of prescription">
+      <tr *ngFor="let prescriptionlist of prescription | filter:searchText">
         <td style="width: 30%">{{ prescriptionlist.patientName }}</td>
         <td style="width: 50%">{{ prescriptionlist.chiefComplain }}</td>
         <td>
           <a [routerLink]="[prescriptionlist.id]" (click)="onPrescriptionView()">View</a> |
           <a [routerLink]="[prescriptionlist.id ]">Delete</a>
-
         </td>
 
       </tr>
@@ -39,4 +39,3 @@
   </div>
   <!--<div>Showing {{ itemFrom }} to {{ itemTo }} of {{ totalElements }} entries</div>-->
 </div>
-

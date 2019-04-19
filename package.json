@@ -25,6 +25,7 @@
     "@fortawesome/fontawesome-free": "^5.6.3",
     "@ng-bootstrap/ng-bootstrap": "4.0.2",
     "ajv": "^6.7.0",
+    "ng2-search-filter": "0.4.7",
     "angular-bootstrap-datepicker": "^0.1.0",
     "angular-bootstrap-datetimepicker": "^2.2.1",
     "angular-calendar": "0.26.6",
