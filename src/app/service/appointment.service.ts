@@ -28,7 +28,6 @@ export class AppointmentService {
   public getAppointmentList(): Observable<any> {
     return this.enableMock ? this.getAppointmentListMock() : null;
   }
-
   private getAppointmentListMock(): Observable<any> {
     const mockResp = '{\n' +
       '    "page": 0,\n' +
@@ -113,6 +112,4 @@ export class AppointmentService {
       '}';
     return of(JSON.parse(mockResp));
   }
-
-
 }

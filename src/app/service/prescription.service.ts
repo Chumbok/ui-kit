@@ -43,15 +43,10 @@ export class PrescriptionService {
 
     return new EmptyObservable<Response>();
 
-
   }
-
-
-
   public getPrescriptionList(patientId: string): Observable<any> {
     return this.enableMock ? this.getPrescriptionListMock() : this.getPrescriptionListReal(patientId);
   }
-
   private getPrescriptionListReal(patientId: string): Observable<any> {
     return this.http.get<any>(this.serviceBaseEndpoint + patientId + '/prescription/', this.httpOptions);
   }
@@ -59,16 +54,14 @@ export class PrescriptionService {
   private getPrescriptionListMock(): Observable<any> {
 
     const mockResp =
-      '{"page":0,' +
-      '"size":10,' +
-      '"totalPages":1,' +
-      '"totalElements":1,' +
-      '"items":[{"id":"9388c9ea-f453-41de-96cb-d388dedbf091","patientName":"Rasel","chiefComplain":"Please maintain roles"},' +
-      '{"id":"7388c9ea-f453-41de-96cb-d388dedbf091","patientName":"Roni","chiefComplain":"Please maintain roles"},' +
-      '{"id":"8388c9ea-f453-41de-96cb-d388dedbf091","patientName":"Ross","chiefComplain":"Please maintain roles"}]}';
-
-
-    return of(JSON.parse(mockResp));
+      [
+        {id: 1, phnNo: '01988841890', patientName: 'Monirozzaman', chiefComplain: 'faver'},
+        {id: 2, phnNo: '01788841890', patientName: 'joy', chiefComplain: 'faver'},
+        {id: 3, phnNo: '01888841890', patientName: 'joya', chiefComplain: 'faver'},
+        {id: 4, phnNo: '01788841890', patientName: 'nalib', chiefComplain: 'faver'},
+        {id: 5, phnNo: '01488841890', patientName: 'nabil', chiefComplain: 'faver'},
+      ];
+    return of(mockResp);
   }
 
 
@@ -77,7 +70,7 @@ export class PrescriptionService {
   }
 
   private getPrescriptionViewReal(): Observable<any> {
-    return this.http.get<any>(this.serviceBaseEndpoint , this.httpOptions);
+    return this.http.get<any>(this.serviceBaseEndpoint, this.httpOptions);
   }
 
   private getPrescriptionViewMock(): Observable<any> {
@@ -89,7 +82,7 @@ export class PrescriptionService {
       '"items":[' +
       '{' +
       '"id":"9388c9ea-f453-41de-96cb-d388dedbf091",' +
-      '"templateName":"case1",' +
+      '"templateName":"Headache",' +
       '"chiefComplain":"Headache",' +
       '"parameters":"Somethings write JSON",' +
       '"remarks":"Somethings write JSON",' +
@@ -104,7 +97,7 @@ export class PrescriptionService {
       '},' +
       '{' +
       '"id":"9388c9ea-f453-41de-96cb-d388dedbf091",' +
-      '"templateName":"case2",' +
+      '"templateName":"Normal Fever",' +
       '"chiefComplain":"Fever",' +
       '"parameters":"Somethings write JSON",' +
       '"remarks":"Somethings write JSON",' +
@@ -118,8 +111,8 @@ export class PrescriptionService {
       '},' +
       '{' +
       '"id":"9388c9ea-f453-41de-96cb-d388dedbf091",' +
-      '"templateName":"case3",' +
-      '"chiefComplain":"Fever",' +
+      '"templateName":"High Fever",' +
+      '"chiefComplain":"High Fever",' +
       '"parameters":"Somethings write JSON",' +
       '"remarks":"Somethings write JSON",' +
       '"dentalHistory":"Somethings write JSON",' +

@@ -98,7 +98,6 @@ export class CreateTemplateComponent implements OnInit{
     createDrug.drugDose = this.form.controls['drugDose'].value;
     createDrug.drugDuration = this.form.controls['drugDuration'].value;
     this.createMedicinePrescription.push(createDrug)
-    console.log(this.createMedicinePrescription);
   }
 
 

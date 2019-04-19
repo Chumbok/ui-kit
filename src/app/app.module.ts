@@ -44,7 +44,6 @@ import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
 import {CreateTemplateComponent} from './componant/dentist-point/create-template/create-template.component';
 import {TemplateService} from './service/template.service';
 import {CreateAppointmentService} from './service/create-appointment.service';
-import {TimeslotService} from './service/timeslot.service';
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -82,6 +81,7 @@ import {
   MatTooltipModule,
   MatTreeModule,
 } from '@angular/material';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import {environment} from '../environments/environment';
 import {PingHttpService} from './service/ping-http.service';
 import {PingMockService} from './service/ping-mock.service';
@@ -112,6 +112,7 @@ import {LoggedInUserInfoMockService} from './service/logged-in-user-info-mock.se
     MatDatepickerModule,
     MatDialogModule,
     MatDividerModule,
+    Ng2SearchPipeModule,
     MatExpansionModule,
     MatGridListModule,
     MatIconModule,
@@ -193,7 +194,6 @@ import {LoggedInUserInfoMockService} from './service/logged-in-user-info-mock.se
     OrgTenantUserService,
     AppointmentService,
     TemplateService,
-    TimeslotService,
     PrescriptionService,
     CreateAppointmentService,
     AuthGuard,
