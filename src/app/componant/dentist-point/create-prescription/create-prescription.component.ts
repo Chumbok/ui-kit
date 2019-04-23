@@ -3,7 +3,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {CreatePrescription} from '../../../model/create-prescription';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PrescriptionService} from '../../../service/prescription.service';
-import {CreateDrug} from "../../../model/create-medicine";
+import {CreateDrug} from '../../../model/create-medicine';
+import {Template} from '../../../model/template';
 
 
 @Component({
@@ -12,15 +13,16 @@ import {CreateDrug} from "../../../model/create-medicine";
   styleUrls: ['./create-prescription.component.css']
 })
 export class CreatePrescriptionComponent implements OnInit {
+
   selectedTemplate: any;
+  selectedTemplateId: string;
+  templateList: Template[];
   prescriptionResp: any;
-  selectedTemplateName: Array<any> = [];
   form: FormGroup;
   submitted = false;
   serverError = '';
   patientId: string;
-  createMedicinePrescription: Array<CreateDrug> = [];
-
+  medicineList: CreateDrug[] = [];
 
   constructor(private formBuilder: FormBuilder, private prescriptionService: PrescriptionService, private route: ActivatedRoute,
               private router: Router) {
@@ -28,38 +30,35 @@ export class CreatePrescriptionComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.patientId = params['id'];
     });
-
   }
 
-
   ngOnInit() {
+
     this.form = this.formBuilder.group({
       chiefComplain: ['', Validators.required],
-      parameters: ['', Validators.required],
-      remarks: ['', Validators.required],
-      dentalHistory: ['', Validators.required],
-      vaccinationHistory: ['', Validators.required],
-      investigation: ['', Validators.required],
-      radiological: ['', Validators.required],
-      planning: ['', Validators.required],
+      parameters: [''],
+      remarks: [''],
+      dentalHistory: [''],
+      vaccinationHistory: [''],
+      investigation: [''],
+      radiological: [''],
+      planning: [''],
       drugType: [''],
       medicineName: [''],
       drugStrength: [''],
       drugDose: [''],
       drugDuration: ['']
-
-
     });
+
     this.prescriptionService.getPrescriptionView().subscribe(res => {
       this.prescriptionResp = res;
-      this.selectedTemplateName = [];
-
-      this.selectedTemplate = res['items'].forEach((template) => {
-        const prescription: CreatePrescription = new CreatePrescription();
-        prescription.templateName = template.templateName;
-        this.selectedTemplateName.push(prescription);
+      this.templateList = [];
+      res['items'].forEach((template) => {
+        const t = new Template();
+        t.id = template.id;
+        t.templateName = template.templateName;
+        this.templateList.push(t);
       });
-
     });
   }
 
@@ -68,13 +67,14 @@ export class CreatePrescriptionComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.form.controls['chiefComplain'].value);
     this.submitted = true;
 
     if (this.form.invalid) {
       return true;
     }
     const prescription: CreatePrescription = new CreatePrescription();
-    prescription.patientId = "9388c9ea-f453-41de-96cb-d388dedbf091";
+    prescription.patientId = this.patientId;
     prescription.chiefComplain = this.form.controls['chiefComplain'].value;
     prescription.parameters = this.form.controls['parameters'].value;
     prescription.remarks = this.form.controls['remarks'].value;
@@ -92,9 +92,17 @@ export class CreatePrescriptionComponent implements OnInit {
     createDrug.drugDuration = this.form.controls['drugDuration'].value;
     prescription.createMedicinePrescription.push(createDrug);
 
-
-    this.prescriptionService.createPrescription(prescription.patientId, prescription.chiefComplain, prescription.parameters, prescription.remarks, prescription.dentalHistory,
-      prescription.vaccinationHistory, prescription.investigation, prescription.radiological, prescription.planning, this.createMedicinePrescription).subscribe(res => {
+    this.prescriptionService.createPrescription(
+      prescription.patientId,
+      prescription.chiefComplain,
+      prescription.parameters,
+      prescription.remarks,
+      prescription.dentalHistory,
+      prescription.vaccinationHistory,
+      prescription.investigation,
+      prescription.radiological,
+      prescription.planning,
+      this.medicineList).subscribe(res => {
 
     }, error => {
       if (error.status === 400) {
@@ -110,30 +118,35 @@ export class CreatePrescriptionComponent implements OnInit {
     createDrug.drugStrength = this.form.controls['drugStrength'].value;
     createDrug.drugDose = this.form.controls['drugDose'].value;
     createDrug.drugDuration = this.form.controls['drugDuration'].value;
-    this.createMedicinePrescription.push(createDrug)
+    this.medicineList.push(createDrug);
 
   }
 
-  selectTemplate(id) {
+  selectTemplate(selectedTemplateId) {
+
     this.prescriptionService.getPrescriptionView().subscribe(res => {
 
-      this.createMedicinePrescription = [];
+      this.selectedTemplateId = selectedTemplateId;
+      this.selectedTemplate = res['items'].find(template => template.id === selectedTemplateId);
+      this.form.controls['chiefComplain'].setValue(this.selectedTemplate.chiefComplain);
+      this.form.controls['parameters'].setValue(this.selectedTemplate.parameters);
+      this.form.controls['remarks'].setValue(this.selectedTemplate.remarks);
+      this.form.controls['dentalHistory'].setValue(this.selectedTemplate.dentalHistory);
+      this.form.controls['vaccinationHistory'].setValue(this.selectedTemplate.vaccinationHistory);
+      this.form.controls['investigation'].setValue(this.selectedTemplate.investigation);
+      this.form.controls['radiological'].setValue(this.selectedTemplate.radiological);
+      this.form.controls['planning'].setValue(this.selectedTemplate.planning);
 
-      this.prescriptionResp = res;
-      this.selectedTemplate = res['items'][id];
-
-      this.selectedTemplate['medicine'].forEach((medicine) => {
-
+      this.medicineList = [];
+      this.selectedTemplate['medicines'].forEach((medicine) => {
         const createDrug: CreateDrug = new CreateDrug();
         createDrug.drugType = medicine.drugType;
         createDrug.medicineName = medicine.medicineName;
         createDrug.drugStrength = medicine.drugStrength;
         createDrug.drugDose = medicine.drugDose;
         createDrug.drugDuration = medicine.drugDuration;
-        this.createMedicinePrescription.push(createDrug);
-
+        this.medicineList.push(createDrug);
       });
-
     });
   }
 

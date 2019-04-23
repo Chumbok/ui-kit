@@ -38,15 +38,16 @@
 
         <div role="tabpanel" class="tab-pane fade active show" id="Section0">
           <div class="list-group mt-3">
-            <li class="list-group m-2" *ngFor="let collectTemplateName of selectedTemplateName; let i = index">
-              <input type="button" (click)="selectTemplate(i)"
-                     class="list-group-item list-group-item-action" [value]="collectTemplateName.templateName"></li>
+            <li class="list-group m-2" *ngFor="let t of templateList">
+              <input type="button" (click)="selectTemplate(t.id)"
+                     class="list-group-item list-group-item-action"
+                     [ngClass]="{ 'font-weight-bold': selectedTemplateId == t.id }"
+                     [value]="t.templateName">
+            </li>
           </div>
         </div>
 
         <div role="tabpanel" class="tab-pane fade" id="Section1">
-
-
           <div class="form-group mb-4 row mt-4">
             <label class="col-sm-2 col-form-label">Chief Complain</label>
             <div class="col-sm-10">
@@ -58,7 +59,6 @@
               </div>
             </div>
           </div>
-
         </div>
 
 
@@ -228,12 +228,12 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let createMedicine of createMedicinePrescription">
-              <td>{{ createMedicine.medicineName }}</td>
-              <td>{{ createMedicine.drugType }}</td>
-              <td>{{ createMedicine.drugStrength }}</td>
-              <td>{{ createMedicine.drugDose }}</td>
-              <td>{{ createMedicine.drugDuration }}</td>
+            <tr *ngFor="let medicine of medicineList">
+              <td>{{ medicine.medicineName }}</td>
+              <td>{{ medicine.drugType }}</td>
+              <td>{{ medicine.drugStrength }}</td>
+              <td>{{ medicine.drugDose }}</td>
+              <td>{{ medicine.drugDuration }}</td>
               <td><a>Delete</a></td>
             </tr>
             </tbody>

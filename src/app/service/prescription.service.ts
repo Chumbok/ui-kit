@@ -3,8 +3,8 @@ import {environment} from '../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AuthService} from './auth.service';
 import {Observable, of} from 'rxjs';
-import {EmptyObservable} from "rxjs-compat/observable/EmptyObservable";
-import {CreateDrug} from "../model/create-medicine";
+import {EmptyObservable} from 'rxjs-compat/observable/EmptyObservable';
+import {CreateDrug} from '../model/create-medicine';
 
 
 @Injectable()
@@ -29,8 +29,16 @@ export class PrescriptionService {
   }
 
 
-  public createPrescription(id: string, complain: string, parameters: string, remarks: string, dentalHistory: string, vaccinationHistory: string,
-                            investigation: string, rediological: string, planning: string, prescriptionList: Array<CreateDrug>): Observable<any> {
+  public createPrescription(id: string,
+                            complain: string,
+                            parameters: string,
+                            remarks: string,
+                            dentalHistory: string,
+                            vaccinationHistory: string,
+                            investigation: string,
+                            rediological: string,
+                            planning: string,
+                            medicineList: CreateDrug[]): Observable<any> {
     console.log(id);
     console.log(complain);
     console.log(parameters);
@@ -39,7 +47,7 @@ export class PrescriptionService {
     console.log(vaccinationHistory);
     console.log(investigation);
     console.log(rediological);
-    console.log(prescriptionList)
+    console.log(medicineList)
 
     return new EmptyObservable<Response>();
 
@@ -75,57 +83,81 @@ export class PrescriptionService {
 
   private getPrescriptionViewMock(): Observable<any> {
 
-    const mockResp = '{"page":0,' +
-      '"size":10,' +
-      '"totalPages":1,' +
-      '"totalElements":1,' +
-      '"items":[' +
-      '{' +
-      '"id":"9388c9ea-f453-41de-96cb-d388dedbf091",' +
-      '"templateName":"Headache",' +
-      '"chiefComplain":"Headache",' +
-      '"parameters":"Somethings write JSON",' +
-      '"remarks":"Somethings write JSON",' +
-      '"dentalHistory":"Somethings write JSON",' +
-      '"vaccinationHistory":" Somethings write JSON",' +
-      '"investigation":"Somethings write JSON",' +
-      '"radiological":"Somethings write JSON",' +
-      '"planning":"Somethings write JSON",' +
-      '"medicine":[{"drugType":"Tab","medicineName":"Napa","drugStrength":"10mg","drugDose":"1+1+1","drugDuration":"1 day"},' +
-      '{"drugType":"cap","medicineName":"Napa","drugStrength":"10mg","drugDose":"1+1+1","drugDuration":"1 day"}]' +
-      ',"roles":["SUPERADMIN"],"enabled":true' +
-      '},' +
-      '{' +
-      '"id":"9388c9ea-f453-41de-96cb-d388dedbf091",' +
-      '"templateName":"Normal Fever",' +
-      '"chiefComplain":"Fever",' +
-      '"parameters":"Somethings write JSON",' +
-      '"remarks":"Somethings write JSON",' +
-      '"dentalHistory":"Somethings write JSON",' +
-      '"vaccinationHistory":" Somethings write JSON",' +
-      '"investigation":"Somethings write JSON",' +
-      '"radiological":"Somethings write JSON",' +
-      '"planning":"Somethings write JSON",' +
-      '"medicine":[{"drugType":"Tab","medicineName":"Napa Extra","drugStrength":"10mg","drugDose":"1+1+1","drugDuration":"1 day"}]' +
-      ',"roles":["SUPERADMIN"],"enabled":true' +
-      '},' +
-      '{' +
-      '"id":"9388c9ea-f453-41de-96cb-d388dedbf091",' +
-      '"templateName":"High Fever",' +
-      '"chiefComplain":"High Fever",' +
-      '"parameters":"Somethings write JSON",' +
-      '"remarks":"Somethings write JSON",' +
-      '"dentalHistory":"Somethings write JSON",' +
-      '"vaccinationHistory":" Somethings write JSON",' +
-      '"investigation":"Somethings write JSON",' +
-      '"radiological":"Somethings write JSON",' +
-      '"planning":"Somethings write JSON",' +
-      '"medicine":[{"drugType":"Tab","medicineName":"Napa Extra","drugStrength":"10mg","drugDose":"1+1+1","drugDuration":"1 day"},' +
-      '{"drugType":"Tab","medicineName":"Napa Extra","drugStrength":"10mg","drugDose":"1+1+1","drugDuration":"1 day"}]' +
-      ',"roles":["SUPERADMIN"],"enabled":true' +
-      '}' +
-      ']}';
-    return of(JSON.parse(mockResp));
+    const templateList = {
+      page: 0,
+      size: 10,
+      totalPages: 1,
+      totalElements: 3,
+      items: [
+        {
+          id: '9388c9ea-f453-41de-96cb-d388dedbf091',
+          templateName: 'Dengue fever',
+          chiefComplain: 'Sudden-onset fever, headache (located behind the eyes), muscle and joint pains, and a rash.',
+          parameters: '',
+          remarks: '',
+          dentalHistory: '',
+          vaccinationHistory: '',
+          investigation: '',
+          radiological: '',
+          planning: '',
+          medicines: [
+            {
+              drugType: 'Tab',
+              medicineName: 'Napa',
+              drugStrength: '10mg',
+              drugDose: '1+1+1',
+              drugDuration: '1 day'
+            },
+            {
+              drugType: 'cap',
+              medicineName: 'Napa',
+              drugStrength: '10mg',
+              drugDose: '1+1+1',
+              drugDuration: '7 day'
+            }]
+        },
+        {
+          id: '9388c9ea-f453-41de-96cb-d388dedb2345',
+          templateName: 'Jaundice',
+          chiefComplain: 'Yellow tinge to the skin and vomiting.',
+          parameters: '',
+          remarks: '',
+          dentalHistory: '',
+          vaccinationHistory: '',
+          investigation: '',
+          radiological: '',
+          planning: 'Bilirubin tests',
+          medicines: [
+            {
+              drugType: 'Tab',
+              medicineName: 'Iron supplements',
+              drugStrength: '10mg',
+              drugDose: '1+1+1',
+              drugDuration: '30 day'
+            }]
+        },
+        {
+          id: '9388c9ea-f453-41de-96cb-d388dedb7890',
+          templateName: 'Diabetes',
+          chiefComplain: 'Frequent urination and weight loss',
+          parameters: '',
+          remarks: '',
+          dentalHistory: '',
+          vaccinationHistory: '',
+          investigation: '',
+          radiological: '',
+          planning: '',
+          medicines: [
+            {
+              drugType: 'Tab',
+              medicineName: 'Metformin',
+              drugStrength: '10mg',
+              drugDose: '1+1+1',
+              drugDuration: '365 day'
+            }]
+        }]
+    };
+    return of(templateList);
   }
 }
 
