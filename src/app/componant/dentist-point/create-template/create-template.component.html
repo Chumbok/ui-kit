@@ -3,32 +3,23 @@
   <form name="form" [formGroup]="form">
     <div class="ibox-head">
       <div class="ibox-title">Create Template</div>
-
-      <ul class="nav" role="tablist">
-        <li class="text-right">
-
-        </li>
-      </ul>
       <div>
         <button class="btn btn-secondary">Cancel</button>&nbsp;
         <button class="btn btn-primary" (click)="onSubmit()">Save</button>
       </div>
     </div>
 
-
     <div class="ibox-body">
-      <div class="form-group row text-right">
-        <label class="mt-1">Template Name :</label>
-        <div class="col-sm-2">
-
-          <input type="text" formControlName="templateName" class="form-control sm"
+      <div class="form-group row">
+          <label class="col-md-2">Template Name :</label>
+          <input type="text" formControlName="templateName" class="form-control col-md-9"
                  placeholder="Enter Your Template Name"
                  [ngClass]="{ 'is-invalid': submitted && f.templateName.errors }"/>
           <div *ngIf="submitted && f.templateName.errors" class="invalid-feedback">
             <div *ngIf="f.templateName.errors.required">Template Name is required</div>
           </div>
-        </div>
       </div>
+
       <ul class="nav nav-tabs" role="tablist">
         <li class="mr-3 nav-item" role="presentation">
           <a href="#Section1" aria-controls="profile" role="tab" data-toggle="tab"
