@@ -90,6 +90,7 @@ import {AuthHttpService} from './service/auth-http.service';
 import {AuthMockService} from './service/auth-mock.service';
 import {LoggedInUserInfoHttpService} from './service/logged-in-user-info-http.service';
 import {LoggedInUserInfoMockService} from './service/logged-in-user-info-mock.service';
+import {SettingsComponent} from './componant/dentist-point/settings/settings.component';
 
 
 @NgModule({
@@ -173,8 +174,8 @@ import {LoggedInUserInfoMockService} from './service/logged-in-user-info-mock.se
     PrescriptionListComponent,
     PrescriptionViewComponent,
     CreateAppointmentComponent,
-    CreateTemplateComponent
-
+    CreateTemplateComponent,
+    SettingsComponent
   ],
   providers: [
     {
