@@ -49,6 +49,7 @@ body {
 .dash-navbar-left-icon-only a.list-group-item,
 .nav .list-inline-item {
   color: #575757;
+  text-decoration: none;
 }
 
 .card {
@@ -152,4 +153,8 @@ body {
   position: relative;
   cursor: pointer;
   overflow: hidden;
+}
+
+.active {
+  font-weight: bold;
 }
