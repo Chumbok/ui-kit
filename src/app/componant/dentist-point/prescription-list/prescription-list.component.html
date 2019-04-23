@@ -1,25 +1,20 @@
 <div class="col-md-9 ibox">
   <div class="ibox-head">
-    <div class="ibox-title">Prescription List</div>
-    <!--Search Option -->
-    <ul class="nav" role="tablist">
-      <li class="text-right">
-        <div class="form-group m-0 row">
-          <label class="col-sm-4 col-form-label">Phone number</label>
-          <div class="col-sm-8">
-            <input type="text" [(ngModel)]="searchText" autocomplete="on" placeholder="&#61442;Search By Phone No"
-                   class="form-control"/>
-          </div>
-        </div>
-      </li>
-    </ul>
-    <!--Search Option -->
+    <div class="col-md-5 ibox-title">Prescription List</div>
+    <div class="input-group col-md-4">
+      <span class="input-group-prepend">
+        <div class="input-group-text bg-transparent border-right-0"><i class="fa fa-search"></i></div>
+      </span>
+      <input type="text" [(ngModel)]="searchText" autocomplete="on" placeholder="Name / Phone No."
+             class="form-control"/>
+    </div>
   </div>
   <div class="ibox-body">
     <table class="table">
       <thead>
       <tr>
         <th scope="col">Patient Name</th>
+        <th scope="col">Date</th>
         <th scope="col">Chief Complain</th>
         <th scope="col">Options</th>
       </tr>
@@ -27,12 +22,9 @@
       <tbody>
       <tr *ngFor="let prescriptionlist of prescription | filter:searchText">
         <td style="width: 30%">{{ prescriptionlist.patientName }}</td>
+        <td style="width: 30%">July 12, 2019</td>
         <td style="width: 50%">{{ prescriptionlist.chiefComplain }}</td>
-        <td>
-          <a [routerLink]="[prescriptionlist.id]" (click)="onPrescriptionView()">View</a> |
-          <a [routerLink]="[prescriptionlist.id ]">Delete</a>
-        </td>
-
+        <td><a [routerLink]="[prescriptionlist.id]" (click)="onPrescriptionView()">View</a></td>
       </tr>
       </tbody>
     </table>
