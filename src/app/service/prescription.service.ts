@@ -59,15 +59,23 @@ export class PrescriptionService {
     return this.http.get<any>(this.serviceBaseEndpoint + patientId + '/prescription/', this.httpOptions);
   }
 
+  public deleteTemplate(templateId: string): Observable<any> {
+    return this.enableMock ? this.deleteTemplateMock(templateId) : this.deleteTemplateReal(templateId);
+  }
+
+  private deleteTemplateReal(templateId: string): Observable<any> {
+    return this.http.get<any>(this.serviceBaseEndpoint + templateId + '/prescription/', this.httpOptions);
+  }
+
   private getPrescriptionListMock(): Observable<any> {
 
     const mockResp =
       [
-        {id: 1, phnNo: '01988841890', patientName: 'Monirozzaman', chiefComplain: 'faver'},
-        {id: 2, phnNo: '01788841890', patientName: 'joy', chiefComplain: 'faver'},
-        {id: 3, phnNo: '01888841890', patientName: 'joya', chiefComplain: 'faver'},
-        {id: 4, phnNo: '01788841890', patientName: 'nalib', chiefComplain: 'faver'},
-        {id: 5, phnNo: '01488841890', patientName: 'nabil', chiefComplain: 'faver'},
+        {id: 1, phnNo: '01988841890', submitDate: 'July 12, 2019', patientName: 'Monirozzaman', chiefComplain: 'faver'},
+        {id: 2, phnNo: '01788841890', submitDate: 'July 13, 2019', patientName: 'joy', chiefComplain: 'faver'},
+        {id: 3, phnNo: '01888841890', submitDate: 'July 17, 2019', patientName: 'joya', chiefComplain: 'faver'},
+        {id: 4, phnNo: '01788841890', submitDate: 'July 12, 2019', patientName: 'nalib', chiefComplain: 'faver'},
+        {id: 5, phnNo: '01488841890', submitDate: 'July 12, 2018', patientName: 'nabil', chiefComplain: 'faver'},
       ];
     return of(mockResp);
   }
@@ -158,6 +166,19 @@ export class PrescriptionService {
         }]
     };
     return of(templateList);
+  }
+
+  private deleteTemplateMock(templateId: string): Observable<any> {
+    console.log(templateId)
+    const mockResp =
+      [
+        {id: 1, phnNo: '01988841890', patientName: 'Monirozzaman', chiefComplain: 'faver'},
+        {id: 2, phnNo: '01788841890', patientName: 'joy', chiefComplain: 'faver'},
+        {id: 3, phnNo: '01888841890', patientName: 'joya', chiefComplain: 'faver'},
+        {id: 4, phnNo: '01788841890', patientName: 'nalib', chiefComplain: 'faver'},
+        {id: 5, phnNo: '01488841890', patientName: 'nabil', chiefComplain: 'faver'},
+      ];
+    return of(mockResp);
   }
 }
 

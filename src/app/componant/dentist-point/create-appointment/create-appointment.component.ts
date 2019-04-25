@@ -2,9 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {CreateAppointment} from "../../../model/create-appointment";
 import {CreateAppointmentService} from "../../../service/create-appointment.service";
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
-import {SearchByPhoneAppointment} from "../../../model/search-by-phone-appointment";
 
 @Component({
   selector: 'app-create-appointment',
@@ -18,16 +15,16 @@ export class CreateAppointmentComponent implements OnInit {
   timeSlotArray: Array<String> = [];
   stateCtrl = new FormControl();
   getFreeTime = new FormControl();
-  filteredStates: Observable<SearchByPhoneAppointment[]>;
   startTimeOfFreeSlots: string;
+  send_date = new Date();
+  formattedDate: any;
+  appoinrmentList: Array<any>;
+  searchText;
 
   constructor(private createAppointmentService: CreateAppointmentService,
               private formBuilder: FormBuilder) {
-    this.filteredStates = this.stateCtrl.valueChanges
-      .pipe(
-        startWith(''),
-        map(state => state ? this._filterStates(state) : this.createAppointmentService.getAppointmentDetails().slice())
-      );
+    this.send_date.setMonth(this.send_date.getMonth());
+    this.formattedDate = this.send_date.toISOString().slice(0, 10);
   }
 
   get f() {
@@ -58,6 +55,7 @@ export class CreateAppointmentComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.form = this.formBuilder.group({
       stateCtrl: ['',],
       patientName: [''],
@@ -65,10 +63,22 @@ export class CreateAppointmentComponent implements OnInit {
       date: [''],
       timeSlot: ['']
     });
+
+    this.createAppointmentService.getAppointmentDetails().subscribe(res => {
+      this.appoinrmentList = res;
+    });
+
+    if (this.form.controls['date'].value == '') {
+      this.fetchFreeTimeSlots(this.formattedDate);
+    }
   }
 
-  fetchFreeTimeSlots() {
-    this.createAppointmentService.getFreeTimeSlots(this.form.controls['date'].value).subscribe(res => {
+  setDateFetchFreeTimeSlots() {
+    this.fetchFreeTimeSlots(this.form.controls['date'].value);
+  }
+
+  fetchFreeTimeSlots(date: string) {
+    this.createAppointmentService.getFreeTimeSlots(date).subscribe(res => {
       this.timeSlotArray = [];
       res.forEach(freeSlot => {
         this.timeSlotArray.push(freeSlot.startTime);
@@ -80,8 +90,4 @@ export class CreateAppointmentComponent implements OnInit {
     this.startTimeOfFreeSlots = startTime;
   }
 
-  private _filterStates(value: string): SearchByPhoneAppointment[] {
-    const filterValue = value.toLowerCase();
-    return this.createAppointmentService.getAppointmentDetails().filter(state => state.phoneno.toLowerCase().indexOf(filterValue) === 0);
-  }
 }

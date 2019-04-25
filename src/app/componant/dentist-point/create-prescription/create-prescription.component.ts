@@ -60,6 +60,7 @@ export class CreatePrescriptionComponent implements OnInit {
         this.templateList.push(t);
       });
     });
+
   }
 
   get f() {
@@ -152,5 +153,11 @@ export class CreatePrescriptionComponent implements OnInit {
 
   onCancel() {
     this.router.navigate(['doctors/calendar-view']);
+  }
+
+  deleteTemplate(templateId) {
+    this.prescriptionService.deleteTemplate(templateId).subscribe(res => {
+      //    console.log(res['items']);
+    })
   }
 }
