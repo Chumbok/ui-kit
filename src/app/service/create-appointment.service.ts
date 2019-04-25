@@ -5,7 +5,6 @@ import {AuthService} from './auth.service';
 import {Observable} from 'rxjs';
 import {EmptyObservable} from "rxjs-compat/observable/EmptyObservable";
 import {of} from "rxjs/index";
-import {SearchByPhoneAppointment} from "../model/search-by-phone-appointment";
 
 @Injectable()
 export class CreateAppointmentService {
@@ -32,7 +31,7 @@ export class CreateAppointmentService {
     return this.enableMock ? this.getFreeTimeSlotsMock(selectedDate) : null;
   }
 
-  public getAppointmentDetails(): SearchByPhoneAppointment[] {
+  public getAppointmentDetails(): Observable<any> {
     return this.enableMock ? this.getAppointmentDetailsMock() : null;
   }
 
@@ -59,42 +58,23 @@ export class CreateAppointmentService {
         endTime: '11:00',
       },
     ];
+    console.log(selectedDate);
     return of(freeSlots);
   }
 
-  private getAppointmentDetailsMock(): SearchByPhoneAppointment[] {
+  private getAppointmentDetailsMock(): Observable<any> {
     const appointmentDetails = [
       {
-        phoneno: '1',
-        nameP: 'monir1',
-        addressP: 'gazipur'
+        phoneno: '01988841890',
+        nameP: 'Monirozzaman Roni',
+        addressP: 'asulia,savar,dhaka'
       },
       {
-        phoneno: '2',
-        nameP: 'roni2',
-        addressP: 'gazipur'
-      },
-      {
-        phoneno: '3',
-        nameP: 'moniroz3',
-        addressP: 'gazipur'
-      },
-      {
-        phoneno: '4',
-        nameP: 'roni4',
-        addressP: 'gazipur'
-      },
-      {
-        phoneno: '5',
-        nameP: 'moniroz5',
-        addressP: 'gazipur'
-      },
-      {
-        phoneno: '6',
-        nameP: 'roni6',
-        addressP: 'gazipur'
+        phoneno: '01745675456',
+        nameP: 'Asraful Alom Rassel',
+        addressP: 'united state,UK'
       }
     ];
-    return appointmentDetails;
+    return of(appointmentDetails);
   }
 }

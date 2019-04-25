@@ -8,7 +8,8 @@
       <div class="form-group mb-4 row">
         <label class="col-sm-3 col-form-label">Phone number</label>
         <div class="col-sm-9">
-          <input type="text" matInput placeholder="Search by phone number" aria-label="State" [matAutocomplete]="auto"
+          <input type="text" placeholder="Search by phone number" aria-label="State" [matAutocomplete]="auto"
+                 [(ngModel)]="searchText" autocomplete="on"
                  [formControl]="stateCtrl"
                  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.stateCtrl.errors }"/>
           <div *ngIf="submitted && f.stateCtrl.errors" class="invalid-feedback">
@@ -40,7 +41,7 @@
       <div class="form-group mb-4 row">
         <label class="col-sm-3 col-form-label">Date</label>
         <div class="col-sm-9 input-group-prepend">
-          <input id="dateff" formControlName="date" (ngModelChange)="fetchFreeTimeSlots()"
+          <input id="dateff" formControlName="date" (ngModelChange)="setDateFetchFreeTimeSlots()"
                  [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" class="form-control">
           <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
         </div>
@@ -66,11 +67,12 @@
 
   <form class="example-form">
     <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let state of filteredStates | async" [value]="state.phoneno">
+      <mat-option *ngFor="let state of appoinrmentList | filter:searchText">
         <div class="card col-sm-9">
           <div class="card-body">
-            <span>{{state.phoneno}}</span> |
-            <small>Name: {{state.nameP}}</small>
+            <small>{{state.nameP}}</small>
+            |
+            <span>{{state.phoneno}}</span>
           </div>
         </div>
       </mat-option>
