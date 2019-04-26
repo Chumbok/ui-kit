@@ -20,7 +20,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let prescriptionlist of prescription | filter:searchText">
+      <tr *ngFor="let prescriptionlist of prescriptionListin | filter:searchText">
         <td style="width: 30%">{{ prescriptionlist.patientName }}</td>
         <td style="width: 30%">{{ prescriptionlist.submitDate }}</td>
         <td style="width: 50%">{{ prescriptionlist.chiefComplain }}</td>
@@ -29,5 +29,5 @@
       </tbody>
     </table>
   </div>
-  <!--<div>Showing {{ itemFrom }} to {{ itemTo }} of {{ totalElements }} entries</div>-->
+  <div>Showing {{ itemFrom }} to {{ itemTo }} of {{ totalElements }} entries</div>
 </div>

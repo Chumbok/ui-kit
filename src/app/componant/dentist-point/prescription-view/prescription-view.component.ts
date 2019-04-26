@@ -23,7 +23,7 @@ export class PrescriptionViewComponent implements OnInit {
 
       this.prescriptionResp = res;
       res['items'].forEach((medicineList) => {
-        this.prescriptions = medicineList.medicine[0];
+        this.prescriptions = medicineList.medicines[0];
         this.prescrip.push(this.prescriptions);
         // console.log(this.prescrip);
       });

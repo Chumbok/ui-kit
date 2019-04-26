@@ -70,13 +70,36 @@ export class PrescriptionService {
   private getPrescriptionListMock(): Observable<any> {
 
     const mockResp =
-      [
-        {id: 1, phnNo: '01988841890', submitDate: 'July 12, 2019', patientName: 'Monirozzaman', chiefComplain: 'faver'},
-        {id: 2, phnNo: '01788841890', submitDate: 'July 13, 2019', patientName: 'joy', chiefComplain: 'faver'},
-        {id: 3, phnNo: '01888841890', submitDate: 'July 17, 2019', patientName: 'joya', chiefComplain: 'faver'},
-        {id: 4, phnNo: '01788841890', submitDate: 'July 12, 2019', patientName: 'nalib', chiefComplain: 'faver'},
-        {id: 5, phnNo: '01488841890', submitDate: 'July 12, 2018', patientName: 'nabil', chiefComplain: 'faver'},
-      ];
+      {
+        page: 0,
+        size: 10,
+        totalPages: 1,
+        totalElements: 3,
+        items: [
+          {
+            id: '1',
+            phnNo: '01488841890',
+            submitDate: 'July 12, 2019',
+            patientName: 'rossi',
+            chiefComplain: 'faver'
+          },
+          {
+            id: '1',
+            phnNo: '01788841890',
+            submitDate: 'July 12, 2019',
+            patientName: 'kobir',
+            chiefComplain: 'faver'
+          }
+          ,
+          {
+            id: '1',
+            phnNo: '01988841890',
+            submitDate: 'July 12, 2019',
+            patientName: 'jony',
+            chiefComplain: 'faver'
+          }]
+
+      };
     return of(mockResp);
   }
 

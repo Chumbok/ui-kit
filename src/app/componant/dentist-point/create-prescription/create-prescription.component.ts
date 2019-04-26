@@ -23,6 +23,7 @@ export class CreatePrescriptionComponent implements OnInit {
   serverError = '';
   patientId: string;
   medicineList: CreateDrug[] = [];
+  ff1: boolean;
 
   constructor(private formBuilder: FormBuilder, private prescriptionService: PrescriptionService, private route: ActivatedRoute,
               private router: Router) {
@@ -159,5 +160,9 @@ export class CreatePrescriptionComponent implements OnInit {
     this.prescriptionService.deleteTemplate(templateId).subscribe(res => {
       //    console.log(res['items']);
     })
+  }
+
+  editTemplate(templateId) {
+    this.router.navigate(['patients/' + templateId + '/edit-prescription']);
   }
 }
