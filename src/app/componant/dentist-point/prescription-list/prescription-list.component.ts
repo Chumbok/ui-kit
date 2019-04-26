@@ -9,8 +9,11 @@ import {Router} from "@angular/router";
 })
 export class PrescriptionListComponent implements OnInit {
 
-  prescription: Array<any>;
+  prescription: any;
+  prescriptionListin: Array<any>;
   patientsId: string;
+  itemFrom: number;
+  itemTo: number;
   totalElements: number;
 
   constructor(private prescriptionService: PrescriptionService, private router: Router) {
@@ -22,6 +25,10 @@ export class PrescriptionListComponent implements OnInit {
 
     this.prescriptionService.getPrescriptionList(this.patientsId).subscribe(res => {
       this.prescription = res;
+      this.prescriptionListin = res['items'];
+      this.itemFrom = this.prescription.page + 1;
+      this.itemTo = (this.prescription.page + 1) * this.prescription.size;
+      this.totalElements = this.prescription.totalElements;
     });
   }
 
