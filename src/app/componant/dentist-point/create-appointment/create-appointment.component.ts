@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
-import {CreateAppointment} from "../../../model/create-appointment";
-import {CreateAppointmentService} from "../../../service/create-appointment.service";
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {CreateAppointment} from '../../../model/create-appointment';
+import {AppointmentService} from '../../../service/appointment.service';
 
 @Component({
   selector: 'app-create-appointment',
@@ -21,7 +21,7 @@ export class CreateAppointmentComponent implements OnInit {
   appoinrmentList: Array<any>;
   searchText;
 
-  constructor(private createAppointmentService: CreateAppointmentService,
+  constructor(private appointmentService: AppointmentService,
               private formBuilder: FormBuilder) {
     this.send_date.setMonth(this.send_date.getMonth());
     this.formattedDate = this.send_date.toISOString().slice(0, 10);
@@ -44,8 +44,11 @@ export class CreateAppointmentComponent implements OnInit {
     createAppointment.date = this.form.controls['date'].value;
     createAppointment.timeSlot = this.startTimeOfFreeSlots;
 
-    this.createAppointmentService.createAppointment(createAppointment.phoneNumber, createAppointment.patientName, createAppointment.address,
-      createAppointment.date, createAppointment.timeSlot).subscribe(res => {
+    this.appointmentService.createAppointment(createAppointment.phoneNumber,
+      createAppointment.patientName,
+      createAppointment.address,
+      createAppointment.date,
+      createAppointment.timeSlot).subscribe(res => {
     }, error => {
       if (error.status === 400) {
         this.serverError = error.error.message;
@@ -64,11 +67,12 @@ export class CreateAppointmentComponent implements OnInit {
       timeSlot: ['']
     });
 
-    this.createAppointmentService.getAppointmentDetails().subscribe(res => {
+    this.appointmentService.getAppointmentDetails().subscribe(res => {
       this.appoinrmentList = res;
     });
 
-    if (this.form.controls['date'].value == '') {
+    if (this.form.controls['date'].value === '') {
+      this.form.controls['date'].setValue(this.formattedDate);
       this.fetchFreeTimeSlots(this.formattedDate);
     }
   }
@@ -78,7 +82,7 @@ export class CreateAppointmentComponent implements OnInit {
   }
 
   fetchFreeTimeSlots(date: string) {
-    this.createAppointmentService.getFreeTimeSlots(date).subscribe(res => {
+    this.appointmentService.getFreeTimeSlots(date).subscribe(res => {
       this.timeSlotArray = [];
       res.forEach(freeSlot => {
         this.timeSlotArray.push(freeSlot.startTime);

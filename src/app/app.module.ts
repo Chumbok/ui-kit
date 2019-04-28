@@ -43,7 +43,6 @@ import {CreateAppointmentComponent} from './componant/dentist-point/create-appoi
 import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
 import {CreateTemplateComponent} from './componant/dentist-point/create-template/create-template.component';
 import {TemplateService} from './service/template.service';
-import {CreateAppointmentService} from './service/create-appointment.service';
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -92,6 +91,8 @@ import {LoggedInUserInfoHttpService} from './service/logged-in-user-info-http.se
 import {LoggedInUserInfoMockService} from './service/logged-in-user-info-mock.service';
 import {SettingsComponent} from './componant/dentist-point/settings/settings.component';
 import {EditPrescriptionComponent} from './componant/dentist-point/edit-prescription/edit-prescription.component';
+import {AppointmentHttpService} from './service/appointment-http.service';
+import {AppointmentMockService} from './service/appointment-mock.service';
 
 
 @NgModule({
@@ -180,6 +181,12 @@ import {EditPrescriptionComponent} from './componant/dentist-point/edit-prescrip
     EditPrescriptionComponent
   ],
   providers: [
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: Http401Interceptor,
+      multi: true
+    },
     {
       provide: AuthService,
       useClass: environment.chumbok.enableMock ? AuthMockService : AuthHttpService
@@ -195,15 +202,11 @@ import {EditPrescriptionComponent} from './componant/dentist-point/edit-prescrip
       useClass: environment.chumbok.enableMock ? LoggedInUserInfoMockService : LoggedInUserInfoHttpService
     },
     OrgTenantUserService,
-    AppointmentService,
     TemplateService,
     PrescriptionService,
-    CreateAppointmentService,
-    AuthGuard,
     {
-      provide: HTTP_INTERCEPTORS,
-      useClass: Http401Interceptor,
-      multi: true
+      provide: AppointmentService,
+      useClass: environment.chumbok.enableMock ? AppointmentMockService : AppointmentHttpService
     }
   ],
   bootstrap: [
