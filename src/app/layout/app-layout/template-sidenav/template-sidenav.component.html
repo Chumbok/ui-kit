@@ -16,7 +16,8 @@
          class="list-group-item" data-parent="#dentistmanagement">
         <i class="far fa-calendar-check fa-fw"></i> <span class="hidden-sm-down">&nbsp;Create Appointment</span></a>
 
-      <a (click)="createPrescription('id')" class="list-group-item" data-parent="#dentistmanagement">
+      <a [routerLink]="['/doctors/create-prescription']" routerLinkActive="active"
+         class="list-group-item" data-parent="#dentistmanagement">
         <i class="fas fa-pills fa-fw"></i> <span class="hidden-sm-down">&nbsp;Create Prescription</span></a>
 
 

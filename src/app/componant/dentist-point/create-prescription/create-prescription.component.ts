@@ -23,14 +23,9 @@ export class CreatePrescriptionComponent implements OnInit {
   serverError = '';
   patientId: string;
   medicineList: CreateDrug[] = [];
-  ff1: boolean;
 
-  constructor(private formBuilder: FormBuilder, private prescriptionService: PrescriptionService, private route: ActivatedRoute,
-              private router: Router) {
-
-    this.route.params.subscribe(params => {
-      this.patientId = params['id'];
-    });
+  constructor(private formBuilder: FormBuilder, private prescriptionService: PrescriptionService,
+              private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
@@ -50,6 +45,8 @@ export class CreatePrescriptionComponent implements OnInit {
       drugDose: [''],
       drugDuration: ['']
     });
+
+    this.patientId = this.route.snapshot.paramMap.get('patientId');
 
     this.prescriptionService.getPrescriptionView().subscribe(res => {
       this.prescriptionResp = res;

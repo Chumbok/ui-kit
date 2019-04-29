@@ -14,8 +14,12 @@
 
       <ul class="nav nav-tabs" role="tablist">
         <li class="mr-3 nav-item" role="presentation">
+          <a href="#patientInfo" aria-controls="Template" role="tab" data-toggle="tab"
+             class="nav-link active">Patient Info</a>
+        </li>
+        <li class="mr-3 nav-item" role="presentation">
           <a href="#Section0" aria-controls="Template" role="tab" data-toggle="tab"
-             class="nav-link active">Select Template</a>
+             class="nav-link">Select Template</a>
         </li>
         <li class="mr-3 nav-item" role="presentation">
           <a href="#Section1" aria-controls="profile" role="tab" data-toggle="tab"
@@ -36,11 +40,51 @@
 
       <div class="tab-content">
 
-        <div role="tabpanel" class="tab-pane fade active show" id="Section0">
+        <div role="tabpanel" class="tab-pane fade active show" id="patientInfo">
+
+          <!--
+          <div class="form-group mb-4 row mt-4 font-weight-normal">
+            <label class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-9">
+              <input type="text" formControlName="patientName" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && f.patientName.errors }"/>
+              <div *ngIf="submitted && f.patientName.errors" class="invalid-feedback">
+                <div *ngIf="f.patientName.errors.required">Patient Name is required</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group mb-4 row mt-4 font-weight-normal">
+            <label class="col-sm-2 col-form-label">Phone number</label>
+            <div class="col-sm-9">
+              <input type="text" formControlName="phoneNumber" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && f.address.errors }"/>
+              <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
+                <div *ngIf="f.phoneNumber.errors.required">Phone number is required</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group mb-4 row mt-4 font-weight-normal">
+            <label class="col-sm-2 col-form-label">Address</label>
+            <div class="col-sm-9">
+              <input type="text" formControlName="address" class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && f.address.errors }"/>
+              <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                <div *ngIf="f.address.errors.required">Address is required</div>
+              </div>
+            </div>
+          </div>
+
+          -->
+
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade" id="Section0">
           <div class="list-group mt-3">
             <div class="input-group mb-3" *ngFor="let t of templateList">
               <input type="button" (click)="selectTemplate(t.id)"
-                     class="list-group-item list-group-item-action col-md-11"
+                     class="list-group-item list-group-item-action col-md-10"
                      [ngClass]="{ 'font-weight-bold': selectedTemplateId == t.id }"
                      [value]="t.templateName">
               <div class="input-group-append">
@@ -52,7 +96,7 @@
         </div>
 
         <div role="tabpanel" class="tab-pane fade" id="Section1">
-          <div class="form-group mb-4 row mt-4">
+          <div class="form-group mb-4 row mt-4 font-weight-normal">
             <label class="col-sm-2 col-form-label">Chief Complain</label>
             <div class="col-sm-10">
               <textarea type="text" formControlName="chiefComplain" class="form-control"
@@ -68,7 +112,7 @@
 
         <div role="tabpanel" class="tab-pane fade" id="Section2">
 
-          <div class="form-group mb-4 row mt-4">
+          <div class="form-group mb-4 row mt-4 font-weight-normal">
             <label class="col-sm-2 col-form-label">Parameters</label>
             <div class="col-sm-10">
               <textarea type="text" formControlName="parameters" class="form-control"
@@ -79,7 +123,7 @@
               </div>
             </div>
           </div>
-          <div class="form-group mb-4 row">
+          <div class="form-group mb-4 row font-weight-normal">
             <label class="col-sm-2 col-form-label">Remarks</label>
             <div class="col-sm-10">
               <textarea type="text" formControlName="remarks" class="form-control"
@@ -95,7 +139,7 @@
 
         <div role="tabpanel" class="tab-pane fade" id="Section3">
 
-          <div class="form-group mb-4 row mt-4">
+          <div class="form-group mb-4 row mt-4 font-weight-normal">
             <label class="col-sm-3 col-form-label">Medical & Dental History</label>
             <div class="col-sm-9">
               <textarea type="text" formControlName="dentalHistory" class="form-control"
@@ -107,7 +151,7 @@
             </div>
           </div>
 
-          <div class="form-group mb-4 row">
+          <div class="form-group mb-4 row font-weight-normal">
             <label class="col-sm-3 col-form-label">Drug & Vaccination History</label>
             <div class="col-sm-9">
               <textarea type="text" formControlName="vaccinationHistory" class="form-control"
@@ -119,7 +163,7 @@
             </div>
           </div>
 
-          <div class="form-group mb-4 row">
+          <div class="form-group mb-4 row font-weight-normal">
             <label class="col-sm-3 col-form-label">Investigation History</label>
             <div class="col-sm-9">
               <textarea type="text" formControlName="investigation" class="form-control"
@@ -131,7 +175,7 @@
             </div>
           </div>
 
-          <div class="form-group mb-4 row">
+          <div class="form-group mb-4 row font-weight-normal">
             <label class="col-sm-3 col-form-label">Rediological/Clinical Finding</label>
             <div class="col-sm-9">
               <textarea type="text" formControlName="radiological" class="form-control"
@@ -143,7 +187,7 @@
             </div>
           </div>
 
-          <div class="form-group mb-4 row">
+          <div class="form-group mb-4 row font-weight-normal">
             <label class="col-sm-3 col-form-label">Final Diagnosis & Treatment Planning</label>
             <div class="col-sm-9">
               <textarea type="text" formControlName="planning" class="form-control"

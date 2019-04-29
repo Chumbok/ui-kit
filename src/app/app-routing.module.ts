@@ -41,19 +41,21 @@ const routes: Routes = [
     children: [
       {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
       {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
+
       {path: 'orgs', component: OrgListComponent, canActivate: [AuthGuard]},
       {path: 'orgs/create', component: CreateOrgComponent, canActivate: [AuthGuard]},
       {path: 'orgs/:id/tenants', component: TenantListComponent, canActivate: [AuthGuard]},
       {path: 'orgs/:id/tenants/create', component: CreateTenantComponent, canActivate: [AuthGuard]},
       {path: 'orgs/:id/tenants/:tid/users', component: UserListComponent, canActivate: [AuthGuard]},
       {path: 'orgs/:id/tenants/:tid/users/create', component: CreateUserComponent, canActivate: [AuthGuard]},
+
       {path: 'doctors/calendar-view', component: CalendarComponent, canActivate: [AuthGuard]},
-      {path: 'patients/:id/create-prescription', component: CreatePrescriptionComponent, canActivate: [AuthGuard]},
+      {path: 'doctors/create-prescription', component: CreatePrescriptionComponent, canActivate: [AuthGuard]},
       {path: 'doctors/prescription-list', component: PrescriptionListComponent, canActivate: [AuthGuard]},
       {path: 'doctors/prescription-view', component: PrescriptionViewComponent, canActivate: [AuthGuard]},
+      {path: 'doctors/create-template', component: CreateTemplateComponent, canActivate: [AuthGuard]},
       {path: 'patient/create-patient', component: CreatePatientComponent, canActivate: [AuthGuard]},
       {path: 'patient/create-appointment', component: CreateAppointmentComponent, canActivate: [AuthGuard]},
-      {path: 'doctors/create-template', component: CreateTemplateComponent, canActivate: [AuthGuard]},
       {path: 'patients/:id/edit-prescription', component: EditPrescriptionComponent, canActivate: [AuthGuard]}
     ]
   },
