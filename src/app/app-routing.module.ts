@@ -21,7 +21,7 @@ import {CreatePatientComponent} from './componant/dentist-point/create-patient/c
 import {CreateAppointmentComponent} from './componant/dentist-point/create-appointment/create-appointment.component';
 import {CreateTemplateComponent} from './componant/dentist-point/create-template/create-template.component';
 import {SettingsComponent} from './componant/dentist-point/settings/settings.component';
-import {EditPrescriptionComponent} from "./componant/dentist-point/edit-prescription/edit-prescription.component";
+import {EditTemplateComponent} from "./componant/dentist-point/edit-template/edit-template.component";
 
 const routes: Routes = [
 
@@ -48,7 +48,6 @@ const routes: Routes = [
       {path: 'orgs/:id/tenants/create', component: CreateTenantComponent, canActivate: [AuthGuard]},
       {path: 'orgs/:id/tenants/:tid/users', component: UserListComponent, canActivate: [AuthGuard]},
       {path: 'orgs/:id/tenants/:tid/users/create', component: CreateUserComponent, canActivate: [AuthGuard]},
-
       {path: 'doctors/calendar-view', component: CalendarComponent, canActivate: [AuthGuard]},
       {path: 'doctors/create-prescription', component: CreatePrescriptionComponent, canActivate: [AuthGuard]},
       {path: 'doctors/prescription-list', component: PrescriptionListComponent, canActivate: [AuthGuard]},
@@ -56,7 +55,7 @@ const routes: Routes = [
       {path: 'doctors/create-template', component: CreateTemplateComponent, canActivate: [AuthGuard]},
       {path: 'patient/create-patient', component: CreatePatientComponent, canActivate: [AuthGuard]},
       {path: 'patient/create-appointment', component: CreateAppointmentComponent, canActivate: [AuthGuard]},
-      {path: 'patients/:id/edit-prescription', component: EditPrescriptionComponent, canActivate: [AuthGuard]}
+      {path: 'patients/:id/edit-template', component: EditTemplateComponent, canActivate: [AuthGuard]}
     ]
   },
 

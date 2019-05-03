@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {PrescriptionService} from "../../../service/prescription.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'app-prescription-list',
@@ -15,8 +17,16 @@ export class PrescriptionListComponent implements OnInit {
   itemFrom: number;
   itemTo: number;
   totalElements: number;
+  config: any;
 
-  constructor(private prescriptionService: PrescriptionService, private router: Router) {
+  constructor(private prescriptionService: PrescriptionService, private route: ActivatedRoute, private router: Router) {
+    this.config = {
+      currentPage: 1,
+      itemsPerPage: 5
+    };
+    this.route.queryParamMap
+      .map(params => params.get('page'))
+      .subscribe(page => this.config.currentPage = page);
   }
 
   searchText;
@@ -36,5 +46,7 @@ export class PrescriptionListComponent implements OnInit {
     this.router.navigate(['doctors/prescription-view']);
   }
 
-
+  pageChange(newPage: number) {
+    this.router.navigate(['doctors/prescription-list'], {queryParams: {page: newPage}});
+  }
 }

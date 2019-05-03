@@ -90,9 +90,10 @@ import {AuthMockService} from './service/auth-mock.service';
 import {LoggedInUserInfoHttpService} from './service/logged-in-user-info-http.service';
 import {LoggedInUserInfoMockService} from './service/logged-in-user-info-mock.service';
 import {SettingsComponent} from './componant/dentist-point/settings/settings.component';
-import {EditPrescriptionComponent} from './componant/dentist-point/edit-prescription/edit-prescription.component';
 import {AppointmentHttpService} from './service/appointment-http.service';
 import {AppointmentMockService} from './service/appointment-mock.service';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {EditTemplateComponent} from './componant/dentist-point/edit-template/edit-template.component';
 
 
 @NgModule({
@@ -112,6 +113,7 @@ import {AppointmentMockService} from './service/appointment-mock.service';
     MatCardModule,
     MatCheckboxModule,
     MatChipsModule,
+    NgxPaginationModule,
     MatDatepickerModule,
     MatDialogModule,
     MatDividerModule,
@@ -178,7 +180,7 @@ import {AppointmentMockService} from './service/appointment-mock.service';
     CreateAppointmentComponent,
     CreateTemplateComponent,
     SettingsComponent,
-    EditPrescriptionComponent
+    EditTemplateComponent
   ],
   providers: [
     AuthGuard,
@@ -213,4 +215,5 @@ import {AppointmentMockService} from './service/appointment-mock.service';
     AppComponent
   ]
 })
-export class AppModule { }
+export class AppModule {
+}
