@@ -1,32 +1,32 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {CreateTemplate} from "../../../model/create-template";
-import {TemplateService} from "../../../service/template.service";
 import {CreateDrug} from "../../../model/create-medicine";
+import {TemplateService} from "../../../service/template.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {CreateTemplate} from "../../../model/create-template";
 
 @Component({
-  selector: 'app-create-template',
-  templateUrl: './create-template.component.html',
-  styleUrls: ['./create-template.component.css']
+  selector: 'app-edit-template',
+  templateUrl: './edit-template.component.html',
+  styleUrls: ['./edit-template.component.css']
 })
-export class CreateTemplateComponent implements OnInit {
-
+export class EditTemplateComponent implements OnInit {
   form: FormGroup;
   submitted = false;
   serverError = '';
-  patientId: string;
+  templateId: string;
   createMedicinePrescription: Array<CreateDrug> = [];
 
   constructor(private formBuilder: FormBuilder, private prescriptionService: TemplateService,
               private route: ActivatedRoute, private router: Router) {
-
     this.route.params.subscribe(params => {
-      this.patientId = params['id'];
+      this.templateId = params['id'];
     });
-
   }
 
+  get f() {
+    return this.form.controls;
+  }
 
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -47,10 +47,6 @@ export class CreateTemplateComponent implements OnInit {
 
 
     });
-  }
-
-  get f() {
-    return this.form.controls;
   }
 
   onSubmit() {
@@ -80,8 +76,10 @@ export class CreateTemplateComponent implements OnInit {
     prescription.createMedicinePrescription.push(createDrug);
 
 
-    this.prescriptionService.createTemplate(prescription.templateName, prescription.chiefComplain, prescription.parameters, prescription.remarks, prescription.dentalHistory,
-      prescription.vaccinationHistory, prescription.investigation, prescription.radiological, prescription.planning, this.createMedicinePrescription).subscribe(res => {
+    this.prescriptionService.editTemplate(this.templateId, prescription.templateName, prescription.chiefComplain,
+      prescription.parameters, prescription.remarks, prescription.dentalHistory,
+      prescription.vaccinationHistory, prescription.investigation, prescription.radiological,
+      prescription.planning, this.createMedicinePrescription).subscribe(res => {
 
     }, error => {
       if (error.status === 400) {
@@ -99,6 +97,4 @@ export class CreateTemplateComponent implements OnInit {
     createDrug.drugDuration = this.form.controls['drugDuration'].value;
     this.createMedicinePrescription.push(createDrug)
   }
-
-
 }

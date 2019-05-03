@@ -20,7 +20,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let prescriptionlist of prescriptionListin | filter:searchText">
+      <tr *ngFor="let prescriptionlist of prescriptionListin | filter:searchText | paginate: config">
         <td style="width: 30%">{{ prescriptionlist.patientName }}</td>
         <td style="width: 30%">{{ prescriptionlist.submitDate }}</td>
         <td style="width: 50%">{{ prescriptionlist.chiefComplain }}</td>
@@ -29,5 +29,10 @@
       </tbody>
     </table>
   </div>
-  <div>Showing {{ itemFrom }} to {{ itemTo }} of {{ totalElements }} entries</div>
+  <div class="ibox-footer">
+    <div class="text-center">
+      <pagination-controls (pageChange)="pageChange($event)" class="my-pagination"></pagination-controls>
+    </div>
+
+  </div>
 </div>
