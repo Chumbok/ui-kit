@@ -220,7 +220,9 @@
               <td>{{ createMedicine.drugStrength }}</td>
               <td>{{ createMedicine.drugDose }}</td>
               <td>{{ createMedicine.drugDuration }}</td>
-              <td><a>Delete</a></td>
+              <td>
+                <button class="btn btn-outline-danger" (click)="deleteMedicine()" type="button">Delete</button>
+              </td>
             </tr>
             </tbody>
           </table>

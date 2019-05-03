@@ -52,9 +52,11 @@ export class PrescriptionService {
     return new EmptyObservable<Response>();
 
   }
+
   public getPrescriptionList(patientId: string): Observable<any> {
     return this.enableMock ? this.getPrescriptionListMock() : this.getPrescriptionListReal(patientId);
   }
+
   private getPrescriptionListReal(patientId: string): Observable<any> {
     return this.http.get<any>(this.serviceBaseEndpoint + patientId + '/prescription/', this.httpOptions);
   }
