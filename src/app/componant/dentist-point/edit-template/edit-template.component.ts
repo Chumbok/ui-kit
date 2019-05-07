@@ -4,6 +4,7 @@ import {CreateDrug} from "../../../model/create-medicine";
 import {TemplateService} from "../../../service/template.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CreateTemplate} from "../../../model/create-template";
+import {PrescriptionService} from "../../../service/prescription.service";
 
 @Component({
   selector: 'app-edit-template',
@@ -16,8 +17,10 @@ export class EditTemplateComponent implements OnInit {
   serverError = '';
   templateId: string;
   createMedicinePrescription: Array<CreateDrug> = [];
+  selectedTemplateId: string;
+  selectedTemplate: any;
 
-  constructor(private formBuilder: FormBuilder, private prescriptionService: TemplateService,
+  constructor(private formBuilder: FormBuilder, private prescriptionService: TemplateService, private prescriptionService1: PrescriptionService,
               private route: ActivatedRoute, private router: Router) {
     this.route.params.subscribe(params => {
       this.templateId = params['id'];
@@ -31,7 +34,7 @@ export class EditTemplateComponent implements OnInit {
   ngOnInit() {
     this.form = this.formBuilder.group({
       templateName: [''],
-      complain: ['', Validators.required],
+      chiefComplain: ['', Validators.required],
       parameters: [''],
       remarks: [''],
       dentalHistory: [''],
@@ -45,8 +48,8 @@ export class EditTemplateComponent implements OnInit {
       drugDose: [''],
       drugDuration: ['']
 
-
     });
+    this.selectTemplate(this.templateId);
   }
 
   onSubmit() {
@@ -57,8 +60,8 @@ export class EditTemplateComponent implements OnInit {
     }
     const prescription: CreateTemplate = new CreateTemplate();
     prescription.templateName = this.form.controls['templateName'].value;
-    ;
-    prescription.chiefComplain = this.form.controls['complain'].value;
+
+    prescription.chiefComplain = this.form.controls['chiefComplain'].value;
     prescription.parameters = this.form.controls['parameters'].value;
     prescription.remarks = this.form.controls['remarks'].value;
     prescription.dentalHistory = this.form.controls['dentalHistory'].value;
@@ -87,7 +90,33 @@ export class EditTemplateComponent implements OnInit {
       }
     });
   }
+  selectTemplate(selectedTemplateId) {
 
+    this.prescriptionService1.getPrescriptionView().subscribe(res => {
+
+      this.selectedTemplateId = selectedTemplateId;
+      this.selectedTemplate = res['items'].find(template => template.id === selectedTemplateId);
+        this.form.controls['templateName'].setValue(this.selectedTemplate.templateName);
+        this.form.controls['chiefComplain'].setValue(this.selectedTemplate.chiefComplain);
+        this.form.controls['parameters'].setValue(this.selectedTemplate.parameters);
+        this.form.controls['remarks'].setValue(this.selectedTemplate.remarks);
+        this.form.controls['dentalHistory'].setValue(this.selectedTemplate.dentalHistory);
+        this.form.controls['vaccinationHistory'].setValue(this.selectedTemplate.vaccinationHistory);
+        this.form.controls['investigation'].setValue(this.selectedTemplate.investigation);
+        this.form.controls['radiological'].setValue(this.selectedTemplate.radiological);
+        this.form.controls['planning'].setValue(this.selectedTemplate.planning);
+
+      this.selectedTemplate['medicines'].forEach((medicine) => {
+        const createDrug: CreateDrug = new CreateDrug();
+        createDrug.drugType = medicine.drugType;
+        createDrug.medicineName = medicine.medicineName;
+        createDrug.drugStrength = medicine.drugStrength;
+        createDrug.drugDose = medicine.drugDose;
+        createDrug.drugDuration = medicine.drugDuration;
+        this.createMedicinePrescription.push(createDrug);
+      });
+    });
+  }
   addMedicine() {
     const createDrug: CreateDrug = new CreateDrug();
     createDrug.drugType = this.form.controls['drugType'].value;

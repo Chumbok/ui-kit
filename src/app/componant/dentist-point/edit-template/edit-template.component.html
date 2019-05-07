@@ -13,6 +13,7 @@
       <div class="form-group row">
         <label class="col-md-2">Template Name :</label>
         <input type="text" formControlName="templateName" class="form-control col-md-9"
+               value="{{selectedTemplate?.templateName}}"
                placeholder="Enter Your Template Name"
                [ngClass]="{ 'is-invalid': submitted && f.templateName.errors }"/>
         <div *ngIf="submitted && f.templateName.errors" class="invalid-feedback">
@@ -43,34 +44,38 @@
         <div role="tabpanel" class="tab-pane fade active show" id="Section1">
 
 
-          <div class="form-group mb-4 row mt-4">
+          <div class="form-group mb-4 row mt-4 font-weight-normal">
             <label class="col-sm-2 col-form-label">Chief Complain</label>
             <div class="col-sm-10">
-              <textarea type="text" formControlName="complain" class="form-control"
-                        [ngClass]="{ 'is-invalid': submitted && f.complain.errors }"></textarea>
-              <div *ngIf="submitted && f.complain.errors" class="invalid-feedback">
-                <div *ngIf="f.complain.errors.required">Chief Complain is required</div>
+              <textarea type="text" formControlName="chiefComplain" class="form-control"
+                        value="{{selectedTemplate?.chiefComplain}}"
+                        [ngClass]="{ 'is-invalid': submitted && f.chiefComplain.errors }"></textarea>
+              <div *ngIf="submitted && f.chiefComplain.errors" class="invalid-feedback">
+                <div *ngIf="f.chiefComplain.errors.required">Chief Complain is required</div>
               </div>
             </div>
           </div>
+
         </div>
 
         <div role="tabpanel" class="tab-pane fade" id="Section2">
 
-          <div class="form-group mb-4 row mt-4">
+          <div class="form-group mb-4 row mt-4 font-weight-normal">
             <label class="col-sm-2 col-form-label">Parameters</label>
             <div class="col-sm-10">
               <textarea type="text" formControlName="parameters" class="form-control"
+                        value="{{ selectedTemplate?.parameters }}"
                         [ngClass]="{ 'is-invalid': submitted && f.parameters.errors }"></textarea>
               <div *ngIf="submitted && f.parameters.errors" class="invalid-feedback">
                 <div *ngIf="f.parameters.errors.required">Parameters is required</div>
               </div>
             </div>
           </div>
-          <div class="form-group mb-4 row">
+          <div class="form-group mb-4 row font-weight-normal">
             <label class="col-sm-2 col-form-label">Remarks</label>
             <div class="col-sm-10">
               <textarea type="text" formControlName="remarks" class="form-control"
+                        value="{{ selectedTemplate?.remarks }}"
                         [ngClass]="{ 'is-invalid': submitted && f.remarks.errors }"></textarea>
               <div *ngIf="submitted && f.remarks.errors" class="invalid-feedback">
                 <div *ngIf="f.remarks.errors.required">Remarks is required</div>
@@ -82,10 +87,11 @@
 
         <div role="tabpanel" class="tab-pane fade" id="Section3">
 
-          <div class="form-group mb-4 row mt-4">
+          <div class="form-group mb-4 row mt-4 font-weight-normal">
             <label class="col-sm-3 col-form-label">Medical & Dental History</label>
             <div class="col-sm-9">
               <textarea type="text" formControlName="dentalHistory" class="form-control"
+                        value="{{ selectedTemplate?.dentalHistory }}"
                         [ngClass]="{ 'is-invalid': submitted && f.dentalHistory.errors }"></textarea>
               <div *ngIf="submitted && f.dentalHistory.errors" class="invalid-feedback">
                 <div *ngIf="f.dentalHistory.errors.required">Medical & Dental History is required</div>
@@ -93,10 +99,11 @@
             </div>
           </div>
 
-          <div class="form-group mb-4 row">
+          <div class="form-group mb-4 row font-weight-normal">
             <label class="col-sm-3 col-form-label">Drug & Vaccination History</label>
             <div class="col-sm-9">
               <textarea type="text" formControlName="vaccinationHistory" class="form-control"
+                        value="{{ selectedTemplate?.vaccinationHistory }}"
                         [ngClass]="{ 'is-invalid': submitted && f.vaccinationHistory.errors }"></textarea>
               <div *ngIf="submitted && f.vaccinationHistory.errors" class="invalid-feedback">
                 <div *ngIf="f.vaccinationHistory.errors.required">Drug & Vaccination History is required</div>
@@ -104,10 +111,12 @@
             </div>
           </div>
 
-          <div class="form-group mb-4 row">
+
+          <div class="form-group mb-4 row font-weight-normal">
             <label class="col-sm-3 col-form-label">Investigation History</label>
             <div class="col-sm-9">
               <textarea type="text" formControlName="investigation" class="form-control"
+                        value="{{ selectedTemplate?.vaccinationHistory }}"
                         [ngClass]="{ 'is-invalid': submitted && f.investigation.errors }"></textarea>
               <div *ngIf="submitted && f.investigation.errors" class="invalid-feedback">
                 <div *ngIf="f.investigation.errors.required">Investigation is required</div>
@@ -115,10 +124,11 @@
             </div>
           </div>
 
-          <div class="form-group mb-4 row">
+          <div class="form-group mb-4 row font-weight-normal">
             <label class="col-sm-3 col-form-label">Rediological/Clinical Finding</label>
             <div class="col-sm-9">
               <textarea type="text" formControlName="radiological" class="form-control"
+                        value="{{ selectedTemplate?.radiological }}"
                         [ngClass]="{ 'is-invalid': submitted && f.radiological.errors }"></textarea>
               <div *ngIf="submitted && f.radiological.errors" class="invalid-feedback">
                 <div *ngIf="f.radiological.errors.required">Rediological/Clinical Finding is required</div>
@@ -126,10 +136,11 @@
             </div>
           </div>
 
-          <div class="form-group mb-4 row">
+          <div class="form-group mb-4 row font-weight-normal">
             <label class="col-sm-3 col-form-label">Final Diagnosis & Treatment Planning</label>
             <div class="col-sm-9">
               <textarea type="text" formControlName="planning" class="form-control"
+                        value="{{ selectedTemplate?.planning }}"
                         [ngClass]="{ 'is-invalid': submitted && f.planning.errors }"></textarea>
               <div *ngIf="submitted && f.planning.errors" class="invalid-feedback">
                 <div *ngIf="f.planning.errors.required">Rediological/Clinical Finding is required</div>
@@ -220,7 +231,7 @@
               <td>{{ createMedicine.drugStrength }}</td>
               <td>{{ createMedicine.drugDose }}</td>
               <td>{{ createMedicine.drugDuration }}</td>
-              <td><a>Delete</a></td>
+              <button class="btn btn-outline-danger mt-1"  type="button">Delete</button>
             </tr>
             </tbody>
           </table>
