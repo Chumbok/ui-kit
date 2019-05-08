@@ -27,6 +27,9 @@ export class PrescriptionListComponent implements OnInit {
     this.route.queryParamMap
       .map(params => params.get('page'))
       .subscribe(page => this.config.currentPage = page);
+    this.route.params.subscribe(params => {
+      this.patientsId = params['id'];
+    });
   }
 
   pageChange(newPage: number) {
@@ -44,8 +47,8 @@ export class PrescriptionListComponent implements OnInit {
     this.pageChange(1);
   }
 
-  onPrescriptionView() {
-    this.router.navigate(['doctors/prescription-view']);
+  onPrescriptionView(patientsId) {
+    this.router.navigate(['doctors/patients/' + patientsId + '/prescription-view']);
   }
 
 

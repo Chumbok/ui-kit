@@ -24,7 +24,7 @@
         <td style="width: 30%">{{ prescriptionlist.patientName }}</td>
         <td style="width: 30%">{{ prescriptionlist.submitDate }}</td>
         <td style="width: 50%">{{ prescriptionlist.chiefComplain }}</td>
-        <td><a [routerLink]="[prescriptionlist.id]" (click)="onPrescriptionView()">View</a></td>
+        <td><a [routerLink]="[prescriptionlist.id]" (click)="onPrescriptionView(prescriptionlist.id)">View</a></td>
       </tr>
       </tbody>
     </table>

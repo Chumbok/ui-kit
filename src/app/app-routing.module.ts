@@ -51,7 +51,7 @@ const routes: Routes = [
       {path: 'doctors/calendar-view', component: CalendarComponent, canActivate: [AuthGuard]},
       {path: 'doctors/create-prescription', component: CreatePrescriptionComponent, canActivate: [AuthGuard]},
       {path: 'doctors/prescription-list', component: PrescriptionListComponent, canActivate: [AuthGuard]},
-      {path: 'doctors/prescription-view', component: PrescriptionViewComponent, canActivate: [AuthGuard]},
+      {path: 'doctors/patients/:id/prescription-view', component: PrescriptionViewComponent, canActivate: [AuthGuard]},
       {path: 'doctors/create-template', component: CreateTemplateComponent, canActivate: [AuthGuard]},
       {path: 'patient/create-patient', component: CreatePatientComponent, canActivate: [AuthGuard]},
       {path: 'patient/create-appointment', component: CreateAppointmentComponent, canActivate: [AuthGuard]},
