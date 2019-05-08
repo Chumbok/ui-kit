@@ -38,6 +38,9 @@ export class PrescriptionService {
                             investigation: string,
                             rediological: string,
                             planning: string,
+                            phoneNumber: string,
+                            patientName: string,
+                            address: string,
                             medicineList: CreateDrug[]): Observable<any> {
     console.log(id);
     console.log(complain);
@@ -47,14 +50,18 @@ export class PrescriptionService {
     console.log(vaccinationHistory);
     console.log(investigation);
     console.log(rediological);
-    console.log(medicineList)
-
+    console.log(medicineList);
+    console.log(phoneNumber);
+    console.log(patientName);
+    console.log(address);
     return new EmptyObservable<Response>();
 
   }
-  public getPrescriptionList(patientId: string): Observable<any> {
-    return this.enableMock ? this.getPrescriptionListMock() : this.getPrescriptionListReal(patientId);
+
+  public getPrescriptionList(patientId: string, currentPage: number): Observable<any> {
+    return this.enableMock ? this.getPrescriptionListMock(patientId, currentPage) : this.getPrescriptionListReal(patientId);
   }
+
   private getPrescriptionListReal(patientId: string): Observable<any> {
     return this.http.get<any>(this.serviceBaseEndpoint + patientId + '/prescription/', this.httpOptions);
   }
@@ -63,87 +70,94 @@ export class PrescriptionService {
     return this.enableMock ? this.deleteTemplateMock(templateId) : this.deleteTemplateReal(templateId);
   }
 
+  public getPatientProfile(patientId: string): Observable<any> {
+    return this.enableMock ? this.getPatientProfileMock(patientId) : this.getPrescriptionListReal(patientId);
+  }
+
   private deleteTemplateReal(templateId: string): Observable<any> {
     return this.http.get<any>(this.serviceBaseEndpoint + templateId + '/prescription/', this.httpOptions);
   }
 
-  private getPrescriptionListMock(): Observable<any> {
+  private getPatientProfileReal(patientId: string): Observable<any> {
+    return this.http.get<any>(this.serviceBaseEndpoint + patientId + '/prescription/', this.httpOptions);
+  }
 
-    const mockResp =
-      {
-        page: 0,
-        size: 3,
-        totalPages: 3,
-        totalElements: 9,
-        items: [
-          {
-            id: '1',
-            phnNo: '01488841890',
-            submitDate: 'July 12, 2019',
-            patientName: 'rossi',
-            chiefComplain: 'faver'
-          },
-          {
-            id: '1',
-            phnNo: '01788841890',
-            submitDate: 'July 12, 2019',
-            patientName: 'kobir',
-            chiefComplain: 'faver'
-          }
-          ,
-          {
-            id: '1',
-            phnNo: '01988841890',
-            submitDate: 'July 12, 2019',
-            patientName: 'jony',
-            chiefComplain: 'faver'
-          },
-          {
-            id: '1',
-            phnNo: '01488841890',
-            submitDate: 'July 12, 2019',
-            patientName: 'rossi',
-            chiefComplain: 'faver'
-          },
-          {
-            id: '1',
-            phnNo: '01788841890',
-            submitDate: 'July 12, 2019',
-            patientName: 'kobir',
-            chiefComplain: 'faver'
-          }
-          ,
-          {
-            id: '1',
-            phnNo: '01988841890',
-            submitDate: 'July 12, 2019',
-            patientName: 'jony',
-            chiefComplain: 'faver'
-          },
-          {
-            id: '1',
-            phnNo: '01488841890',
-            submitDate: 'July 12, 2019',
-            patientName: 'rossi',
-            chiefComplain: 'faver'
-          },
-          {
-            id: '1',
-            phnNo: '01788841890',
-            submitDate: 'July 12, 2019',
-            patientName: 'kobir',
-            chiefComplain: 'faver'
-          }
-          ,
-          {
-            id: '1',
-            phnNo: '01988841890',
-            submitDate: 'July 12, 2019',
-            patientName: 'jony',
-            chiefComplain: 'faver'
-          }]
+  private getPrescriptionListMock(patientId, currentPage): Observable<any> {
+    console.log(currentPage);
+    const mockResp = {
+      page: currentPage,
+      size: 3,
+      totalPages: 3,
+      totalElements: 9,
+      items: [
+        {
+          id: '1',
+          phnNo: '01488841890',
+          submitDate: 'July 12, 2019',
+          patientName: 'rossi',
+          chiefComplain: 'faver'
+        },
+        {
+          id: '1',
+          phnNo: '01788841890',
+          submitDate: 'July 12, 2019',
+          patientName: 'kobir',
+          chiefComplain: 'faver'
+        }
+        ,
+        {
+          id: '1',
+          phnNo: '01988841890',
+          submitDate: 'July 12, 2019',
+          patientName: 'jony',
+          chiefComplain: 'faver'
+        },
+        {
+          id: '1',
+          phnNo: '01488841890',
+          submitDate: 'July 12, 2019',
+          patientName: 'rossi',
+          chiefComplain: 'faver'
+        },
+        {
+          id: '1',
+          phnNo: '01788841890',
+          submitDate: 'July 12, 2019',
+          patientName: 'kobir',
+          chiefComplain: 'faver'
+        }
+        ,
+        {
+          id: '1',
+          phnNo: '01988841890',
+          submitDate: 'July 12, 2019',
+          patientName: 'jony',
+          chiefComplain: 'faver'
+        },
+        {
+          id: '1',
+          phnNo: '01488841890',
+          submitDate: 'July 12, 2019',
+          patientName: 'rossi',
+          chiefComplain: 'faver'
+        },
+        {
+          id: '1',
+          phnNo: '01788841890',
+          submitDate: 'July 12, 2019',
+          patientName: 'kobir',
+          chiefComplain: 'faver'
+        }
+        ,
+        {
+          id: '1',
+          phnNo: '01988841890',
+          submitDate: 'July 12, 2019',
+          patientName: 'jony',
+          chiefComplain: 'faver'
+        }]
 
-      };
+    };
     return of(mockResp);
   }
 
@@ -236,7 +250,7 @@ export class PrescriptionService {
   }
 
   private deleteTemplateMock(templateId: string): Observable<any> {
-    console.log(templateId)
+    console.log(templateId);
     const mockResp =
       [
         {id: 1, phnNo: '01988841890', patientName: 'Monirozzaman', chiefComplain: 'faver'},
@@ -245,6 +259,15 @@ export class PrescriptionService {
         {id: 4, phnNo: '01788841890', patientName: 'nalib', chiefComplain: 'faver'},
         {id: 5, phnNo: '01488841890', patientName: 'nabil', chiefComplain: 'faver'},
       ];
+    return of(mockResp);
+  }
+
+  private getPatientProfileMock(patientId: string): Observable<any> {
+    const mockResp =
+      [
+        {id: 1, phnNo: '+88 019 888 41 890', patientName: 'Monirozzaman Roni', address: 'Aulia,savar,dhaka'}
+      ];
+    console.log(patientId);
     return of(mockResp);
   }
 }

@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {CreateDrug} from "../../../model/create-medicine";
-import {TemplateService} from "../../../service/template.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {CreateTemplate} from "../../../model/create-template";
-import {PrescriptionService} from "../../../service/prescription.service";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {CreateDrug} from '../../../model/create-medicine';
+import {TemplateService} from '../../../service/template.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {CreateTemplate} from '../../../model/create-template';
+import {PrescriptionService} from '../../../service/prescription.service';
 
 @Component({
   selector: 'app-edit-template',
@@ -20,7 +20,8 @@ export class EditTemplateComponent implements OnInit {
   selectedTemplateId: string;
   selectedTemplate: any;
 
-  constructor(private formBuilder: FormBuilder, private prescriptionService: TemplateService, private prescriptionService1: PrescriptionService,
+  constructor(private formBuilder: FormBuilder, private prescriptionService: TemplateService,
+              private prescriptionService1: PrescriptionService,
               private route: ActivatedRoute, private router: Router) {
     this.route.params.subscribe(params => {
       this.templateId = params['id'];

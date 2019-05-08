@@ -42,42 +42,69 @@
 
         <div role="tabpanel" class="tab-pane fade active show" id="patientInfo">
 
-          <!--
-          <div class="form-group mb-4 row mt-4 font-weight-normal">
-            <label class="col-sm-2 col-form-label">Name</label>
-            <div class="col-sm-9">
-              <input type="text" formControlName="patientName" class="form-control"
-                     [ngClass]="{ 'is-invalid': submitted && f.patientName.errors }"/>
-              <div *ngIf="submitted && f.patientName.errors" class="invalid-feedback">
-                <div *ngIf="f.patientName.errors.required">Patient Name is required</div>
+          <div *ngIf="show_dialog">
+            <div class="form-group mb-4 row mt-4 font-weight-normal">
+              <label class="col-sm-2 col-form-label">Name</label>
+              <div class="col-sm-9">
+                <input type="text" formControlName="patientName" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.patientName.errors }"/>
+                <div *ngIf="submitted && f.patientName.errors" class="invalid-feedback">
+                  <div *ngIf="f.patientName.errors.required">Patient Name is required</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group mb-4 row mt-4 font-weight-normal">
+              <label class="col-sm-2 col-form-label">Phone number</label>
+              <div class="col-sm-9">
+                <input type="text" formControlName="phoneNumber" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.address.errors }"/>
+                <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
+                  <div *ngIf="f.phoneNumber.errors.required">Phone number is required</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group mb-4 row mt-4 font-weight-normal">
+              <label class="col-sm-2 col-form-label">Address</label>
+              <div class="col-sm-9">
+                <input type="text" formControlName="address" class="form-control"
+                       [ngClass]="{ 'is-invalid': submitted && f.address.errors }"/>
+                <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                  <div *ngIf="f.address.errors.required">Address is required</div>
+                </div>
               </div>
             </div>
           </div>
-
-          <div class="form-group mb-4 row mt-4 font-weight-normal">
-            <label class="col-sm-2 col-form-label">Phone number</label>
-            <div class="col-sm-9">
-              <input type="text" formControlName="phoneNumber" class="form-control"
-                     [ngClass]="{ 'is-invalid': submitted && f.address.errors }"/>
-              <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
-                <div *ngIf="f.phoneNumber.errors.required">Phone number is required</div>
+          <div *ngIf="profileView">
+            <div class="form-group mb-4 row mt-4">
+              <label class="col-sm-3 col-form-label">Name :</label>
+              <div class="col-sm-9">
+                <li class="list-group m-2">
+                  <p><span class="badge">{{patientName}}</span></p>
+                </li>
               </div>
             </div>
-          </div>
 
-          <div class="form-group mb-4 row mt-4 font-weight-normal">
-            <label class="col-sm-2 col-form-label">Address</label>
-            <div class="col-sm-9">
-              <input type="text" formControlName="address" class="form-control"
-                     [ngClass]="{ 'is-invalid': submitted && f.address.errors }"/>
-              <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
-                <div *ngIf="f.address.errors.required">Address is required</div>
+            <div class="form-group mb-4 row">
+              <label class="col-sm-3 col-form-label">Phone no :</label>
+              <div class="col-sm-9">
+                <li class="list-group m-2">
+                  <p><span class="badge">{{phoneNumber}}</span></p>
+                </li>
               </div>
             </div>
+
+            <div class="form-group mb-4 row">
+              <label class="col-sm-3 col-form-label">Address :</label>
+              <div class="col-sm-9">
+                <li class="list-group m-2">
+                  <p><span class="badge">{{address}}</span></p>
+                </li>
+              </div>
+            </div>
+
           </div>
-
-          -->
-
         </div>
 
         <div role="tabpanel" class="tab-pane fade" id="Section0">
