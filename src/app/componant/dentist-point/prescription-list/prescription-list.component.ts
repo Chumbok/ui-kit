@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {PrescriptionService} from "../../../service/prescription.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {PrescriptionService} from '../../../service/prescription.service';
+import {ActivatedRoute, Router} from '@angular/router';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 
@@ -18,7 +18,7 @@ export class PrescriptionListComponent implements OnInit {
   itemTo: number;
   totalElements: number;
   config: any;
-
+  searchText;
   constructor(private prescriptionService: PrescriptionService, private route: ActivatedRoute, private router: Router) {
     this.config = {
       currentPage: 1,
@@ -29,11 +29,9 @@ export class PrescriptionListComponent implements OnInit {
       .subscribe(page => this.config.currentPage = page);
   }
 
-  searchText;
-
-  ngOnInit() {
-
-    this.prescriptionService.getPrescriptionList(this.patientsId).subscribe(res => {
+  pageChange(newPage: number) {
+    this.router.navigate(['doctors/prescription-list'], {queryParams: {page: newPage}});
+    this.prescriptionService.getPrescriptionList(this.patientsId, newPage).subscribe(res => {
       this.prescription = res;
       this.prescriptionListin = res['items'];
       this.itemFrom = this.prescription.page + 1;
@@ -42,11 +40,13 @@ export class PrescriptionListComponent implements OnInit {
     });
   }
 
+  ngOnInit() {
+    this.pageChange(1);
+  }
+
   onPrescriptionView() {
     this.router.navigate(['doctors/prescription-view']);
   }
 
-  pageChange(newPage: number) {
-    this.router.navigate(['doctors/prescription-list'], {queryParams: {page: newPage}});
-  }
+
 }

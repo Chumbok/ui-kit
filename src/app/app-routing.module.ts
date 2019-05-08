@@ -21,7 +21,7 @@ import {CreatePatientComponent} from './componant/dentist-point/create-patient/c
 import {CreateAppointmentComponent} from './componant/dentist-point/create-appointment/create-appointment.component';
 import {CreateTemplateComponent} from './componant/dentist-point/create-template/create-template.component';
 import {SettingsComponent} from './componant/dentist-point/settings/settings.component';
-import {EditTemplateComponent} from "./componant/dentist-point/edit-template/edit-template.component";
+import {EditTemplateComponent} from './componant/dentist-point/edit-template/edit-template.component';
 
 const routes: Routes = [
 

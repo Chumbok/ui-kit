@@ -21,15 +21,20 @@ export class CreatePrescriptionComponent implements OnInit {
   form: FormGroup;
   submitted = false;
   serverError = '';
-  patientId: string;
   medicineList: CreateDrug[] = [];
+  public show_dialog: boolean = false;
+  public profileView: boolean = false;
+  patientId: string;
+  patientName: string;
+  phoneNumber: string;
+  address: string;
 
   constructor(private formBuilder: FormBuilder, private prescriptionService: PrescriptionService,
               private route: ActivatedRoute, private router: Router) {
+    this.patientId = this.route.snapshot.queryParams['patientId'];
   }
 
   ngOnInit() {
-
     this.form = this.formBuilder.group({
       chiefComplain: ['', Validators.required],
       parameters: [''],
@@ -43,11 +48,11 @@ export class CreatePrescriptionComponent implements OnInit {
       medicineName: [''],
       drugStrength: [''],
       drugDose: [''],
-      drugDuration: ['']
+      drugDuration: [''],
+      patientName: [''],
+      phoneNumber: [''],
+      address: ['']
     });
-
-    this.patientId = this.route.snapshot.paramMap.get('patientId');
-
     this.prescriptionService.getPrescriptionView().subscribe(res => {
       this.prescriptionResp = res;
       this.templateList = [];
@@ -58,7 +63,8 @@ export class CreatePrescriptionComponent implements OnInit {
         this.templateList.push(t);
       });
     });
-
+    this.onPatientView();
+    this.selectPatient(this.patientId);
   }
 
   get f() {
@@ -66,7 +72,6 @@ export class CreatePrescriptionComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form.controls['chiefComplain'].value);
     this.submitted = true;
 
     if (this.form.invalid) {
@@ -82,7 +87,9 @@ export class CreatePrescriptionComponent implements OnInit {
     prescription.investigation = this.form.controls['investigation'].value;
     prescription.radiological = this.form.controls['radiological'].value;
     prescription.planning = this.form.controls['planning'].value;
-
+    this.phoneNumber = this.form.controls['phoneNumber'].value;
+    this.patientName = this.form.controls['patientName'].value;
+    this.address = this.form.controls['address'].value;
     const createDrug: CreateDrug = new CreateDrug();
     createDrug.drugType = this.form.controls['drugType'].value;
     createDrug.medicineName = this.form.controls['medicineName'].value;
@@ -101,6 +108,9 @@ export class CreatePrescriptionComponent implements OnInit {
       prescription.investigation,
       prescription.radiological,
       prescription.planning,
+      this.phoneNumber,
+      this.patientName,
+      this.address,
       this.medicineList).subscribe(res => {
 
     }, error => {
@@ -156,10 +166,31 @@ export class CreatePrescriptionComponent implements OnInit {
   deleteTemplate(templateId) {
     this.prescriptionService.deleteTemplate(templateId).subscribe(res => {
       //    console.log(res['items']);
-    })
+    });
   }
 
   editTemplate(templateId) {
     this.router.navigate(['patients/' + templateId + '/edit-template']);
+  }
+
+  onPatientView() {
+    if (this.patientId) {
+      this.profileView = !this.profileView;
+      this.show_dialog = this.show_dialog;
+    } else {
+      this.show_dialog = !this.show_dialog;
+      this.profileView = this.profileView;
+    }
+  }
+
+  selectPatient(patientId) {
+
+    this.prescriptionService.getPatientProfile(patientId).subscribe(res => {
+      //  res.find(template => template.id === patientId);
+      this.patientName = res[0].patientName;
+      this.phoneNumber = res[0].phnNo;
+      this.address = res[0].address;
+
+    });
   }
 }
