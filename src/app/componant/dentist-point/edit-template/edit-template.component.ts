@@ -20,8 +20,8 @@ export class EditTemplateComponent implements OnInit {
   selectedTemplateId: string;
   selectedTemplate: any;
 
-  constructor(private formBuilder: FormBuilder, private prescriptionService: TemplateService,
-              private prescriptionService1: PrescriptionService,
+  constructor(private formBuilder: FormBuilder, private prescriptionServiceTemplate: TemplateService,
+              private prescriptionService: PrescriptionService,
               private route: ActivatedRoute, private router: Router) {
     this.route.params.subscribe(params => {
       this.templateId = params['id'];
@@ -80,7 +80,7 @@ export class EditTemplateComponent implements OnInit {
     prescription.createMedicinePrescription.push(createDrug);
 
 
-    this.prescriptionService.editTemplate(this.templateId, prescription.templateName, prescription.chiefComplain,
+    this.prescriptionServiceTemplate.editTemplate(this.templateId, prescription.templateName, prescription.chiefComplain,
       prescription.parameters, prescription.remarks, prescription.dentalHistory,
       prescription.vaccinationHistory, prescription.investigation, prescription.radiological,
       prescription.planning, this.createMedicinePrescription).subscribe(res => {
@@ -93,7 +93,7 @@ export class EditTemplateComponent implements OnInit {
   }
   selectTemplate(selectedTemplateId) {
 
-    this.prescriptionService1.getPrescriptionView().subscribe(res => {
+    this.prescriptionService.getPrescriptionView().subscribe(res => {
 
       this.selectedTemplateId = selectedTemplateId;
       this.selectedTemplate = res['items'].find(template => template.id === selectedTemplateId);

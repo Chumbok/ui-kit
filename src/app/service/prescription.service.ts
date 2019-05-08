@@ -91,7 +91,7 @@ export class PrescriptionService {
       totalElements: 9,
       items: [
         {
-          id: '1',
+          id: '9388c9ea-f453-41de-96cb-d388dedbf091',
           phnNo: '01488841890',
           submitDate: 'July 12, 2019',
           patientName: 'rossi',
