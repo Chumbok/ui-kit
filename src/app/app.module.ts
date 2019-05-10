@@ -94,6 +94,10 @@ import {AppointmentHttpService} from './service/appointment-http.service';
 import {AppointmentMockService} from './service/appointment-mock.service';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {EditTemplateComponent} from './componant/dentist-point/edit-template/edit-template.component';
+import {PrescriptionHttpService} from './service/prescription-http.service';
+import {PrescriptionMockService} from './service/prescription-mock.service';
+import {TemplateHttpService} from './service/template-http.service';
+import {TemplateMockService} from './service/template-mock.service';
 
 
 @NgModule({
@@ -204,12 +208,24 @@ import {EditTemplateComponent} from './componant/dentist-point/edit-template/edi
       useClass: environment.chumbok.enableMock ? LoggedInUserInfoMockService : LoggedInUserInfoHttpService
     },
     OrgTenantUserService,
-    TemplateService,
-    PrescriptionService,
     {
       provide: AppointmentService,
       useClass: environment.chumbok.enableMock ? AppointmentMockService : AppointmentHttpService
-    }
+    },
+    {
+      provide: PrescriptionService,
+      useClass: environment.chumbok.enableMock ? PrescriptionMockService : PrescriptionHttpService
+    },
+    {
+      provide: TemplateService,
+      useClass: environment.chumbok.enableMock ? TemplateMockService : TemplateHttpService
+    },
+    PrescriptionHttpService,
+    AppointmentHttpService,
+    AppointmentMockService,
+    PrescriptionMockService,
+    TemplateHttpService,
+    TemplateMockService
   ],
   bootstrap: [
     AppComponent

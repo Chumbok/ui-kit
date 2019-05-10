@@ -11,13 +11,13 @@
 
     <div class="ibox-body">
       <div class="form-group row">
-          <label class="col-md-2">Template Name :</label>
-          <input type="text" formControlName="templateName" class="form-control col-md-9"
-                 placeholder="Enter Your Template Name"
-                 [ngClass]="{ 'is-invalid': submitted && f.templateName.errors }"/>
-          <div *ngIf="submitted && f.templateName.errors" class="invalid-feedback">
-            <div *ngIf="f.templateName.errors.required">Template Name is required</div>
-          </div>
+        <label class="col-md-2">Template Name :</label>
+        <input type="text" formControlName="templateName" class="form-control col-md-9"
+               placeholder="Enter Your Template Name"
+               [ngClass]="{ 'is-invalid': submitted && f.templateName.errors }"/>
+        <div *ngIf="submitted && f.templateName.errors" class="invalid-feedback">
+          <div *ngIf="f.templateName.errors.required">Template Name is required</div>
+        </div>
       </div>
 
       <ul class="nav nav-tabs" role="tablist">
@@ -210,7 +210,7 @@
               <th scope="col">Drug Strength</th>
               <th scope="col">Drug Dose</th>
               <th scope="col">Drug Duration</th>
-              <th scope="col"></th>
+              <th scope="col">Option</th>
             </tr>
             </thead>
             <tbody>
@@ -220,13 +220,14 @@
               <td>{{ createMedicine.drugStrength }}</td>
               <td>{{ createMedicine.drugDose }}</td>
               <td>{{ createMedicine.drugDuration }}</td>
-              <td><a>Delete</a></td>
+              <td>
+                <button class="btn btn-outline-danger mt-1" type="button">Delete</button>
+              </td>
             </tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
-
   </form>
 </div>
