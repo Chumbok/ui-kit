@@ -48,6 +48,7 @@ export class PrescriptionHttpService implements PrescriptionService {
                             phoneNumber: string,
                             patientName: string,
                             address: string,
+                            date: string,
                             medicineList: CreateDrug[]): Observable<any> {
     return new EmptyObservable<Response>();
 

@@ -28,6 +28,7 @@ export class CreatePrescriptionComponent implements OnInit {
   patientName: string;
   phoneNumber: string;
   address: string;
+  date: string;
 
   constructor(private formBuilder: FormBuilder, private prescriptionService: PrescriptionService,
               private route: ActivatedRoute, private router: Router) {
@@ -51,7 +52,8 @@ export class CreatePrescriptionComponent implements OnInit {
       drugDuration: [''],
       patientName: [''],
       phoneNumber: [''],
-      address: ['']
+      address: [''],
+      date: ['']
     });
     this.prescriptionService.getPrescriptionView().subscribe(res => {
       this.prescriptionResp = res;
@@ -69,6 +71,10 @@ export class CreatePrescriptionComponent implements OnInit {
 
   get f() {
     return this.form.controls;
+  }
+
+  dateFetching() {
+    this.date = this.form.controls['date'].value;
   }
 
   onSubmit() {
@@ -97,7 +103,6 @@ export class CreatePrescriptionComponent implements OnInit {
     createDrug.drugDose = this.form.controls['drugDose'].value;
     createDrug.drugDuration = this.form.controls['drugDuration'].value;
     prescription.createMedicinePrescription.push(createDrug);
-
     this.prescriptionService.createPrescription(
       prescription.patientId,
       prescription.chiefComplain,
@@ -111,6 +116,7 @@ export class CreatePrescriptionComponent implements OnInit {
       this.phoneNumber,
       this.patientName,
       this.address,
+      this.date,
       this.medicineList).subscribe(res => {
 
     }, error => {
@@ -170,7 +176,7 @@ export class CreatePrescriptionComponent implements OnInit {
   }
 
   editTemplate(templateId) {
-    this.router.navigate(['doctors/'+'template/' + templateId + '/edit-template']);
+    this.router.navigate(['doctors/' + 'template/' + templateId + '/edit-template']);
   }
 
   onPatientView() {
