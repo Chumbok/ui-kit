@@ -36,6 +36,10 @@
           <a href="#Section4" aria-controls="Prescription" role="tab" data-toggle="tab"
              class="nav-link">Prescription</a>
         </li>
+        <li class="mr-3 nav-item" role="presentation">
+          <a href="#Section5" aria-controls="Prescription" role="tab" data-toggle="tab"
+             class="nav-link">Next Visit Day </a>
+        </li>
       </ul>
 
       <div class="tab-content">
@@ -309,13 +313,23 @@
               <td>{{ medicine.drugStrength }}</td>
               <td>{{ medicine.drugDose }}</td>
               <td>{{ medicine.drugDuration }}</td>
-              <button class="btn btn-outline-danger mt-2"  type="button">Delete</button>
+              <button class="btn btn-outline-danger mt-2" type="button">Delete</button>
             </tr>
             </tbody>
           </table>
 
         </div>
 
+        <div role="tabpanel" class="tab-pane fade" id="Section5">
+          <div class="form-group mb-4 row mt-4 font-weight-normal">
+            <label class="col-sm-2 col-form-label">Date :</label>
+            <div class="col-sm-10">
+              <input id="dateff" formControlName="date" (ngModelChange)="dateFetching()"
+                     [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" class="form-control">
+              <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>

@@ -3,11 +3,13 @@ import {Observable, of} from 'rxjs';
 import {EmptyObservable} from 'rxjs-compat/observable/EmptyObservable';
 import {PrescriptionService} from './prescription.service';
 import {CreateDrug} from '../model/create-medicine';
+import {FlashMessageService} from "./flash-message.service";
+import {Router} from "@angular/router";
 
 @Injectable({providedIn: 'root'})
 export class PrescriptionMockService implements PrescriptionService {
 
-  constructor() {
+  constructor(private flashMessageService: FlashMessageService, private router: Router) {
   }
 
   public getPrescriptionList(patientId, currentPage): Observable<any> {
@@ -178,6 +180,7 @@ export class PrescriptionMockService implements PrescriptionService {
                             phoneNumber: string,
                             patientName: string,
                             address: string,
+                            date: string,
                             medicineList: CreateDrug[]): Observable<any> {
     console.log(id);
     console.log(complain);
@@ -191,6 +194,14 @@ export class PrescriptionMockService implements PrescriptionService {
     console.log(phoneNumber);
     console.log(patientName);
     console.log(address);
+    console.log(date);
+    this.router.navigate(['doctors/calendar-view']);
+    this.flashMessageService.showFlashMessage({
+        messages: ['Save Successfully '],
+        dismissible: true,
+        type: 'primary'
+      }
+    );
     return new EmptyObservable<Response>();
 
   }
