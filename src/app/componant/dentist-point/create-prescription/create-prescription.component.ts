@@ -170,7 +170,7 @@ export class CreatePrescriptionComponent implements OnInit {
   }
 
   editTemplate(templateId) {
-    this.router.navigate(['patients/' + templateId + '/edit-template']);
+    this.router.navigate(['doctors/'+'template/' + templateId + '/edit-template']);
   }
 
   onPatientView() {
