@@ -13,7 +13,7 @@ export class PrescriptionListComponent implements OnInit {
 
   prescription: any;
   prescriptionListin: Array<any>;
-  patientsId: string;
+  prescriptionId: string;
   itemFrom: number;
   itemTo: number;
   totalElements: number;
@@ -28,13 +28,13 @@ export class PrescriptionListComponent implements OnInit {
       .map(params => params.get('page'))
       .subscribe(page => this.config.currentPage = page);
     this.route.params.subscribe(params => {
-      this.patientsId = params['id'];
+      this.prescriptionId = params['id'];
     });
   }
 
   pageChange(newPage: number) {
     this.router.navigate(['doctors/prescription-list'], {queryParams: {page: newPage}});
-    this.prescriptionService.getPrescriptionList(this.patientsId, newPage).subscribe(res => {
+    this.prescriptionService.getPrescriptionList(this.prescriptionId, newPage).subscribe(res => {
       this.prescription = res;
       this.prescriptionListin = res['items'];
       this.itemFrom = this.prescription.page + 1;
@@ -47,8 +47,8 @@ export class PrescriptionListComponent implements OnInit {
     this.pageChange(1);
   }
 
-  onPrescriptionView(patientsId) {
-    this.router.navigate(['doctors/patients/' + patientsId + '/prescription-view']);
+  onPrescriptionView(prescriptionId) {
+    this.router.navigate(['doctors/'+'prescription/' + prescriptionId + '/prescription-view']);
   }
 
 

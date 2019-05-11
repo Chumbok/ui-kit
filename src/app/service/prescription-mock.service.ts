@@ -22,66 +22,36 @@ export class PrescriptionMockService implements PrescriptionService {
           id: '9388c9ea-f453-41de-96cb-d388dedbf091',
           phnNo: '01488841890',
           submitDate: 'July 12, 2019',
-          patientName: 'rossi',
-          chiefComplain: 'faver'
+          patientName: 'Rakib miah',
+          chiefComplain: 'Dengue fever'
         },
         {
-          id: '1',
+          id: '9388c9ea-f453-41de-96cb-d388dedb2345',
           phnNo: '01788841890',
           submitDate: 'July 12, 2019',
-          patientName: 'kobir',
-          chiefComplain: 'faver'
+          patientName: 'Kobir',
+          chiefComplain: 'Jaundice'
         }
         ,
         {
           id: '1',
+          phnNo: '01977841890',
+          submitDate: 'July 12, 2019',
+          patientName: 'Jasim',
+          chiefComplain: 'faver'
+        },
+        {
+          id: '9388c9ea-f453-41de-96cb-d388dedb7890',
           phnNo: '01988841890',
           submitDate: 'July 12, 2019',
-          patientName: 'jony',
-          chiefComplain: 'faver'
+          patientName: 'Joya ahsan',
+          chiefComplain: 'Tooth Decay'
         },
         {
           id: '1',
-          phnNo: '01488841890',
+          phnNo: '01968841890',
           submitDate: 'July 12, 2019',
-          patientName: 'rossi',
-          chiefComplain: 'faver'
-        },
-        {
-          id: '1',
-          phnNo: '01788841890',
-          submitDate: 'July 12, 2019',
-          patientName: 'kobir',
-          chiefComplain: 'faver'
-        }
-        ,
-        {
-          id: '1',
-          phnNo: '01988841890',
-          submitDate: 'July 12, 2019',
-          patientName: 'jony',
-          chiefComplain: 'faver'
-        },
-        {
-          id: '1',
-          phnNo: '01488841890',
-          submitDate: 'July 12, 2019',
-          patientName: 'rossi',
-          chiefComplain: 'faver'
-        },
-        {
-          id: '1',
-          phnNo: '01788841890',
-          submitDate: 'July 12, 2019',
-          patientName: 'kobir',
-          chiefComplain: 'faver'
-        }
-        ,
-        {
-          id: '1',
-          phnNo: '01988841890',
-          submitDate: 'July 12, 2019',
-          patientName: 'jony',
+          patientName: 'Hasan',
           chiefComplain: 'faver'
         }]
 
@@ -146,15 +116,15 @@ export class PrescriptionMockService implements PrescriptionService {
         },
         {
           id: '9388c9ea-f453-41de-96cb-d388dedb7890',
-          templateName: 'Diabetes',
-          chiefComplain: 'Frequent urination and weight loss',
-          parameters: '',
-          remarks: '',
+          templateName: 'Tooth Decay',
+          chiefComplain: 'Bleeding into mouth and grey',
+          parameters: 'Your dentist may discuss a filling or crown with you',
+          remarks: 'Grey, brown or black spots appearing on your teeth(an unpleasant taste in your mouth)',
           dentalHistory: '',
           vaccinationHistory: '',
           investigation: '',
           radiological: '',
-          planning: '',
+          planning: 'Limit your intake of sugary foods and drinks(Protect Your Teeth with Fluoride)',
           medicines: [
             {
               drugType: 'Tab',
