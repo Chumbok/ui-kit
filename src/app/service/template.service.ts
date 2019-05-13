@@ -11,4 +11,9 @@ export abstract class TemplateService {
   abstract editTemplate(tempId: string, tempName: string, complain: string, parameters: string,
                         remarks: string, dentalHistory: string, vaccinationHistory: string, investigation: string,
                         radiological: string, planning: string, prescriptionList: Array<CreateDrug>): Observable<any>;
+
+  abstract getTemplateView(): Observable<any>;
+
+
+  abstract deleteTemplate(templateId: string): Observable<any>;
 }

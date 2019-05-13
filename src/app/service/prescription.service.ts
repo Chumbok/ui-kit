@@ -6,11 +6,7 @@ import {CreateDrug} from '../model/create-medicine';
 @Injectable()
 export abstract class PrescriptionService {
   abstract getPrescriptionList(patientId, currentPage): Observable<any>;
-
   abstract getPrescriptionView(): Observable<any>;
-
-  abstract deleteTemplate(templateId: string): Observable<any>;
-
   abstract getPatientProfile(patientId: string): Observable<any>;
 
   abstract createPrescription(id: string,

@@ -33,4 +33,12 @@ export class TemplateHttpService implements TemplateService {
     return new EmptyObservable<Response>();
 
   }
+
+  public getTemplateView(): Observable<any> {
+    return new EmptyObservable<Response>();
+  }
+
+  public deleteTemplate(templateId: string): Observable<any> {
+    return new EmptyObservable<Response>();
+  }
 }
