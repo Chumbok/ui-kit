@@ -28,10 +28,6 @@ export class PrescriptionHttpService implements PrescriptionService {
     return new EmptyObservable<Response>();
   }
 
-  public deleteTemplate(templateId: string): Observable<any> {
-    return new EmptyObservable<Response>();
-  }
-
   public getPatientProfile(patientId: string): Observable<any> {
     return new EmptyObservable<Response>();
   }
