@@ -5,6 +5,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PrescriptionService} from '../../../service/prescription.service';
 import {CreateDrug} from '../../../model/create-medicine';
 import {Template} from '../../../model/template';
+import {TemplateService} from '../../../service/template.service';
 
 
 @Component({
@@ -30,7 +31,7 @@ export class CreatePrescriptionComponent implements OnInit {
   address: string;
   date: string;
 
-  constructor(private formBuilder: FormBuilder, private prescriptionService: PrescriptionService,
+  constructor(private formBuilder: FormBuilder, private prescriptionService: PrescriptionService, private templateService: TemplateService,
               private route: ActivatedRoute, private router: Router) {
     this.patientId = this.route.snapshot.queryParams['patientId'];
   }
@@ -55,7 +56,7 @@ export class CreatePrescriptionComponent implements OnInit {
       address: [''],
       date: ['']
     });
-    this.prescriptionService.getPrescriptionView().subscribe(res => {
+    this.templateService.getTemplateView().subscribe(res => {
       this.prescriptionResp = res;
       this.templateList = [];
       res['items'].forEach((template) => {
@@ -139,7 +140,7 @@ export class CreatePrescriptionComponent implements OnInit {
 
   selectTemplate(selectedTemplateId) {
 
-    this.prescriptionService.getPrescriptionView().subscribe(res => {
+    this.templateService.getTemplateView().subscribe(res => {
 
       this.selectedTemplateId = selectedTemplateId;
       this.selectedTemplate = res['items'].find(template => template.id === selectedTemplateId);
@@ -170,7 +171,7 @@ export class CreatePrescriptionComponent implements OnInit {
   }
 
   deleteTemplate(templateId) {
-    this.prescriptionService.deleteTemplate(templateId).subscribe(res => {
+    this.templateService.deleteTemplate(templateId).subscribe(res => {
       //    console.log(res['items']);
     });
   }

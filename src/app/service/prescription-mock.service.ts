@@ -140,22 +140,6 @@ export class PrescriptionMockService implements PrescriptionService {
     return of(templateList);
   }
 
-  public deleteTemplate(templateId: string): Observable<any> {
-    console.log(templateId);
-    const mockResp =
-      [
-        {
-          id: 1,
-          phnNo: '01988841890', patientName: 'Monirozzaman', chiefComplain: 'faver'
-        },
-        {id: 2, phnNo: '01788841890', patientName: 'joy', chiefComplain: 'faver'},
-        {id: 3, phnNo: '01888841890', patientName: 'joya', chiefComplain: 'faver'},
-        {id: 4, phnNo: '01788841890', patientName: 'nalib', chiefComplain: 'faver'},
-        {id: 5, phnNo: '01488841890', patientName: 'nabil', chiefComplain: 'faver'},
-      ];
-    return of(mockResp);
-  }
-
   public getPatientProfile(patientId: string): Observable<any> {
     const mockResp =
       [
