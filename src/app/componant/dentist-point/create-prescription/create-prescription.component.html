@@ -36,6 +36,10 @@
           <a href="#Section4" aria-controls="Prescription" role="tab" data-toggle="tab"
              class="nav-link">Prescription</a>
         </li>
+        <li class="mr-3 nav-item" role="presentation">
+          <a href="#Section5" aria-controls="Prescription" role="tab" data-toggle="tab"
+             class="nav-link">Next Visit Day </a>
+        </li>
       </ul>
 
       <div class="tab-content">
@@ -103,8 +107,40 @@
                 </li>
               </div>
             </div>
+            <div>
+              <ul class="input-group mb-3">
+                <a href="#Previousprescription" aria-controls="Previous prescription" role="tab" data-toggle="tab"
+                   class="nav-link" (click)="previousPrescriptionView()">Previous prescription>> </a>
+              </ul>
+            </div>
+            <div role="tab" class="tab-pane fade" id="Previousprescription">
+              <div class="form-group mb-4 row mt-4 font-weight-normal">
+                <table class="table">
+                  <thead>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Chief Complain</th>
+                    <th scope="col">Options</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let prescription of prescriptionListin">
+                    <td style="width: 30%">{{ prescription.submitDate }}</td>
+                    <td style="width: 50%">{{ prescription.chiefComplain }}</td>
+                    <td><a [routerLink]="[prescription.id]" (click)="onPrescriptionView(prescription.id)">Details</a>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+                <!--  <div class="text-center">
+                    <pagination-controls (pageChange)="pageChange($event)" class="my-pagination"></pagination-controls>
+                  </div>-->
+              </div>
+            </div>
+
           </div>
         </div>
+
 
         <div role="tabpanel" class="tab-pane fade" id="Section0">
           <div class="list-group mt-3">
@@ -315,8 +351,17 @@
 
         </div>
 
+        <div role="tabpanel" class="tab-pane fade" id="Section5">
+          <div class="form-group mb-4 row mt-4 font-weight-normal">
+            <label class="col-sm-2 col-form-label">Date :</label>
+            <div class="col-sm-10">
+              <input id="dateff" formControlName="date" (ngModelChange)="dateFetching()"
+                     [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" class="form-control">
+              <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+            </div>
+          </div>
+        </div>
       </div>
-
     </div>
   </form>
 

@@ -2,11 +2,13 @@ import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {EmptyObservable} from 'rxjs-compat/observable/EmptyObservable';
 import {AppointmentService} from './appointment.service';
+import {FlashMessageService} from "./flash-message.service";
+import {Router} from "@angular/router";
 
 @Injectable({providedIn: 'root'})
 export class AppointmentMockService implements AppointmentService {
 
-  constructor() {
+  constructor(private flashMessageService: FlashMessageService, private router: Router) {
   }
 
   public getFreeTimeSlots(selectedDate: string): Observable<any> {
@@ -53,6 +55,13 @@ export class AppointmentMockService implements AppointmentService {
     console.log(address);
     console.log(date);
     console.log(timeSlot);
+    this.router.navigate(['patient/create-appointment']);
+    this.flashMessageService.showFlashMessage({
+        messages: ['Appointment Create Successfully '],
+        dismissible: true,
+        type: 'primary'
+      }
+    );
     return new EmptyObservable<Response>();
   }
 
