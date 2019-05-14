@@ -24,15 +24,32 @@ export class CreatePrescriptionComponent implements OnInit {
   medicineList: CreateDrug[] = [];
   public show_dialog: boolean = false;
   public profileView: boolean = false;
+  public show_previousPrescription: boolean = false;
   patientId: string;
   patientName: string;
   phoneNumber: string;
   address: string;
   date: string;
+  prescriptionListin: Array<any> = [];
+  prescription: any;
+  itemFrom: number;
+  itemTo: number;
+  totalElements: number;
+  config: any;
 
   constructor(private formBuilder: FormBuilder, private prescriptionService: PrescriptionService,
               private route: ActivatedRoute, private router: Router) {
-    this.patientId = this.route.snapshot.queryParams['patientId'];
+
+    this.config = {
+      currentPage: 1,
+      itemsPerPage: 5
+    };
+    this.route.queryParamMap
+      .map(params => params.get('page'))
+      .subscribe(page => this.config.currentPage = page);
+    this.route.params.subscribe(params => {
+      this.patientId = this.route.snapshot.queryParams['patientId'];
+    });
   }
 
   ngOnInit() {
@@ -183,20 +200,58 @@ export class CreatePrescriptionComponent implements OnInit {
     if (this.patientId) {
       this.profileView = !this.profileView;
       this.show_dialog = this.show_dialog;
-    } else {
+      this.show_previousPrescription = !this.show_previousPrescription;
+    }
+    else {
       this.show_dialog = !this.show_dialog;
       this.profileView = this.profileView;
+      this.show_previousPrescription = this.show_previousPrescription;
     }
   }
 
   selectPatient(patientId) {
 
     this.prescriptionService.getPatientProfile(patientId).subscribe(res => {
-      //  res.find(template => template.id === patientId);
-      this.patientName = res[0].patientName;
-      this.phoneNumber = res[0].phnNo;
-      this.address = res[0].address;
+      res.items.forEach((patientInformation) => {
+       if(patientInformation.id==patientId){
+         this.patientName = patientInformation.patientName;
+         this.phoneNumber = patientInformation.phnNo;
+         this.address = patientInformation.address;
+       }
+      });
+    });
+  }
+
+  previousPrescriptionView() {
+    this.pageChange(this.patientId, 1);
+
+  }
+
+
+  pageChange(patientId, newPage: number) {
+
+    this.prescriptionListin = [];
+    this.prescriptionService.getPrescriptionList(patientId, newPage).subscribe(res => {
+
+      console.log(newPage);
+      res.items.forEach((patientPrescription) => {
+
+        if (patientPrescription.id == patientId) {
+          this.prescription = res;
+          this.itemFrom = this.prescription.page + 1;
+          this.itemTo = (this.prescription.page + 1) * this.prescription.size;
+          this.totalElements = this.prescription.totalElements;
+          this.prescriptionListin.push(patientPrescription);
+          //this.router.navigate(['doctors/prescription-list'], {queryParams: {page: newPage}});
+          console.log(patientPrescription);
+        }
+      });
 
     });
+  }
+
+
+  onPrescriptionView(prescriptionId) {
+    this.router.navigate(['doctors/' + 'prescription/' + prescriptionId + '/prescription-view']);
   }
 }
