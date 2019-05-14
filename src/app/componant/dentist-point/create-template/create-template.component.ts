@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {CreateTemplate} from "../../../model/create-template";
-import {TemplateService} from "../../../service/template.service";
-import {CreateDrug} from "../../../model/create-medicine";
+import {ActivatedRoute, Router} from '@angular/router';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {TemplateService} from '../../../service/template.service';
+import {CreateDrug} from '../../../model/create-medicine';
 
 @Component({
   selector: 'app-create-template',
@@ -17,7 +16,15 @@ export class CreateTemplateComponent implements OnInit {
   serverError = '';
   patientId: string;
   createMedicinePrescription: Array<CreateDrug> = [];
-
+  chiefComplainArray: Array<string> = [];
+  chiefParametersArray: Array<string> = [];
+  chiefRemarksArray: Array<string> = [];
+  dentalHistoryArray: Array<string> = [];
+  vaccinationHistoryArray: Array<string> = [];
+  investigationArray: Array<string> = [];
+  radiologicalArray: Array<string> = [];
+  planningArray: Array<string> = [];
+  templateName: string;
   constructor(private formBuilder: FormBuilder, private prescriptionService: TemplateService,
               private route: ActivatedRoute, private router: Router) {
 
@@ -31,7 +38,7 @@ export class CreateTemplateComponent implements OnInit {
   ngOnInit() {
     this.form = this.formBuilder.group({
       templateName: [''],
-      complain: ['', Validators.required],
+      complain: [''],
       parameters: [''],
       remarks: [''],
       dentalHistory: [''],
@@ -54,34 +61,12 @@ export class CreateTemplateComponent implements OnInit {
   }
 
   onSubmit() {
-    this.submitted = true;
-
-    if (this.form.invalid) {
-      return true;
-    }
-    const prescription: CreateTemplate = new CreateTemplate();
-    prescription.templateName = this.form.controls['templateName'].value;
-    ;
-    prescription.chiefComplain = this.form.controls['complain'].value;
-    prescription.parameters = this.form.controls['parameters'].value;
-    prescription.remarks = this.form.controls['remarks'].value;
-    prescription.dentalHistory = this.form.controls['dentalHistory'].value;
-    prescription.vaccinationHistory = this.form.controls['vaccinationHistory'].value;
-    prescription.investigation = this.form.controls['investigation'].value;
-    prescription.radiological = this.form.controls['radiological'].value;
-    prescription.planning = this.form.controls['planning'].value;
-
-    const createDrug: CreateDrug = new CreateDrug();
-    createDrug.drugType = this.form.controls['drugType'].value;
-    createDrug.medicineName = this.form.controls['medicineName'].value;
-    createDrug.drugStrength = this.form.controls['drugStrength'].value;
-    createDrug.drugDose = this.form.controls['drugDose'].value;
-    createDrug.drugDuration = this.form.controls['drugDuration'].value;
-    prescription.createMedicinePrescription.push(createDrug);
 
 
-    this.prescriptionService.createTemplate(prescription.templateName, prescription.chiefComplain, prescription.parameters, prescription.remarks, prescription.dentalHistory,
-      prescription.vaccinationHistory, prescription.investigation, prescription.radiological, prescription.planning, this.createMedicinePrescription).subscribe(res => {
+    this.templateName = this.form.controls['templateName'].value;
+    this.prescriptionService.createTemplate(this.templateName, this.chiefComplainArray, this.chiefParametersArray,
+      this.chiefRemarksArray, this.dentalHistoryArray, this.vaccinationHistoryArray, this.investigationArray,
+      this.radiologicalArray, this.planningArray, this.createMedicinePrescription).subscribe(res => {
 
     }, error => {
       if (error.status === 400) {
@@ -97,8 +82,46 @@ export class CreateTemplateComponent implements OnInit {
     createDrug.drugStrength = this.form.controls['drugStrength'].value;
     createDrug.drugDose = this.form.controls['drugDose'].value;
     createDrug.drugDuration = this.form.controls['drugDuration'].value;
-    this.createMedicinePrescription.push(createDrug)
+    this.createMedicinePrescription.push(createDrug);
   }
 
+  onKeypress(event) {
+    if (this.form.controls['complain'].value) {
+      this.chiefComplainArray.push(this.form.controls['complain'].value);
+      this.form.controls['complain'].setValue('');
+    }
+    if (this.form.controls['parameters'].value) {
+      this.chiefParametersArray.push(this.form.controls['parameters'].value);
+      this.form.controls['parameters'].setValue('');
+    }
+    if (this.form.controls['remarks'].value) {
+      this.chiefRemarksArray.push(this.form.controls['remarks'].value);
+      this.form.controls['remarks'].setValue('');
+    }
+    if (this.form.controls['dentalHistory'].value) {
+      this.dentalHistoryArray.push(this.form.controls['dentalHistory'].value);
+      this.form.controls['dentalHistory'].setValue('');
+    }
+    if (this.form.controls['vaccinationHistory'].value) {
+      this.vaccinationHistoryArray.push(this.form.controls['vaccinationHistory'].value);
+      this.form.controls['vaccinationHistory'].setValue('');
+    }
+    if (this.form.controls['investigation'].value) {
+      this.investigationArray.push(this.form.controls['investigation'].value);
+      this.form.controls['investigation'].setValue('');
+    }
+    if (this.form.controls['radiological'].value) {
+      this.radiologicalArray.push(this.form.controls['radiological'].value);
+      this.form.controls['radiological'].setValue('');
+    }
+    if (this.form.controls['planning'].value) {
+      this.planningArray.push(this.form.controls['planning'].value);
+      this.form.controls['planning'].setValue('');
+    }
+  }
 
+  deletes(index, arrayList) {
+    arrayList.splice(index, 1);
+    console.log(index);
+  }
 }

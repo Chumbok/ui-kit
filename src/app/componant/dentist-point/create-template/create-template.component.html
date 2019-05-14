@@ -41,15 +41,27 @@
       <div class="tab-content">
 
         <div role="tabpanel" class="tab-pane fade active show" id="Section1">
-
-
           <div class="form-group mb-4 row mt-4">
             <label class="col-sm-2 col-form-label">Chief Complain</label>
             <div class="col-sm-10">
-              <textarea type="text" formControlName="complain" class="form-control"
-                        [ngClass]="{ 'is-invalid': submitted && f.complain.errors }"></textarea>
+              <input type="text" formControlName="complain" class="form-control" (keydown.enter)="onKeypress($event)"
+                     [ngClass]="{ 'is-invalid': submitted && f.complain.errors }">
               <div *ngIf="submitted && f.complain.errors" class="invalid-feedback">
                 <div *ngIf="f.complain.errors.required">Chief Complain is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row mt-4">
+            <label class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+
+              <div class="btn btn-outline-secondary disabled ml-1 mb-2" role="alert"
+                   *ngFor="let chiefComplain of chiefComplainArray; let i = index">
+                <strong>{{ chiefComplain }}</strong>
+                <button type="button" class="btn close" data-dismiss="alert" aria-label="Close"
+                        (click)="deletes(i,chiefComplainArray)">
+                  <span aria-hidden="true">×</span>
+                </button>
               </div>
             </div>
           </div>
@@ -60,20 +72,48 @@
           <div class="form-group mb-4 row mt-4">
             <label class="col-sm-2 col-form-label">Parameters</label>
             <div class="col-sm-10">
-              <textarea type="text" formControlName="parameters" class="form-control"
-                        [ngClass]="{ 'is-invalid': submitted && f.parameters.errors }"></textarea>
+              <input type="text" formControlName="parameters" class="form-control" (keydown.enter)="onKeypress($event)"
+                     [ngClass]="{ 'is-invalid': submitted && f.parameters.errors }">
               <div *ngIf="submitted && f.parameters.errors" class="invalid-feedback">
-                <div *ngIf="f.parameters.errors.required">Parameters is required</div>
+                <div *ngIf="f.parameters.errors.required">Chief Complain is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row mt-4">
+            <label class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+
+              <div class="btn btn-outline-secondary disabled ml-1 mb-2" role="alert"
+                   *ngFor="let chiefParameters of chiefParametersArray; let i = index">
+                <strong>{{ chiefParameters }}</strong>
+                <button type="button" class="btn close" data-dismiss="alert" aria-label="Close"
+                        (click)="deletes(i,chiefParametersArray)">
+                  <span aria-hidden="true">×</span>
+                </button>
               </div>
             </div>
           </div>
           <div class="form-group mb-4 row">
             <label class="col-sm-2 col-form-label">Remarks</label>
             <div class="col-sm-10">
-              <textarea type="text" formControlName="remarks" class="form-control"
-                        [ngClass]="{ 'is-invalid': submitted && f.remarks.errors }"></textarea>
+              <input type="text" formControlName="remarks" class="form-control" (keydown.enter)="onKeypress($event)"
+                     [ngClass]="{ 'is-invalid': submitted && f.remarks.errors }">
               <div *ngIf="submitted && f.remarks.errors" class="invalid-feedback">
-                <div *ngIf="f.remarks.errors.required">Remarks is required</div>
+                <div *ngIf="f.remarks.errors.required">Chief Complain is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row mt-4">
+            <label class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+
+              <div class="btn btn-outline-secondary disabled ml-1 mb-2" role="alert"
+                   *ngFor="let chiefRemarks of chiefRemarksArray; let i = index">
+                <strong>{{ chiefRemarks }}</strong>
+                <button type="button" class="btn close" data-dismiss="alert" aria-label="Close"
+                        (click)="deletes(i,chiefRemarksArray)">
+                  <span aria-hidden="true">×</span>
+                </button>
               </div>
             </div>
           </div>
@@ -84,11 +124,27 @@
 
           <div class="form-group mb-4 row mt-4">
             <label class="col-sm-3 col-form-label">Medical & Dental History</label>
+            <!--   -->
             <div class="col-sm-9">
-              <textarea type="text" formControlName="dentalHistory" class="form-control"
-                        [ngClass]="{ 'is-invalid': submitted && f.dentalHistory.errors }"></textarea>
+              <input type="text" formControlName="dentalHistory" class="form-control"
+                     (keydown.enter)="onKeypress($event)"
+                     [ngClass]="{ 'is-invalid': submitted && f.dentalHistory.errors }">
               <div *ngIf="submitted && f.dentalHistory.errors" class="invalid-feedback">
-                <div *ngIf="f.dentalHistory.errors.required">Medical & Dental History is required</div>
+                <div *ngIf="f.dentalHistory.errors.required">Chief Complain is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row mt-4">
+            <label class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9">
+
+              <div class="btn btn-outline-secondary disabled ml-1 mb-2" role="alert"
+                   *ngFor="let dentalHistory of dentalHistoryArray; let i = index">
+                <strong>{{ dentalHistory }}</strong>
+                <button type="button" class="btn close" data-dismiss="alert" aria-label="Close"
+                        (click)="deletes(i,dentalHistoryArray)">
+                  <span aria-hidden="true">×</span>
+                </button>
               </div>
             </div>
           </div>
@@ -96,10 +152,25 @@
           <div class="form-group mb-4 row">
             <label class="col-sm-3 col-form-label">Drug & Vaccination History</label>
             <div class="col-sm-9">
-              <textarea type="text" formControlName="vaccinationHistory" class="form-control"
-                        [ngClass]="{ 'is-invalid': submitted && f.vaccinationHistory.errors }"></textarea>
+              <input type="text" formControlName="vaccinationHistory" class="form-control"
+                     (keydown.enter)="onKeypress($event)"
+                     [ngClass]="{ 'is-invalid': submitted && f.vaccinationHistory.errors }">
               <div *ngIf="submitted && f.vaccinationHistory.errors" class="invalid-feedback">
-                <div *ngIf="f.vaccinationHistory.errors.required">Drug & Vaccination History is required</div>
+                <div *ngIf="f.vaccinationHistory.errors.required">Chief Complain is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row mt-4">
+            <label class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9">
+
+              <div class="btn btn-outline-secondary disabled ml-1 mb-2" role="alert"
+                   *ngFor="let vaccinationHistory of vaccinationHistoryArray; let i = index">
+                <strong>{{ vaccinationHistory }}</strong>
+                <button type="button" class="btn close" data-dismiss="alert" aria-label="Close"
+                        (click)="deletes(i,vaccinationHistoryArray)">
+                  <span aria-hidden="true">×</span>
+                </button>
               </div>
             </div>
           </div>
@@ -107,10 +178,25 @@
           <div class="form-group mb-4 row">
             <label class="col-sm-3 col-form-label">Investigation History</label>
             <div class="col-sm-9">
-              <textarea type="text" formControlName="investigation" class="form-control"
-                        [ngClass]="{ 'is-invalid': submitted && f.investigation.errors }"></textarea>
+              <input type="text" formControlName="investigation" class="form-control"
+                     (keydown.enter)="onKeypress($event)"
+                     [ngClass]="{ 'is-invalid': submitted && f.investigation.errors }">
               <div *ngIf="submitted && f.investigation.errors" class="invalid-feedback">
-                <div *ngIf="f.investigation.errors.required">Investigation is required</div>
+                <div *ngIf="f.investigation.errors.required">Chief Complain is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row mt-4">
+            <label class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9">
+
+              <div class="btn btn-outline-secondary disabled ml-1 mb-2" role="alert"
+                   *ngFor="let investigation of investigationArray; let i = index">
+                <strong>{{ investigation }}</strong>
+                <button type="button" class="btn close" data-dismiss="alert" aria-label="Close"
+                        (click)="deletes(i,investigationArray)">
+                  <span aria-hidden="true">×</span>
+                </button>
               </div>
             </div>
           </div>
@@ -118,10 +204,25 @@
           <div class="form-group mb-4 row">
             <label class="col-sm-3 col-form-label">Rediological/Clinical Finding</label>
             <div class="col-sm-9">
-              <textarea type="text" formControlName="radiological" class="form-control"
-                        [ngClass]="{ 'is-invalid': submitted && f.radiological.errors }"></textarea>
+              <input type="text" formControlName="radiological" class="form-control"
+                     (keydown.enter)="onKeypress($event)"
+                     [ngClass]="{ 'is-invalid': submitted && f.radiological.errors }">
               <div *ngIf="submitted && f.radiological.errors" class="invalid-feedback">
-                <div *ngIf="f.radiological.errors.required">Rediological/Clinical Finding is required</div>
+                <div *ngIf="f.radiological.errors.required">Chief Complain is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row mt-4">
+            <label class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9">
+
+              <div class="btn btn-outline-secondary disabled ml-1 mb-2" role="alert"
+                   *ngFor="let radiological of radiologicalArray; let i = index">
+                <strong>{{ radiological }}</strong>
+                <button type="button" class="btn close" data-dismiss="alert" aria-label="Close"
+                        (click)="deletes(i,radiologicalArray)">
+                  <span aria-hidden="true">×</span>
+                </button>
               </div>
             </div>
           </div>
@@ -129,10 +230,24 @@
           <div class="form-group mb-4 row">
             <label class="col-sm-3 col-form-label">Final Diagnosis & Treatment Planning</label>
             <div class="col-sm-9">
-              <textarea type="text" formControlName="planning" class="form-control"
-                        [ngClass]="{ 'is-invalid': submitted && f.planning.errors }"></textarea>
+              <input type="text" formControlName="planning" class="form-control" (keydown.enter)="onKeypress($event)"
+                     [ngClass]="{ 'is-invalid': submitted && f.planning.errors }">
               <div *ngIf="submitted && f.planning.errors" class="invalid-feedback">
-                <div *ngIf="f.planning.errors.required">Rediological/Clinical Finding is required</div>
+                <div *ngIf="f.dentalHistory.errors.required">Chief Complain is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row mt-4">
+            <label class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9">
+
+              <div class="btn btn-outline-secondary disabled ml-1 mb-2" role="alert"
+                   *ngFor="let planning of planningArray; let i = index">
+                <strong>{{ planning }}</strong>
+                <button type="button" class="btn close" data-dismiss="alert" aria-label="Close"
+                        (click)="deletes(i,planningArray)">
+                  <span aria-hidden="true">×</span>
+                </button>
               </div>
             </div>
           </div>
