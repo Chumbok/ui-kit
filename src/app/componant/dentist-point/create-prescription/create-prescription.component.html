@@ -107,9 +107,39 @@
                 </li>
               </div>
             </div>
-
+            <div>
+              <ul class="input-group mb-3">
+                <a href="#Previousprescription" aria-controls="Previous prescription" role="tab" data-toggle="tab"
+                   class="nav-link" (click)="previousPrescriptionView()">Previous prescription>> </a>
+              </ul>
+            </div>
+            <div role="tab" class="tab-pane fade" id="Previousprescription">
+              <div class="form-group mb-4 row mt-4 font-weight-normal">
+                <table class="table">
+                  <thead>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Chief Complain</th>
+                    <th scope="col">Options</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let prescription of prescriptionListin">
+                    <td style="width: 30%">{{ prescription.submitDate }}</td>
+                    <td style="width: 50%">{{ prescription.chiefComplain }}</td>
+                    <td><a [routerLink]="[prescription.id]" (click)="onPrescriptionView(prescription.id)">Details</a>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+                <!--  <div class="text-center">
+                    <pagination-controls (pageChange)="pageChange($event)" class="my-pagination"></pagination-controls>
+                  </div>-->
+              </div>
+            </div>
           </div>
         </div>
+
 
         <div role="tabpanel" class="tab-pane fade" id="Section0">
           <div class="list-group mt-3">
@@ -331,7 +361,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </form>
 
