@@ -3,8 +3,8 @@ import {Observable, of} from 'rxjs';
 import {EmptyObservable} from 'rxjs-compat/observable/EmptyObservable';
 import {CreateDrug} from '../model/create-medicine';
 import {TemplateService} from './template.service';
-import {FlashMessageService} from "./flash-message.service";
-import {Router} from "@angular/router";
+import {FlashMessageService} from './flash-message.service';
+import {Router} from '@angular/router';
 
 @Injectable({providedIn: 'root'})
 export class TemplateMockService implements TemplateService {
@@ -72,14 +72,30 @@ export class TemplateMockService implements TemplateService {
         {
           id: '9388c9ea-f453-41de-96cb-d388dedbf091',
           templateName: 'Dengue fever',
-          chiefComplain: 'Sudden-onset fever, headache (located behind the eyes), muscle and joint pains, and a rash.',
-          parameters: '',
-          remarks: '',
-          dentalHistory: '',
-          vaccinationHistory: '',
-          investigation: '',
-          radiological: '',
-          planning: '',
+          chiefComplains: [
+            'headache', 'headache1', 'headache2', 'headache', 'headache1', 'headache2'
+          ],
+          parametersAll: [
+            'headahgjche', 'headachehgjg1', 'heahgjgdache2'
+          ],
+          remarksAll: [
+            'headachgjghe', 'hehgjgadache1', 'headahjgche2'
+          ],
+          dentalHistorys: [
+            'headache', 'headache1', 'headache2'
+          ],
+          vaccinationHistorys: [
+            'headache', 'headache1', 'headache2'
+          ],
+          investigations: [
+            'headache', 'headache1', 'headache2'
+          ],
+          radiologicals: [
+            'headache', 'headache1', 'headache2'
+          ],
+          plannings: [
+            'headache', 'headache1', 'headache2'
+          ],
           medicines: [
             {
               drugType: 'Tab',
@@ -98,42 +114,216 @@ export class TemplateMockService implements TemplateService {
         },
         {
           id: '9388c9ea-f453-41de-96cb-d388dedb2345',
-          templateName: 'Jaundice',
-          chiefComplain: 'Yellow tinge to the skin and vomiting.',
-          parameters: '',
-          remarks: '',
-          dentalHistory: '',
-          vaccinationHistory: '',
-          investigation: '',
-          radiological: '',
-          planning: 'Bilirubin tests',
+          templateName: 'Dengue fever',
+          chiefComplains: [
+            {
+              chiefComplain: 'headache'
+            },
+            {
+              chiefComplain: 'headache1'
+            },
+            {
+              chiefComplain: 'headache2'
+            },
+          ],
+          parameters: [
+            {
+              parameter: 'headache'
+            },
+            {
+              parameter: 'headache1'
+            },
+            {
+              parameter: 'headache2'
+            },
+          ],
+          remarks: [
+            {
+              remark: 'headache'
+            },
+            {
+              remark: 'headache1'
+            },
+            {
+              remark: 'headache2'
+            },
+          ],
+          dentalHistorys: [
+            {
+              dentalHistory: 'headache'
+            },
+            {
+              dentalHistory: 'headache1'
+            },
+            {
+              dentalHistory: 'headache2'
+            },
+          ],
+          vaccinationHistorys: [
+            {
+              vaccinationHistory: 'headache'
+            },
+            {
+              vaccinationHistory: 'headache1'
+            },
+            {
+              vaccinationHistory: 'headache2'
+            },
+          ],
+          investigations: [
+            {
+              investigation: 'headache'
+            },
+            {
+              investigation: 'headache1'
+            },
+            {
+              investigation: 'headache2'
+            },
+          ],
+          radiologicals: [
+            {
+              radiological: 'headache'
+            },
+            {
+              radiological: 'headache1'
+            },
+            {
+              radiological: 'headache2'
+            },
+          ],
+          plannings: [
+            {
+              planning: 'headache'
+            },
+            {
+              planning: 'headache1'
+            },
+            {
+              planning: 'headache2'
+            },
+          ],
           medicines: [
             {
               drugType: 'Tab',
-              medicineName: 'Iron supplements',
+              medicineName: 'Napa',
               drugStrength: '10mg',
               drugDose: '1+1+1',
-              drugDuration: '30 day'
+              drugDuration: '1 day'
+            },
+            {
+              drugType: 'cap',
+              medicineName: 'Napa',
+              drugStrength: '10mg',
+              drugDose: '1+1+1',
+              drugDuration: '7 day'
             }]
         },
         {
           id: '9388c9ea-f453-41de-96cb-d388dedb7890',
-          templateName: 'Tooth Decay',
-          chiefComplain: 'Bleeding into mouth and grey',
-          parameters: 'Your dentist may discuss a filling or crown with you',
-          remarks: 'Grey, brown or black spots appearing on your teeth(an unpleasant taste in your mouth)',
-          dentalHistory: '',
-          vaccinationHistory: '',
-          investigation: '',
-          radiological: '',
-          planning: 'Limit your intake of sugary foods and drinks(Protect Your Teeth with Fluoride)',
+          templateName: 'Dengue fever',
+          chiefComplains: [
+            {
+              chiefComplain: 'headache'
+            },
+            {
+              chiefComplain: 'headache1'
+            },
+            {
+              chiefComplain: 'headache2'
+            },
+          ],
+          parameters: [
+            {
+              parameter: 'headache'
+            },
+            {
+              parameter: 'headache1'
+            },
+            {
+              parameter: 'headache2'
+            },
+          ],
+          remarks: [
+            {
+              remark: 'headache'
+            },
+            {
+              remark: 'headache1'
+            },
+            {
+              remark: 'headache2'
+            },
+          ],
+          dentalHistorys: [
+            {
+              dentalHistory: 'headache'
+            },
+            {
+              dentalHistory: 'headache1'
+            },
+            {
+              dentalHistory: 'headache2'
+            },
+          ],
+          vaccinationHistorys: [
+            {
+              vaccinationHistory: 'headache'
+            },
+            {
+              vaccinationHistory: 'headache1'
+            },
+            {
+              vaccinationHistory: 'headache2'
+            },
+          ],
+          investigations: [
+            {
+              investigation: 'headache'
+            },
+            {
+              investigation: 'headache1'
+            },
+            {
+              investigation: 'headache2'
+            },
+          ],
+          radiologicals: [
+            {
+              radiological: 'headache'
+            },
+            {
+              radiological: 'headache1'
+            },
+            {
+              radiological: 'headache2'
+            },
+          ],
+          plannings: [
+            {
+              planning: 'headache'
+            },
+            {
+              planning: 'headache1'
+            },
+            {
+              planning: 'headache2'
+            },
+          ],
           medicines: [
             {
               drugType: 'Tab',
-              medicineName: 'Metformin',
+              medicineName: 'Napa',
               drugStrength: '10mg',
               drugDose: '1+1+1',
-              drugDuration: '365 day'
+              drugDuration: '1 day'
+            },
+            {
+              drugType: 'cap',
+              medicineName: 'Napa',
+              drugStrength: '10mg',
+              drugDose: '1+1+1',
+              drugDuration: '7 day'
             }]
         }]
     };
@@ -146,7 +336,9 @@ export class TemplateMockService implements TemplateService {
       [
         {
           id: 1,
-          phnNo: '01988841890', patientName: 'Monirozzaman', chiefComplain: 'faver'
+          phnNo: '01988841890',
+          patientName: 'Monirozzaman',
+          chiefComplain: 'faver'
         },
         {id: 2, phnNo: '01788841890', patientName: 'joy', chiefComplain: 'faver'},
         {id: 3, phnNo: '01888841890', patientName: 'joya', chiefComplain: 'faver'},

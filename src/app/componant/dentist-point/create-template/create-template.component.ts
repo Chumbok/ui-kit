@@ -16,15 +16,16 @@ export class CreateTemplateComponent implements OnInit {
   serverError = '';
   patientId: string;
   createMedicinePrescription: Array<CreateDrug> = [];
-  chiefComplainArray: Array<string> = [];
-  chiefParametersArray: Array<string> = [];
-  chiefRemarksArray: Array<string> = [];
-  dentalHistoryArray: Array<string> = [];
-  vaccinationHistoryArray: Array<string> = [];
-  investigationArray: Array<string> = [];
-  radiologicalArray: Array<string> = [];
-  planningArray: Array<string> = [];
+  chiefComplainArray: Array<any> = [];
+  chiefParametersArray: Array<any> = [];
+  chiefRemarksArray: Array<any> = [];
+  dentalHistoryArray: Array<any> = [];
+  vaccinationHistoryArray: Array<any> = [];
+  investigationArray: Array<any> = [];
+  radiologicalArray: Array<any> = [];
+  planningArray: Array<any> = [];
   templateName: string;
+
   constructor(private formBuilder: FormBuilder, private prescriptionService: TemplateService,
               private route: ActivatedRoute, private router: Router) {
 
@@ -61,8 +62,14 @@ export class CreateTemplateComponent implements OnInit {
   }
 
   onSubmit() {
-
-
+    this.chiefComplainArray.push(this.splitMultiLine(this.form.controls['complain'].value));
+    this.chiefParametersArray.push(this.splitMultiLine(this.form.controls['parameters'].value));
+    this.chiefRemarksArray.push(this.splitMultiLine(this.form.controls['remarks'].value));
+    this.dentalHistoryArray.push(this.splitMultiLine(this.form.controls['dentalHistory'].value));
+    this.vaccinationHistoryArray.push(this.splitMultiLine(this.form.controls['vaccinationHistory'].value));
+    this.investigationArray.push(this.splitMultiLine(this.form.controls['investigation'].value));
+    this.radiologicalArray.push(this.splitMultiLine(this.form.controls['radiological'].value));
+    this.planningArray.push(this.splitMultiLine(this.form.controls['planning'].value));
     this.templateName = this.form.controls['templateName'].value;
     this.prescriptionService.createTemplate(this.templateName, this.chiefComplainArray, this.chiefParametersArray,
       this.chiefRemarksArray, this.dentalHistoryArray, this.vaccinationHistoryArray, this.investigationArray,
@@ -85,43 +92,8 @@ export class CreateTemplateComponent implements OnInit {
     this.createMedicinePrescription.push(createDrug);
   }
 
-  onKeypress(event) {
-    if (this.form.controls['complain'].value) {
-      this.chiefComplainArray.push(this.form.controls['complain'].value);
-      this.form.controls['complain'].setValue('');
-    }
-    if (this.form.controls['parameters'].value) {
-      this.chiefParametersArray.push(this.form.controls['parameters'].value);
-      this.form.controls['parameters'].setValue('');
-    }
-    if (this.form.controls['remarks'].value) {
-      this.chiefRemarksArray.push(this.form.controls['remarks'].value);
-      this.form.controls['remarks'].setValue('');
-    }
-    if (this.form.controls['dentalHistory'].value) {
-      this.dentalHistoryArray.push(this.form.controls['dentalHistory'].value);
-      this.form.controls['dentalHistory'].setValue('');
-    }
-    if (this.form.controls['vaccinationHistory'].value) {
-      this.vaccinationHistoryArray.push(this.form.controls['vaccinationHistory'].value);
-      this.form.controls['vaccinationHistory'].setValue('');
-    }
-    if (this.form.controls['investigation'].value) {
-      this.investigationArray.push(this.form.controls['investigation'].value);
-      this.form.controls['investigation'].setValue('');
-    }
-    if (this.form.controls['radiological'].value) {
-      this.radiologicalArray.push(this.form.controls['radiological'].value);
-      this.form.controls['radiological'].setValue('');
-    }
-    if (this.form.controls['planning'].value) {
-      this.planningArray.push(this.form.controls['planning'].value);
-      this.form.controls['planning'].setValue('');
-    }
-  }
-
-  deletes(index, arrayList) {
-    arrayList.splice(index, 1);
-    console.log(index);
+  splitMultiLine(str): Array<string> {
+    const splitted = str.split('\n', 200); // 200 is number of string
+    return splitted;
   }
 }

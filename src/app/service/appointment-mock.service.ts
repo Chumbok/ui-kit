@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {EmptyObservable} from 'rxjs-compat/observable/EmptyObservable';
 import {AppointmentService} from './appointment.service';
-import {FlashMessageService} from "./flash-message.service";
-import {Router} from "@angular/router";
+import {FlashMessageService} from './flash-message.service';
+import {Router} from '@angular/router';
 
 @Injectable({providedIn: 'root'})
 export class AppointmentMockService implements AppointmentService {

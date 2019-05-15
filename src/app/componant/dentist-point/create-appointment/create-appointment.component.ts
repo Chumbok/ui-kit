@@ -60,7 +60,7 @@ export class CreateAppointmentComponent implements OnInit {
   ngOnInit() {
 
     this.form = this.formBuilder.group({
-      stateCtrl: ['',],
+      stateCtrl: [''],
       patientName: [''],
       address: [''],
       date: [''],
@@ -94,4 +94,7 @@ export class CreateAppointmentComponent implements OnInit {
     this.startTimeOfFreeSlots = startTime;
   }
 
+  onClose() {
+    /* TODO: add back task*/
+  }
 }
