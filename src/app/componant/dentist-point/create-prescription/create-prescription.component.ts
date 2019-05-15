@@ -37,7 +37,22 @@ export class CreatePrescriptionComponent implements OnInit {
   itemTo: number;
   totalElements: number;
   config: any;
-
+  chiefComplainArray: Array<string> = [];
+  chiefComplainArrayView: Array<string> = [];
+  chiefParametersArray: Array<string> = [];
+  chiefParametersArrayView: Array<string> = [];
+  chiefRemarksArray: Array<string> = [];
+  chiefRemarksArrayView: Array<string> = [];
+  dentalHistoryArray: Array<string> = [];
+  dentalHistoryArrayView: Array<string> = [];
+  vaccinationHistoryArray: Array<string> = [];
+  vaccinationHistoryArrayView: Array<string> = [];
+  investigationArray: Array<string> = [];
+  investigationArrayView: Array<string> = [];
+  radiologicalArray: Array<string> = [];
+  radiologicalArrayView: Array<string> = [];
+  planningArray: Array<string> = [];
+  planningArrayView: Array<string> = [];
   constructor(private formBuilder: FormBuilder, private prescriptionService: PrescriptionService, private templateService: TemplateService,
               private route: ActivatedRoute, private router: Router) {
 
@@ -161,15 +176,30 @@ export class CreatePrescriptionComponent implements OnInit {
 
       this.selectedTemplateId = selectedTemplateId;
       this.selectedTemplate = res['items'].find(template => template.id === selectedTemplateId);
-      this.form.controls['chiefComplain'].setValue(this.selectedTemplate.chiefComplain);
-      this.form.controls['parameters'].setValue(this.selectedTemplate.parameters);
-      this.form.controls['remarks'].setValue(this.selectedTemplate.remarks);
-      this.form.controls['dentalHistory'].setValue(this.selectedTemplate.dentalHistory);
-      this.form.controls['vaccinationHistory'].setValue(this.selectedTemplate.vaccinationHistory);
-      this.form.controls['investigation'].setValue(this.selectedTemplate.investigation);
-      this.form.controls['radiological'].setValue(this.selectedTemplate.radiological);
-      this.form.controls['planning'].setValue(this.selectedTemplate.planning);
-
+      this.selectedTemplate.chiefComplains.forEach((chiefComplain) => {
+        this.chiefComplainArray.push(chiefComplain);
+      });
+      this.selectedTemplate.parametersAll.forEach((parameter) => {
+        this.chiefParametersArray.push(parameter);
+      });
+      this.selectedTemplate.remarksAll.forEach((remark) => {
+        this.chiefRemarksArray.push(remark);
+      });
+      this.selectedTemplate.dentalHistorys.forEach((dentalHistory) => {
+        this.dentalHistoryArray.push(dentalHistory);
+      });
+      this.selectedTemplate.vaccinationHistorys.forEach((vaccinationHistory) => {
+        this.vaccinationHistoryArray.push(vaccinationHistory);
+      });
+      this.selectedTemplate.investigations.forEach((investigation) => {
+        this.investigationArray.push(investigation);
+      });
+      this.selectedTemplate.radiologicals.forEach((radiological) => {
+        this.radiologicalArray.push(radiological);
+      });
+      this.selectedTemplate.plannings.forEach((planning) => {
+        this.planningArray.push(planning);
+      });
       this.medicineList = [];
       this.selectedTemplate['medicines'].forEach((medicine) => {
         const createDrug: CreateDrug = new CreateDrug();
@@ -202,8 +232,7 @@ export class CreatePrescriptionComponent implements OnInit {
       this.profileView = !this.profileView;
       this.show_dialog = this.show_dialog;
       this.show_previousPrescription = !this.show_previousPrescription;
-    }
-    else {
+    } else {
       this.show_dialog = !this.show_dialog;
       this.profileView = this.profileView;
       this.show_previousPrescription = this.show_previousPrescription;
@@ -214,11 +243,11 @@ export class CreatePrescriptionComponent implements OnInit {
 
     this.prescriptionService.getPatientProfile(patientId).subscribe(res => {
       res.items.forEach((patientInformation) => {
-       if(patientInformation.id==patientId){
-         this.patientName = patientInformation.patientName;
-         this.phoneNumber = patientInformation.phnNo;
-         this.address = patientInformation.address;
-       }
+        if (patientInformation.id == patientId) {
+          this.patientName = patientInformation.patientName;
+          this.phoneNumber = patientInformation.phnNo;
+          this.address = patientInformation.address;
+        }
       });
     });
   }
@@ -243,7 +272,6 @@ export class CreatePrescriptionComponent implements OnInit {
           this.itemTo = (this.prescription.page + 1) * this.prescription.size;
           this.totalElements = this.prescription.totalElements;
           this.prescriptionListin.push(patientPrescription);
-          //this.router.navigate(['doctors/prescription-list'], {queryParams: {page: newPage}});
           console.log(patientPrescription);
         }
       });
@@ -255,4 +283,40 @@ export class CreatePrescriptionComponent implements OnInit {
   onPrescriptionView(prescriptionId) {
     this.router.navigate(['doctors/' + 'prescription/' + prescriptionId + '/prescription-view']);
   }
+
+  onClickTemplate(value, controller) {
+    if (controller == 'chiefComplain') {
+      this.chiefComplainArrayView.push(value);
+      this.form.controls['chiefComplain'].setValue(this.chiefComplainArrayView);
+    }
+    if (controller == 'parameters') {
+      this.chiefParametersArrayView.push(value);
+      this.form.controls['parameters'].setValue(this.chiefParametersArrayView);
+    }
+    if (controller == 'remarks') {
+      this.chiefRemarksArrayView.push(value);
+      this.form.controls['remarks'].setValue(this.chiefRemarksArrayView);
+    }
+    if (controller == 'dentalHistory') {
+      this.dentalHistoryArrayView.push(value);
+      this.form.controls['dentalHistory'].setValue(this.dentalHistoryArrayView);
+    }
+    if (controller == 'vaccinationHistory') {
+      this.vaccinationHistoryArrayView.push(value);
+      this.form.controls['vaccinationHistory'].setValue(this.vaccinationHistoryArrayView);
+    }
+    if (controller == 'investigation') {
+      this.investigationArrayView.push(value);
+      this.form.controls['investigation'].setValue(this.investigationArrayView);
+    }
+    if (controller == 'radiological') {
+      this.radiologicalArrayView.push(value);
+      this.form.controls['radiological'].setValue(this.radiologicalArrayView);
+    }
+    if (controller == 'planning') {
+      this.planningArrayView.push(value);
+      this.form.controls['planning'].setValue(this.planningArrayView);
+    }
+  }
+
 }
