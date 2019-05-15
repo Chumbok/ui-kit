@@ -132,9 +132,6 @@
                   </tr>
                   </tbody>
                 </table>
-                <!--  <div class="text-center">
-                    <pagination-controls (pageChange)="pageChange($event)" class="my-pagination"></pagination-controls>
-                  </div>-->
               </div>
             </div>
 
@@ -169,11 +166,39 @@
               </div>
             </div>
           </div>
+          <!--<div class="form-group row mt-4">-->
+          <!--<label class="col-sm-2 col-form-label"></label>-->
+          <!--<div class="col-sm-10">-->
+
+          <!--&lt;!&ndash;<div class="ml-1 mb-2" role="alert" ngFor="let chiefComplain of chiefComplainArray; let i = index">&ndash;&gt;-->
+          <!--&lt;!&ndash;&lt;!&ndash;&gt;      *ngFor="let chiefRemarks of chiefRemarksArray; let i = index"&ndash;&gt;&ndash;&gt;-->
+          <!--&lt;!&ndash;<strong>{{ chiefComplain }}</strong>&ndash;&gt;-->
+          <!--&lt;!&ndash;<button type="button" class="btn btn-light">Lighfdhht</button>&ndash;&gt;-->
+          <!--&lt;!&ndash;<button type="button" class="btn btn-light">Ligfhfghght</button>&ndash;&gt;-->
+          <!--&lt;!&ndash;<button type="button" class="btn btn-light">Lighfghght</button>&ndash;&gt;-->
+          <!--&lt;!&ndash;<button type="button" class="btn btn-light">Lifghfghght</button>&ndash;&gt;-->
+
+          <!--&lt;!&ndash;</div>&ndash;&gt;-->
+          <!---->
+          <!--</div>-->
+          <!--</div>-->
+          <div class="form-group row mt-4">
+            <label class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+
+              <div class="btn disabled mb-2" role="alert"
+                   *ngFor="let chiefComplain of chiefComplainArray; let i = index">
+
+                <button type="button" (click)="onClickTemplate(chiefComplain,'chiefComplain')" class="btn btn-light">{{
+                  chiefComplain }}
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
 
 
         <div role="tabpanel" class="tab-pane fade" id="Section2">
-
           <div class="form-group mb-4 row mt-4 font-weight-normal">
             <label class="col-sm-2 col-form-label">Parameters</label>
             <div class="col-sm-10">
@@ -182,6 +207,19 @@
                         [ngClass]="{ 'is-invalid': submitted && f.parameters.errors }"></textarea>
               <div *ngIf="submitted && f.parameters.errors" class="invalid-feedback">
                 <div *ngIf="f.parameters.errors.required">Parameters is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row mt-4">
+            <label class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+
+              <div class="btn disabled mb-2" role="alert"
+                   *ngFor="let chiefParameter of chiefParametersArray; let i = index">
+
+                <button type="button" (click)="onClickTemplate(chiefParameter,'parameters')" class="btn btn-light">{{
+                  chiefParameter }}
+                </button>
               </div>
             </div>
           </div>
@@ -196,7 +234,18 @@
               </div>
             </div>
           </div>
+          <div class="form-group row mt-4">
+            <label class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
 
+              <div class="btn disabled mb-2" role="alert" *ngFor="let chiefRemarks of chiefRemarksArray; let i = index">
+
+                <button type="button" (click)="onClickTemplate(chiefRemarks,'remarks')" class="btn btn-light">{{
+                  chiefRemarks }}
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div role="tabpanel" class="tab-pane fade" id="Section3">
@@ -212,7 +261,19 @@
               </div>
             </div>
           </div>
+          <div class="form-group row mt-4">
+            <label class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9">
 
+              <div class="btn disabled mb-2" role="alert"
+                   *ngFor="let dentalHistory of dentalHistoryArray; let i = index">
+
+                <button type="button" (click)="onClickTemplate(dentalHistory,'dentalHistory')" class="btn btn-light">{{
+                  dentalHistory }}
+                </button>
+              </div>
+            </div>
+          </div>
           <div class="form-group mb-4 row font-weight-normal">
             <label class="col-sm-3 col-form-label">Drug & Vaccination History</label>
             <div class="col-sm-9">
@@ -224,7 +285,19 @@
               </div>
             </div>
           </div>
+          <div class="form-group row mt-4">
+            <label class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9">
 
+              <div class="btn disabled mb-2" role="alert"
+                   *ngFor="let vaccinationHistory of vaccinationHistoryArray; let i = index">
+
+                <button type="button" (click)="onClickTemplate(vaccinationHistory,'vaccinationHistory')"
+                        class="btn btn-light">{{ vaccinationHistory }}
+                </button>
+              </div>
+            </div>
+          </div>
           <div class="form-group mb-4 row font-weight-normal">
             <label class="col-sm-3 col-form-label">Investigation History</label>
             <div class="col-sm-9">
@@ -236,7 +309,19 @@
               </div>
             </div>
           </div>
+          <div class="form-group row mt-4">
+            <label class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9">
 
+              <div class="btn disabled mb-2" role="alert"
+                   *ngFor="let investigation of investigationArray; let i = index">
+
+                <button type="button" (click)="onClickTemplate(investigation,'investigation')" class="btn btn-light">{{
+                  investigation }}
+                </button>
+              </div>
+            </div>
+          </div>
           <div class="form-group mb-4 row font-weight-normal">
             <label class="col-sm-3 col-form-label">Rediological/Clinical Finding</label>
             <div class="col-sm-9">
@@ -248,7 +333,18 @@
               </div>
             </div>
           </div>
+          <div class="form-group row mt-4">
+            <label class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9">
 
+              <div class="btn disabled mb-2" role="alert" *ngFor="let radiological of radiologicalArray; let i = index">
+
+                <button type="button" (click)="onClickTemplate(radiological,'radiological')" class="btn btn-light">{{
+                  radiological }}
+                </button>
+              </div>
+            </div>
+          </div>
           <div class="form-group mb-4 row font-weight-normal">
             <label class="col-sm-3 col-form-label">Final Diagnosis & Treatment Planning</label>
             <div class="col-sm-9">
@@ -260,7 +356,18 @@
               </div>
             </div>
           </div>
+          <div class="form-group row mt-4">
+            <label class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-9">
 
+              <div class="btn disabled mb-2" role="alert" *ngFor="let planning of planningArray; let i = index">
+
+                <button type="button" (click)="onClickTemplate(planning,'planning')" class="btn btn-light">{{ planning
+                  }}
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div role="tabpanel" class="tab-pane fade" id="Section4">
@@ -321,9 +428,7 @@
                 <button class="btn btn-secondary float-right" (click)="addMedicine()">Add</button>
               </div>
             </div>
-
           </div>
-
           <br>
 
           <table class="table">
@@ -348,9 +453,7 @@
             </tr>
             </tbody>
           </table>
-
         </div>
-
         <div role="tabpanel" class="tab-pane fade" id="Section5">
           <div class="form-group mb-4 row mt-4 font-weight-normal">
             <label class="col-sm-2 col-form-label">Date :</label>
@@ -364,5 +467,4 @@
       </div>
     </div>
   </form>
-
 </div>
