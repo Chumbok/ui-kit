@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CreatePrescription} from '../../../model/create-prescription';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -6,6 +6,7 @@ import {PrescriptionService} from '../../../service/prescription.service';
 import {CreateDrug} from '../../../model/create-medicine';
 import {Template} from '../../../model/template';
 import {TemplateService} from '../../../service/template.service';
+import {VERSION} from "@angular/http";
 
 
 @Component({
@@ -14,7 +15,7 @@ import {TemplateService} from '../../../service/template.service';
   styleUrls: ['./create-prescription.component.css']
 })
 export class CreatePrescriptionComponent implements OnInit {
-
+  urls = [];
   selectedTemplate: any;
   selectedTemplateId: string;
   templateList: Template[];
@@ -53,6 +54,7 @@ export class CreatePrescriptionComponent implements OnInit {
   radiologicalArrayView: Array<string> = [];
   planningArray: Array<string> = [];
   planningArrayView: Array<string> = [];
+
   constructor(private formBuilder: FormBuilder, private prescriptionService: PrescriptionService, private templateService: TemplateService,
               private route: ActivatedRoute, private router: Router) {
 
@@ -171,6 +173,15 @@ export class CreatePrescriptionComponent implements OnInit {
   }
 
   selectTemplate(selectedTemplateId) {
+    this.chiefComplainArray=[];
+    this.chiefParametersArray=[];
+    this.chiefRemarksArray=[];
+    this.dentalHistoryArray=[];
+    this.vaccinationHistoryArray=[];
+    this.investigationArray = [];
+    this.radiologicalArray=[];
+    this.planningArray=[];
+
 
     this.templateService.getTemplateView().subscribe(res => {
 
@@ -319,4 +330,20 @@ export class CreatePrescriptionComponent implements OnInit {
     }
   }
 
+
+  onSelectFile(event) {
+    if (event.target.files && event.target.files[0]) {
+      var filesAmount = event.target.files.length;
+      for (let i = 0; i < filesAmount; i++) {
+        var reader = new FileReader();
+
+        reader.onload = (event) => {
+          this.urls.push(reader.result);
+
+        }
+        console.log(this.urls);
+        reader.readAsDataURL(event.target.files[i]);
+      }
+    }
+  }
 }

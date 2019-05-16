@@ -113,95 +113,31 @@ export class TemplateMockService implements TemplateService {
             }]
         },
         {
-          id: '9388c9ea-f453-41de-96cb-d388dedb2345',
-          templateName: 'Dengue fever',
+          id: '9388c9ea-f453-41de-96cb-d388dedbf092',
+          templateName: 'High Headache',
           chiefComplains: [
-            {
-              chiefComplain: 'headache'
-            },
-            {
-              chiefComplain: 'headache1'
-            },
-            {
-              chiefComplain: 'headache2'
-            },
+            'headache', 'headache1', 'headache2', 'headache', 'headache1', 'headache2'
           ],
-          parameters: [
-            {
-              parameter: 'headache'
-            },
-            {
-              parameter: 'headache1'
-            },
-            {
-              parameter: 'headache2'
-            },
+          parametersAll: [
+            'headahgjche', 'headachehgjg1', 'heahgjgdache2'
           ],
-          remarks: [
-            {
-              remark: 'headache'
-            },
-            {
-              remark: 'headache1'
-            },
-            {
-              remark: 'headache2'
-            },
+          remarksAll: [
+            'headachgjghe', 'hehgjgadache1', 'headahjgche2'
           ],
           dentalHistorys: [
-            {
-              dentalHistory: 'headache'
-            },
-            {
-              dentalHistory: 'headache1'
-            },
-            {
-              dentalHistory: 'headache2'
-            },
+            'headache', 'headache1', 'headache2'
           ],
           vaccinationHistorys: [
-            {
-              vaccinationHistory: 'headache'
-            },
-            {
-              vaccinationHistory: 'headache1'
-            },
-            {
-              vaccinationHistory: 'headache2'
-            },
+            'headache', 'headache1', 'headache2'
           ],
           investigations: [
-            {
-              investigation: 'headache'
-            },
-            {
-              investigation: 'headache1'
-            },
-            {
-              investigation: 'headache2'
-            },
+            'headache', 'headache1', 'headache2'
           ],
           radiologicals: [
-            {
-              radiological: 'headache'
-            },
-            {
-              radiological: 'headache1'
-            },
-            {
-              radiological: 'headache2'
-            },
+            'headache', 'headache1', 'headache2'
           ],
           plannings: [
-            {
-              planning: 'headache'
-            },
-            {
-              planning: 'headache1'
-            },
-            {
-              planning: 'headache2'
-            },
+            'headache', 'headache1', 'headache2'
           ],
           medicines: [
             {
@@ -220,95 +156,31 @@ export class TemplateMockService implements TemplateService {
             }]
         },
         {
-          id: '9388c9ea-f453-41de-96cb-d388dedb7890',
-          templateName: 'Dengue fever',
+          id: '9388c9ea-f453-41de-96cb-d388dedbf093',
+          templateName: 'fever',
           chiefComplains: [
-            {
-              chiefComplain: 'headache'
-            },
-            {
-              chiefComplain: 'headache1'
-            },
-            {
-              chiefComplain: 'headache2'
-            },
+            'Fever', 'clod', 'headache2', 'headache', 'headache1', 'headache2'
           ],
-          parameters: [
-            {
-              parameter: 'headache'
-            },
-            {
-              parameter: 'headache1'
-            },
-            {
-              parameter: 'headache2'
-            },
+          parametersAll: [
+            'headahgjche', 'headachehgjg1', 'heahgjgdache2'
           ],
-          remarks: [
-            {
-              remark: 'headache'
-            },
-            {
-              remark: 'headache1'
-            },
-            {
-              remark: 'headache2'
-            },
+          remarksAll: [
+            'headachgjghe', 'hehgjgadache1', 'headahjgche2'
           ],
           dentalHistorys: [
-            {
-              dentalHistory: 'headache'
-            },
-            {
-              dentalHistory: 'headache1'
-            },
-            {
-              dentalHistory: 'headache2'
-            },
+            'headache', 'headache1', 'headache2'
           ],
           vaccinationHistorys: [
-            {
-              vaccinationHistory: 'headache'
-            },
-            {
-              vaccinationHistory: 'headache1'
-            },
-            {
-              vaccinationHistory: 'headache2'
-            },
+            'headache', 'headache1', 'headache2'
           ],
           investigations: [
-            {
-              investigation: 'headache'
-            },
-            {
-              investigation: 'headache1'
-            },
-            {
-              investigation: 'headache2'
-            },
+            'headache', 'headache1', 'headache2'
           ],
           radiologicals: [
-            {
-              radiological: 'headache'
-            },
-            {
-              radiological: 'headache1'
-            },
-            {
-              radiological: 'headache2'
-            },
+            'headache', 'headache1', 'headache2'
           ],
           plannings: [
-            {
-              planning: 'headache'
-            },
-            {
-              planning: 'headache1'
-            },
-            {
-              planning: 'headache2'
-            },
+            'headache', 'headache1', 'headache2'
           ],
           medicines: [
             {

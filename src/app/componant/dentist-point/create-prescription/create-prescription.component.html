@@ -31,7 +31,7 @@
         </li>
         <li class="mr-3 nav-item" role="presentation">
           <a href="#Section3" aria-controls="Diginist" role="tab" data-toggle="tab"
-             class="nav-link">Diginist</a></li>
+             class="nav-link">Diagnosis</a></li>
         <li class="mr-3 nav-item" role="presentation">
           <a href="#Section4" aria-controls="Prescription" role="tab" data-toggle="tab"
              class="nav-link">Prescription</a>
@@ -166,22 +166,6 @@
               </div>
             </div>
           </div>
-          <!--<div class="form-group row mt-4">-->
-          <!--<label class="col-sm-2 col-form-label"></label>-->
-          <!--<div class="col-sm-10">-->
-
-          <!--&lt;!&ndash;<div class="ml-1 mb-2" role="alert" ngFor="let chiefComplain of chiefComplainArray; let i = index">&ndash;&gt;-->
-          <!--&lt;!&ndash;&lt;!&ndash;&gt;      *ngFor="let chiefRemarks of chiefRemarksArray; let i = index"&ndash;&gt;&ndash;&gt;-->
-          <!--&lt;!&ndash;<strong>{{ chiefComplain }}</strong>&ndash;&gt;-->
-          <!--&lt;!&ndash;<button type="button" class="btn btn-light">Lighfdhht</button>&ndash;&gt;-->
-          <!--&lt;!&ndash;<button type="button" class="btn btn-light">Ligfhfghght</button>&ndash;&gt;-->
-          <!--&lt;!&ndash;<button type="button" class="btn btn-light">Lighfghght</button>&ndash;&gt;-->
-          <!--&lt;!&ndash;<button type="button" class="btn btn-light">Lifghfghght</button>&ndash;&gt;-->
-
-          <!--&lt;!&ndash;</div>&ndash;&gt;-->
-          <!---->
-          <!--</div>-->
-          <!--</div>-->
           <div class="form-group row mt-4">
             <label class="col-sm-2 col-form-label"></label>
             <div class="col-sm-10">
@@ -336,9 +320,7 @@
           <div class="form-group row mt-4">
             <label class="col-sm-3 col-form-label"></label>
             <div class="col-sm-9">
-
               <div class="btn disabled mb-2" role="alert" *ngFor="let radiological of radiologicalArray; let i = index">
-
                 <button type="button" (click)="onClickTemplate(radiological,'radiological')" class="btn btn-light">{{
                   radiological }}
                 </button>
@@ -356,6 +338,8 @@
               </div>
             </div>
           </div>
+
+
           <div class="form-group row mt-4">
             <label class="col-sm-3 col-form-label"></label>
             <div class="col-sm-9">
@@ -366,6 +350,16 @@
                   }}
                 </button>
               </div>
+            </div>
+          </div>
+
+
+          <div class="form-group mb-4 row font-weight-normal">
+            <label class="col-sm-3 col-form-label">Diagnosis File Upload</label>
+            <div class="col-sm-9">
+              <img *ngFor='let url of urls' [src]="url" height="200"> <br/>
+
+              <input type='file' (change)="onSelectFile($event)" multiple>
             </div>
           </div>
         </div>
