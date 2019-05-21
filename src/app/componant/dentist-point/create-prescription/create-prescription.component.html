@@ -248,10 +248,6 @@
           <div class="form-group row mt-4">
             <label class="col-sm-3 col-form-label"></label>
             <div class="col-sm-9">
-
-              <div class="btn disabled mb-2" role="alert"
-                   *ngFor="let dentalHistory of dentalHistoryArray; let i = index">
-
                 <button type="button" (click)="onClickTemplate(dentalHistory,'dentalHistory')" class="btn btn-light">{{
                   dentalHistory }}
                 </button>
@@ -297,9 +293,6 @@
             <label class="col-sm-3 col-form-label"></label>
             <div class="col-sm-9">
 
-              <div class="btn disabled mb-2" role="alert"
-                   *ngFor="let investigation of investigationArray; let i = index">
-
                 <button type="button" (click)="onClickTemplate(investigation,'investigation')" class="btn btn-light">{{
                   investigation }}
                 </button>
@@ -320,7 +313,7 @@
           <div class="form-group row mt-4">
             <label class="col-sm-3 col-form-label"></label>
             <div class="col-sm-9">
-              <div class="btn disabled mb-2" role="alert" *ngFor="let radiological of radiologicalArray; let i = index">
+
                 <button type="button" (click)="onClickTemplate(radiological,'radiological')" class="btn btn-light">{{
                   radiological }}
                 </button>
@@ -338,11 +331,10 @@
               </div>
             </div>
           </div>
-
-
           <div class="form-group row mt-4">
             <label class="col-sm-3 col-form-label"></label>
             <div class="col-sm-9">
+
 
               <div class="btn disabled mb-2" role="alert" *ngFor="let planning of planningArray; let i = index">
 
@@ -354,6 +346,7 @@
           </div>
 
 
+
           <div class="form-group mb-4 row font-weight-normal">
             <label class="col-sm-3 col-form-label">Diagnosis File Upload</label>
             <div class="col-sm-9">
@@ -362,6 +355,7 @@
               <input type='file' (change)="onSelectFile($event)" multiple>
             </div>
           </div>
+
         </div>
 
         <div role="tabpanel" class="tab-pane fade" id="Section4">

@@ -331,6 +331,7 @@ export class CreatePrescriptionComponent implements OnInit {
   }
 
 
+
   onSelectFile(event) {
     if (event.target.files && event.target.files[0]) {
       var filesAmount = event.target.files.length;
@@ -346,4 +347,5 @@ export class CreatePrescriptionComponent implements OnInit {
       }
     }
   }
+
 }
