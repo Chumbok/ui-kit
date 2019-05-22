@@ -22,6 +22,8 @@ import {CreateAppointmentComponent} from './componant/dentist-point/create-appoi
 import {CreateTemplateComponent} from './componant/dentist-point/create-template/create-template.component';
 import {SettingsComponent} from './componant/dentist-point/settings/settings.component';
 import {EditTemplateComponent} from './componant/dentist-point/edit-template/edit-template.component';
+import {AppointmentListComponent} from "./componant/dentist-point/appointment-list/appointment-list.component";
+
 
 const routes: Routes = [
 
@@ -55,7 +57,8 @@ const routes: Routes = [
       {path: 'doctors/create-template', component: CreateTemplateComponent, canActivate: [AuthGuard]},
       {path: 'patient/create-patient', component: CreatePatientComponent, canActivate: [AuthGuard]},
       {path: 'patient/create-appointment', component: CreateAppointmentComponent, canActivate: [AuthGuard]},
-      {path: 'doctors/template/:id/edit-template', component: EditTemplateComponent, canActivate: [AuthGuard]}
+      {path: 'doctors/template/:id/edit-template', component: EditTemplateComponent, canActivate: [AuthGuard]},
+      {path: 'doctors/appointment-list', component: AppointmentListComponent, canActivate: [AuthGuard]}
     ]
   },
 

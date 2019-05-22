@@ -264,30 +264,12 @@ export class CreatePrescriptionComponent implements OnInit {
   }
 
   previousPrescriptionView() {
-    this.pageChange(this.patientId, 1);
-
+    this.previousPrescription(this.patientId);
   }
 
 
-  pageChange(patientId, newPage: number) {
-
-    this.prescriptionListin = [];
-    this.prescriptionService.getPrescriptionList(patientId, newPage).subscribe(res => {
-
-      console.log(newPage);
-      res.items.forEach((patientPrescription) => {
-
-        if (patientPrescription.id == patientId) {
-          this.prescription = res;
-          this.itemFrom = this.prescription.page + 1;
-          this.itemTo = (this.prescription.page + 1) * this.prescription.size;
-          this.totalElements = this.prescription.totalElements;
-          this.prescriptionListin.push(patientPrescription);
-          console.log(patientPrescription);
-        }
-      });
-
-    });
+  previousPrescription(patientId) {
+    this.router.navigate(['doctors/prescription-list'], {queryParams: {patient: patientId}});
   }
 
 

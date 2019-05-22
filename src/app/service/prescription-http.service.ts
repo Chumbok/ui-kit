@@ -20,7 +20,7 @@ export class PrescriptionHttpService implements PrescriptionService {
   constructor(private authService: AuthService, private http: HttpClient) {
   }
 
-  public getPrescriptionList(patientId, currentPage): Observable<any> {
+  public getPrescriptionList (currentPage): Observable<any> {
     return new EmptyObservable<Response>();
   }
 

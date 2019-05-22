@@ -98,6 +98,7 @@ import {PrescriptionHttpService} from './service/prescription-http.service';
 import {PrescriptionMockService} from './service/prescription-mock.service';
 import {TemplateHttpService} from './service/template-http.service';
 import {TemplateMockService} from './service/template-mock.service';
+import { AppointmentListComponent } from './componant/dentist-point/appointment-list/appointment-list.component';
 
 
 @NgModule({
@@ -184,7 +185,8 @@ import {TemplateMockService} from './service/template-mock.service';
     CreateAppointmentComponent,
     CreateTemplateComponent,
     SettingsComponent,
-    EditTemplateComponent
+    EditTemplateComponent,
+    AppointmentListComponent
   ],
   providers: [
     AuthGuard,
