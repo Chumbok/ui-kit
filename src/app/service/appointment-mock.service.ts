@@ -74,7 +74,7 @@ export class AppointmentMockService implements AppointmentService {
       '    "items": [\n' +
       '      {\n' +
       '          "id": "64244067-e89b-12d3-a456-556642440000",\n' +
-      '          "subject": "Discuss diabetes diet",\n' +
+      '          "subject": "Di",\n' +
       '          "description": "Provide food chart.", \n' +
       '          "startDateTime": "2019-05-22 18:00:00", \n' +
       '          "endDateTime": "2019-05-22 18:30:00",\n' +
@@ -96,8 +96,8 @@ export class AppointmentMockService implements AppointmentService {
       '              {\n' +
       '                  "id": "64244067-e89b-12d3-a456-556642441111",  \n' +
       '                  "required": false,  \n' +
-      '                  "name": "Roni",\n' +
-      '                  "email": "roni@chumbok.com",\n' +
+      '                  "name": "Joy",\n' +
+      '                  "email": "joy@chumbok.com",\n' +
       '                  "organizer": false,\n' +
       '                  "response": null,\n' +
       '                  "inviteSent": {\n' +
@@ -111,7 +111,7 @@ export class AppointmentMockService implements AppointmentService {
       '        {\n' +
       '          "id": "a4564067-e89b-12d3-a456-556642440000",\n' +
       '          "subject": "Discuss diabetes diet",\n' +
-      '          "description": "Provide food chart.", \n' +
+      '          "description": "chart.", \n' +
       '          "startDateTime": "2019-05-10 20:00:00", \n' +
       '          "endDateTime": "2019-05-10 20:30:00",\n' +
       '          "location": "Skype",\n' +
@@ -149,5 +149,8 @@ export class AppointmentMockService implements AppointmentService {
       '}';
     return of(JSON.parse(mockResp));
   }
-
+ public deleteAppointment(appointmentId: string): Observable<any> {
+   console.log(appointmentId);
+   return new EmptyObservable<Response>();
+}
 }

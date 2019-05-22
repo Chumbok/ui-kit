@@ -12,8 +12,8 @@ export class PrescriptionMockService implements PrescriptionService {
   constructor(private flashMessageService: FlashMessageService, private router: Router) {
   }
 
-  public getPrescriptionList(patientId, currentPage): Observable<any> {
-    console.log(currentPage);
+  public getPrescriptionList(currentPage): Observable<any> {
+    //console.log(currentPage);
     const mockResp = {
       page: currentPage,
       size: 3,
@@ -22,28 +22,57 @@ export class PrescriptionMockService implements PrescriptionService {
       items: [
         {
           id: '64244067-e89b-12d3-a456-556642442133',
-          phnNo: '01488841890',
-          submitDate: 'July 12, 2019',
-          patientName: 'Rakib miah',
-          chiefComplain: 'Dengue fever'
-        },
-        {
-          id: '64244067-e89b-12d3-a456-556642441111',
-          phnNo: '01788841890',
-          submitDate: 'July 12, 2019',
-          patientName: 'Kobir',
-          chiefComplain: 'Jaundice'
-        }
-        ,
-        {
-          id: '64244067-e89b-12d3-a456-556642442133',
-          phnNo: '01977841890',
+          phnNo: '+88 019 888 41 890',
           submitDate: 'July 12, 2019',
           patientName: 'Monirozzaman Roni',
           chiefComplain: 'faver'
         },
         {
           id: '64244067-e89b-12d3-a456-556642441111',
+          phnNo: '01968841890',
+          submitDate: 'July 12, 2019',
+          patientName: 'Hasan',
+          chiefComplain: 'Tooth Decay'
+        }
+        ,
+        {
+          id: '64244067-e89b-12d3-a456-556642441111',
+          phnNo: '01968841890',
+          submitDate: 'July 12, 2019',
+          patientName: 'Hasan',
+          chiefComplain: 'Tooth Decay'
+        },
+        {
+          id: '64244067-e89b-12d3-a456-55776642441111',
+          phnNo: '01988841890',
+          submitDate: 'July 12, 2019',
+          patientName: 'Joya ahsan',
+          chiefComplain: 'Tooth Decay'
+        },
+        {
+          id: '64244067-e89b-12d3-a456-556642442133',
+          phnNo: '+88 019 888 41 890',
+          submitDate: 'July 12, 2019',
+          patientName: 'Monirozzaman Roni',
+          chiefComplain: 'faver'
+        },
+        {
+          id: '64244067-e89b-12d3-a456-556642441111',
+          phnNo: '01968841890',
+          submitDate: 'July 12, 2019',
+          patientName: 'Hasan',
+          chiefComplain: 'Tooth Decay'
+        }
+        ,
+        {
+          id: '64244067-e89b-12d3-a456-556642441111',
+          phnNo: '01968841890',
+          submitDate: 'July 12, 2019',
+          patientName: 'Hasan',
+          chiefComplain: 'Tooth Decay'
+        },
+        {
+          id: '64244067-e89b-12d3-a456-55776642441111',
           phnNo: '01988841890',
           submitDate: 'July 12, 2019',
           patientName: 'Joya ahsan',
