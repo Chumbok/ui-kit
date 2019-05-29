@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CreatePrescription} from '../../../model/create-prescription';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -6,7 +6,7 @@ import {PrescriptionService} from '../../../service/prescription.service';
 import {CreateDrug} from '../../../model/create-medicine';
 import {Template} from '../../../model/template';
 import {TemplateService} from '../../../service/template.service';
-import {VERSION} from "@angular/http";
+import {VERSION} from '@angular/http';
 
 
 @Component({
