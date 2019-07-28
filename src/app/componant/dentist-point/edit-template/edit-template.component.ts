@@ -125,6 +125,6 @@ export class EditTemplateComponent implements OnInit {
     createDrug.drugStrength = this.form.controls['drugStrength'].value;
     createDrug.drugDose = this.form.controls['drugDose'].value;
     createDrug.drugDuration = this.form.controls['drugDuration'].value;
-    this.createMedicinePrescription.push(createDrug)
+    this.createMedicinePrescription.push(createDrug);
   }
 }

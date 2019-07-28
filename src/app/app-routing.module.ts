@@ -22,7 +22,8 @@ import {CreateAppointmentComponent} from './componant/dentist-point/create-appoi
 import {CreateTemplateComponent} from './componant/dentist-point/create-template/create-template.component';
 import {SettingsComponent} from './componant/dentist-point/settings/settings.component';
 import {EditTemplateComponent} from './componant/dentist-point/edit-template/edit-template.component';
-import {AppointmentListComponent} from "./componant/dentist-point/appointment-list/appointment-list.component";
+import {AppointmentListComponent} from './componant/dentist-point/appointment-list/appointment-list.component';
+import {AppUrl} from "./app-url";
 
 
 const routes: Routes = [
@@ -41,30 +42,30 @@ const routes: Routes = [
     path: '',
     component: AppLayoutComponent,
     children: [
-      {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
-      {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
+      {path: AppUrl.DASHBOARD, component: DashboardComponent, canActivate: [AuthGuard]},
+      {path: AppUrl.SETTINGS, component: SettingsComponent, canActivate: [AuthGuard]},
 
-      {path: 'orgs', component: OrgListComponent, canActivate: [AuthGuard]},
-      {path: 'orgs/create', component: CreateOrgComponent, canActivate: [AuthGuard]},
+      {path: AppUrl.ORGS, component: OrgListComponent, canActivate: [AuthGuard]},
+      {path: AppUrl.ORGS_CREATE, component: CreateOrgComponent, canActivate: [AuthGuard]},
       {path: 'orgs/:id/tenants', component: TenantListComponent, canActivate: [AuthGuard]},
       {path: 'orgs/:id/tenants/create', component: CreateTenantComponent, canActivate: [AuthGuard]},
       {path: 'orgs/:id/tenants/:tid/users', component: UserListComponent, canActivate: [AuthGuard]},
       {path: 'orgs/:id/tenants/:tid/users/create', component: CreateUserComponent, canActivate: [AuthGuard]},
-      {path: 'doctors/calendar-view', component: CalendarComponent, canActivate: [AuthGuard]},
-      {path: 'doctors/create-prescription', component: CreatePrescriptionComponent, canActivate: [AuthGuard]},
-      {path: 'doctors/prescription-list', component: PrescriptionListComponent, canActivate: [AuthGuard]},
+      {path: AppUrl.DOCTOR_CALENDER_VIEW, component: CalendarComponent, canActivate: [AuthGuard]},
+      {path: AppUrl.DOCTOR_CREATEP_PRESCRIPTION, component: CreatePrescriptionComponent, canActivate: [AuthGuard]},
+      {path: AppUrl.DOCTOR_PRESCRIPTION_LIST, component: PrescriptionListComponent, canActivate: [AuthGuard]},
+      {path: AppUrl.DOCTOR_APPOINTMENT_LIST, component: AppointmentListComponent, canActivate: [AuthGuard]},
       {path: 'doctors/prescription/:id/prescription-view', component: PrescriptionViewComponent, canActivate: [AuthGuard]},
-      {path: 'doctors/create-template', component: CreateTemplateComponent, canActivate: [AuthGuard]},
-      {path: 'patient/create-patient', component: CreatePatientComponent, canActivate: [AuthGuard]},
-      {path: 'patient/create-appointment', component: CreateAppointmentComponent, canActivate: [AuthGuard]},
+      {path: AppUrl.DOCTOR_CREATE_TEMPLATE, component: CreateTemplateComponent, canActivate: [AuthGuard]},
+      {path: AppUrl.PATIENT_CREATE_PATIENT, component: CreatePatientComponent, canActivate: [AuthGuard]},
+      {path: AppUrl.PATIENT_CREATE_APPOINTMENT, component: CreateAppointmentComponent, canActivate: [AuthGuard]},
       {path: 'doctors/template/:id/edit-template', component: EditTemplateComponent, canActivate: [AuthGuard]},
-      {path: 'doctors/appointment-list', component: AppointmentListComponent, canActivate: [AuthGuard]}
     ]
   },
 
   // No layout routes
-  {path: 'login', component: LoginComponent},
-  {path: 'logout', component: LogoutComponent},
+  {path: AppUrl.LOGIN, component: LoginComponent},
+  {path: AppUrl.LOGOUT, component: LogoutComponent},
 
   // otherwise redirect to home
   {path: '**', redirectTo: ''}

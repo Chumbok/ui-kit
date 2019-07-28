@@ -37,7 +37,7 @@ export class PrescriptionListComponent implements OnInit {
   }
 
   pageChange(newPage: number) {
-    if(this.patientId){
+    if (this.patientId) {
       this.prescriptionService.getPrescriptionList( this.patientId).subscribe(res => {
         res.items.forEach((patientInformation) => {
           if (patientInformation.id == this.patientId ) {
@@ -45,9 +45,8 @@ export class PrescriptionListComponent implements OnInit {
           }
         });
       });
-    }
-    else {
-      this.router.navigate(['doctors/prescription-list'],{queryParams: {page: newPage}});
+    } else {
+      this.router.navigate(['doctors/prescription-list'], {queryParams: {page: newPage}});
       this.prescriptionService.getPrescriptionList(newPage).subscribe(res => {
         this.prescription = res;
         this.prescriptionListin = res['items'];
@@ -63,7 +62,7 @@ export class PrescriptionListComponent implements OnInit {
   }
 
   onPrescriptionView(prescriptionId) {
-    this.router.navigate(['doctors/'+'prescription/' + prescriptionId + '/prescription-view']);
+    this.router.navigate(['doctors/' + 'prescription/' + prescriptionId + '/prescription-view']);
   }
 
 

@@ -35,12 +35,28 @@ export class CalendarComponent implements OnInit {
   constructor(private modal: NgbModal, private appointmentService: AppointmentService, private router: Router) {
   }
 
+  @ViewChild('modalContent', { static: false }) modalContent: TemplateRef<any>;
+
+  view: CalendarView = CalendarView.Month;
+
+  CalendarView = CalendarView;
+
+  viewDate: Date = new Date();
+
+  actions: CalendarEventAction[] = [];
+
+  refresh: Subject<any> = new Subject();
+
+  events: CalendarEvent[] = [];
+
+  activeDayIsOpen = false;
+
   ngOnInit() {
     this.appointmentService.getAppointmentList().subscribe(res => {
 
       res['items'].forEach((appointment) => {
 
-        var timeEpisode = new Date(appointment.startDateTime);
+        let timeEpisode = new Date(appointment.startDateTime);
 
         this.events.push({
           id: appointment.attendees[1].id,
@@ -56,22 +72,6 @@ export class CalendarComponent implements OnInit {
       this.refresh.next();
     });
   }
-
-  @ViewChild('modalContent', { static: false }) modalContent: TemplateRef<any>;
-
-  view: CalendarView = CalendarView.Month;
-
-  CalendarView = CalendarView;
-
-  viewDate: Date = new Date();
-
-  actions: CalendarEventAction[] = [];
-
-  refresh: Subject<any> = new Subject();
-
-  events: CalendarEvent[] = [];
-
-  activeDayIsOpen: boolean = false;
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {

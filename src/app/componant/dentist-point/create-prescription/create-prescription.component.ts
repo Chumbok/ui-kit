@@ -24,9 +24,9 @@ export class CreatePrescriptionComponent implements OnInit {
   submitted = false;
   serverError = '';
   medicineList: CreateDrug[] = [];
-  public show_dialog: boolean = false;
-  public profileView: boolean = false;
-  public show_previousPrescription: boolean = false;
+  public show_dialog = false;
+  public profileView = false;
+  public show_previousPrescription = false;
   patientId: string;
   patientName: string;
   phoneNumber: string;
@@ -173,14 +173,14 @@ export class CreatePrescriptionComponent implements OnInit {
   }
 
   selectTemplate(selectedTemplateId) {
-    this.chiefComplainArray=[];
-    this.chiefParametersArray=[];
-    this.chiefRemarksArray=[];
-    this.dentalHistoryArray=[];
-    this.vaccinationHistoryArray=[];
+    this.chiefComplainArray = [];
+    this.chiefParametersArray = [];
+    this.chiefRemarksArray = [];
+    this.dentalHistoryArray = [];
+    this.vaccinationHistoryArray = [];
     this.investigationArray = [];
-    this.radiologicalArray=[];
-    this.planningArray=[];
+    this.radiologicalArray = [];
+    this.planningArray = [];
 
 
     this.templateService.getTemplateView().subscribe(res => {
@@ -316,14 +316,14 @@ export class CreatePrescriptionComponent implements OnInit {
 
   onSelectFile(event) {
     if (event.target.files && event.target.files[0]) {
-      var filesAmount = event.target.files.length;
+      let filesAmount = event.target.files.length;
       for (let i = 0; i < filesAmount; i++) {
-        var reader = new FileReader();
+        let reader = new FileReader();
 
         reader.onload = (event) => {
           this.urls.push(reader.result);
 
-        }
+        };
         console.log(this.urls);
         reader.readAsDataURL(event.target.files[i]);
       }
