@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {AppointmentService} from "../../../service/appointment.service";
+import {ActivatedRoute, Router} from '@angular/router';
+import {AppointmentService} from '../../../service/appointment.service';
 
 @Component({
   selector: 'app-appointment-list',
@@ -28,7 +28,7 @@ export class AppointmentListComponent implements OnInit {
   }
   pageChange(newPage: number) {
 
-      this.router.navigate(['doctors/appointment-list'],{queryParams: {page: newPage}});
+      this.router.navigate(['doctors/appointment-list'], {queryParams: {page: newPage}});
       this.appointmentService.getAppointmentList().subscribe(res => {
       });
 
@@ -37,10 +37,9 @@ export class AppointmentListComponent implements OnInit {
   ngOnInit() {
     this.pageChange(1);
     this.appointmentService.getAppointmentList().subscribe(res => {
-      res.items.forEach((values)=>
-      {
-        this.appointmentList.push(values)
-      })
+      res.items.forEach((values) => {
+        this.appointmentList.push(values);
+      });
     });
 
   }

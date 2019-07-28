@@ -114,7 +114,7 @@ export class TemplateMockService implements TemplateService {
           ]
         }
       ]
-    }
+    };
 
 
     return of(templateList);

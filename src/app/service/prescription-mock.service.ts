@@ -3,8 +3,8 @@ import {Observable, of} from 'rxjs';
 import {EmptyObservable} from 'rxjs-compat/observable/EmptyObservable';
 import {PrescriptionService} from './prescription.service';
 import {CreateDrug} from '../model/create-medicine';
-import {FlashMessageService} from "./flash-message.service";
-import {Router} from "@angular/router";
+import {FlashMessageService} from './flash-message.service';
+import {Router} from '@angular/router';
 
 @Injectable({providedIn: 'root'})
 export class PrescriptionMockService implements PrescriptionService {
@@ -13,7 +13,7 @@ export class PrescriptionMockService implements PrescriptionService {
   }
 
   public getPrescriptionList(currentPage): Observable<any> {
-    //console.log(currentPage);
+    // console.log(currentPage);
     const mockResp = {
       page: currentPage,
       size: 3,

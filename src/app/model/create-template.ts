@@ -1,4 +1,4 @@
-import {CreateDrug} from "./create-medicine";
+import {CreateDrug} from './create-medicine';
 
 export class CreateTemplate {
   templateName?: string;
