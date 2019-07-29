@@ -8,8 +8,8 @@ export const environment = {
   chumbok: {
     enableMock: true,
 
-    //apiCallThroughGateway: true,
-    //apiBaseEndpoint: 'http://localhost:33001/gateway'
+    // apiCallThroughGateway: true,
+    // apiBaseEndpoint: 'http://localhost:33001/gateway'
 
     /* apiCallThroughGateway: false,
      apiBaseEndpoint: '//localhost:33002'*/
