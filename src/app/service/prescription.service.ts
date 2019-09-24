@@ -21,7 +21,7 @@ export abstract class PrescriptionService {
                               phoneNumber: string,
                               patientName: string,
                               address: string,
-                              date: string,
+                              nextVisitDate: string,
                               medicineList: CreateDrug[]
   ): Observable<any>;
 
