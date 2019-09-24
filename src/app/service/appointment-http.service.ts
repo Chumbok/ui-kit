@@ -44,7 +44,12 @@ export class AppointmentHttpService implements AppointmentService {
   public getAppointmentList(): Observable<any> {
     return new EmptyObservable<Response>();
   }
+
   public deleteAppointment(appointmentId: string) {
+    return new EmptyObservable<Response>();
+  }
+
+  getAppointmentListByDoctorId(): Observable<any> {
     return new EmptyObservable<Response>();
   }
 }

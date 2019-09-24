@@ -35,7 +35,7 @@ export class CalendarComponent implements OnInit {
   constructor(private modal: NgbModal, private appointmentService: AppointmentService, private router: Router) {
   }
 
-  @ViewChild('modalContent', { static: false }) modalContent: TemplateRef<any>;
+  @ViewChild('modalContent', {static: false}) modalContent: TemplateRef<any>;
 
   view: CalendarView = CalendarView.Month;
 
@@ -52,17 +52,17 @@ export class CalendarComponent implements OnInit {
   activeDayIsOpen = false;
 
   ngOnInit() {
-    this.appointmentService.getAppointmentList().subscribe(res => {
+    this.appointmentService.getAppointmentListByDoctorId().subscribe(res => {
 
-      res['items'].forEach((appointment) => {
+      res.forEach((appointment) => {
 
         let timeEpisode = new Date(appointment.startDateTime);
 
         this.events.push({
-          id: appointment.attendees[1].id,
+          id: appointment.patientId,
           start: new Date(appointment.startDateTime),
           end: new Date(appointment.endDateTime),
-          title: 'Appointment with  ' + appointment.attendees[1].name + '\n' + 'at\n' + timeEpisode.toLocaleTimeString('en-GB'),
+          title: 'Appointment with  ' + appointment.patientName + '\n' + 'at\n' + timeEpisode.toLocaleTimeString('en-GB'),
           color: colors.blue,
           actions: this.actions,
           allDay: false,
@@ -73,7 +73,7 @@ export class CalendarComponent implements OnInit {
     });
   }
 
-  dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
+  dayClicked({date, events}: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
       this.viewDate = date;
       if (
@@ -102,7 +102,7 @@ export class CalendarComponent implements OnInit {
     this.router.navigate(['doctors/create-prescription'], {queryParams: {patientId: event.id}});
   }
 
-  onCreareAppointment() {
+  onCreateAppointment() {
     this.router.navigate(['patient/create-appointment']);
 
   }
