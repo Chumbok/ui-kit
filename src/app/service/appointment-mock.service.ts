@@ -153,4 +153,23 @@ export class AppointmentMockService implements AppointmentService {
    console.log(appointmentId);
    return new EmptyObservable<Response>();
 }
+
+  getAppointmentListByDoctorId(): Observable<any> {
+    const mockResp = '[\n' +
+      '    {\n' +
+      '        "appointmentId": "2853dbac-0713-43f6-8bce-251752fb2e2b",\n' +
+      '        "patientId": "2bbd3c15f287b22cc6f0a0c6ec38b2a1-90e",\n' +
+      '        "patientName": "admin",\n' +
+      '        "startDateTime": "2019-12-12 13:00",\n' +
+      '        "endDateTime": "2019-12-12 13:30"\n' +
+      '    },\n' +
+      '    {\n' +
+      '        "appointmentId": "3ab51cc7-a0df-45c3-971e-e238ac8b2e20",\n' +
+      '        "patientId": "e666bc69-edd9-4da4-a22e-8b9023fd284a",\n' +
+      '        "patientName": "Monirozzaman Roni",\n' +
+      '        "startDateTime": "2019-12-12 13:00",\n' +
+      '        "endDateTime": "2019-12-12 13:30"\n' +
+      '    }]';
+    return of(JSON.parse(mockResp));
+  }
 }

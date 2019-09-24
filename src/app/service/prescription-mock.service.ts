@@ -172,23 +172,12 @@ export class PrescriptionMockService implements PrescriptionService {
 
   public getPatientProfile(patientId: string): Observable<any> {
     const mockResp = {
-      items: [
-        {
-          id: '64244067-e89b-12d3-a456-556642442133',
-          phnNo: '+88 019 888 41 890',
-          submitDate: 'July 12, 2019',
-          patientName: 'Monirozzaman Roni',
-          address: 'Aulia,savar,dhaka'
-        },
-        {
-          id: '64244067-e89b-12d3-a456-556642441111',
-          phnNo: '01968841890',
-          submitDate: 'July 12, 2019',
-          patientName: 'Hasan',
-          address: 'Aulia,savar,dhaka'
-        }]
 
-
+      name: 'Monirozzaman Roni',
+      age: '29',
+      bloodGroup: 'B+',
+      phoneNo: '01988841890',
+      address: 'saver'
     };
     console.log(patientId);
     return of(mockResp);
