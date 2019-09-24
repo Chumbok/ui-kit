@@ -68,7 +68,7 @@ const routes: Routes = [
   {path: AppUrl.LOGOUT, component: LogoutComponent},
 
   // otherwise redirect to home
-  {path: '**', redirectTo: ''}
+  {path: '**', redirectTo: AppUrl.DOCTOR_CALENDER_VIEW}
 ];
 
 @NgModule({
