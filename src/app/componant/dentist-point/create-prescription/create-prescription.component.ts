@@ -6,7 +6,6 @@ import {PrescriptionService} from '../../../service/prescription.service';
 import {CreateDrug} from '../../../model/create-medicine';
 import {Template} from '../../../model/template';
 import {TemplateService} from '../../../service/template.service';
-import {VERSION} from '@angular/http';
 
 
 @Component({
@@ -32,6 +31,8 @@ export class CreatePrescriptionComponent implements OnInit {
   phoneNumber: string;
   address: string;
   date: string;
+  age: string;
+  bloodGroup: string;
   prescriptionListin: Array<any> = [];
   prescription: any;
   itemFrom: number;
@@ -90,6 +91,7 @@ export class CreatePrescriptionComponent implements OnInit {
       address: [''],
       date: ['']
     });
+
     this.templateService.getTemplateView().subscribe(res => {
       this.prescriptionResp = res;
       this.templateList = [];
@@ -128,9 +130,6 @@ export class CreatePrescriptionComponent implements OnInit {
     prescription.investigation = this.form.controls['investigation'].value;
     prescription.radiological = this.form.controls['radiological'].value;
     prescription.planning = this.form.controls['planning'].value;
-    this.phoneNumber = this.form.controls['phoneNumber'].value;
-    this.patientName = this.form.controls['patientName'].value;
-    this.address = this.form.controls['address'].value;
     const createDrug: CreateDrug = new CreateDrug();
     createDrug.drugType = this.form.controls['drugType'].value;
     createDrug.medicineName = this.form.controls['medicineName'].value;
@@ -253,13 +252,12 @@ export class CreatePrescriptionComponent implements OnInit {
   selectPatient(patientId) {
 
     this.prescriptionService.getPatientProfile(patientId).subscribe(res => {
-      res.items.forEach((patientInformation) => {
-        if (patientInformation.id == patientId) {
-          this.patientName = patientInformation.patientName;
-          this.phoneNumber = patientInformation.phnNo;
-          this.address = patientInformation.address;
-        }
-      });
+
+      this.patientName = res.name;
+      this.phoneNumber = res.phoneNo;
+      this.address = res.address;
+      this.age = res.age;
+      this.bloodGroup = res.bloodGroup;
     });
   }
 
