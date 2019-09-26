@@ -6,15 +6,15 @@
 export const environment = {
   production: false,
   chumbok: {
-    enableMock: true,
+    enableMock: false,
 
-    // apiCallThroughGateway: true,
-    // apiBaseEndpoint: 'http://localhost:33001/gateway'
+    apiCallThroughLocalServer: true,
+    apiBaseEndpointLocalServer: 'http://localhost:33012',
 
     /* apiCallThroughGateway: false,
      apiBaseEndpoint: '//localhost:33002'*/
 
-    apiCallThroughGateway: true,
+    apiCallThroughGateway: false,
     apiBaseEndpoint: 'http://dev.chumbok.com:33001/gateway'
   }
 

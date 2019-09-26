@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../../../service/auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {first} from 'rxjs/operators';
 import {LoggedInUserInfoService} from '../../../service/logged-in-user-info.service';
 
 @Component({
@@ -48,7 +47,9 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.f.username.value, this.f.password.value)
       .subscribe(
         data => {
+          console.log("This is a custom directive!");
           this.loggedInUserInfoService.fetchLoggedInUserInfo().subscribe(res => {
+
             this.router.navigate([this.returnUrl]);
           });
         },

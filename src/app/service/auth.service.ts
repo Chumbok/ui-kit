@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 @Injectable()
 export abstract class AuthService {
 
-  abstract login(username: string, password: string): Observable<any>;
+  abstract login(phoneNo: string, password: string): Observable<any>;
 
   abstract logout();
 
