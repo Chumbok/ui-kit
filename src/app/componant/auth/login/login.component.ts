@@ -47,7 +47,6 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.f.username.value, this.f.password.value)
       .subscribe(
         data => {
-          console.log("This is a custom directive!");
           this.loggedInUserInfoService.fetchLoggedInUserInfo().subscribe(res => {
 
             this.router.navigate([this.returnUrl]);

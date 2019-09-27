@@ -10,7 +10,6 @@ import {AuthService} from './auth.service';
 export class AuthHttpService implements AuthService {
 
   private callThroughGateway: boolean = environment.chumbok.apiCallThroughGateway;
-  private callThroughLocalServer: boolean = environment.chumbok.apiCallThroughLocalServer;
 
   private loginEndpoint: string = this.callThroughGateway ?
     environment.chumbok.apiBaseEndpoint + '/uaa/login' : environment.chumbok.apiBaseEndpoint + '/login';
@@ -21,8 +20,6 @@ export class AuthHttpService implements AuthService {
   private refreshEndpoint: string = this.callThroughGateway ?
     environment.chumbok.apiBaseEndpoint + '/uaa/refresh' : environment.chumbok.apiBaseEndpoint + '/refresh';
 
-  private loginEndPointLocalServer: string = this.callThroughLocalServer ?
-    environment.chumbok.apiBaseEndpointLocalServer + '/public/doctor/login' : environment.chumbok.apiBaseEndpoint + '/login';
 
 
   constructor(private cookieService: CookieService, private http: HttpClient) {
@@ -30,12 +27,12 @@ export class AuthHttpService implements AuthService {
 
   public login(phoneNo: string, password: string) {
 
-    return this.http.post<any>(this.loginEndPointLocalServer, {
+    return this.http.post<any>(this.loginEndpoint, {
       phoneNo: phoneNo, password: password
     }, {withCredentials: true})
       .pipe(map(res => {
         if (res && res.accessToken) {
-          localStorage.setItem('token', res.token);
+          localStorage.setItem('token', res.accessToken);
         }
         return res;
       }));
