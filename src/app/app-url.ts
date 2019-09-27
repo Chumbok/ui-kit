@@ -12,6 +12,9 @@ export class AppUrl {
   public static ORGS_CREATE = AppUrl.ORGS + 'create';
 
   public static DOCTOR = 'doctors/';
+  public static DOCTOR_LOGIN = AppUrl.DOCTOR + 'login';
+  public static DOCTOR_SIGNUP = AppUrl.DOCTOR + 'signUp';
+  public static DOCTOR_LOGOUT = AppUrl.DOCTOR + 'logout';
   public static DOCTOR_CALENDER_VIEW = AppUrl.DOCTOR + 'calendar-view';
   public static DOCTOR_CREATEP_PRESCRIPTION = AppUrl.DOCTOR + 'create-prescription';
   public static DOCTOR_PRESCRIPTION_LIST = AppUrl.DOCTOR + 'prescription-list';

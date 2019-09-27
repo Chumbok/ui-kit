@@ -24,6 +24,9 @@ import {SettingsComponent} from './componant/dentist-point/settings/settings.com
 import {EditTemplateComponent} from './componant/dentist-point/edit-template/edit-template.component';
 import {AppointmentListComponent} from './componant/dentist-point/appointment-list/appointment-list.component';
 import {AppUrl} from "./app-url";
+import {DoctorLoginComponent} from "./componant/dentist-point/auth/doctor-login/doctor-login.component";
+import {DoctorSignupComponent} from "./componant/dentist-point/auth/doctor-signup/doctor-signup.component";
+import {DoctorLogoutComponent} from "./componant/dentist-point/auth/doctor-logout/doctor-logout.component";
 
 
 const routes: Routes = [
@@ -57,7 +60,10 @@ const routes: Routes = [
       {path: AppUrl.DOCTOR_APPOINTMENT_LIST, component: AppointmentListComponent, canActivate: [AuthGuard]},
       {path: 'doctors/prescription/:id/prescription-view', component: PrescriptionViewComponent, canActivate: [AuthGuard]},
       {path: AppUrl.DOCTOR_CREATE_TEMPLATE, component: CreateTemplateComponent, canActivate: [AuthGuard]},
+      {path: AppUrl.DOCTOR_SIGNUP, component: DoctorSignupComponent, canActivate: [AuthGuard]},
+      {path: AppUrl.DOCTOR_LOGOUT, component: DoctorLogoutComponent, canActivate: [AuthGuard]},
       {path: AppUrl.PATIENT_CREATE_PATIENT, component: CreatePatientComponent, canActivate: [AuthGuard]},
+      {path: AppUrl.PATIENT_CREATE_APPOINTMENT, component: CreateAppointmentComponent, canActivate: [AuthGuard]},
       {path: AppUrl.PATIENT_CREATE_APPOINTMENT, component: CreateAppointmentComponent, canActivate: [AuthGuard]},
       {path: 'doctors/template/:id/edit-template', component: EditTemplateComponent, canActivate: [AuthGuard]},
     ]
@@ -66,9 +72,9 @@ const routes: Routes = [
   // No layout routes
   {path: AppUrl.LOGIN, component: LoginComponent},
   {path: AppUrl.LOGOUT, component: LogoutComponent},
-
+  {path: AppUrl.DOCTOR_LOGIN, component: DoctorLoginComponent},
   // otherwise redirect to home
-  {path: '**', redirectTo: AppUrl.DOCTOR_CALENDER_VIEW}
+  // {path: '**', redirectTo: AppUrl.DOCTOR_CALENDER_VIEW}
 ];
 
 @NgModule({
