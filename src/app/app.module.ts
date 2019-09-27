@@ -98,7 +98,14 @@ import {PrescriptionHttpService} from './service/prescription-http.service';
 import {PrescriptionMockService} from './service/prescription-mock.service';
 import {TemplateHttpService} from './service/template-http.service';
 import {TemplateMockService} from './service/template-mock.service';
-import { AppointmentListComponent } from './componant/dentist-point/appointment-list/appointment-list.component';
+import {AppointmentListComponent} from './componant/dentist-point/appointment-list/appointment-list.component';
+
+import {DoctorLoginComponent} from './componant/dentist-point/auth/doctor-login/doctor-login.component';
+import {DoctorLogoutComponent} from './componant/dentist-point/auth/doctor-logout/doctor-logout.component';
+import {DoctorSignupComponent} from './componant/dentist-point/auth/doctor-signup/doctor-signup.component';
+import {DoctorAuthService} from "./service/doctor.auth.service";
+import {DoctorAuthHttpService} from "./service/doctor.auth-http.service";
+import {DoctorAuthMockService} from "./service/doctor.auth-mock.service";
 
 
 @NgModule({
@@ -186,7 +193,11 @@ import { AppointmentListComponent } from './componant/dentist-point/appointment-
     CreateTemplateComponent,
     SettingsComponent,
     EditTemplateComponent,
-    AppointmentListComponent
+    AppointmentListComponent,
+    DoctorLoginComponent,
+    DoctorLogoutComponent,
+    DoctorSignupComponent,
+
   ],
   providers: [
     AuthGuard,
@@ -198,6 +209,10 @@ import { AppointmentListComponent } from './componant/dentist-point/appointment-
     {
       provide: AuthService,
       useClass: environment.chumbok.enableMock ? AuthMockService : AuthHttpService
+    },
+    {
+      provide: DoctorAuthService,
+      useClass: environment.chumbok.enableMock ? DoctorAuthMockService : DoctorAuthHttpService
     },
     CookieService,
     {

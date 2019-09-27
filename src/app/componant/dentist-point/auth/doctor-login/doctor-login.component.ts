@@ -1,25 +1,28 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {AuthService} from '../../../service/auth.service';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {LoggedInUserInfoService} from '../../../service/logged-in-user-info.service';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ActivatedRoute, Router} from "@angular/router";
+import {DoctorAuthService} from "../../../../service/doctor.auth.service";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-doctor-login',
+  templateUrl: './doctor-login.component.html',
+  styleUrls: ['./doctor-login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class DoctorLoginComponent implements OnInit {
+
 
   loginForm: FormGroup;
   returnUrl: string;
   submitted = false;
 
   constructor(private formBuilder: FormBuilder,
-              private authService: AuthService,
-              private loggedInUserInfoService: LoggedInUserInfoService,
+              private authService: DoctorAuthService,
               private router: Router,
               private activatedRoute: ActivatedRoute) {
+  }
+
+  get f() {
+    return this.loginForm.controls;
   }
 
   ngOnInit() {
@@ -34,8 +37,6 @@ export class LoginComponent implements OnInit {
     this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/dashboard';
   }
 
-  get f() { return this.loginForm.controls; }
-
   public onSubmit() {
 
     this.submitted = true;
@@ -47,13 +48,10 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.f.username.value, this.f.password.value)
       .subscribe(
         data => {
-          this.loggedInUserInfoService.fetchLoggedInUserInfo().subscribe(res => {
-
-            this.router.navigate([this.returnUrl]);
-          });
+          console.log("This is a custom directive!" + data);
+          this.router.navigate([this.returnUrl]);
         },
         error => {
         });
   }
-
 }
