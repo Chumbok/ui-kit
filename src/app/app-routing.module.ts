@@ -60,7 +60,6 @@ const routes: Routes = [
       {path: AppUrl.DOCTOR_APPOINTMENT_LIST, component: AppointmentListComponent, canActivate: [AuthGuard]},
       {path: 'doctors/prescription/:id/prescription-view', component: PrescriptionViewComponent, canActivate: [AuthGuard]},
       {path: AppUrl.DOCTOR_CREATE_TEMPLATE, component: CreateTemplateComponent, canActivate: [AuthGuard]},
-      {path: AppUrl.DOCTOR_SIGNUP, component: DoctorSignupComponent, canActivate: [AuthGuard]},
       {path: AppUrl.DOCTOR_LOGOUT, component: DoctorLogoutComponent, canActivate: [AuthGuard]},
       {path: AppUrl.PATIENT_CREATE_PATIENT, component: CreatePatientComponent, canActivate: [AuthGuard]},
       {path: AppUrl.PATIENT_CREATE_APPOINTMENT, component: CreateAppointmentComponent, canActivate: [AuthGuard]},
@@ -73,6 +72,7 @@ const routes: Routes = [
   {path: AppUrl.LOGIN, component: LoginComponent},
   {path: AppUrl.LOGOUT, component: LogoutComponent},
   {path: AppUrl.DOCTOR_LOGIN, component: DoctorLoginComponent},
+  {path: AppUrl.DOCTOR_SIGNUP, component: DoctorSignupComponent}
   // otherwise redirect to home
   // {path: '**', redirectTo: AppUrl.DOCTOR_CALENDER_VIEW}
 ];
