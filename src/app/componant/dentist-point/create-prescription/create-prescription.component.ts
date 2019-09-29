@@ -27,6 +27,7 @@ export class CreatePrescriptionComponent implements OnInit {
   public profileView = false;
   public show_previousPrescription = false;
   patientId: string;
+  appointmentId: string;
   patientName: string;
   phoneNumber: string;
   address: string;
@@ -68,6 +69,7 @@ export class CreatePrescriptionComponent implements OnInit {
       .subscribe(page => this.config.currentPage = page);
     this.route.params.subscribe(params => {
       this.patientId = this.route.snapshot.queryParams['patientId'];
+      this.appointmentId = this.route.snapshot.queryParams['appointmentId'];
     });
   }
 
@@ -92,16 +94,16 @@ export class CreatePrescriptionComponent implements OnInit {
       date: ['']
     });
 
-    this.templateService.getTemplateView().subscribe(res => {
-      this.prescriptionResp = res;
-      this.templateList = [];
-      res['items'].forEach((template) => {
-        const t = new Template();
-        t.id = template.id;
-        t.templateName = template.templateName;
-        this.templateList.push(t);
-      });
-    });
+    /*  this.templateService.getTemplateView().subscribe(res => {
+        this.prescriptionResp = res;
+        this.templateList = [];
+        res['items'].forEach((template) => {
+          const t = new Template();
+          t.id = template.id;
+          t.templateName = template.templateName;
+          this.templateList.push(t);
+        });
+      });*/
     this.onPatientView();
     this.selectPatient(this.patientId);
   }
@@ -122,6 +124,7 @@ export class CreatePrescriptionComponent implements OnInit {
     }
     const prescription: CreatePrescription = new CreatePrescription();
     prescription.patientId = this.patientId;
+    prescription.appointmentId = this.appointmentId;
     prescription.chiefComplain = this.form.controls['chiefComplain'].value;
     prescription.parameters = this.form.controls['parameters'].value;
     prescription.remarks = this.form.controls['remarks'].value;
@@ -130,6 +133,7 @@ export class CreatePrescriptionComponent implements OnInit {
     prescription.investigation = this.form.controls['investigation'].value;
     prescription.radiological = this.form.controls['radiological'].value;
     prescription.planning = this.form.controls['planning'].value;
+
     const createDrug: CreateDrug = new CreateDrug();
     createDrug.drugType = this.form.controls['drugType'].value;
     createDrug.medicineName = this.form.controls['medicineName'].value;
@@ -137,8 +141,9 @@ export class CreatePrescriptionComponent implements OnInit {
     createDrug.drugDose = this.form.controls['drugDose'].value;
     createDrug.drugDuration = this.form.controls['drugDuration'].value;
     prescription.createMedicinePrescription.push(createDrug);
+
     this.prescriptionService.createPrescription(
-      prescription.patientId,
+      prescription.appointmentId,
       prescription.chiefComplain,
       prescription.parameters,
       prescription.remarks,
@@ -147,9 +152,6 @@ export class CreatePrescriptionComponent implements OnInit {
       prescription.investigation,
       prescription.radiological,
       prescription.planning,
-      this.phoneNumber,
-      this.patientName,
-      this.address,
       this.date,
       this.medicineList).subscribe(res => {
 
@@ -309,7 +311,6 @@ export class CreatePrescriptionComponent implements OnInit {
       this.form.controls['planning'].setValue(this.planningArrayView);
     }
   }
-
 
 
   onSelectFile(event) {

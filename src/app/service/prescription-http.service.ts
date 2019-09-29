@@ -4,23 +4,24 @@ import {EmptyObservable} from 'rxjs-compat/observable/EmptyObservable';
 import {PrescriptionService} from './prescription.service';
 import {environment} from '../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {AuthService} from './auth.service';
 import {CreateDrug} from '../model/create-medicine';
+import {DoctorAuthService} from "./doctor.auth.service";
 
 @Injectable({providedIn: 'root'})
 export class PrescriptionHttpService implements PrescriptionService {
-  private callThroughGateway: boolean = environment.chumbok.apiCallThroughGateway;
+  private callThroughLocalServer: boolean = environment.chumbok.apiCallThroughLocalServer;
 
   private httpOptions = {
-    headers: new HttpHeaders({'Authorization': 'Bearer ' + this.authService.getAuthToken()})
+    headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})
   };
 
-  private authHeader = new HttpHeaders({'Authorization': 'Bearer ' + this.authService.getAuthToken()});
+  private authHeader = new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()});
+  private
 
-  constructor(private authService: AuthService, private http: HttpClient) {
+  constructor(private doctorAuthService: DoctorAuthService, private http: HttpClient) {
   }
 
-  public getPrescriptionList (currentPage): Observable<any> {
+  public getPrescriptionList(currentPage): Observable<any> {
     return new EmptyObservable<Response>();
   }
 
@@ -29,10 +30,20 @@ export class PrescriptionHttpService implements PrescriptionService {
   }
 
   public getPatientProfile(patientId: string): Observable<any> {
-    return new EmptyObservable<Response>();
+
+    const getPatientProfileEndpoint: string = this.callThroughLocalServer ?
+      environment.chumbok.apiBaseEndpointLocalServer + '/api/patient/' + patientId + '/profile' : environment.chumbok.apiBaseEndpointLocalServer + '/api/patient/profile';
+
+    const httpOptions = {
+      headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})
+    };
+
+    return this.http.get(getPatientProfileEndpoint, httpOptions).map(res => res);
+
+
   }
 
-  public createPrescription(id: string,
+  public createPrescription(appointmentId: string,
                             complain: string,
                             parameters: string,
                             remarks: string,
@@ -41,11 +52,9 @@ export class PrescriptionHttpService implements PrescriptionService {
                             investigation: string,
                             rediological: string,
                             planning: string,
-                            phoneNumber: string,
-                            patientName: string,
-                            address: string,
                             date: string,
                             medicineList: CreateDrug[]): Observable<any> {
+
     return new EmptyObservable<Response>();
 
   }
