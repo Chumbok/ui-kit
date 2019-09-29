@@ -6,6 +6,9 @@ import {PrescriptionService} from '../../../service/prescription.service';
 import {CreateDrug} from '../../../model/create-medicine';
 import {Template} from '../../../model/template';
 import {TemplateService} from '../../../service/template.service';
+import {Diagnosis} from "../../../model/on-diagonsis";
+import {OnExamination} from "../../../model/on-examination";
+import {ChiefComplain} from "../../../model/chief-complain";
 
 
 @Component({
@@ -125,14 +128,115 @@ export class CreatePrescriptionComponent implements OnInit {
     const prescription: CreatePrescription = new CreatePrescription();
     prescription.patientId = this.patientId;
     prescription.appointmentId = this.appointmentId;
-    prescription.chiefComplain = this.form.controls['chiefComplain'].value;
-    prescription.parameters = this.form.controls['parameters'].value;
-    prescription.remarks = this.form.controls['remarks'].value;
-    prescription.dentalHistory = this.form.controls['dentalHistory'].value;
-    prescription.vaccinationHistory = this.form.controls['vaccinationHistory'].value;
-    prescription.investigation = this.form.controls['investigation'].value;
-    prescription.radiological = this.form.controls['radiological'].value;
-    prescription.planning = this.form.controls['planning'].value;
+    var chiefComplain = new String(this.form.controls['chiefComplain'].value).split(",");
+    chiefComplain.forEach(function (chiefComplain) {
+      const chiefComplainObj: ChiefComplain = new ChiefComplain();
+      chiefComplainObj.complain = chiefComplain;
+      prescription.chiefComplain.push(chiefComplainObj)
+    })
+
+    var parameters = new String(this.form.controls['parameters'].value).split(",");
+    var remarks = new String(this.form.controls['remarks'].value).split(",");
+    for (let i = 0; i < Math.max(parameters.length, remarks.length); i++) {
+      const onExamination: OnExamination = new OnExamination();
+      if (remarks[i] == null) {
+        onExamination.remark = 'null';
+        onExamination.parameter = parameters[i];
+        prescription.onExaminations.push(onExamination)
+      }
+      else if (parameters[i] == null) {
+        onExamination.parameter = 'null';
+        onExamination.remark = remarks[i];
+        prescription.onExaminations.push(onExamination)
+      }
+
+      else if (parameters[i] != null && remarks[i] != null) {
+        onExamination.parameter = parameters[i];
+        onExamination.remark = remarks[i];
+        prescription.onExaminations.push(onExamination)
+      }
+
+      else if (parameters[i] == null && parameters[i] == null) {
+        onExamination.parameter = 'null';
+        onExamination.remark = 'null';
+        prescription.onExaminations.push(onExamination)
+      }
+
+    }
+
+    var dentalHistory = new String(this.form.controls['dentalHistory'].value).split(",");
+    var vaccinationHistory = new String(this.form.controls['vaccinationHistory'].value).split(",");
+    var investigation = new String(this.form.controls['investigation'].value).split(",");
+    var radiological = new String(this.form.controls['radiological'].value).split(",");
+    var planning = new String(this.form.controls['planning'].value).split(",");
+
+    for (let i = 0; i < Math.max(dentalHistory.length, vaccinationHistory.length, investigation.length, radiological.length, planning.length); i++) {
+      const diagonsises: Diagnosis = new Diagnosis();
+
+      if (dentalHistory[i] == null) {
+        diagonsises.medicalHistory = 'null';
+        diagonsises.drugHistory = vaccinationHistory[i];
+        diagonsises.investigation = investigation[i];
+        diagonsises.finalDiagnosis = radiological[i];
+        diagonsises.clinicalFinDing = planning[i];
+        prescription.diagnosis.push(diagonsises);
+      }
+
+      else if (vaccinationHistory[i] == null) {
+        diagonsises.medicalHistory = dentalHistory[i];
+        diagonsises.drugHistory = 'null';
+        diagonsises.investigation = investigation[i];
+        diagonsises.finalDiagnosis = radiological[i];
+        diagonsises.clinicalFinDing = planning[i];
+        prescription.diagnosis.push(diagonsises);
+      }
+
+      else if (investigation[i] == null) {
+        diagonsises.medicalHistory = dentalHistory[i];
+        diagonsises.drugHistory = vaccinationHistory[i];
+        diagonsises.investigation = 'null';
+        diagonsises.finalDiagnosis = radiological[i];
+        diagonsises.clinicalFinDing = planning[i];
+        prescription.diagnosis.push(diagonsises);
+      }
+
+      else if (radiological[i] == null) {
+        diagonsises.medicalHistory = dentalHistory[i];
+        diagonsises.drugHistory = vaccinationHistory[i];
+        diagonsises.investigation = investigation[i];
+        diagonsises.finalDiagnosis = 'null';
+        diagonsises.clinicalFinDing = planning[i];
+        prescription.diagnosis.push(diagonsises);
+      }
+
+      else if (planning[i] == null) {
+        diagonsises.medicalHistory = dentalHistory[i];
+        diagonsises.drugHistory = vaccinationHistory[i];
+        diagonsises.investigation = investigation[i];
+        diagonsises.finalDiagnosis = radiological[i];
+        diagonsises.clinicalFinDing = 'null';
+        prescription.diagnosis.push(diagonsises);
+      }
+
+      else if (dentalHistory[i] == null && vaccinationHistory[i] == null && investigation[i] == null && radiological[i] == null && planning[i] == null) {
+        diagonsises.medicalHistory = 'null';
+        diagonsises.drugHistory = 'null';
+        diagonsises.investigation = 'null';
+        diagonsises.finalDiagnosis = 'null';
+        diagonsises.clinicalFinDing = 'null';
+        prescription.diagnosis.push(diagonsises);
+      }
+
+      else if (dentalHistory[i] != null && vaccinationHistory[i] != null && investigation[i] != null && radiological[i] != null && planning[i] != null) {
+        diagonsises.medicalHistory = dentalHistory[i];
+        diagonsises.drugHistory = vaccinationHistory[i];
+        diagonsises.investigation = investigation[i];
+        diagonsises.finalDiagnosis = radiological[i];
+        diagonsises.clinicalFinDing = planning[i];
+        prescription.diagnosis.push(diagonsises);
+      }
+
+    }
 
     const createDrug: CreateDrug = new CreateDrug();
     createDrug.drugType = this.form.controls['drugType'].value;
@@ -145,13 +249,8 @@ export class CreatePrescriptionComponent implements OnInit {
     this.prescriptionService.createPrescription(
       prescription.appointmentId,
       prescription.chiefComplain,
-      prescription.parameters,
-      prescription.remarks,
-      prescription.dentalHistory,
-      prescription.vaccinationHistory,
-      prescription.investigation,
-      prescription.radiological,
-      prescription.planning,
+      prescription.onExaminations,
+      prescription.diagnosis,
       this.date,
       this.medicineList).subscribe(res => {
 
