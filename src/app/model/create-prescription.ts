@@ -2,6 +2,7 @@ import {CreateDrug} from './create-medicine';
 
 export class CreatePrescription {
   patientId?: string;
+  appointmentId?: string;
   templateName?: string;
   chiefComplain?: string;
   complain?: string;

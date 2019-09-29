@@ -183,7 +183,7 @@ export class PrescriptionMockService implements PrescriptionService {
     return of(mockResp);
   }
 
-  public createPrescription(id: string,
+  public createPrescription(appointmentId: string,
                             complain: string,
                             parameters: string,
                             remarks: string,
@@ -192,12 +192,10 @@ export class PrescriptionMockService implements PrescriptionService {
                             investigation: string,
                             rediological: string,
                             planning: string,
-                            phoneNumber: string,
-                            patientName: string,
-                            address: string,
                             date: string,
                             medicineList: CreateDrug[]): Observable<any> {
-    console.log(id);
+
+    console.log(appointmentId);
     console.log(complain);
     console.log(parameters);
     console.log(remarks);
@@ -206,9 +204,6 @@ export class PrescriptionMockService implements PrescriptionService {
     console.log(investigation);
     console.log(rediological);
     console.log(medicineList);
-    console.log(phoneNumber);
-    console.log(patientName);
-    console.log(address);
     console.log(date);
     this.router.navigate(['doctors/calendar-view']);
     this.flashMessageService.showFlashMessage({

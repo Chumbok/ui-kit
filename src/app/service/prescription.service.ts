@@ -9,7 +9,7 @@ export abstract class PrescriptionService {
   abstract getPrescriptionView(): Observable<any>;
   abstract getPatientProfile(patientId: string): Observable<any>;
 
-  abstract createPrescription(id: string,
+  abstract createPrescription(appointmentId: string,
                               complain: string,
                               parameters: string,
                               remarks: string,
@@ -18,9 +18,6 @@ export abstract class PrescriptionService {
                               investigation: string,
                               rediological: string,
                               planning: string,
-                              phoneNumber: string,
-                              patientName: string,
-                              address: string,
                               nextVisitDate: string,
                               medicineList: CreateDrug[]
   ): Observable<any>;

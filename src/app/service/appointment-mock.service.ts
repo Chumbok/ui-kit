@@ -170,6 +170,8 @@ export class AppointmentMockService implements AppointmentService {
       '        "startDateTime": "2019-12-12 13:00",\n' +
       '        "endDateTime": "2019-12-12 13:30"\n' +
       '    }]';
+
+    console.log(JSON.parse(mockResp))
     return of(JSON.parse(mockResp));
   }
 }

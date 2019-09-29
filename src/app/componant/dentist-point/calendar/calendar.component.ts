@@ -34,6 +34,7 @@ export class CalendarComponent implements OnInit {
 
   constructor(private modal: NgbModal, private appointmentService: AppointmentService, private router: Router) {
   }
+  private appointmentId:string;
 
   @ViewChild('modalContent', {static: false}) modalContent: TemplateRef<any>;
 
@@ -55,11 +56,11 @@ export class CalendarComponent implements OnInit {
     this.appointmentService.getAppointmentListByDoctorId().subscribe(res => {
 
       res.forEach((appointment) => {
-
         let timeEpisode = new Date(appointment.startDateTime);
-
+        console.log(appointment.appointmentId)
         this.events.push({
           id: appointment.patientId,
+          cssClass: appointment.appointmentId,
           start: new Date(appointment.startDateTime),
           end: new Date(appointment.endDateTime),
           title: 'Appointment with  ' + appointment.patientName + '\n' + 'at\n' + timeEpisode.toLocaleTimeString('en-GB'),
@@ -99,7 +100,7 @@ export class CalendarComponent implements OnInit {
   }
 
   handleEvent(action: string, event: CalendarEvent): void {
-    this.router.navigate(['doctors/create-prescription'], {queryParams: {patientId: event.id}});
+    this.router.navigate(['doctors/create-prescription'], {queryParams: {patientId: event.id,appointmentId: event.cssClass}});
   }
 
   onCreateAppointment() {
