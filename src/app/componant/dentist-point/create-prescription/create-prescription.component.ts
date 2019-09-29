@@ -3,12 +3,12 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {CreatePrescription} from '../../../model/create-prescription';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PrescriptionService} from '../../../service/prescription.service';
-import {CreateDrug} from '../../../model/create-medicine';
+import {Pharmacies} from '../../../model/create-medicine';
 import {Template} from '../../../model/template';
 import {TemplateService} from '../../../service/template.service';
-import {Diagnosis} from "../../../model/on-diagonsis";
-import {OnExamination} from "../../../model/on-examination";
-import {ChiefComplain} from "../../../model/chief-complain";
+import {ChiefComplains} from "../../../model/chief-complain";
+import {OnExaminations} from "../../../model/on-examination";
+import {Diagnosises} from "../../../model/on-diagonsis";
 
 
 @Component({
@@ -25,7 +25,7 @@ export class CreatePrescriptionComponent implements OnInit {
   form: FormGroup;
   submitted = false;
   serverError = '';
-  medicineList: CreateDrug[] = [];
+  medicineList: Pharmacies[] = [];
   public show_dialog = false;
   public profileView = false;
   public show_previousPrescription = false;
@@ -130,7 +130,7 @@ export class CreatePrescriptionComponent implements OnInit {
     prescription.appointmentId = this.appointmentId;
     var chiefComplain = new String(this.form.controls['chiefComplain'].value).split(",");
     chiefComplain.forEach(function (chiefComplain) {
-      const chiefComplainObj: ChiefComplain = new ChiefComplain();
+      const chiefComplainObj: ChiefComplains = new ChiefComplains();
       chiefComplainObj.complain = chiefComplain;
       prescription.chiefComplain.push(chiefComplainObj)
     })
@@ -138,7 +138,7 @@ export class CreatePrescriptionComponent implements OnInit {
     var parameters = new String(this.form.controls['parameters'].value).split(",");
     var remarks = new String(this.form.controls['remarks'].value).split(",");
     for (let i = 0; i < Math.max(parameters.length, remarks.length); i++) {
-      const onExamination: OnExamination = new OnExamination();
+      const onExamination: OnExaminations = new OnExaminations();
       if (remarks[i] == null) {
         onExamination.remark = 'null';
         onExamination.parameter = parameters[i];
@@ -171,7 +171,7 @@ export class CreatePrescriptionComponent implements OnInit {
     var planning = new String(this.form.controls['planning'].value).split(",");
 
     for (let i = 0; i < Math.max(dentalHistory.length, vaccinationHistory.length, investigation.length, radiological.length, planning.length); i++) {
-      const diagonsises: Diagnosis = new Diagnosis();
+      const diagonsises: Diagnosises = new Diagnosises();
 
       if (dentalHistory[i] == null) {
         diagonsises.medicalHistory = 'null';
@@ -237,13 +237,20 @@ export class CreatePrescriptionComponent implements OnInit {
       }
 
     }
+    /* prescription.parameters = this.form.controls['parameters'].value;
+     prescription.remarks = this.form.controls['remarks'].value;
+     prescription.dentalHistory = this.form.controls['dentalHistory'].value;
+     prescription.vaccinationHistory = this.form.controls['vaccinationHistory'].value;
+     prescription.investigation = this.form.controls['investigation'].value;
+     prescription.radiological = this.form.controls['radiological'].value;
+     prescription.planning = this.form.controls['planning'].value;*/
 
-    const createDrug: CreateDrug = new CreateDrug();
-    createDrug.drugType = this.form.controls['drugType'].value;
-    createDrug.medicineName = this.form.controls['medicineName'].value;
-    createDrug.drugStrength = this.form.controls['drugStrength'].value;
-    createDrug.drugDose = this.form.controls['drugDose'].value;
-    createDrug.drugDuration = this.form.controls['drugDuration'].value;
+    const createDrug: Pharmacies = new Pharmacies();
+    createDrug.medicineType = this.form.controls['drugType'].value;
+    createDrug.name = this.form.controls['medicineName'].value;
+    createDrug.medicineStrength = this.form.controls['drugStrength'].value;
+    createDrug.noOfTime = this.form.controls['drugDose'].value;
+    createDrug.instruction = this.form.controls['drugDuration'].value;
     prescription.createMedicinePrescription.push(createDrug);
 
     this.prescriptionService.createPrescription(
@@ -251,6 +258,7 @@ export class CreatePrescriptionComponent implements OnInit {
       prescription.chiefComplain,
       prescription.onExaminations,
       prescription.diagnosis,
+
       this.date,
       this.medicineList).subscribe(res => {
 
@@ -262,12 +270,12 @@ export class CreatePrescriptionComponent implements OnInit {
   }
 
   addMedicine() {
-    const createDrug: CreateDrug = new CreateDrug();
-    createDrug.drugType = this.form.controls['drugType'].value;
-    createDrug.medicineName = this.form.controls['medicineName'].value;
-    createDrug.drugStrength = this.form.controls['drugStrength'].value;
-    createDrug.drugDose = this.form.controls['drugDose'].value;
-    createDrug.drugDuration = this.form.controls['drugDuration'].value;
+    const createDrug: Pharmacies = new Pharmacies();
+    createDrug.medicineType = this.form.controls['drugType'].value;
+    createDrug.name = this.form.controls['medicineName'].value;
+    createDrug.medicineStrength = this.form.controls['drugStrength'].value;
+    createDrug.noOfTime = this.form.controls['drugDose'].value;
+    createDrug.instruction = this.form.controls['drugDuration'].value;
     this.medicineList.push(createDrug);
 
   }
@@ -313,12 +321,12 @@ export class CreatePrescriptionComponent implements OnInit {
       });
       this.medicineList = [];
       this.selectedTemplate['medicines'].forEach((medicine) => {
-        const createDrug: CreateDrug = new CreateDrug();
-        createDrug.drugType = medicine.drugType;
-        createDrug.medicineName = medicine.medicineName;
-        createDrug.drugStrength = medicine.drugStrength;
-        createDrug.drugDose = medicine.drugDose;
-        createDrug.drugDuration = medicine.drugDuration;
+        const createDrug: Pharmacies = new Pharmacies();
+        createDrug.medicineType = this.form.controls['drugType'].value;
+        createDrug.name = this.form.controls['medicineName'].value;
+        createDrug.medicineStrength = this.form.controls['drugStrength'].value;
+        createDrug.noOfTime = this.form.controls['drugDose'].value;
+        createDrug.instruction = this.form.controls['drugDuration'].value;
         this.medicineList.push(createDrug);
       });
     });

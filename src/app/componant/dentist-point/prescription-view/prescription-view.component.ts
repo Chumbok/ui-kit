@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {PrescriptionService} from '../../../service/prescription.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {CreateDrug} from '../../../model/create-medicine';
+import {Pharmacies} from '../../../model/create-medicine';
 
 @Component({
   selector: 'app-prescription-view',
@@ -15,7 +15,7 @@ export class PrescriptionViewComponent implements OnInit {
   submitted = false;
   serverError = '';
   templateId: string;
-  createMedicinePrescription: Array<CreateDrug> = [];
+  createMedicinePrescription: Array<Pharmacies> = [];
   selectedTemplateId: string;
   selectedTemplate: any;
   chiefComplain: string;
@@ -75,12 +75,12 @@ export class PrescriptionViewComponent implements OnInit {
       this.planning = this.selectedTemplate.planning;
 
       this.selectedTemplate['medicines'].forEach((medicine) => {
-        const createDrug: CreateDrug = new CreateDrug();
-        createDrug.drugType = medicine.drugType;
-        createDrug.medicineName = medicine.medicineName;
-        createDrug.drugStrength = medicine.drugStrength;
-        createDrug.drugDose = medicine.drugDose;
-        createDrug.drugDuration = medicine.drugDuration;
+        const createDrug: Pharmacies = new Pharmacies();
+        createDrug.medicineType = medicine.drugType;
+        createDrug.name = medicine.medicineName;
+        createDrug.medicineStrength = medicine.drugStrength;
+        createDrug.instruction = medicine.drugDose;
+        createDrug.noOfTime = medicine.drugDuration;
         this.createMedicinePrescription.push(createDrug);
       });
     });

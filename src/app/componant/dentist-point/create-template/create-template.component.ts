@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {TemplateService} from '../../../service/template.service';
-import {CreateDrug} from '../../../model/create-medicine';
+import {Pharmacies} from '../../../model/create-medicine';
 
 @Component({
   selector: 'app-create-template',
@@ -15,7 +15,7 @@ export class CreateTemplateComponent implements OnInit {
   submitted = false;
   serverError = '';
   patientId: string;
-  createMedicinePrescription: Array<CreateDrug> = [];
+  createMedicinePrescription: Array<Pharmacies> = [];
   chiefComplainArray: Array<any> = [];
   chiefParametersArray: Array<any> = [];
   chiefRemarksArray: Array<any> = [];
@@ -83,12 +83,12 @@ export class CreateTemplateComponent implements OnInit {
   }
 
   addMedicine() {
-    const createDrug: CreateDrug = new CreateDrug();
-    createDrug.drugType = this.form.controls['drugType'].value;
-    createDrug.medicineName = this.form.controls['medicineName'].value;
-    createDrug.drugStrength = this.form.controls['drugStrength'].value;
-    createDrug.drugDose = this.form.controls['drugDose'].value;
-    createDrug.drugDuration = this.form.controls['drugDuration'].value;
+    const createDrug: Pharmacies = new Pharmacies();
+    createDrug.medicineType = this.form.controls['drugType'].value;
+    createDrug.name = this.form.controls['medicineName'].value;
+    createDrug.medicineStrength = this.form.controls['drugStrength'].value;
+    createDrug.instruction = this.form.controls['drugDose'].value;
+    createDrug.noOfTime = this.form.controls['drugDuration'].value;
     this.createMedicinePrescription.push(createDrug);
   }
 

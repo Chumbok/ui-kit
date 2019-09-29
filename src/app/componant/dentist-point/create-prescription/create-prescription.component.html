@@ -435,11 +435,11 @@
             </thead>
             <tbody>
             <tr *ngFor="let medicine of medicineList">
-              <td>{{ medicine.medicineName }}</td>
-              <td>{{ medicine.drugType }}</td>
-              <td>{{ medicine.drugStrength }}</td>
-              <td>{{ medicine.drugDose }}</td>
-              <td>{{ medicine.drugDuration }}</td>
+              <td>{{ medicine.name }}</td>
+              <td>{{ medicine.medicineType }}</td>
+              <td>{{ medicine.medicineStrength }}</td>
+              <td>{{ medicine.instruction }}</td>
+              <td>{{ medicine.noOfTime }}</td>
               <button class="btn btn-outline-danger mt-2" type="button">Delete</button>
             </tr>
             </tbody>

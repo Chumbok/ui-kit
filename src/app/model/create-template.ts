@@ -1,4 +1,4 @@
-import {CreateDrug} from './create-medicine';
+import {Pharmacies} from './create-medicine';
 
 export class CreateTemplate {
   templateName?: string;
@@ -11,6 +11,6 @@ export class CreateTemplate {
   investigation?: string;
   radiological?: string;
   planning?: string;
-  createMedicinePrescription: Array<CreateDrug> = [];
+  createMedicinePrescription: Array<Pharmacies> = [];
 
 }
