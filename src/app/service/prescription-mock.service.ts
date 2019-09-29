@@ -5,6 +5,9 @@ import {PrescriptionService} from './prescription.service';
 import {CreateDrug} from '../model/create-medicine';
 import {FlashMessageService} from './flash-message.service';
 import {Router} from '@angular/router';
+import {ChiefComplain} from "../model/chief-complain";
+import {OnExamination} from "../model/on-examination";
+import {Diagnosis} from "../model/on-diagonsis";
 
 @Injectable({providedIn: 'root'})
 export class PrescriptionMockService implements PrescriptionService {
@@ -184,25 +187,16 @@ export class PrescriptionMockService implements PrescriptionService {
   }
 
   public createPrescription(appointmentId: string,
-                            complain: string,
-                            parameters: string,
-                            remarks: string,
-                            dentalHistory: string,
-                            vaccinationHistory: string,
-                            investigation: string,
-                            rediological: string,
-                            planning: string,
+                            complain: Array<ChiefComplain>,
+                            onExaminations: Array<OnExamination>,
+                            diagnosis: Array<Diagnosis>,
                             date: string,
                             medicineList: CreateDrug[]): Observable<any> {
 
     console.log(appointmentId);
     console.log(complain);
-    console.log(parameters);
-    console.log(remarks);
-    console.log(dentalHistory);
-    console.log(vaccinationHistory);
-    console.log(investigation);
-    console.log(rediological);
+    console.log(onExaminations);
+    console.log(diagnosis);
     console.log(medicineList);
     console.log(date);
     this.router.navigate(['doctors/calendar-view']);

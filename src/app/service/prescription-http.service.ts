@@ -6,6 +6,9 @@ import {environment} from '../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {CreateDrug} from '../model/create-medicine';
 import {DoctorAuthService} from "./doctor.auth.service";
+import {ChiefComplain} from "../model/chief-complain";
+import {OnExamination} from "../model/on-examination";
+import {Diagnosis} from "../model/on-diagonsis";
 
 @Injectable({providedIn: 'root'})
 export class PrescriptionHttpService implements PrescriptionService {
@@ -44,14 +47,9 @@ export class PrescriptionHttpService implements PrescriptionService {
   }
 
   public createPrescription(appointmentId: string,
-                            complain: string,
-                            parameters: string,
-                            remarks: string,
-                            dentalHistory: string,
-                            vaccinationHistory: string,
-                            investigation: string,
-                            rediological: string,
-                            planning: string,
+                            complain: Array<ChiefComplain>,
+                            onExaminations: Array<OnExamination>,
+                            dentalHistory: Array<Diagnosis>,
                             date: string,
                             medicineList: CreateDrug[]): Observable<any> {
 

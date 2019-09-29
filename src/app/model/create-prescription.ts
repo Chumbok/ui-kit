@@ -1,17 +1,16 @@
 import {CreateDrug} from './create-medicine';
+import {ChiefComplain} from "./chief-complain";
+import {OnExamination} from "./on-examination";
+import {Diagnosis} from "./on-diagonsis";
 
 export class CreatePrescription {
   patientId?: string;
   appointmentId?: string;
   templateName?: string;
-  chiefComplain?: string;
-  complain?: string;
-  parameters?: string;
-  remarks?: string;
-  dentalHistory?: string;
-  vaccinationHistory?: string;
-  investigation?: string;
-  radiological?: string;
-  planning?: string;
+  chiefComplain?: Array<ChiefComplain> = [];
+  complain?: Array<String>;
+
+  onExaminations?: Array<OnExamination> = [];
+  diagnosis?: Array<Diagnosis> = [];
   createMedicinePrescription: Array<CreateDrug> = [];
 }
