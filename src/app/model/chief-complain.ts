@@ -1,3 +1,3 @@
-export class ChiefComplain {
+export class ChiefComplains {
   complain?: string;
 }

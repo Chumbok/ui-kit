@@ -6,9 +6,9 @@
 export const environment = {
   production: false,
   chumbok: {
-    enableMock: true,
+    enableMock: false,
 
-    apiCallThroughLocalServer: false,
+    apiCallThroughLocalServer: true,
     apiBaseEndpointLocalServer: 'http://localhost:33012',
 
     /* apiCallThroughGateway: false,

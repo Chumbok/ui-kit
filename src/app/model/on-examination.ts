@@ -1,4 +1,4 @@
-export class OnExamination {
+export class OnExaminations {
   parameter?: string;
   remark?: string;
 }

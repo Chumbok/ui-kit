@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {EmptyObservable} from 'rxjs-compat/observable/EmptyObservable';
-import {CreateDrug} from '../model/create-medicine';
+import {Pharmacies} from "../model/create-medicine";
 import {TemplateService} from './template.service';
 import {FlashMessageService} from './flash-message.service';
 import {Router} from '@angular/router';
@@ -14,7 +14,7 @@ export class TemplateMockService implements TemplateService {
 
   public createTemplate(tempName: string, complain: Array<string>, parameters: Array<string>, remarks: Array<string>,
                         dentalHistory: Array<string>, vaccinationHistory: Array<string>, investigation: Array<string>,
-                        radiological: Array<string>, planning: Array<string>, prescriptionList: Array<CreateDrug>): Observable<any> {
+                        radiological: Array<string>, planning: Array<string>, prescriptionList: Array<Pharmacies>): Observable<any> {
     console.log('template', tempName);
     console.log(complain);
     console.log(parameters);
@@ -38,7 +38,7 @@ export class TemplateMockService implements TemplateService {
 
   public editTemplate(tempId: string, tempName: string, complain: string, parameters: string,
                       remarks: string, dentalHistory: string, vaccinationHistory: string, investigation: string,
-                      radiological: string, planning: string, prescriptionList: Array<CreateDrug>): Observable<any> {
+                      radiological: string, planning: string, prescriptionList: Array<Pharmacies>): Observable<any> {
     console.log(tempId);
     console.log('template name:', tempName);
     console.log(complain);

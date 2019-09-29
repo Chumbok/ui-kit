@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {CreateDrug} from '../../../model/create-medicine';
+import {Pharmacies} from '../../../model/create-medicine';
 import {TemplateService} from '../../../service/template.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CreateTemplate} from '../../../model/create-template';
@@ -16,7 +16,7 @@ export class EditTemplateComponent implements OnInit {
   submitted = false;
   serverError = '';
   templateId: string;
-  createMedicinePrescription: Array<CreateDrug> = [];
+  createMedicinePrescription: Array<Pharmacies> = [];
   selectedTemplateId: string;
   selectedTemplate: any;
 
@@ -71,12 +71,12 @@ export class EditTemplateComponent implements OnInit {
     prescription.radiological = this.form.controls['radiological'].value;
     prescription.planning = this.form.controls['planning'].value;
 
-    const createDrug: CreateDrug = new CreateDrug();
-    createDrug.drugType = this.form.controls['drugType'].value;
-    createDrug.medicineName = this.form.controls['medicineName'].value;
-    createDrug.drugStrength = this.form.controls['drugStrength'].value;
-    createDrug.drugDose = this.form.controls['drugDose'].value;
-    createDrug.drugDuration = this.form.controls['drugDuration'].value;
+    const createDrug: Pharmacies = new Pharmacies();
+    createDrug.medicineType = this.form.controls['drugType'].value;
+    createDrug.name = this.form.controls['medicineName'].value;
+    createDrug.medicineStrength = this.form.controls['drugStrength'].value;
+    createDrug.instruction = this.form.controls['drugDose'].value;
+    createDrug.noOfTime = this.form.controls['drugDuration'].value;
     prescription.createMedicinePrescription.push(createDrug);
 
 
@@ -108,23 +108,23 @@ export class EditTemplateComponent implements OnInit {
         this.form.controls['planning'].setValue(this.selectedTemplate.planning);
 
       this.selectedTemplate['medicines'].forEach((medicine) => {
-        const createDrug: CreateDrug = new CreateDrug();
-        createDrug.drugType = medicine.drugType;
-        createDrug.medicineName = medicine.medicineName;
-        createDrug.drugStrength = medicine.drugStrength;
-        createDrug.drugDose = medicine.drugDose;
-        createDrug.drugDuration = medicine.drugDuration;
+        const createDrug: Pharmacies = new Pharmacies();
+        createDrug.medicineType = medicine.drugType;
+        createDrug.name = medicine.medicineName;
+        createDrug.medicineStrength = medicine.drugStrength;
+        createDrug.instruction = medicine.drugDose;
+        createDrug.noOfTime = medicine.drugDuration;
         this.createMedicinePrescription.push(createDrug);
       });
     });
   }
   addMedicine() {
-    const createDrug: CreateDrug = new CreateDrug();
-    createDrug.drugType = this.form.controls['drugType'].value;
-    createDrug.medicineName = this.form.controls['medicineName'].value;
-    createDrug.drugStrength = this.form.controls['drugStrength'].value;
-    createDrug.drugDose = this.form.controls['drugDose'].value;
-    createDrug.drugDuration = this.form.controls['drugDuration'].value;
+    const createDrug: Pharmacies = new Pharmacies();
+    createDrug.medicineType = this.form.controls['drugType'].value;
+    createDrug.name = this.form.controls['medicineName'].value;
+    createDrug.medicineStrength = this.form.controls['drugStrength'].value;
+    createDrug.instruction = this.form.controls['drugDose'].value;
+    createDrug.noOfTime = this.form.controls['drugDuration'].value;
     this.createMedicinePrescription.push(createDrug);
   }
 }

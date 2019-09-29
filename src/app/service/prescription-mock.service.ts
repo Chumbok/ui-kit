@@ -2,12 +2,12 @@ import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {EmptyObservable} from 'rxjs-compat/observable/EmptyObservable';
 import {PrescriptionService} from './prescription.service';
-import {CreateDrug} from '../model/create-medicine';
+import {Pharmacies} from '../model/create-medicine';
 import {FlashMessageService} from './flash-message.service';
 import {Router} from '@angular/router';
-import {ChiefComplain} from "../model/chief-complain";
-import {OnExamination} from "../model/on-examination";
-import {Diagnosis} from "../model/on-diagonsis";
+import {ChiefComplains} from "../model/chief-complain";
+import {OnExaminations} from "../model/on-examination";
+import {Diagnosises} from "../model/on-diagonsis";
 
 @Injectable({providedIn: 'root'})
 export class PrescriptionMockService implements PrescriptionService {
@@ -187,11 +187,11 @@ export class PrescriptionMockService implements PrescriptionService {
   }
 
   public createPrescription(appointmentId: string,
-                            complain: Array<ChiefComplain>,
-                            onExaminations: Array<OnExamination>,
-                            diagnosis: Array<Diagnosis>,
+                            complain: Array<ChiefComplains>,
+                            onExaminations: Array<OnExaminations>,
+                            diagnosis: Array<Diagnosises>,
                             date: string,
-                            medicineList: CreateDrug[]): Observable<any> {
+                            medicineList: Pharmacies[]): Observable<any> {
 
     console.log(appointmentId);
     console.log(complain);

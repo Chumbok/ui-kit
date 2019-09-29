@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {CreateDrug} from '../model/create-medicine';
-import {Diagnosis} from "../model/on-diagonsis";
-import {OnExamination} from "../model/on-examination";
-import {ChiefComplain} from "../model/chief-complain";
+import {Pharmacies} from '../model/create-medicine';
+import {Diagnosises} from "../model/on-diagonsis";
+import {OnExaminations} from "../model/on-examination";
+import {ChiefComplains} from "../model/chief-complain";
 
 
 @Injectable()
@@ -13,11 +13,11 @@ export abstract class PrescriptionService {
   abstract getPatientProfile(patientId: string): Observable<any>;
 
   abstract createPrescription(appointmentId: string,
-                              complain: Array<ChiefComplain>,
-                              parameters: Array<OnExamination>,
-                              dentalHistory: Array<Diagnosis>,
+                              complain: Array<ChiefComplains>,
+                              parameters: Array<OnExaminations>,
+                              dentalHistory: Array<Diagnosises>,
                               nextVisitDate: string,
-                              medicineList: CreateDrug[]
+                              medicineList: Pharmacies[]
   ): Observable<any>;
 
 }

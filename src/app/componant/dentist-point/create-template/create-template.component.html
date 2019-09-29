@@ -207,11 +207,11 @@
             </thead>
             <tbody>
             <tr *ngFor="let createMedicine of createMedicinePrescription">
-              <td>{{ createMedicine.medicineName }}</td>
-              <td>{{ createMedicine.drugType }}</td>
-              <td>{{ createMedicine.drugStrength }}</td>
-              <td>{{ createMedicine.drugDose }}</td>
-              <td>{{ createMedicine.drugDuration }}</td>
+              <td>{{ createMedicine.name }}</td>
+              <td>{{ createMedicine.medicineType }}</td>
+              <td>{{ createMedicine.medicineStrength }}</td>
+              <td>{{ createMedicine.instruction }}</td>
+              <td>{{ createMedicine.noOfTime }}</td>
               <td>
                 <button class="btn btn-outline-danger mt-1" type="button">Delete</button>
               </td>

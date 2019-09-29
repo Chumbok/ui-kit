@@ -4,7 +4,7 @@ import {EmptyObservable} from 'rxjs-compat/observable/EmptyObservable';
 import {environment} from '../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AuthService} from './auth.service';
-import {CreateDrug} from '../model/create-medicine';
+import {Pharmacies} from '../model/create-medicine';
 import {TemplateService} from './template.service';
 
 @Injectable({providedIn: 'root'})
@@ -22,14 +22,14 @@ export class TemplateHttpService implements TemplateService {
 
   public createTemplate(tempName: string, complain: Array<string>, parameters: Array<string>, remarks: Array<string>,
                         dentalHistory: Array<string>, vaccinationHistory: Array<string>, investigation: Array<string>,
-                        radiological: Array<string>, planning: Array<string>, prescriptionList: Array<CreateDrug>): Observable<any> {
+                        radiological: Array<string>, planning: Array<string>, prescriptionList: Array<Pharmacies>): Observable<any> {
     return new EmptyObservable<Response>();
 
   }
 
   public editTemplate(tempId: string, tempName: string, complain: string, parameters: string,
                       remarks: string, dentalHistory: string, vaccinationHistory: string, investigation: string,
-                      radiological: string, planning: string, prescriptionList: Array<CreateDrug>): Observable<any> {
+                      radiological: string, planning: string, prescriptionList: Array<Pharmacies>): Observable<any> {
     return new EmptyObservable<Response>();
 
   }
