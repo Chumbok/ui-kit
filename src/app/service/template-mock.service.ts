@@ -112,6 +112,50 @@ export class TemplateMockService implements TemplateService {
               drugDuration: '7 day'
             }
           ]
+        },
+        {
+          id: '9388c9ea-f453-41de-96cb-d388dedbf091',
+          templateName: 'ffff fever',
+          chiefComplains: [
+            'headache', 'headache1', 'headache2', 'headache', 'headache1', 'headache2'
+          ],
+          parametersAll: [
+            'headahgjche', 'headachehgjg1', 'heahgjgdache2'
+          ],
+          remarksAll: [
+            'headachgjghe', 'hehgjgadache1', 'headahjgche2'
+          ],
+          dentalHistorys: [
+            'headache', 'headache1', 'headache2'
+          ],
+          vaccinationHistorys: [
+            'headache', 'headache1', 'headache2'
+          ],
+          investigations: [
+            'headache', 'headache1', 'headache2'
+          ],
+          radiologicals: [
+            'headache', 'headache1', 'headache2'
+          ],
+          plannings: [
+            'headache', 'headache1', 'headache2'
+          ],
+          medicines: [
+            {
+              drugType: 'Tab',
+              medicineName: 'Napa',
+              drugStrength: '10mg',
+              drugDose: '1+1+1',
+              drugDuration: '1 day'
+            },
+            {
+              drugType: 'cap',
+              medicineName: 'Napa',
+              drugStrength: '10mg',
+              drugDose: '1+1+1',
+              drugDuration: '7 day'
+            }
+          ]
         }
       ]
     };

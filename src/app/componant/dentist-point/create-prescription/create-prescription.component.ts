@@ -97,16 +97,17 @@ export class CreatePrescriptionComponent implements OnInit {
       date: ['']
     });
 
-    /*  this.templateService.getTemplateView().subscribe(res => {
+      this.templateService.getTemplateView().subscribe(res => {
         this.prescriptionResp = res;
         this.templateList = [];
-        res['items'].forEach((template) => {
+        res.forEach((template) => {
           const t = new Template();
           t.id = template.id;
+
           t.templateName = template.templateName;
           this.templateList.push(t);
         });
-      });*/
+      });
     this.onPatientView();
     this.selectPatient(this.patientId);
   }
@@ -289,45 +290,48 @@ export class CreatePrescriptionComponent implements OnInit {
     this.investigationArray = [];
     this.radiologicalArray = [];
     this.planningArray = [];
+    this.medicineList=[];
 
 
     this.templateService.getTemplateView().subscribe(res => {
 
       this.selectedTemplateId = selectedTemplateId;
-      this.selectedTemplate = res['items'].find(template => template.id === selectedTemplateId);
-      this.selectedTemplate.chiefComplains.forEach((chiefComplain) => {
-        this.chiefComplainArray.push(chiefComplain);
+      this.selectedTemplate = res.find(template => template.id === selectedTemplateId);
+      console.log(" Template Id"+selectedTemplateId)
+      this.selectedTemplate.chiefComplains.forEach((chiefComplains) => {
+        this.chiefComplainArray.push(chiefComplains.chiefComplain);
       });
-      this.selectedTemplate.parametersAll.forEach((parameter) => {
-        this.chiefParametersArray.push(parameter);
+      this.selectedTemplate.onExaminations.forEach((onExaminations) => {
+        this.chiefParametersArray.push(onExaminations.parameter);
       });
-      this.selectedTemplate.remarksAll.forEach((remark) => {
-        this.chiefRemarksArray.push(remark);
+      this.selectedTemplate.onExaminations.forEach((onExaminations) => {
+        this.chiefRemarksArray.push(onExaminations.remark);
       });
-      this.selectedTemplate.dentalHistorys.forEach((dentalHistory) => {
-        this.dentalHistoryArray.push(dentalHistory);
+      this.selectedTemplate.diagnosises.forEach((diagnosises) => {
+        this.dentalHistoryArray.push(diagnosises.medicalHistory);
       });
-      this.selectedTemplate.vaccinationHistorys.forEach((vaccinationHistory) => {
-        this.vaccinationHistoryArray.push(vaccinationHistory);
+      this.selectedTemplate.diagnosises.forEach((diagnosises) => {
+        this.vaccinationHistoryArray.push(diagnosises.drugHistory);
       });
-      this.selectedTemplate.investigations.forEach((investigation) => {
-        this.investigationArray.push(investigation);
+      this.selectedTemplate.diagnosises.forEach((diagnosises) => {
+        this.investigationArray.push(diagnosises.investigation);
       });
-      this.selectedTemplate.radiologicals.forEach((radiological) => {
-        this.radiologicalArray.push(radiological);
+      this.selectedTemplate.diagnosises.forEach((diagnosises) => {
+        this.radiologicalArray.push(diagnosises.finalDiagnosis);
       });
-      this.selectedTemplate.plannings.forEach((planning) => {
-        this.planningArray.push(planning);
+      this.selectedTemplate.diagnosises.forEach((diagnosises) => {
+        this.planningArray.push(diagnosises.clinicalFinDing);
       });
       this.medicineList = [];
-      this.selectedTemplate['medicines'].forEach((medicine) => {
+      this.selectedTemplate['pharmacies'].forEach((medicine) => {
         const createDrug: Pharmacies = new Pharmacies();
-        createDrug.medicineType = this.form.controls['drugType'].value;
-        createDrug.name = this.form.controls['medicineName'].value;
-        createDrug.medicineStrength = this.form.controls['drugStrength'].value;
-        createDrug.noOfTime = this.form.controls['drugDose'].value;
-        createDrug.instruction = this.form.controls['drugDuration'].value;
+        createDrug.medicineType = medicine.medicineType;
+        createDrug.name = medicine.name;
+        createDrug.medicineStrength = medicine.medicineStrength;
+        createDrug.noOfTime = medicine.noOfTime;
+        createDrug.instruction = medicine.instruction;
         this.medicineList.push(createDrug);
+
       });
     });
   }

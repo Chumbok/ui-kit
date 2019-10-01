@@ -6,18 +6,19 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AuthService} from './auth.service';
 import {Pharmacies} from '../model/create-medicine';
 import {TemplateService} from './template.service';
+import {DoctorAuthService} from "./doctor.auth.service";
 
 @Injectable({providedIn: 'root'})
 export class TemplateHttpService implements TemplateService {
-  private callThroughGateway: boolean = environment.chumbok.apiCallThroughGateway;
+  private callThroughLocalServer: boolean = environment.chumbok.apiCallThroughLocalServer;
 
   private httpOptions = {
-    headers: new HttpHeaders({'Authorization': 'Bearer ' + this.authService.getAuthToken()})
+    headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})
   };
 
-  private authHeader = new HttpHeaders({'Authorization': 'Bearer ' + this.authService.getAuthToken()});
+  private authHeader = new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()});
 
-  constructor(private authService: AuthService, private http: HttpClient) {
+  constructor(private doctorAuthService: DoctorAuthService, private http: HttpClient) {
   }
 
   public createTemplate(tempName: string, complain: Array<string>, parameters: Array<string>, remarks: Array<string>,
@@ -35,7 +36,14 @@ export class TemplateHttpService implements TemplateService {
   }
 
   public getTemplateView(): Observable<any> {
-    return new EmptyObservable<Response>();
+    const getTemplateEndpoint: string = this.callThroughLocalServer ?
+      environment.chumbok.apiBaseEndpointLocalServer + '/api/show-templates' : environment.chumbok.apiBaseEndpointLocalServer + '/api/patient/profile';
+
+    const httpOptions = {
+      headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})
+    };
+
+    return this.http.get(getTemplateEndpoint, httpOptions).map(res => res);
   }
 
   public deleteTemplate(templateId: string): Observable<any> {
