@@ -115,18 +115,18 @@ export class PrescriptionMockService implements PrescriptionService {
           planning: '',
           medicines: [
             {
-              drugType: 'Tab',
-              medicineName: 'Napa',
-              drugStrength: '10mg',
-              drugDose: '1+1+1',
-              drugDuration: '1 day'
+              medicineType: 'Tab',
+              name: 'Napa',
+              medicineStrength: '10mg',
+              instruction: '1+1+1',
+              noOfTime: '1 day'
             },
             {
-              drugType: 'cap',
-              medicineName: 'Napa',
-              drugStrength: '10mg',
-              drugDose: '1+1+1',
-              drugDuration: '7 day'
+              medicineType: 'Tab',
+              name: 'Napa',
+              medicineStrength: '10mg',
+              instruction: '1+1+1',
+              noOfTime: '1 day'
             }]
         },
         {
@@ -142,11 +142,11 @@ export class PrescriptionMockService implements PrescriptionService {
           planning: 'Bilirubin tests',
           medicines: [
             {
-              drugType: 'Tab',
-              medicineName: 'Iron supplements',
-              drugStrength: '10mg',
-              drugDose: '1+1+1',
-              drugDuration: '30 day'
+              medicineType: 'Tab',
+              name: 'Napa',
+              medicineStrength: '10mg',
+              instruction: '1+1+1',
+              noOfTime: '1 day'
             }]
         },
         {
@@ -162,11 +162,11 @@ export class PrescriptionMockService implements PrescriptionService {
           planning: 'Limit your intake of sugary foods and drinks(Protect Your Teeth with Fluoride)',
           medicines: [
             {
-              drugType: 'Tab',
-              medicineName: 'Metformin',
-              drugStrength: '10mg',
-              drugDose: '1+1+1',
-              drugDuration: '365 day'
+              medicineType: 'Tab',
+              name: 'Napa',
+              medicineStrength: '10mg',
+              instruction: '1+1+1',
+              noOfTime: '1 day'
             }]
         }]
     };
