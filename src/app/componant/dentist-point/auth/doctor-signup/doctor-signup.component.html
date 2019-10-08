@@ -1,3 +1,106 @@
-<p>
-  doctor-signup works!
-</p>
+<div class="container h-100 ">
+
+  <div class="row align-items-center h-100">
+    <div class="col-6 mx-auto">
+
+      <div class="ibox">
+        <div class="ibox-head">
+          <div class="ibox-title">Sign Up</div>
+        </div>
+        <div class="ibox-body">
+
+          <form (ngSubmit)="onSubmit()" [formGroup]="signUpForm">
+
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input [ngClass]="{ 'is-invalid': submitted && f.name.errors }" class="form-control"
+                     formControlName="name" id="name"
+                     type="text"/>
+              <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">Name is required</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="gender">Gender</label>
+              <input [ngClass]="{ 'is-invalid': submitted && f.gender.errors }" class="form-control"
+                     formControlName="gender" id="gender" type="text"/>
+              <div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
+                <div *ngIf="f.gender.errors.required">Gender is required</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="qualification">Qualification</label>
+              <input [ngClass]="{ 'is-invalid': submitted && f.qualification.errors }" class="form-control"
+                     formControlName="qualification" id="qualification"
+                     type="text"/>
+              <div *ngIf="submitted && f.qualification.errors" class="invalid-feedback">
+                <div *ngIf="f.qualification.errors.required">Qualification is required</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input [ngClass]="{ 'is-invalid': submitted && f.email.errors }" class="form-control"
+                     formControlName="email" id="email"
+                     type="text"/>
+              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email is required</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="address">Address</label>
+              <input [ngClass]="{ 'is-invalid': submitted && f.address.errors }" class="form-control"
+                     formControlName="address" id="address"
+                     type="text"/>
+              <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                <div *ngIf="f.address.errors.required">Address is required</div>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="chambers">Chambers</label>
+              <textarea [ngClass]="{ 'is-invalid': submitted && f.chambers.errors }" class="form-control"
+                        formControlName="chambers" id="chambers"
+                        placeholder="Popular Hospital Ltd rode#23 house-32,Dhandondi,Dhaka" type="text"></textarea>
+              <div *ngIf="submitted && f.chambers.errors" class="invalid-feedback">
+                <div *ngIf="f.chambers.errors.required">Chambers no is required</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="phoneNo">Phone no.</label>
+              <input [ngClass]="{ 'is-invalid': submitted && f.phoneNo.errors }" class="form-control"
+                     formControlName="phoneNo" id="phoneNo"
+                     type="text"/>
+              <div *ngIf="submitted && f.phoneNo.errors" class="invalid-feedback">
+                <div *ngIf="f.phoneNo.errors.required">Phone No is required</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input [ngClass]="{ 'is-invalid': submitted && f.password.errors }" class="form-control"
+                     formControlName="password" id="password"
+                     type="password"/>
+              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Password is required</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <button [disabled]="loading" class="btn btn-primary">Sign up</button>
+              <a [routerLink]="['/doctors/login']" class="btn btn-link">Login</a>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
