@@ -156,7 +156,7 @@ import {DoctorAuthMockService} from "./service/doctor.auth-mock.service";
     MatTreeModule,
     OwlNativeDateTimeModule,
     HttpClientXsrfModule.withOptions({
-      cookieName: 'XSRF-TOKEN',
+      cookieName: 'XSRF_TOKEN',
       headerName: 'X-XSRF-TOKEN'
     }),
     CalendarModule.forRoot({
