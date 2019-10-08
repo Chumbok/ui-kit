@@ -5,6 +5,8 @@ import {throwError} from 'rxjs/internal/observable/throwError';
 import {map} from 'rxjs/operators';
 import {CookieService} from 'ngx-cookie-service';
 import {DoctorAuthService} from "./doctor.auth.service";
+import {DoctorChamber} from "../model/doctor-chamber";
+import {Observable} from "rxjs";
 
 @Injectable({providedIn: 'root'})
 export class DoctorAuthHttpService implements DoctorAuthService {
@@ -13,6 +15,9 @@ export class DoctorAuthHttpService implements DoctorAuthService {
 
   private loginEndPointLocalServer: string = this.callThroughLocalServer ?
     environment.chumbok.apiBaseEndpointLocalServer + '/public/doctor/login' : environment.chumbok.apiBaseEndpointLocalServer + '/login';
+
+  private signUpEndPointLocalServer: string = this.callThroughLocalServer ?
+    environment.chumbok.apiBaseEndpointLocalServer + '/public/doctor/signup' : environment.chumbok.apiBaseEndpointLocalServer + '/login';
 
   private logoutEndPointLocalServer: string = this.callThroughLocalServer ?
     environment.chumbok.apiBaseEndpointLocalServer + '/public/doctor/logout' : environment.chumbok.apiBaseEndpointLocalServer + '/logout';
@@ -63,5 +68,24 @@ export class DoctorAuthHttpService implements DoctorAuthService {
     return throwError(err.message || err);
   }
 
+  signUp(name: String, gender: String, qualification: String, email: String, address: String, chambers: Array<DoctorChamber>, phoneNo: String, password: String): Observable<any> {
+
+    return this.http.post<any>(this.signUpEndPointLocalServer, {
+      name: name,
+      gander: gender,
+      qualification: qualification,
+      phoneNo: phoneNo,
+      email: email,
+      address: address,
+      password: password,
+      chambers: chambers
+    }, {withCredentials: true})
+      .pipe(map(res => {
+        if (res && res.id) {
+
+        }
+        return res;
+      }));
+  }
 
 }

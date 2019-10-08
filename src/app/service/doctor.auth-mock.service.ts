@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
-import {of} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {DoctorAuthService} from "./doctor.auth.service";
+import {DoctorChamber} from "../model/doctor-chamber";
 
 @Injectable({providedIn: 'root'})
 export class DoctorAuthMockService implements DoctorAuthService {
@@ -35,6 +36,13 @@ export class DoctorAuthMockService implements DoctorAuthService {
   public getAuthToken(): string {
     console.log('Returning mock token because environment.chumbok.enableMock=true.');
     return 'mockToken';
+  }
+
+  signUp(name: String, gender: String, qualification: String, email: String, address: String, chambers: Array<DoctorChamber>,
+         phoneNo: String, password: String): Observable<any> {
+    console.log(chambers);
+    const json = '{"id":"hg34-435hbg6-45hgy"}';
+    return of(JSON.parse(json));
   }
 
 }

@@ -9,7 +9,6 @@ import {DoctorAuthService} from "./doctor.auth.service";
 import {ChiefComplains} from "../model/chief-complain";
 import {OnExaminations} from "../model/on-examination";
 import {Diagnosises} from "../model/on-diagonsis";
-import {map} from "rxjs/operators";
 
 @Injectable({providedIn: 'root'})
 export class PrescriptionHttpService implements PrescriptionService {
@@ -52,22 +51,17 @@ export class PrescriptionHttpService implements PrescriptionService {
                             onExaminations: Array<OnExaminations>,
                             diagnosises: Array<Diagnosises>,
                             date: string,
-                            pharmacies: Pharmacies[]){
+                            pharmacies: Pharmacies[]) {
 
     let httpHeaders = new HttpHeaders({
       'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken(),
-      'fgfg':'trtret'
     });
     const createPrescriptionEndpoint: string = this.callThroughLocalServer ?
+
       environment.chumbok.apiBaseEndpointLocalServer + '/api/appointment/' + appointmentId + '/create-prescription' : environment.chumbok.apiBaseEndpointLocalServer + '/api/create-prescription';
-    /*return this.http.post<any>(createPrescriptionEndpoint, {
-      chiefComplains: [{complain}], onExaminations: [{onExaminations}],diagnosises:[{dentalHistory}],nextVisitDate:date,pharmacies:[{medicineList}]
-    }, {
-      headers: httpOptions,
-      observe: 'response'
-    });*/
+
     return this.http.post(createPrescriptionEndpoint, {
-      nextVisitDate:date, chiefComplains, onExaminations,diagnosises,pharmacies
+        nextVisitDate: date, chiefComplains, onExaminations, diagnosises, pharmacies
       },
       {
         headers: httpHeaders,
