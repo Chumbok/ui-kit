@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {EmptyObservable} from 'rxjs-compat/observable/EmptyObservable';
 import {PrescriptionService} from './prescription.service';
 import {environment} from '../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
@@ -25,11 +24,40 @@ export class PrescriptionHttpService implements PrescriptionService {
   }
 
   public getPrescriptionList(currentPage): Observable<any> {
-    return new EmptyObservable<Response>();
+    const getPrescriptionEndpoint: string = this.callThroughLocalServer ?
+      environment.chumbok.apiBaseEndpointLocalServer + '/api/doctor/prescriptions' : environment.chumbok.apiBaseEndpointLocalServer + '/api/doctor/prescriptions';
+
+    const httpOptions = {
+      headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})
+    };
+
+    return this.http.get(getPrescriptionEndpoint, httpOptions).map(res => res);
+
   }
 
-  public getPrescriptionView(): Observable<any> {
-    return new EmptyObservable<Response>();
+
+  public getPrescriptionListByPatientId(currentPage: String): Observable<any> {
+    const getPrescriptionListByPatientIdEndpoint: string = this.callThroughLocalServer ?
+      environment.chumbok.apiBaseEndpointLocalServer + '/api/doctor/prescription/' + currentPage + '' : environment.chumbok.apiBaseEndpointLocalServer + '/api/doctor/prescriptions';
+
+    const httpOptions = {
+      headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})
+    };
+
+    return this.http.get(getPrescriptionListByPatientIdEndpoint, httpOptions).map(res => res);
+
+  }
+
+
+  public getPrescriptionView(selectedTemplateId): Observable<any> {
+    const getPrescriptionEndpoint: string = this.callThroughLocalServer ?
+      environment.chumbok.apiBaseEndpointLocalServer + '/api/prescription/' + selectedTemplateId + '/prescription-view' : environment.chumbok.apiBaseEndpointLocalServer + '/api/prescription/{prescriptionId}/prescription-view';
+
+    const httpOptions = {
+      headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})
+    };
+
+    return this.http.get(getPrescriptionEndpoint, httpOptions).map(res => res);
   }
 
   public getPatientProfile(patientId: string): Observable<any> {

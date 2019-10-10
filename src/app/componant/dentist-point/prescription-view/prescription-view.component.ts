@@ -26,6 +26,15 @@ export class PrescriptionViewComponent implements OnInit {
   investigation: string;
   radiological: string;
   planning: string;
+  chiefComplainArray: Array<string> = [];
+  onExaminationsParametersArray: Array<string> = [];
+  onExaminationsRemarkArray: Array<string> = [];
+  dentalHistoryArray: Array<string> = [];
+  vaccinationHistoryArray: Array<string> = [];
+  investigationArray: Array<string> = [];
+  radiologicalArray: Array<string> = [];
+  planningArray: Array<string> = [];
+
 
   constructor(private formBuilder: FormBuilder, private prescriptionService1: PrescriptionService,
               private route: ActivatedRoute, private router: Router) {
@@ -60,28 +69,64 @@ export class PrescriptionViewComponent implements OnInit {
 
 
   onPrescriptionView(selectedTemplateId) {
+    this.chiefComplainArray = [];
+    this.onExaminationsParametersArray = [];
+    this.onExaminationsRemarkArray = [];
+    this.dentalHistoryArray = [];
+    this.vaccinationHistoryArray = [];
+    this.investigationArray = [];
+    this.radiologicalArray = [];
+    this.planningArray = [];
 
-    this.prescriptionService1.getPrescriptionView().subscribe(res => {
+
+    this.prescriptionService1.getPrescriptionView(selectedTemplateId).subscribe(res => {
 
       this.selectedTemplateId = selectedTemplateId;
-      this.selectedTemplate = res['items'].find(template => template.id === selectedTemplateId);
-      this.chiefComplain = this.selectedTemplate.chiefComplain;
-      this.parameters = this.selectedTemplate.parameters;
-      this.remarks = this.selectedTemplate.remarks;
-      this.dentalHistory = this.selectedTemplate.dentalHistory;
-      this.vaccinationHistory = this.selectedTemplate.vaccinationHistory;
-      this.investigation = this.selectedTemplate.investigation;
-      this.radiological = this.selectedTemplate.radiological;
-      this.planning = this.selectedTemplate.planning;
+      this.selectedTemplate = res;
+      console.log(" Template Id" + selectedTemplateId);
 
-      this.selectedTemplate['medicines'].forEach((medicine) => {
+      this.selectedTemplate['chiefComplains'].forEach((chiefComplains) => {
+        this.chiefComplainArray.push(chiefComplains.chiefComplain);
+      });
+
+      this.selectedTemplate['onExaminations'].forEach((onExaminations) => {
+        this.onExaminationsParametersArray.push(onExaminations.parameter);
+      });
+
+      this.selectedTemplate['onExaminations'].forEach((onExaminations) => {
+        this.onExaminationsRemarkArray.push(onExaminations.remark);
+      });
+
+      this.selectedTemplate['diagnosises'].forEach((diagnosises) => {
+        this.dentalHistoryArray.push(diagnosises.medicalHistory);
+      });
+
+      this.selectedTemplate['diagnosises'].forEach((diagnosises) => {
+        this.vaccinationHistoryArray.push(diagnosises.drugHistory);
+      });
+
+      this.selectedTemplate['diagnosises'].forEach((diagnosises) => {
+        this.investigationArray.push(diagnosises.investigation);
+      });
+
+      this.selectedTemplate['diagnosises'].forEach((diagnosises) => {
+        this.radiologicalArray.push(diagnosises.finalDiagnosis);
+      });
+
+      this.selectedTemplate['diagnosises'].forEach((diagnosises) => {
+        this.planningArray.push(diagnosises.clinicalFinDing);
+      });
+
+
+      this.selectedTemplate['pharmacies'].forEach((medicine) => {
         const createDrug: Pharmacies = new Pharmacies();
-        createDrug.medicineType = medicine.drugType;
-        createDrug.name = medicine.medicineName;
-        createDrug.medicineStrength = medicine.drugStrength;
-        createDrug.instruction = medicine.drugDose;
-        createDrug.noOfTime = medicine.drugDuration;
+        createDrug.medicineType = medicine.medicineType;
+        createDrug.name = medicine.name;
+        createDrug.medicineStrength = medicine.medicineStrength;
+        createDrug.noOfTime = medicine.noOfTime;
+        createDrug.instruction = medicine.instruction;
         this.createMedicinePrescription.push(createDrug);
+
       });
     });
   }

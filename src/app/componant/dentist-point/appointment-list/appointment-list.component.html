@@ -21,9 +21,9 @@
       </thead>
       <tbody>
       <tr *ngFor="let appointmentlist of appointmentList | filter:searchText | paginate: config">
-        <td style="width: 30%">{{ appointmentlist.attendees[1].name }}</td>
+        <td style="width: 30%">{{ appointmentlist.patientName }}</td>
         <td style="width: 30%">{{ appointmentlist.startDateTime }}</td>
-        <td style="width: 50%">{{ appointmentlist.attendees[1].email }}</td>
+        <td style="width: 50%">{{ appointmentlist.email }}</td>
         <td><a [routerLink]="[appointmentlist.id]" (click)="onAppointmentEdit(appointmentlist.id)">Edit</a></td>
         <td><a [routerLink]="[appointmentlist.id]" (click)="onAppointmentDelete(appointmentlist.id)">Cancel</a></td>
       </tr>

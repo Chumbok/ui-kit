@@ -13,6 +13,7 @@ export class PrescriptionListComponent implements OnInit {
 
   prescription: any;
   prescriptionListin: Array<any> = [];
+  prescriptionListin1: Array<any> = [];
   patientId: string;
   itemFrom: number;
   itemTo: number;
@@ -21,6 +22,8 @@ export class PrescriptionListComponent implements OnInit {
   searchText;
   patientName: string;
   phoneNumber: string;
+  chiefComplainArray: Array<string> = [];
+
   constructor(private prescriptionService: PrescriptionService, private route: ActivatedRoute, private router: Router) {
     this.config = {
       currentPage: 1,
@@ -37,19 +40,31 @@ export class PrescriptionListComponent implements OnInit {
   }
 
   pageChange(newPage: number) {
+
+    this.chiefComplainArray = [];
+
     if (this.patientId) {
-      this.prescriptionService.getPrescriptionList( this.patientId).subscribe(res => {
-        res.items.forEach((patientInformation) => {
+      this.prescriptionService.getPrescriptionListByPatientId(this.patientId).subscribe(res => {
+        this.prescriptionListin = res;
+
+        res.forEach((patientInformation) => {
           if (patientInformation.id == this.patientId ) {
-            this.prescriptionListin.push(patientInformation);
+
+            this.prescriptionListin.push(patientInformation.chiefComplains);
           }
         });
       });
     } else {
+
       this.router.navigate(['doctors/prescription-list'], {queryParams: {page: newPage}});
       this.prescriptionService.getPrescriptionList(newPage).subscribe(res => {
         this.prescription = res;
-        this.prescriptionListin = res['items'];
+
+        console.log("Console");
+        this.prescriptionListin = res;
+
+
+
         this.itemFrom = this.prescription.page + 1;
         this.itemTo = (this.prescription.page + 1) * this.prescription.size;
         this.totalElements = this.prescription.totalElements;
