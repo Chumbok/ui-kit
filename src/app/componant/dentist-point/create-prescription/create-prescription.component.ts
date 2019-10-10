@@ -97,17 +97,17 @@ export class CreatePrescriptionComponent implements OnInit {
       date: ['']
     });
 
-      this.templateService.getTemplateView().subscribe(res => {
-        this.prescriptionResp = res;
-        this.templateList = [];
-        res.forEach((template) => {
-          const t = new Template();
-          t.id = template.id;
+    this.templateService.getTemplateView().subscribe(res => {
+      this.prescriptionResp = res;
+      this.templateList = [];
+      res.forEach((template) => {
+        const t = new Template();
+        t.id = template.id;
 
-          t.templateName = template.templateName;
-          this.templateList.push(t);
-        });
+        t.templateName = template.templateName;
+        this.templateList.push(t);
       });
+    });
     this.onPatientView();
     this.selectPatient(this.patientId);
   }
@@ -144,20 +144,15 @@ export class CreatePrescriptionComponent implements OnInit {
         onExamination.remark = 'null';
         onExamination.parameter = parameters[i];
         prescription.onExaminations.push(onExamination)
-      }
-      else if (parameters[i] == null) {
+      } else if (parameters[i] == null) {
         onExamination.parameter = 'null';
         onExamination.remark = remarks[i];
         prescription.onExaminations.push(onExamination)
-      }
-
-      else if (parameters[i] != null && remarks[i] != null) {
+      } else if (parameters[i] != null && remarks[i] != null) {
         onExamination.parameter = parameters[i];
         onExamination.remark = remarks[i];
         prescription.onExaminations.push(onExamination)
-      }
-
-      else if (parameters[i] == null && parameters[i] == null) {
+      } else if (parameters[i] == null && parameters[i] == null) {
         onExamination.parameter = 'null';
         onExamination.remark = 'null';
         prescription.onExaminations.push(onExamination)
@@ -182,36 +177,28 @@ export class CreatePrescriptionComponent implements OnInit {
         diagonsises.finalDiagnosis = radiological[i];
         diagonsises.clinicalFinDing = planning[i];
         prescription.diagnosis.push(diagonsises);
-      }
-
-      else if (vaccinationHistory[i] == null) {
+      } else if (vaccinationHistory[i] == null) {
         diagonsises.medicalHistory = dentalHistory[i];
         diagonsises.drugHistory = 'null';
         diagonsises.investigation = investigation[i];
         diagonsises.finalDiagnosis = radiological[i];
         diagonsises.clinicalFinDing = planning[i];
         prescription.diagnosis.push(diagonsises);
-      }
-
-      else if (investigation[i] == null) {
+      } else if (investigation[i] == null) {
         diagonsises.medicalHistory = dentalHistory[i];
         diagonsises.drugHistory = vaccinationHistory[i];
         diagonsises.investigation = 'null';
         diagonsises.finalDiagnosis = radiological[i];
         diagonsises.clinicalFinDing = planning[i];
         prescription.diagnosis.push(diagonsises);
-      }
-
-      else if (radiological[i] == null) {
+      } else if (radiological[i] == null) {
         diagonsises.medicalHistory = dentalHistory[i];
         diagonsises.drugHistory = vaccinationHistory[i];
         diagonsises.investigation = investigation[i];
         diagonsises.finalDiagnosis = 'null';
         diagonsises.clinicalFinDing = planning[i];
         prescription.diagnosis.push(diagonsises);
-      }
-
-      else if (planning[i] == null) {
+      } else if (planning[i] == null) {
         diagonsises.medicalHistory = dentalHistory[i];
         diagonsises.drugHistory = vaccinationHistory[i];
         diagonsises.investigation = investigation[i];
@@ -284,14 +271,14 @@ export class CreatePrescriptionComponent implements OnInit {
     this.investigationArray = [];
     this.radiologicalArray = [];
     this.planningArray = [];
-    this.medicineList=[];
+    this.medicineList = [];
 
 
     this.templateService.getTemplateView().subscribe(res => {
 
       this.selectedTemplateId = selectedTemplateId;
       this.selectedTemplate = res.find(template => template.id === selectedTemplateId);
-      console.log(" Template Id"+selectedTemplateId)
+      console.log(" Template Id" + selectedTemplateId)
       this.selectedTemplate.chiefComplains.forEach((chiefComplains) => {
         this.chiefComplainArray.push(chiefComplains.chiefComplain);
       });

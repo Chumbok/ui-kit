@@ -52,7 +52,7 @@ export class AppointmentHttpService implements AppointmentService {
     return new EmptyObservable<Response>();
   }
 
-  getAppointmentListByDoctorId(): Observable<any> {
+  public getAppointmentListByDoctorId(): Observable<any> {
 
     const httpOptions = {
       headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})

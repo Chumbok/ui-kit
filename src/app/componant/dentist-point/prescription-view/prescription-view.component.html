@@ -33,10 +33,11 @@
 
           <div class="form-group mb-4 row mt-4 font-weight-normal">
             <label class="col-sm-2 col-form-label">Chief Complain</label>
-            <div class="col-sm-10">
+            <div *ngFor="let chiefComplain of chiefComplainArray; let i = index"
+                 class="col-sm-10">
 
               <li class="list-group m-2">
-                <p><span class="badge"  >{{ chiefComplain}}</span></p>
+                <p><span class="badge">{{ chiefComplain}}</span></p>
               </li>
 
             </div>
@@ -48,17 +49,19 @@
 
           <div class="form-group mb-4 row mt-4 font-weight-normal">
             <label class="col-sm-2 col-form-label">Parameters</label>
-            <div class="col-sm-10">
+            <div *ngFor="let parameters of onExaminationsParametersArray; let i = index"
+                 class="col-sm-10">
+
               <li class="list-group m-2">
-                <p><span class="badge"  >{{ parameters}}</span></p>
+                <p><span class="badge">{{ parameters}}</span></p>
               </li>
             </div>
           </div>
           <div class="form-group mb-4 row font-weight-normal">
             <label class="col-sm-2 col-form-label">Remarks</label>
-            <div class="col-sm-10">
+            <div *ngFor="let remarks of onExaminationsRemarkArray; let i = index" class="col-sm-10">
               <li class="list-group m-2">
-                <p><span class="badge"  >{{ remarks}}</span></p>
+                <p><span class="badge">{{ remarks}}</span></p>
               </li>
             </div>
           </div>
@@ -69,18 +72,20 @@
 
           <div class="form-group mb-4 row mt-4 font-weight-normal">
             <label class="col-sm-3 col-form-label">Medical & Dental History</label>
-            <div class="col-sm-9">
+            <div *ngFor="let dentalHistory of dentalHistoryArray; let i = index"
+                 class="col-sm-9">
               <li class="list-group m-2">
-                <p><span class="badge"  >{{ dentalHistory}}</span></p>
+                <p><span class="badge">{{ dentalHistory}}</span></p>
               </li>
             </div>
           </div>
 
           <div class="form-group mb-4 row font-weight-normal">
             <label class="col-sm-3 col-form-label">Drug & Vaccination History</label>
-            <div class="col-sm-9">
+            <div *ngFor="let vaccinationHistory of vaccinationHistoryArray; let i = index"
+                 class="col-sm-9">
               <li class="list-group m-2">
-                <p><span class="badge"  >{{ vaccinationHistory}}</span></p>
+                <p><span class="badge">{{ vaccinationHistory}}</span></p>
               </li>
             </div>
           </div>
@@ -88,27 +93,30 @@
 
           <div class="form-group mb-4 row font-weight-normal">
             <label class="col-sm-3 col-form-label">Investigation History</label>
-            <div class="col-sm-9">
+            <div *ngFor="let investigation of investigationArray; let i = index"
+                 class="col-sm-9">
               <li class="list-group m-2">
-                <p><span class="badge"  >{{ investigation}}</span></p>
+                <p><span class="badge">{{ investigation}}</span></p>
               </li>
             </div>
           </div>
 
           <div class="form-group mb-4 row font-weight-normal">
             <label class="col-sm-3 col-form-label">Radiological/Clinical Finding</label>
-            <div class="col-sm-9">
+            <div *ngFor="let radiological of radiologicalArray; let i = index"
+                 class="col-sm-9">
               <li class="list-group m-2">
-                <p><span class="badge"  >{{ radiological}}</span></p>
+                <p><span class="badge">{{ radiological}}</span></p>
               </li>
             </div>
           </div>
 
           <div class="form-group mb-4 row font-weight-normal">
             <label class="col-sm-3 col-form-label">Final Diagnosis & Treatment Planning</label>
-            <div class="col-sm-9">
+            <div *ngFor="let planning of planningArray; let i = index"
+                 class="col-sm-9">
               <li class="list-group m-2">
-                <p><span class="badge"  >{{ planning}}</span></p>
+                <p><span class="badge">{{ planning}}</span></p>
               </li>
             </div>
           </div>

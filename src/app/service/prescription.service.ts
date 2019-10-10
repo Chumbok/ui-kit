@@ -9,7 +9,10 @@ import {ChiefComplains} from "../model/chief-complain";
 @Injectable()
 export abstract class PrescriptionService {
   abstract getPrescriptionList(currentPage): Observable<any>;
-  abstract getPrescriptionView(): Observable<any>;
+
+  abstract getPrescriptionListByPatientId(currentPage): Observable<any>;
+
+  abstract getPrescriptionView(selectedTemplateId): Observable<any>;
   abstract getPatientProfile(patientId: string): Observable<any>;
 
   abstract createPrescription(appointmentId: string,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AppointmentService} from '../../../service/appointment.service';
 
@@ -29,15 +29,18 @@ export class AppointmentListComponent implements OnInit {
   pageChange(newPage: number) {
 
       this.router.navigate(['doctors/appointment-list'], {queryParams: {page: newPage}});
-      this.appointmentService.getAppointmentList().subscribe(res => {
+    this.appointmentService.getAppointmentListByDoctorId().subscribe(res => {
+      res.forEach((values) => {
+        this.appointmentList.push(values);
+      });
       });
 
   }
 
   ngOnInit() {
     this.pageChange(1);
-    this.appointmentService.getAppointmentList().subscribe(res => {
-      res.items.forEach((values) => {
+    this.appointmentService.getAppointmentListByDoctorId().subscribe(res => {
+      res.forEach((values) => {
         this.appointmentList.push(values);
       });
     });
