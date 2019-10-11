@@ -3,7 +3,6 @@ import {Observable} from 'rxjs';
 import {EmptyObservable} from 'rxjs-compat/observable/EmptyObservable';
 import {environment} from '../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {AuthService} from './auth.service';
 import {Pharmacies} from '../model/create-medicine';
 import {TemplateService} from './template.service';
 import {DoctorAuthService} from "./doctor.auth.service";
@@ -45,6 +44,18 @@ export class TemplateHttpService implements TemplateService {
 
     return this.http.get(getTemplateEndpoint, httpOptions).map(res => res);
   }
+
+  public getTemplateViewById(selectedTemplateId: string): Observable<any> {
+    const getTemplateByIdEndpoint: string = this.callThroughLocalServer ?
+      environment.chumbok.apiBaseEndpointLocalServer + '/api/template/' + selectedTemplateId + '/show-templates' : environment.chumbok.apiBaseEndpointLocalServer + '/api/show-templates';
+
+    const httpOptions = {
+      headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})
+    };
+
+    return this.http.get(getTemplateByIdEndpoint, httpOptions).map(res => res);
+  }
+
 
   public deleteTemplate(templateId: string): Observable<any> {
     return new EmptyObservable<Response>();

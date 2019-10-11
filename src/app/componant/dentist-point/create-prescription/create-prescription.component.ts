@@ -274,10 +274,10 @@ export class CreatePrescriptionComponent implements OnInit {
     this.medicineList = [];
 
 
-    this.templateService.getTemplateView().subscribe(res => {
+    this.templateService.getTemplateViewById(selectedTemplateId).subscribe(res => {
 
       this.selectedTemplateId = selectedTemplateId;
-      this.selectedTemplate = res.find(template => template.id === selectedTemplateId);
+      this.selectedTemplate = res;
       console.log(" Template Id" + selectedTemplateId)
       this.selectedTemplate.chiefComplains.forEach((chiefComplains) => {
         this.chiefComplainArray.push(chiefComplains.chiefComplain);
