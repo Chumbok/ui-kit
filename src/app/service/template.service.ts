@@ -15,6 +15,7 @@ export abstract class TemplateService {
 
   abstract getTemplateView(): Observable<any>;
 
+  abstract getTemplateViewById(selectedTemplateId: string): Observable<any>;
 
   abstract deleteTemplate(templateId: string): Observable<any>;
 }
