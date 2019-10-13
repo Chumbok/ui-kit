@@ -97,4 +97,14 @@ export class PrescriptionHttpService implements PrescriptionService {
       }
     );
   }
+
+  patientApprove(patientId: string): Observable<any> {
+    const getPatientProfileEndpoint: string = this.callThroughLocalServer ?
+      environment.chumbok.apiBaseEndpointLocalServer + '/api/doctor/approve/patient/' + patientId : environment.chumbok.apiBaseEndpointLocalServer + '/api/doctor/approve/patient/' + patientId;
+
+    const httpOptions = {
+      headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})
+    };
+    return this.http.put(getPatientProfileEndpoint, httpOptions).map(res => res);
+  }
 }

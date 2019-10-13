@@ -289,4 +289,8 @@ export class PrescriptionMockService implements PrescriptionService {
     return new EmptyObservable<Response>();
 
   }
+
+  patientApprove(patientId: string): Observable<any> {
+    return undefined;
+  }
 }
