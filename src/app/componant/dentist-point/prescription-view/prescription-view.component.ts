@@ -18,14 +18,14 @@ export class PrescriptionViewComponent implements OnInit {
   createMedicinePrescription: Array<Pharmacies> = [];
   selectedTemplateId: string;
   selectedTemplate: any;
-  chiefComplain: string;
-  parameters: string;
-  remarks: string;
-  dentalHistory: string;
-  vaccinationHistory: string;
-  investigation: string;
-  radiological: string;
-  planning: string;
+  chiefComplain: string = '';
+  parameters: string = '';
+  remarks: string = '';
+  dentalHistory: string = '';
+  vaccinationHistory: string = '';
+  investigation: string = '';
+  radiological: string = '';
+  planning: string = '';
   chiefComplainArray: Array<string> = [];
   onExaminationsParametersArray: Array<string> = [];
   onExaminationsRemarkArray: Array<string> = [];
@@ -86,37 +86,45 @@ export class PrescriptionViewComponent implements OnInit {
       console.log(" Template Id" + selectedTemplateId);
 
       this.selectedTemplate['chiefComplains'].forEach((chiefComplains) => {
-        this.chiefComplainArray.push(chiefComplains.chiefComplain);
+        this.chiefComplain = this.chiefComplain + chiefComplains.chiefComplain + ", ";
+
       });
+      this.chiefComplainArray.push(this.chiefComplain);
 
       this.selectedTemplate['onExaminations'].forEach((onExaminations) => {
-        this.onExaminationsParametersArray.push(onExaminations.parameter);
+        this.parameters = this.parameters + onExaminations.parameter + ", ";
       });
+      this.onExaminationsParametersArray.push(this.parameters);
 
       this.selectedTemplate['onExaminations'].forEach((onExaminations) => {
-        this.onExaminationsRemarkArray.push(onExaminations.remark);
+        this.remarks = this.remarks + onExaminations.remark + ", ";
       });
+      this.onExaminationsRemarkArray.push(this.remarks);
 
       this.selectedTemplate['diagnosises'].forEach((diagnosises) => {
-        this.dentalHistoryArray.push(diagnosises.medicalHistory);
+        this.vaccinationHistory = this.vaccinationHistory + diagnosises.medicalHistory + ", "
       });
+      this.dentalHistoryArray.push(this.vaccinationHistory);
 
       this.selectedTemplate['diagnosises'].forEach((diagnosises) => {
-        this.vaccinationHistoryArray.push(diagnosises.drugHistory);
+        this.dentalHistory = this.dentalHistory + diagnosises.drugHistory + ", ";
       });
+      this.vaccinationHistoryArray.push();
 
       this.selectedTemplate['diagnosises'].forEach((diagnosises) => {
-        this.investigationArray.push(diagnosises.investigation);
+        this.investigation = this.investigation + diagnosises.investigation + ", ";
       });
+      this.investigationArray.push(this.investigation);
 
       this.selectedTemplate['diagnosises'].forEach((diagnosises) => {
-        this.radiologicalArray.push(diagnosises.finalDiagnosis);
+        this.radiological = this.radiological + diagnosises.finalDiagnosis + ", ";
       });
+      this.radiologicalArray.push(this.radiological);
 
       this.selectedTemplate['diagnosises'].forEach((diagnosises) => {
-        this.planningArray.push(diagnosises.clinicalFinDing);
+        this.planning = this.planning + diagnosises.clinicalFinDing + ", ";
       });
-
+      this.planningArray.push(this.planning);
 
       this.selectedTemplate['pharmacies'].forEach((medicine) => {
         const createDrug: Pharmacies = new Pharmacies();

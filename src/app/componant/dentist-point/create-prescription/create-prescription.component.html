@@ -3,6 +3,7 @@
   <div class="ibox-head">
     <div class="ibox-title">Create Prescription</div>
     <div>
+      <button (click)="onApprovePatient()" *ngIf="show" class="btn btn-warning">Approve Now</button>&nbsp;
       <button class="btn btn-secondary" (click)="onCancel()">Cancel</button>&nbsp;
       <button class="btn btn-primary" (click)="onSubmit()">Save</button>
     </div>

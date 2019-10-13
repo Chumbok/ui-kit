@@ -59,7 +59,7 @@ export class CreatePrescriptionComponent implements OnInit {
   radiologicalArrayView: Array<string> = [];
   planningArray: Array<string> = [];
   planningArrayView: Array<string> = [];
-
+  public show: boolean;
   constructor(private formBuilder: FormBuilder, private prescriptionService: PrescriptionService,
               private templateService: TemplateService, private route: ActivatedRoute, private router: Router) {
 
@@ -110,6 +110,7 @@ export class CreatePrescriptionComponent implements OnInit {
     });
     this.onPatientView();
     this.selectPatient(this.patientId);
+    this.isApprovePatient();
   }
 
   get f() {
@@ -404,7 +405,33 @@ export class CreatePrescriptionComponent implements OnInit {
     }
   }
 
+  onApprovePatient() {
+    this.prescriptionService.patientApprove(this.patientId).subscribe(res => {
+      if (res.status == 204) {
+        console.log("Approve Successful");
+      } else if (res.status == 404) {
+        console.log("Already Approve");
+      } else {
+        console.log("Something want to wrong");
+      }
+      console.log(res.status);
+    });
+  }
 
+  isApprovePatient() {
+    this.prescriptionService.patientApprove(this.patientId).subscribe(res => {
+      if (res.status == 204) {
+        this.show = true;
+      } else if (res.status == 404) {
+        this.show = false;
+        console.log("Already Approve");
+      } else {
+        this.show = false;
+        console.log("Something want to wrong");
+      }
+      console.log(res.status);
+    });
+  }
   onSelectFile(event) {
     if (event.target.files && event.target.files[0]) {
       let filesAmount = event.target.files.length;

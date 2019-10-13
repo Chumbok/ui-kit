@@ -69,7 +69,6 @@ export class DoctorAuthHttpService implements DoctorAuthService {
   }
 
   signUp(name: String, gender: String, qualification: String, email: String, address: String, chambers: Array<DoctorChamber>, phoneNo: String, password: String): Observable<any> {
-
     return this.http.post<any>(this.signUpEndPointLocalServer, {
       name: name,
       gander: gender,
