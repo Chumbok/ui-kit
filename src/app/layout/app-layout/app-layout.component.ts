@@ -42,7 +42,7 @@ export class AppLayoutComponent implements OnInit {
     timer(5000, 5 * 1000).subscribe(x => {
       if (!this.pingInProgress) {
         this.pingInProgress = true;
-        this.pingService.ping('uaa')
+        this.pingService.ping()
           .subscribe(res => {
             if (this.internetGotDisconnected) {
               this.flashMessageService.showFlashMessage({

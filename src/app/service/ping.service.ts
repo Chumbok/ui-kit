@@ -4,6 +4,6 @@ import {Observable} from 'rxjs';
 @Injectable()
 export abstract class PingService {
 
-  abstract ping(serviceId: string): Observable<any>;
+  abstract ping(): Observable<any>;
 
 }

@@ -12,15 +12,12 @@ export class AuthHttpService implements AuthService {
   private callThroughGateway: boolean = environment.chumbok.apiCallThroughGateway;
 
   private loginEndpoint: string = this.callThroughGateway ?
-    environment.chumbok.apiBaseEndpoint + '/uaa/login' : environment.chumbok.apiBaseEndpoint + '/login';
+    environment.chumbok.apiBaseEndpoint + '/uaa/login' : '/login';
 
   private logoutEndpoint: string = this.callThroughGateway ?
-    environment.chumbok.apiBaseEndpoint + '/uaa/logout' : environment.chumbok.apiBaseEndpoint + '/logout';
+    environment.chumbok.apiBaseEndpoint + '/uaa/logout' : '/logout';
 
-  private refreshEndpoint: string = this.callThroughGateway ?
-    environment.chumbok.apiBaseEndpoint + '/uaa/refresh' : environment.chumbok.apiBaseEndpoint + '/refresh';
-
-
+  private refreshEndpoint: string = environment.chumbok.authRefreshEndpoint;
 
   constructor(private cookieService: CookieService, private http: HttpClient) {
   }

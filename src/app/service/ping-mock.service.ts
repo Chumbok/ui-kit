@@ -5,7 +5,7 @@ import {of} from 'rxjs';
 @Injectable({providedIn: 'root'})
 export class PingMockService implements PingService {
 
-  ping(serviceId: string) {
+  ping() {
     console.log('HTTP ping is disabled because environment.chumbok.enableMock=true.');
     return of({});
   }

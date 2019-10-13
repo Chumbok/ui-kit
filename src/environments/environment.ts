@@ -15,7 +15,11 @@ export const environment = {
      apiBaseEndpoint: '//localhost:33002'*/
 
     apiCallThroughGateway: false,
-    apiBaseEndpoint: 'http://dev.chumbok.com:33001/gateway'
+    apiBaseEndpoint: 'http://dev.chumbok.com:33001/gateway',
+
+    pingEndpoint: 'http://localhost:33002/ping',
+    authRefreshEndpoint: 'http://localhost:33002/refresh'
+
   }
 
 };

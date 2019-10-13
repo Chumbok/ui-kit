@@ -6,21 +6,12 @@ import {PingService} from './ping.service';
 @Injectable()
 export class PingHttpService implements PingService {
 
-  private pingEndpoint: string;
-  private callThroughGateway: boolean = environment.chumbok.apiCallThroughGateway;
+  private pingEndpoint: string = environment.chumbok.pingEndpoint;
 
   constructor(private http: HttpClient) {
   }
 
-  ping(serviceId: string) {
-
-    if (this.callThroughGateway && serviceId != null) {
-      this.pingEndpoint = environment.chumbok.apiBaseEndpoint + '/' + serviceId + '/ping';
-    } else {
-      this.pingEndpoint = environment.chumbok.apiBaseEndpoint + '/ping';
-    }
-
+  ping() {
     return this.http.get(this.pingEndpoint);
   }
-
 }
