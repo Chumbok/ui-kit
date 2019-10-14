@@ -17,6 +17,7 @@
           </div>
         </div>
       </div>
+
       <div class="form-group mb-4 row">
         <label class="col-sm-3 col-form-label">Patient Name</label>
         <div class="col-sm-9">
@@ -27,13 +28,77 @@
           </div>
         </div>
       </div>
+
+      <div class="form-group mb-4 row">
+        <label class="col-sm-3 col-form-label">Age</label>
+        <div class="col-sm-9">
+          <input [ngClass]="{ 'is-invalid': submitted && f.patientName.errors }" class="form-control"
+                 formControlName="age"
+                 type="text"/>
+          <div *ngIf="submitted && f.patientName.errors" class="invalid-feedback">
+            <div *ngIf="f.patientName.errors.required">Patient Name is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group mb-4 row">
+        <label class="col-sm-3 col-form-label">Blood Group</label>
+        <div class="col-sm-9">
+          <select [ngClass]="{ 'is-invalid': submitted && f.patientName.errors }" class="form-control"
+                  formControlName="bloodGroup">
+            <option value='A+'>A+</option>
+            <option value='B+'>B+</option>
+            <option value='A-'>A-</option>
+            <option value='O+'>O+</option>
+            <option value='AB+'>AB+</option>
+          </select>
+          <!--          <input type="text" formControlName="patientName" class="form-control"-->
+          <!--                 [ngClass]="{ 'is-invalid': submitted && f.patientName.errors }"/>-->
+          <div *ngIf="submitted && f.patientName.errors" class="invalid-feedback">
+            <div *ngIf="f.patientName.errors.required">Patient Name is required</div>
+          </div>
+        </div>
+      </div>
       <div class="form-group mb-4 row">
         <label class="col-sm-3 col-form-label">Address</label>
         <div class="col-sm-9">
-          <input type="text" formControlName="address" class="form-control"
-                 [ngClass]="{ 'is-invalid': submitted && f.address.errors }"/>
+          <textarea [ngClass]="{ 'is-invalid': submitted && f.address.errors }" class="form-control"
+                    formControlName="address"
+                    type="text"></textarea>
           <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
             <div *ngIf="f.address.errors.required">Address is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group mb-4 row">
+        <label class="col-sm-3 col-form-label">Select Doctor</label>
+        <div class="col-sm-9">
+          <select (ngModelChange)="onChange($event)" [ngClass]="{ 'is-invalid': submitted && f.patientName.errors }"
+                  class="form-control"
+                  formControlName="selectDoctor">
+            <option *ngFor="let doctor of doctorArrayList;" [value]="doctor.id">{{ doctor.name }}</option>
+          </select>
+          <!--          <input type="text" formControlName="patientName" class="form-control"-->
+          <!--                 [ngClass]="{ 'is-invalid': submitted && f.patientName.errors }"/>-->
+          <div *ngIf="submitted && f.patientName.errors" class="invalid-feedback">
+            <div *ngIf="f.patientName.errors.required">Patient Name is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group mb-4 row">
+        <label class="col-sm-3 col-form-label">Select Chamber</label>
+        <div class="col-sm-9">
+          <select [ngClass]="{ 'is-invalid': submitted && f.patientName.errors }" class="form-control"
+                  formControlName="selectChamber">
+            <option *ngFor="let chamber of doctorChamberArrayList;"
+                    [value]="chamber.chamberName">{{ chamber.chamberName }}</option>
+          </select>
+          <!--          <input type="text" formControlName="patientName" class="form-control"-->
+          <!--                 [ngClass]="{ 'is-invalid': submitted && f.patientName.errors }"/>-->
+          <div *ngIf="submitted && f.patientName.errors" class="invalid-feedback">
+            <div *ngIf="f.patientName.errors.required">Patient Name is required</div>
           </div>
         </div>
       </div>

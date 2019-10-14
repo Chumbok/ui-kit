@@ -6,12 +6,20 @@ export abstract class AppointmentService {
 
   abstract getFreeTimeSlots(selectedDate: string): Observable<any>;
 
+  abstract getDoctorChamberList(selectedDate: string): Observable<any>;
+
+  abstract getDoctorList(): Observable<any>;
+
   abstract getAppointmentDetails(): Observable<any>;
 
   abstract createAppointment(phoneNumber: string,
                              patientName: string,
                              address: string,
                              date: string,
+                             age: string,
+                             bloodGroup: string,
+                             doctorName: string,
+                             doctorChamber: string,
                              timeSlot: string): Observable<any>;
 
   abstract getAppointmentList(): Observable<any>;
