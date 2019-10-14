@@ -293,4 +293,25 @@ export class PrescriptionMockService implements PrescriptionService {
   patientApprove(patientId: string): Observable<any> {
     return undefined;
   }
+
+  createPrescriptionWithoutPatientId(patientName: string,
+                                     phoneNumber: string,
+                                     adress: string,
+                                     nextVisitDate: string,
+                                     complain: Array<ChiefComplains>,
+                                     parameters: Array<OnExaminations>,
+                                     dentalHistory: Array<Diagnosises>,
+                                     medicineList: Pharmacies[]): Observable<any> {
+    console.log(patientName);
+    console.log(phoneNumber);
+    console.log(adress);
+    console.log(complain);
+    console.log(parameters);
+    console.log(dentalHistory);
+    console.log(medicineList);
+    console.log(nextVisitDate);
+    console.log(medicineList);
+    console.log(nextVisitDate);
+    return new EmptyObservable<Response>();
+  }
 }
