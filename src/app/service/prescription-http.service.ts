@@ -107,4 +107,30 @@ export class PrescriptionHttpService implements PrescriptionService {
     };
     return this.http.put(getPatientProfileEndpoint, httpOptions).map(res => res);
   }
+
+  createPrescriptionWithoutPatientId(patientName: string,
+                                     phoneNumber: string,
+                                     address: string,
+                                     nextVisitDate: string,
+                                     complain: Array<ChiefComplains>,
+                                     parameters: Array<OnExaminations>,
+                                     dentalHistory: Array<Diagnosises>,
+                                     medicineList: Pharmacies[]): Observable<any> {
+
+    let httpHeaders = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken(),
+    });
+    const createPrescriptionWithoutIdEndpoint: string = this.callThroughLocalServer ?
+
+      environment.chumbok.apiBaseEndpointLocalServer + '/api/doctor/create-prescription' : environment.chumbok.apiBaseEndpointLocalServer + '/api/doctor/create-prescription';
+
+    return this.http.post(createPrescriptionWithoutIdEndpoint, {
+         patientName, phoneNumber, address, complain, parameters,dentalHistory,medicineList,nextVisitDate
+      },
+      {
+        headers: httpHeaders,
+        observe: 'response'
+      }
+    );
+  }
 }

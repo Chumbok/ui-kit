@@ -59,7 +59,7 @@ export class PrescriptionListComponent implements OnInit {
       this.router.navigate(['doctors/prescription-list'], {queryParams: {page: newPage}});
       this.prescriptionService.getPrescriptionList(newPage).subscribe(res => {
         this.prescription = res;
-
+        
         console.log("Console");
         this.prescriptionListin = res;
 

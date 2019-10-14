@@ -23,7 +23,21 @@ export class TemplateHttpService implements TemplateService {
   public createTemplate(tempName: string, complain: Array<string>, parameters: Array<string>, remarks: Array<string>,
                         dentalHistory: Array<string>, vaccinationHistory: Array<string>, investigation: Array<string>,
                         radiological: Array<string>, planning: Array<string>, prescriptionList: Array<Pharmacies>): Observable<any> {
-    return new EmptyObservable<Response>();
+    let httpHeaders = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken(),
+    });
+    const createPrescriptionWithoutIdEndpoint: string = this.callThroughLocalServer ?
+
+      environment.chumbok.apiBaseEndpointLocalServer + '/api/create-template' : environment.chumbok.apiBaseEndpointLocalServer + '/api/create-template';
+
+    return this.http.post(createPrescriptionWithoutIdEndpoint, {
+        tempName, parameters, remarks, dentalHistory, vaccinationHistory, investigation,radiological,planning,prescriptionList
+      },
+      {
+        headers: httpHeaders,
+        observe: 'response'
+      }
+    );
 
   }
 
@@ -47,7 +61,7 @@ export class TemplateHttpService implements TemplateService {
 
   public getTemplateViewById(selectedTemplateId: string): Observable<any> {
     const getTemplateByIdEndpoint: string = this.callThroughLocalServer ?
-      environment.chumbok.apiBaseEndpointLocalServer + '/api/template/' + selectedTemplateId + '/show-templates' : environment.chumbok.apiBaseEndpointLocalServer + '/api/show-templates';
+      environment.chumbok.apiBaseEndpointLocalServer + '/api/template/' + selectedTemplateId + '/show-template' : environment.chumbok.apiBaseEndpointLocalServer + '/api/show-template';
 
     const httpOptions = {
       headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})

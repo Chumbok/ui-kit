@@ -24,6 +24,15 @@ export abstract class PrescriptionService {
                               nextVisitDate: string,
                               medicineList: Pharmacies[]
   ): Observable<any>;
+  abstract createPrescriptionWithoutPatientId(patientName: string,
+                                              phoneNumber:string,
+                                              address:string,
+                                              nextVisitDate: string,
+                              complain: Array<ChiefComplains>,
+                              parameters: Array<OnExaminations>,
+                              dentalHistory: Array<Diagnosises>,
+                              medicineList: Pharmacies[]
+  ): Observable<any>;
 
 }
 
