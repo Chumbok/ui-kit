@@ -13,6 +13,8 @@ export class CreateAppointmentComponent implements OnInit {
   form: FormGroup;
   serverError = '';
   timeSlotArray: Array<String> = [];
+  doctorArrayList: Array<String> = [];
+  doctorChamberArrayList: Array<String> = [];
   stateCtrl = new FormControl();
   getFreeTime = new FormControl();
   startTimeOfFreeSlots: string;
@@ -41,13 +43,21 @@ export class CreateAppointmentComponent implements OnInit {
     createAppointment.phoneNumber = this.stateCtrl.value;
     createAppointment.patientName = this.form.controls['patientName'].value;
     createAppointment.address = this.form.controls['address'].value;
+    createAppointment.age = this.form.controls['age'].value;
+    createAppointment.bloodGroup = this.form.controls['bloodGroup'].value;
+    createAppointment.doctorName = this.form.controls['selectDoctor'].value;
+    createAppointment.doctorChamber = this.form.controls['selectChamber'].value;
     createAppointment.date = this.form.controls['date'].value;
     createAppointment.timeSlot = this.startTimeOfFreeSlots;
-
-    this.appointmentService.createAppointment(createAppointment.phoneNumber,
+    this.appointmentService.createAppointment(
+      createAppointment.phoneNumber,
       createAppointment.patientName,
       createAppointment.address,
       createAppointment.date,
+      createAppointment.age,
+      createAppointment.bloodGroup,
+      createAppointment.doctorName,
+      createAppointment.doctorChamber,
       createAppointment.timeSlot).subscribe(res => {
     }, error => {
       if (error.status === 400) {
@@ -63,6 +73,10 @@ export class CreateAppointmentComponent implements OnInit {
       stateCtrl: [''],
       patientName: [''],
       address: [''],
+      age: [''],
+      bloodGroup: [''],
+      selectDoctor: [''],
+      selectChamber: [''],
       date: [''],
       timeSlot: ['']
     });
@@ -75,6 +89,7 @@ export class CreateAppointmentComponent implements OnInit {
       this.form.controls['date'].setValue(this.formattedDate);
       this.fetchFreeTimeSlots(this.formattedDate);
     }
+    this.fetchDoctorList();
   }
 
   setDateFetchFreeTimeSlots() {
@@ -90,6 +105,30 @@ export class CreateAppointmentComponent implements OnInit {
     });
   }
 
+  fetchDoctorList() {
+    this.appointmentService.getDoctorList().subscribe(res => {
+
+      res.forEach(doctorList => {
+        console.log(doctorList)
+        this.doctorArrayList.push(doctorList);
+      });
+    });
+  }
+
+  onChange(doctorId) {
+    this.fetchDoctorChamberList(doctorId);
+  }
+
+  fetchDoctorChamberList(doctorId: string) {
+    this.doctorChamberArrayList = [];
+    this.appointmentService.getDoctorChamberList(doctorId).subscribe(res => {
+
+      res.forEach(doctorChamberList => {
+        console.log(doctorChamberList)
+        this.doctorChamberArrayList.push(doctorChamberList);
+      });
+    });
+  }
   getFreeSlotsValue(startTime) {
     this.startTimeOfFreeSlots = startTime;
   }

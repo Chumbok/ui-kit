@@ -49,11 +49,20 @@ export class AppointmentMockService implements AppointmentService {
     return of(appointmentDetails);
   }
 
-  public createAppointment(phoneNumber: string, patientName: string, address: string, date: string, timeSlot: string): Observable<any> {
+  public createAppointment(phoneNumber: string, patientName: string, address: string, date: string,
+                           age: string,
+                           bloodGroup: string,
+                           doctorName: string,
+                           doctorChamber: string,
+                           timeSlot: string): Observable<any> {
     console.log(phoneNumber);
     console.log(patientName);
     console.log(address);
     console.log(date);
+    console.log(age);
+    console.log(bloodGroup);
+    console.log(doctorName);
+    console.log(doctorChamber);
     console.log(timeSlot);
     this.router.navigate(['patient/create-appointment']);
     this.flashMessageService.showFlashMessage({
@@ -173,5 +182,33 @@ export class AppointmentMockService implements AppointmentService {
 
     console.log(JSON.parse(mockResp))
     return of(JSON.parse(mockResp));
+  }
+
+  getDoctorList(): Observable<any> {
+
+    const doctorMock = '[\n' +
+      '    {\n' +
+      '        "name": "dr.admin",\n' +
+      '        "id": "2bbd3c15f287b22cc6f0a0c6ec38b2a1"\n' +
+      '    },\n' +
+      '    {\n' +
+      '        "name": "Dr X",\n' +
+      '        "id": "3ed47387-b4c9-4a0e-8d98-9fe788b5eec5"\n' +
+      '    },\n' +
+      '    {\n' +
+      '        "name": "gvjhfgv",\n' +
+      '        "id": "4a6e2ed4-82f6-476b-ad9d-133641120be1"\n' +
+      '    }\n' +
+      ']'
+    return of(JSON.parse(doctorMock));
+  }
+
+  getDoctorChamberList(selectedDate: string): Observable<any> {
+    const chamberList = '[\n' +
+      '    {\n' +
+      '        "chamberName": "Gazipur"\n' +
+      '    }\n' +
+      ']'
+    return of(JSON.parse(chamberList));
   }
 }
