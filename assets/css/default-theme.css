@@ -1,0 +1,160 @@
+body {
+  font-family: Poppins !important;
+  background-color: #f2f3fa;
+}
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+  order-collapse: collapse;
+}
+
+.table thead th {
+  border-bottom-width: 1px;
+  border-top: 0;
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+
+.table thead th {
+  border-bottom: 2px solid #e9ecef;
+}
+
+
+.main-panel,
+.dropdown-item:focus,
+.dropdown-item:hover {
+  /*background-color: #ffffff;*/
+  background-color: #f2f3fa;
+  color: #34495f;
+}
+
+.navbar-brand {
+  background-color: #fafaff;
+  color: #393939;
+}
+
+.navbar-brand:hover {
+  color: #575757;
+}
+
+.nav-link {
+  color: #575757;
+}
+
+.dash-navbar-left a.list-group-item,
+.dash-navbar-left-icon-only a.list-group-item,
+.nav .list-inline-item {
+  color: #575757;
+  text-decoration: none;
+}
+
+.card {
+    box-shadow: 0 2px 2px rgba(204, 197, 185, 0.5);
+}
+
+.topnav > .nav {
+  background-color: #ffffff;
+}
+
+.dash-navbar-left,
+.dash-navbar-left .list-group-item,
+.dash-navbar-left-icon-only,
+.dash-navbar-left-icon-only .list-group-item {
+  background-color: #ededf5;
+  border: 1px solid #e9ecef;
+}
+
+.dash-navbar-left .list-group {
+  padding-top: 1rem;
+}
+
+.dash-navbar-left .list-group .list-group-item {
+  padding-top: 0.5rem;
+  padding-right: 1.25rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1.25rem;
+}
+
+.nav .white-link {
+  color: #575757;
+}
+
+@media only screen and (min-width : 992px) {
+    .navbar-brand {
+      background-color: #fafaff;
+    }
+}
+
+.alert-success {
+  color: #4a4a4a;
+  background-color: #f9f9f9;
+  border-color: #d4d4d4;
+}
+
+.ibox {
+  position: relative;
+  margin-bottom: 25px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,.08);
+}
+
+.ibox .ibox-head {
+  padding: 0 20px;
+  border-bottom: 1px solid #eee;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  min-height: 60px;
+}
+
+.ibox .ibox-body {
+  padding: 25px 25px 25px;
+}
+
+.ibox .ibox-head .ibox-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.ibox.ibox-fullheight {
+  height: calc(100% - 25px);
+}
+
+.ibox .ibox-footer {
+  padding: 25px;
+  border-top: 1px solid #eee;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #5c6bc0;
+  border-color: #5c6bc0;
+}
+.btn-secondary {
+  color: #485b6f;
+  background-color: #e9ecef;
+  border-color: #e9ecef;
+}
+
+.btn {
+  border-radius: 2px;
+  outline: 0!important;
+  transition: all .15s ease-in-out;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.active {
+  font-weight: bold;
+}
