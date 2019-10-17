@@ -44,20 +44,17 @@
 /** Evergreen browsers require these. **/
 // Used for reflect-metadata in JIT. If you use AOT (and only Angular decorators), you can remove.
 import 'core-js/proposals/reflect-metadata';
+/***************************************************************************************************
+ * Zone JS is required by Angular itself.
+ */
+import 'zone.js/dist/zone'; // Included with Angular CLI.
+import '@angular/localize';
 
 /**
  * Required to support Web Animations `@angular/platform-browser/animations`.
  * Needed for: All but Chrome, Firefox and Opera. http://caniuse.com/#feat=web-animation
  **/
 // import 'web-animations-js';  // Run `npm install --save web-animations-js`.
-
-
-
-/***************************************************************************************************
- * Zone JS is required by Angular itself.
- */
-import 'zone.js/dist/zone';  // Included with Angular CLI.
-
 
 
 /***************************************************************************************************

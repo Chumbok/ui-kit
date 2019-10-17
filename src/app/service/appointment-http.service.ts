@@ -4,7 +4,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {EmptyObservable} from 'rxjs-compat/observable/EmptyObservable';
 import {AppointmentService} from './appointment.service';
-import {DoctorAuthService} from "./doctor.auth.service";
+import {DoctorAuthService} from './doctor.auth.service';
+import {map} from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class AppointmentHttpService implements AppointmentService {
@@ -13,7 +14,8 @@ export class AppointmentHttpService implements AppointmentService {
   private httpOptions = {headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})};
   private authHeader = new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()});
   private getAppointmentByDoctorIdEndpoint: string = this.callThroughGateway ?
-    environment.chumbok.apiBaseEndpointLocalServer + '/api/doctor/appointments' : environment.chumbok.apiBaseEndpointLocalServer + '/api/doctor/appointments';
+    environment.chumbok.apiBaseEndpointLocalServer + '/api/doctor/appointments'
+    : environment.chumbok.apiBaseEndpointLocalServer + '/api/doctor/appointments';
 
   constructor(private doctorAuthService: DoctorAuthService, private http: HttpClient) {
   }
@@ -66,15 +68,15 @@ export class AppointmentHttpService implements AppointmentService {
       environment.chumbok.apiBaseEndpointLocalServer + '/api/appointment' : environment.chumbok.apiBaseEndpointLocalServer + '/api/create-prescription';
 
     return this.http.post(createPrescriptionEndpoint, {
-        "phoneNumber": phoneNumber,
-        "patientName": patientName,
-        "address": address,
-        "age": age,
-        "bloodGroup": bloodGroup,
-        "doctorId": doctorId,
-        "doctorChamber": doctorChamber,
-        "date": date,
-        "timeSlot": timeSlot
+        'phoneNumber': phoneNumber,
+        'patientName': patientName,
+        'address': address,
+        'age': age,
+        'bloodGroup': bloodGroup,
+        'doctorId': doctorId,
+        'doctorChamber': doctorChamber,
+        'date': date,
+        'timeSlot': timeSlot
       },
       {
         headers: httpHeaders,
@@ -98,8 +100,8 @@ export class AppointmentHttpService implements AppointmentService {
       headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})
     };
 
-    console.log(this.http.get(this.getAppointmentByDoctorIdEndpoint, httpOptions).map(res => res));
-    return this.http.get(this.getAppointmentByDoctorIdEndpoint, httpOptions).map(res => res);
+    console.log(this.http.get(this.getAppointmentByDoctorIdEndpoint, httpOptions).pipe(map(res => res)));
+    return this.http.get(this.getAppointmentByDoctorIdEndpoint, httpOptions).pipe(map(res => res));
   }
 
   public getDoctorList(): Observable<any> {
@@ -111,18 +113,19 @@ export class AppointmentHttpService implements AppointmentService {
       headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})
     };
 
-    return this.http.get(getDoctorListEndpoint, httpOptions).map(res => res);
+    return this.http.get(getDoctorListEndpoint, httpOptions).pipe(map(res => res));
 
   }
 
   getDoctorChamberList(doctorId: string): Observable<any> {
     const getDoctorChamberListEndpoint: string = this.callThroughGateway ?
-      environment.chumbok.apiBaseEndpointLocalServer + '/android/api/doctor/' + doctorId + '/chamber' : environment.chumbok.apiBaseEndpointLocalServer + 'android/api/doctors';
+      environment.chumbok.apiBaseEndpointLocalServer + '/android/api/doctor/' + doctorId + '/chamber'
+      : environment.chumbok.apiBaseEndpointLocalServer + 'android/api/doctors';
 
     const httpOptions = {
       headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})
     };
-    console.log(this.http.get(getDoctorChamberListEndpoint, httpOptions).map(res => res));
-    return this.http.get(getDoctorChamberListEndpoint, httpOptions).map(res => res);
+    console.log(this.http.get(getDoctorChamberListEndpoint, httpOptions).pipe(map(res => res)));
+    return this.http.get(getDoctorChamberListEndpoint, httpOptions).pipe(map(res => res));
   }
 }

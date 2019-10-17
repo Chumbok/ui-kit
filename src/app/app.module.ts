@@ -40,46 +40,44 @@ import {PrescriptionService} from './service/prescription.service';
 import {PrescriptionListComponent} from './componant/dentist-point/prescription-list/prescription-list.component';
 import {PrescriptionViewComponent} from './componant/dentist-point/prescription-view/prescription-view.component';
 import {CreateAppointmentComponent} from './componant/dentist-point/create-appointment/create-appointment.component';
-import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
+// import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
 import {CreateTemplateComponent} from './componant/dentist-point/create-template/create-template.component';
 import {TemplateService} from './service/template.service';
-import {
-  MatAutocompleteModule,
-  MatBadgeModule,
-  MatBottomSheetModule,
-  MatButtonModule,
-  MatButtonToggleModule,
-  MatCardModule,
-  MatCheckboxModule,
-  MatChipsModule,
-  MatDatepickerModule,
-  MatDialogModule,
-  MatDividerModule,
-  MatExpansionModule,
-  MatGridListModule,
-  MatIconModule,
-  MatInputModule,
-  MatListModule,
-  MatMenuModule,
-  MatNativeDateModule,
-  MatPaginatorModule,
-  MatProgressBarModule,
-  MatProgressSpinnerModule,
-  MatRadioModule,
-  MatRippleModule,
-  MatSelectModule,
-  MatSidenavModule,
-  MatSliderModule,
-  MatSlideToggleModule,
-  MatSnackBarModule,
-  MatSortModule,
-  MatStepperModule,
-  MatTableModule,
-  MatTabsModule,
-  MatToolbarModule,
-  MatTooltipModule,
-  MatTreeModule,
-} from '@angular/material';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import {MatButtonModule} from '@angular/material/button';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatCardModule} from '@angular/material/card';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
+import {MatListModule} from '@angular/material/list';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatSelectModule} from '@angular/material/select';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatSortModule} from '@angular/material/sort';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatTableModule} from '@angular/material/table';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatTreeModule} from '@angular/material/tree';
+
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import {environment} from '../environments/environment';
 import {PingHttpService} from './service/ping-http.service';
@@ -103,9 +101,9 @@ import {AppointmentListComponent} from './componant/dentist-point/appointment-li
 import {DoctorLoginComponent} from './componant/dentist-point/auth/doctor-login/doctor-login.component';
 import {DoctorLogoutComponent} from './componant/dentist-point/auth/doctor-logout/doctor-logout.component';
 import {DoctorSignupComponent} from './componant/dentist-point/auth/doctor-signup/doctor-signup.component';
-import {DoctorAuthService} from "./service/doctor.auth.service";
-import {DoctorAuthHttpService} from "./service/doctor.auth-http.service";
-import {DoctorAuthMockService} from "./service/doctor.auth-mock.service";
+import {DoctorAuthService} from './service/doctor.auth.service';
+import {DoctorAuthHttpService} from './service/doctor.auth-http.service';
+import {DoctorAuthMockService} from './service/doctor.auth-mock.service';
 
 
 @NgModule({
@@ -116,7 +114,7 @@ import {DoctorAuthMockService} from "./service/doctor.auth-mock.service";
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    OwlDateTimeModule,
+    // OwlDateTimeModule,
     MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,
@@ -136,12 +134,10 @@ import {DoctorAuthMockService} from "./service/doctor.auth-mock.service";
     MatInputModule,
     MatListModule,
     MatMenuModule,
-    MatNativeDateModule,
     MatPaginatorModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
     MatRadioModule,
-    MatRippleModule,
     MatSelectModule,
     MatSidenavModule,
     MatSliderModule,
@@ -154,7 +150,7 @@ import {DoctorAuthMockService} from "./service/doctor.auth-mock.service";
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-    OwlNativeDateTimeModule,
+    // OwlNativeDateTimeModule,
     HttpClientXsrfModule.withOptions({
       cookieName: 'XSRF_TOKEN',
       headerName: 'X-XSRF-TOKEN'
@@ -164,7 +160,6 @@ import {DoctorAuthMockService} from "./service/doctor.auth-mock.service";
       useFactory: adapterFactory
     }),
     NgbModalModule
-
   ],
   declarations: [
     AppComponent,

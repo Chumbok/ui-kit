@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AppointmentService} from '../../../service/appointment.service';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-appointment-list',
@@ -17,23 +18,25 @@ export class AppointmentListComponent implements OnInit {
   searchText;
   patientName: string;
   appointmentList: Array<any> = [];
+
   constructor(private appointmentService: AppointmentService, private route: ActivatedRoute, private router: Router) {
     this.config = {
       currentPage: 1,
       itemsPerPage: 5
     };
     this.route.queryParamMap
-      .map(params => params.get('page'))
+      .pipe(map(params => params.get('page')))
       .subscribe(page => this.config.currentPage = page);
   }
+
   pageChange(newPage: number) {
 
-      this.router.navigate(['doctors/appointment-list'], {queryParams: {page: newPage}});
+    this.router.navigate(['doctors/appointment-list'], {queryParams: {page: newPage}});
     this.appointmentService.getAppointmentListByDoctorId().subscribe(res => {
       res.forEach((values) => {
         this.appointmentList.push(values);
       });
-      });
+    });
 
   }
 
@@ -48,8 +51,9 @@ export class AppointmentListComponent implements OnInit {
   }
 
   onAppointmentEdit(prescriptionId) {
-   // this.router.navigate(['doctors/'+'prescription/' + prescriptionId + '/prescription-view']);
+    // this.router.navigate(['doctors/'+'prescription/' + prescriptionId + '/prescription-view']);
   }
+
   onAppointmentDelete(appointmentId) {
     this.appointmentService.deleteAppointment(appointmentId).subscribe(res => {
       //    console.log(res['items']);

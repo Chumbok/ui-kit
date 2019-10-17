@@ -6,10 +6,10 @@ import {PrescriptionService} from '../../../service/prescription.service';
 import {Pharmacies} from '../../../model/create-medicine';
 import {Template} from '../../../model/template';
 import {TemplateService} from '../../../service/template.service';
-import {ChiefComplains} from "../../../model/chief-complain";
-import {OnExaminations} from "../../../model/on-examination";
-import {Diagnosises} from "../../../model/on-diagonsis";
-
+import {ChiefComplains} from '../../../model/chief-complain';
+import {OnExaminations} from '../../../model/on-examination';
+import {Diagnosises} from '../../../model/on-diagonsis';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-create-prescription',
@@ -62,6 +62,7 @@ export class CreatePrescriptionComponent implements OnInit {
   public show: boolean;
   public showSave: boolean;
   public showSave2: boolean;
+
   constructor(private formBuilder: FormBuilder, private prescriptionService: PrescriptionService,
               private templateService: TemplateService, private route: ActivatedRoute, private router: Router) {
 
@@ -70,7 +71,7 @@ export class CreatePrescriptionComponent implements OnInit {
       itemsPerPage: 5
     };
     this.route.queryParamMap
-      .map(params => params.get('page'))
+      .pipe(map(params => params.get('page')))
       .subscribe(page => this.config.currentPage = page);
     this.route.params.subscribe(params => {
       this.patientId = this.route.snapshot.queryParams['patientId'];
@@ -114,11 +115,10 @@ export class CreatePrescriptionComponent implements OnInit {
     this.selectPatient(this.patientId);
     this.isApprovePatient();
 
-    if(this.patientId == null) {
+    if (this.patientId == null) {
       this.showSave = false;
       this.showSave2 = true;
-    }
-    else {
+    } else {
       this.showSave = true;
       this.showSave2 = false;
     }
@@ -141,42 +141,42 @@ export class CreatePrescriptionComponent implements OnInit {
     const prescription: CreatePrescription = new CreatePrescription();
     prescription.patientId = this.patientId;
     prescription.appointmentId = this.appointmentId;
-    var chiefComplain = new String(this.form.controls['chiefComplain'].value).split(",");
+    var chiefComplain = new String(this.form.controls['chiefComplain'].value).split(',');
     chiefComplain.forEach(function (chiefComplain) {
       const chiefComplainObj: ChiefComplains = new ChiefComplains();
       chiefComplainObj.complain = chiefComplain;
-      prescription.chiefComplain.push(chiefComplainObj)
+      prescription.chiefComplain.push(chiefComplainObj);
     });
 
-    var parameters = new String(this.form.controls['parameters'].value).split(",");
-    var remarks = new String(this.form.controls['remarks'].value).split(",");
+    var parameters = new String(this.form.controls['parameters'].value).split(',');
+    var remarks = new String(this.form.controls['remarks'].value).split(',');
     for (let i = 0; i < Math.max(parameters.length, remarks.length); i++) {
       const onExamination: OnExaminations = new OnExaminations();
       if (remarks[i] == null) {
         onExamination.remark = 'null';
         onExamination.parameter = parameters[i];
-        prescription.onExaminations.push(onExamination)
+        prescription.onExaminations.push(onExamination);
       } else if (parameters[i] == null) {
         onExamination.parameter = 'null';
         onExamination.remark = remarks[i];
-        prescription.onExaminations.push(onExamination)
+        prescription.onExaminations.push(onExamination);
       } else if (parameters[i] != null && remarks[i] != null) {
         onExamination.parameter = parameters[i];
         onExamination.remark = remarks[i];
-        prescription.onExaminations.push(onExamination)
+        prescription.onExaminations.push(onExamination);
       } else if (parameters[i] == null && parameters[i] == null) {
         onExamination.parameter = 'null';
         onExamination.remark = 'null';
-        prescription.onExaminations.push(onExamination)
+        prescription.onExaminations.push(onExamination);
       }
 
     }
 
-    var dentalHistory = new String(this.form.controls['dentalHistory'].value).split(",");
-    var vaccinationHistory = new String(this.form.controls['vaccinationHistory'].value).split(",");
-    var investigation = new String(this.form.controls['investigation'].value).split(",");
-    var radiological = new String(this.form.controls['radiological'].value).split(",");
-    var planning = new String(this.form.controls['planning'].value).split(",");
+    var dentalHistory = new String(this.form.controls['dentalHistory'].value).split(',');
+    var vaccinationHistory = new String(this.form.controls['vaccinationHistory'].value).split(',');
+    var investigation = new String(this.form.controls['investigation'].value).split(',');
+    var radiological = new String(this.form.controls['radiological'].value).split(',');
+    var planning = new String(this.form.controls['planning'].value).split(',');
 
     for (let i = 0; i < Math.max(dentalHistory.length, vaccinationHistory.length,
       investigation.length, radiological.length, planning.length); i++) {
@@ -249,7 +249,6 @@ export class CreatePrescriptionComponent implements OnInit {
 
 
     this.prescriptionService.createPrescription(
-
       prescription.appointmentId,
       prescription.chiefComplain,
       prescription.onExaminations,
@@ -257,7 +256,7 @@ export class CreatePrescriptionComponent implements OnInit {
 
       this.date,
 
-    this.medicineList).subscribe(res => {
+      this.medicineList).subscribe(res => {
 
     }, error => {
       if (error.status === 400) {
@@ -293,7 +292,7 @@ export class CreatePrescriptionComponent implements OnInit {
 
       this.selectedTemplateId = selectedTemplateId;
       this.selectedTemplate = res;
-      console.log(" Template Id" + selectedTemplateId)
+      console.log(' Template Id' + selectedTemplateId);
       this.selectedTemplate.chiefComplains.forEach((chiefComplains) => {
         this.chiefComplainArray.push(chiefComplains.chiefComplain);
       });
@@ -422,11 +421,11 @@ export class CreatePrescriptionComponent implements OnInit {
   onApprovePatient() {
     this.prescriptionService.patientApprove(this.patientId).subscribe(res => {
       if (res.status == 204) {
-        console.log("Approve Successful");
+        console.log('Approve Successful');
       } else if (res.status == 404) {
-        console.log("Already Approve");
+        console.log('Already Approve');
       } else {
-        console.log("Something want to wrong");
+        console.log('Something want to wrong');
       }
       console.log(res.status);
     });
@@ -438,15 +437,16 @@ export class CreatePrescriptionComponent implements OnInit {
         this.show = true;
       } else if (res.status == 404) {
         this.show = false;
-        console.log("Already Approve");
+        console.log('Already Approve');
       } else {
         this.show = false;
-        console.log("Something want to wrong");
+        console.log('Something want to wrong');
       }
       console.log(res.status);
     });
   }
-  onCreatePrescriptionWithoutPatientId(){
+
+  onCreatePrescriptionWithoutPatientId() {
     this.submitted = true;
 
     if (this.form.invalid) {
@@ -461,42 +461,42 @@ export class CreatePrescriptionComponent implements OnInit {
     const prescription: CreatePrescription = new CreatePrescription();
     prescription.patientId = this.patientId;
     prescription.appointmentId = this.appointmentId;
-    var chiefComplain = new String(this.form.controls['chiefComplain'].value).split(",");
+    var chiefComplain = new String(this.form.controls['chiefComplain'].value).split(',');
     chiefComplain.forEach(function (chiefComplain) {
       const chiefComplainObj: ChiefComplains = new ChiefComplains();
       chiefComplainObj.complain = chiefComplain;
-      prescription.chiefComplain.push(chiefComplainObj)
+      prescription.chiefComplain.push(chiefComplainObj);
     });
 
-    var parameters = new String(this.form.controls['parameters'].value).split(",");
-    var remarks = new String(this.form.controls['remarks'].value).split(",");
+    var parameters = new String(this.form.controls['parameters'].value).split(',');
+    var remarks = new String(this.form.controls['remarks'].value).split(',');
     for (let i = 0; i < Math.max(parameters.length, remarks.length); i++) {
       const onExamination: OnExaminations = new OnExaminations();
       if (remarks[i] == null) {
         onExamination.remark = 'null';
         onExamination.parameter = parameters[i];
-        prescription.onExaminations.push(onExamination)
+        prescription.onExaminations.push(onExamination);
       } else if (parameters[i] == null) {
         onExamination.parameter = 'null';
         onExamination.remark = remarks[i];
-        prescription.onExaminations.push(onExamination)
+        prescription.onExaminations.push(onExamination);
       } else if (parameters[i] != null && remarks[i] != null) {
         onExamination.parameter = parameters[i];
         onExamination.remark = remarks[i];
-        prescription.onExaminations.push(onExamination)
+        prescription.onExaminations.push(onExamination);
       } else if (parameters[i] == null && parameters[i] == null) {
         onExamination.parameter = 'null';
         onExamination.remark = 'null';
-        prescription.onExaminations.push(onExamination)
+        prescription.onExaminations.push(onExamination);
       }
 
     }
 
-    var dentalHistory = new String(this.form.controls['dentalHistory'].value).split(",");
-    var vaccinationHistory = new String(this.form.controls['vaccinationHistory'].value).split(",");
-    var investigation = new String(this.form.controls['investigation'].value).split(",");
-    var radiological = new String(this.form.controls['radiological'].value).split(",");
-    var planning = new String(this.form.controls['planning'].value).split(",");
+    var dentalHistory = new String(this.form.controls['dentalHistory'].value).split(',');
+    var vaccinationHistory = new String(this.form.controls['vaccinationHistory'].value).split(',');
+    var investigation = new String(this.form.controls['investigation'].value).split(',');
+    var radiological = new String(this.form.controls['radiological'].value).split(',');
+    var planning = new String(this.form.controls['planning'].value).split(',');
 
     for (let i = 0; i < Math.max(dentalHistory.length, vaccinationHistory.length,
       investigation.length, radiological.length, planning.length); i++) {
@@ -573,7 +573,7 @@ export class CreatePrescriptionComponent implements OnInit {
       this.phoneNumber,
       this.address,
       this.date,
-    prescription.chiefComplain,
+      prescription.chiefComplain,
       prescription.onExaminations,
       prescription.diagnosis,
 
@@ -584,8 +584,9 @@ export class CreatePrescriptionComponent implements OnInit {
         this.serverError = error.error.message;
       }
     });
-    console.log("but2");
+    console.log('but2');
   }
+
   onSelectFile(event) {
     if (event.target.files && event.target.files[0]) {
       let filesAmount = event.target.files.length;

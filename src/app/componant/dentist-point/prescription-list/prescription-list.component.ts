@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PrescriptionService} from '../../../service/prescription.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/switchMap';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-prescription-list',
@@ -30,7 +29,7 @@ export class PrescriptionListComponent implements OnInit {
       itemsPerPage: 5
     };
     this.route.queryParamMap
-      .map(params => params.get('page'))
+      .pipe(map(params => params.get('page')))
       .subscribe(page => this.config.currentPage = page);
 
     this.route.params.subscribe(params => {
@@ -48,7 +47,7 @@ export class PrescriptionListComponent implements OnInit {
         this.prescriptionListin = res;
 
         res.forEach((patientInformation) => {
-          if (patientInformation.id == this.patientId ) {
+          if (patientInformation.id == this.patientId) {
 
             this.prescriptionListin.push(patientInformation.chiefComplains);
           }
@@ -59,10 +58,9 @@ export class PrescriptionListComponent implements OnInit {
       this.router.navigate(['doctors/prescription-list'], {queryParams: {page: newPage}});
       this.prescriptionService.getPrescriptionList(newPage).subscribe(res => {
         this.prescription = res;
-        
-        console.log("Console");
-        this.prescriptionListin = res;
 
+        console.log('Console');
+        this.prescriptionListin = res;
 
 
         this.itemFrom = this.prescription.page + 1;
