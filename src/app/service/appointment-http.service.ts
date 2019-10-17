@@ -63,7 +63,7 @@ export class AppointmentHttpService implements AppointmentService {
       'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken(),
     });
     const createPrescriptionEndpoint: string = this.callThroughGateway ?
-      environment.chumbok.apiBaseEndpointLocalServer + '/api/appointment' : environment.chumbok.apiBaseEndpointLocalServer + '/api/create-prescription';
+      environment.chumbok.apiBaseEndpointLocalServer + '/api/appointment' : environment.chumbok.apiBaseEndpointLocalServer + '/api/appointment';
 
     return this.http.post(createPrescriptionEndpoint, {
         "phoneNumber": phoneNumber,

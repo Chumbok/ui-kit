@@ -5,6 +5,9 @@ import {Pharmacies} from "../model/create-medicine";
 import {TemplateService} from './template.service';
 import {FlashMessageService} from './flash-message.service';
 import {Router} from '@angular/router';
+import {ChiefComplains} from "../model/chief-complain";
+import {OnExaminations} from "../model/on-examination";
+import {Diagnosises} from "../model/on-diagonsis";
 
 @Injectable({providedIn: 'root'})
 export class TemplateMockService implements TemplateService {
@@ -12,18 +15,16 @@ export class TemplateMockService implements TemplateService {
   constructor(private flashMessageService: FlashMessageService, private router: Router) {
   }
 
-  public createTemplate(tempName: string, complain: Array<string>, parameters: Array<string>, remarks: Array<string>,
-                        dentalHistory: Array<string>, vaccinationHistory: Array<string>, investigation: Array<string>,
-                        radiological: Array<string>, planning: Array<string>, prescriptionList: Array<Pharmacies>): Observable<any> {
-    console.log('template', tempName);
-    console.log(complain);
-    console.log(parameters);
-    console.log(remarks);
-    console.log(dentalHistory);
-    console.log(vaccinationHistory);
-    console.log(investigation);
-    console.log(radiological);
-    console.log(prescriptionList);
+  public createTemplate(templateName: string,
+                        chiefComplains: Array<ChiefComplains>,
+                        onExaminations: Array<OnExaminations>,
+                        diagnosises: Array<Diagnosises>,
+                        pharmacies: Pharmacies[]): Observable<any> {
+    console.log('template', templateName);
+    console.log(chiefComplains);
+    console.log(onExaminations);
+    console.log(diagnosises);
+    console.log(pharmacies);
     this.router.navigate(['doctors/calendar-view']);
     this.flashMessageService.showFlashMessage({
         messages: ['Save Successfully '],

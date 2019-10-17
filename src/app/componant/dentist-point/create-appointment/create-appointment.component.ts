@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {CreateAppointment} from '../../../model/create-appointment';
 import {AppointmentService} from '../../../service/appointment.service';
+import {Router} from "@angular/router";
+import {FlashMessageService} from "../../../service/flash-message.service";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-create-appointment',
@@ -23,7 +26,8 @@ export class CreateAppointmentComponent implements OnInit {
   appoinrmentList: Array<any>;
   searchText;
 
-  constructor(private appointmentService: AppointmentService,
+  constructor(private appointmentService: AppointmentService, private router: Router, private flashMessageService: FlashMessageService,
+              private datePipe: DatePipe,
               private formBuilder: FormBuilder) {
     this.send_date.setMonth(this.send_date.getMonth());
     this.formattedDate = this.send_date.toISOString().slice(0, 10);
@@ -47,7 +51,8 @@ export class CreateAppointmentComponent implements OnInit {
     createAppointment.bloodGroup = this.form.controls['bloodGroup'].value;
     createAppointment.doctorName = this.form.controls['selectDoctor'].value;
     createAppointment.doctorChamber = this.form.controls['selectChamber'].value;
-    createAppointment.date = this.form.controls['date'].value;
+
+    createAppointment.date = this.datePipe.transform(this.form.controls['date'].value, 'yyyy-MM-dd');
     createAppointment.timeSlot = this.startTimeOfFreeSlots;
     this.appointmentService.createAppointment(
       createAppointment.phoneNumber,
@@ -59,6 +64,12 @@ export class CreateAppointmentComponent implements OnInit {
       createAppointment.doctorName,
       createAppointment.doctorChamber,
       createAppointment.timeSlot).subscribe(res => {
+      this.router.navigate(['doctors/calendar-view']);
+      this.flashMessageService.showFlashMessage({
+          messages: ['Appointment Create  Successfully '], dismissible: true,
+          type: 'primary'
+        }
+      );
     }, error => {
       if (error.status === 400) {
         this.serverError = error.error.message;

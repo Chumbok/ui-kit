@@ -6,6 +6,9 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Pharmacies} from '../model/create-medicine';
 import {TemplateService} from './template.service';
 import {DoctorAuthService} from "./doctor.auth.service";
+import {ChiefComplains} from "../model/chief-complain";
+import {OnExaminations} from "../model/on-examination";
+import {Diagnosises} from "../model/on-diagonsis";
 
 @Injectable({providedIn: 'root'})
 export class TemplateHttpService implements TemplateService {
@@ -20,9 +23,11 @@ export class TemplateHttpService implements TemplateService {
   constructor(private doctorAuthService: DoctorAuthService, private http: HttpClient) {
   }
 
-  public createTemplate(tempName: string, complain: Array<string>, parameters: Array<string>, remarks: Array<string>,
-                        dentalHistory: Array<string>, vaccinationHistory: Array<string>, investigation: Array<string>,
-                        radiological: Array<string>, planning: Array<string>, prescriptionList: Array<Pharmacies>): Observable<any> {
+  public createTemplate(templateName: string,
+                        chiefComplains: Array<ChiefComplains>,
+                        onExaminations: Array<OnExaminations>,
+                        diagnosises: Array<Diagnosises>,
+                        pharmacies: Pharmacies[]): Observable<any> {
     let httpHeaders = new HttpHeaders({
       'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken(),
     });
@@ -31,7 +36,7 @@ export class TemplateHttpService implements TemplateService {
       environment.chumbok.apiBaseEndpointLocalServer + '/api/create-template' : environment.chumbok.apiBaseEndpointLocalServer + '/api/create-template';
 
     return this.http.post(createPrescriptionWithoutIdEndpoint, {
-        tempName, parameters, remarks, dentalHistory, vaccinationHistory, investigation,radiological,planning,prescriptionList
+        templateName: templateName, chiefComplains, onExaminations, diagnosises, pharmacies
       },
       {
         headers: httpHeaders,

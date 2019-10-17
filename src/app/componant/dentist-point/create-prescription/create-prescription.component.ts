@@ -9,6 +9,7 @@ import {TemplateService} from '../../../service/template.service';
 import {ChiefComplains} from "../../../model/chief-complain";
 import {OnExaminations} from "../../../model/on-examination";
 import {Diagnosises} from "../../../model/on-diagonsis";
+import {FlashMessageService} from "../../../service/flash-message.service";
 
 
 @Component({
@@ -62,7 +63,8 @@ export class CreatePrescriptionComponent implements OnInit {
   public show: boolean;
   public showSave: boolean;
   public showSave2: boolean;
-  constructor(private formBuilder: FormBuilder, private prescriptionService: PrescriptionService,
+
+  constructor(private formBuilder: FormBuilder, private prescriptionService: PrescriptionService, private flashMessageService: FlashMessageService,
               private templateService: TemplateService, private route: ActivatedRoute, private router: Router) {
 
     this.config = {
@@ -258,6 +260,12 @@ export class CreatePrescriptionComponent implements OnInit {
       this.date,
 
     this.medicineList).subscribe(res => {
+      this.router.navigate(['doctors/calendar-view']);
+      this.flashMessageService.showFlashMessage({
+          messages: ['Save Successfully '], dismissible: true,
+          type: 'primary'
+        }
+      );
 
     }, error => {
       if (error.status === 400) {
@@ -421,29 +429,20 @@ export class CreatePrescriptionComponent implements OnInit {
 
   onApprovePatient() {
     this.prescriptionService.patientApprove(this.patientId).subscribe(res => {
-      if (res.status == 204) {
-        console.log("Approve Successful");
-      } else if (res.status == 404) {
-        console.log("Already Approve");
-      } else {
-        console.log("Something want to wrong");
-      }
-      console.log(res.status);
+      this.show = false;
     });
   }
 
   isApprovePatient() {
-    this.prescriptionService.patientApprove(this.patientId).subscribe(res => {
-      if (res.status == 204) {
-        this.show = true;
-      } else if (res.status == 404) {
+    this.prescriptionService.isPatientApprove(this.patientId).subscribe(res => {
+      if (res.activeStatus) {
         this.show = false;
         console.log("Already Approve");
       } else {
-        this.show = false;
-        console.log("Something want to wrong");
+        this.show = true;
       }
-      console.log(res.status);
+
+      console.log(res.activeStatus);
     });
   }
   onCreatePrescriptionWithoutPatientId(){
@@ -573,7 +572,8 @@ export class CreatePrescriptionComponent implements OnInit {
       this.phoneNumber,
       this.address,
       this.date,
-    prescription.chiefComplain,
+
+      prescription.chiefComplain,
       prescription.onExaminations,
       prescription.diagnosis,
 
@@ -584,7 +584,7 @@ export class CreatePrescriptionComponent implements OnInit {
         this.serverError = error.error.message;
       }
     });
-    console.log("but2");
+    console.log(this.phoneNumber);
   }
   onSelectFile(event) {
     if (event.target.files && event.target.files[0]) {

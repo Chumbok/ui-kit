@@ -314,4 +314,12 @@ export class PrescriptionMockService implements PrescriptionService {
     console.log(nextVisitDate);
     return new EmptyObservable<Response>();
   }
+
+  isPatientApprove(patientId: string): Observable<any> {
+    const mockActiveStatus = '{\n' +
+      '    "activeStatus": true\n' +
+      '}'
+
+    return of(mockActiveStatus);
+  }
 }
