@@ -17,6 +17,8 @@ export abstract class PrescriptionService {
 
   abstract patientApprove(patientId: string): Observable<any>;
 
+  abstract isPatientApprove(patientId: string): Observable<any>;
+
   abstract createPrescription(appointmentId: string,
                               complain: Array<ChiefComplains>,
                               parameters: Array<OnExaminations>,

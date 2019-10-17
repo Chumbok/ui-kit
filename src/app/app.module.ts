@@ -106,6 +106,7 @@ import {DoctorSignupComponent} from './componant/dentist-point/auth/doctor-signu
 import {DoctorAuthService} from "./service/doctor.auth.service";
 import {DoctorAuthHttpService} from "./service/doctor.auth-http.service";
 import {DoctorAuthMockService} from "./service/doctor.auth-mock.service";
+import {DatePipe} from "@angular/common";
 
 
 @NgModule({
@@ -200,6 +201,7 @@ import {DoctorAuthMockService} from "./service/doctor.auth-mock.service";
 
   ],
   providers: [
+    DatePipe,
     AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,

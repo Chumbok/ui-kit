@@ -1,13 +1,20 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Pharmacies} from '../model/create-medicine';
+import {ChiefComplains} from "../model/chief-complain";
+import {OnExaminations} from "../model/on-examination";
+import {Diagnosises} from "../model/on-diagonsis";
 
 @Injectable()
 export abstract class TemplateService {
-  abstract createTemplate(tempName: string, complain: Array<string>, parameters: Array<string>, remarks: Array<string>,
-                          dentalHistory: Array<string>, vaccinationHistory: Array<string>, investigation: Array<string>,
-                          radiological: Array<string>, planning: Array<string>,
-                          prescriptionList: Array<Pharmacies>): Observable<any>;
+
+  abstract createTemplate(templateName: string,
+                          complain: Array<ChiefComplains>,
+                          parameters: Array<OnExaminations>,
+                          dentalHistory: Array<Diagnosises>,
+                          medicineList: Pharmacies[]
+  ): Observable<any>;
+
 
   abstract editTemplate(tempId: string, tempName: string, complain: string, parameters: string,
                         remarks: string, dentalHistory: string, vaccinationHistory: string, investigation: string,
