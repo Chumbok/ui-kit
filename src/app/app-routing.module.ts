@@ -27,6 +27,7 @@ import {AppUrl} from "./app-url";
 import {DoctorLoginComponent} from "./componant/dentist-point/auth/doctor-login/doctor-login.component";
 import {DoctorSignupComponent} from "./componant/dentist-point/auth/doctor-signup/doctor-signup.component";
 import {DoctorLogoutComponent} from "./componant/dentist-point/auth/doctor-logout/doctor-logout.component";
+import {PatientHomeComponent} from "./componant/dentist-point/patient-home/patient-home.component";
 
 
 const routes: Routes = [
@@ -70,6 +71,7 @@ const routes: Routes = [
 
   // No layout routes
   {path: AppUrl.LOGIN, component: LoginComponent},
+  {path: AppUrl.PATIENT_HOME, component: PatientHomeComponent},
   {path: AppUrl.LOGOUT, component: LogoutComponent},
   {path: AppUrl.DOCTOR_LOGIN, component: DoctorLoginComponent},
   {path: AppUrl.DOCTOR_SIGNUP, component: DoctorSignupComponent}

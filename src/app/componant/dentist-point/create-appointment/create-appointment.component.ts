@@ -133,6 +133,9 @@ export class CreateAppointmentComponent implements OnInit {
     this.startTimeOfFreeSlots = startTime;
   }
 
+  onLiginPatient() {
+    console.log("dddd");
+  }
   onClose() {
     /* TODO: add back task*/
   }

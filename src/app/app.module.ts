@@ -106,6 +106,10 @@ import {DoctorSignupComponent} from './componant/dentist-point/auth/doctor-signu
 import {DoctorAuthService} from "./service/doctor.auth.service";
 import {DoctorAuthHttpService} from "./service/doctor.auth-http.service";
 import {DoctorAuthMockService} from "./service/doctor.auth-mock.service";
+import {PatientHomeComponent} from './componant/dentist-point/patient-home/patient-home.component';
+import {PatientAuthService} from "./service/patient.auth.service";
+import {PatientAuthHttpService} from "./service/patient.auth-http.service";
+import {PatientAuthMockService} from "./service/patient.auth-mock.service";
 
 
 @NgModule({
@@ -197,6 +201,7 @@ import {DoctorAuthMockService} from "./service/doctor.auth-mock.service";
     DoctorLoginComponent,
     DoctorLogoutComponent,
     DoctorSignupComponent,
+    PatientHomeComponent,
 
   ],
   providers: [
@@ -213,6 +218,10 @@ import {DoctorAuthMockService} from "./service/doctor.auth-mock.service";
     {
       provide: DoctorAuthService,
       useClass: environment.chumbok.enableMock ? DoctorAuthMockService : DoctorAuthHttpService
+    },
+    {
+      provide: PatientAuthService,
+      useClass: environment.chumbok.enableMock ? PatientAuthMockService : PatientAuthHttpService
     },
     CookieService,
     {
