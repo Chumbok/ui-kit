@@ -4,17 +4,17 @@ import {environment} from '../../environments/environment';
 import {throwError} from 'rxjs/internal/observable/throwError';
 import {map} from 'rxjs/operators';
 import {CookieService} from 'ngx-cookie-service';
-import {DoctorAuthService} from "./doctor.auth.service";
 import {DoctorChamber} from "../model/doctor-chamber";
 import {Observable} from "rxjs";
+import {PatientAuthService} from "./patient.auth.service";
 
 @Injectable({providedIn: 'root'})
-export class DoctorAuthHttpService implements DoctorAuthService {
+export class PatientAuthHttpService implements PatientAuthService {
 
   private callThroughLocalServer: boolean = environment.chumbok.apiCallThroughLocalServer;
 
   private loginEndPointLocalServer: string = this.callThroughLocalServer ?
-    environment.chumbok.apiBaseEndpointLocalServer + '/public/doctor/login' : environment.chumbok.apiBaseEndpointLocalServer + '/login';
+    environment.chumbok.apiBaseEndpointLocalServer + '/public/patient/login' : environment.chumbok.apiBaseEndpointLocalServer + '/patient/login';
 
   private signUpEndPointLocalServer: string = this.callThroughLocalServer ?
     environment.chumbok.apiBaseEndpointLocalServer + '/public/doctor/signup' : environment.chumbok.apiBaseEndpointLocalServer + '/login';
@@ -25,7 +25,7 @@ export class DoctorAuthHttpService implements DoctorAuthService {
   constructor(private cookieService: CookieService, private http: HttpClient) {
   }
 
-  public login(phoneNo: string, password: string) {
+  public loginPatient(phoneNo: string, password: string) {
 
     return this.http.post<any>(this.loginEndPointLocalServer, {
       phoneNo: phoneNo, password: password
@@ -63,11 +63,6 @@ export class DoctorAuthHttpService implements DoctorAuthService {
     return localStorage.getItem('token');
   }
 
-  private handleError(err: HttpErrorResponse | any) {
-    console.error('An error occurred', err);
-    return throwError(err.message || err);
-  }
-
   signUp(name: String, gender: String, qualification: String, email: String, address: String, chambers: Array<DoctorChamber>, phoneNo: String, password: String): Observable<any> {
 
     console.log(gender);
@@ -87,6 +82,11 @@ export class DoctorAuthHttpService implements DoctorAuthService {
         }
         return res;
       }));
+  }
+
+  private handleError(err: HttpErrorResponse | any) {
+    console.error('An error occurred', err);
+    return throwError(err.message || err);
   }
 
 }

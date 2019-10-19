@@ -23,8 +23,13 @@
 
             <div class="form-group">
               <label for="gender">Gender</label>
-              <input [ngClass]="{ 'is-invalid': submitted && f.gender.errors }" class="form-control"
-                     formControlName="gender" id="gender" type="text"/>
+              <select [ngClass]="{ 'is-invalid': submitted && f.gender.errors }" class="form-control"
+                      formControlName="gender" id="gender" type="text">
+                <option value='male'>Male</option>
+                <option value='female'>Female</option>
+              </select>
+              <!--<input [ngClass]="{ 'is-invalid': submitted && f.gender.errors }" class="form-control"
+                     formControlName="gender" id="gender" type="text"/>-->
               <div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
                 <div *ngIf="f.gender.errors.required">Gender is required</div>
               </div>

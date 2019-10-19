@@ -55,7 +55,7 @@ export class DoctorSignupComponent implements OnInit {
       doctorChamber.chamberAddress = chamberAddress;
       chamberLists.push(doctorChamber)
     });
-
+    console.log(this.f.gender.value);
     this.authService.signUp(this.f.name.value, this.f.gender.value, this.f.qualification.value,
       this.f.email.value, this.f.address.value, chamberLists, this.f.phoneNo.value,
       this.f.password.value)
