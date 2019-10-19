@@ -1,0 +1,110 @@
+<div class="dash-navbar-left">
+
+  <div class="list-group panel">
+
+    <a aria-expanded="false" class="list-group-item collapsed" data-parent="#dentistmanagement"
+       data-toggle="collapse" href="#dentistmanagement">
+      <i class="fas fa-user-md fa-fw"></i> <span class="hidden-sm-down">&nbsp;Patient</span>
+    </a>
+
+    <div class="collapse" id="dentistmanagement">
+
+      <a [routerLink]="['#']" class="list-group-item"
+         data-parent="#dentistmanagement" routerLinkActive="active">
+        <i class="far fa-calendar-check fa-fw"></i> <span class="hidden-sm-down">&nbsp;Create Appointment</span></a>
+
+
+      <a [routerLink]="['#']" class="list-group-item"
+         data-parent="#dentistmanagement" routerLinkActive="active">
+        <i class="fas fa-file-medical fa-fw"></i> <span class="hidden-sm-down">&nbsp;Prescription list</span></a>
+
+
+      <a [routerLink]="['#']" class="list-group-item"
+         data-parent="#dentistmanagement" routerLinkActive="active">
+        <i class="fas fa-file-medical fa-fw"></i> <span class="hidden-sm-down">&nbsp;Appointment list</span></a>
+
+      <!--<a [routerLink]="['/doctors/prescription-view']" routerLinkActive="active"
+         class="list-group-item" data-parent="#dentistmanagement">
+        <i class="far fa-list-alt fa-fw"></i> <span class="hidden-sm-down">&nbsp;Prescription view</span></a>-->
+
+    </div>
+
+
+    <!--<a href="#usermanagement" class="list-group-item collapsed" data-toggle="collapse" data-parent="#usermanagement"-->
+    <!--aria-expanded="false"><i class="fas fa-user-astronaut"></i> <span class="hidden-sm-down">&nbsp;User Management</span>-->
+    <!--</a>-->
+
+    <!--<div class="collapse" id="usermanagement">-->
+    <!--<a [routerLink]="['/orgs']" class="list-group-item" data-parent="#usermanagement">-->
+    <!--<i class="far fa-building"></i> <span class="hidden-sm-down">&nbsp;Org List</span></a>-->
+    <!--<a [routerLink]="['/create-org']" class="list-group-item" data-parent="#usermanagement">-->
+    <!--<i class="fas fa-university"></i> <span class="hidden-sm-down">&nbsp;Create Org</span></a>-->
+    <!--<a [routerLink]="['/create-tenant']" class="list-group-item" data-parent="#usermanagement">-->
+    <!--<i class="fas fa-user-tie"></i> <span class="hidden-sm-down">&nbsp;Create Tenant</span></a>-->
+    <!--<a [routerLink]="['/create-user']" class="list-group-item" data-parent="#usermanagement">-->
+    <!--<i class="fas fa-user-plus"></i> <span class="hidden-sm-down">&nbsp;Create User</span></a>-->
+    <!--</div>-->
+
+    <!--
+
+    <a href="#menu1" class="list-group-item collapsed"
+       data-toggle="collapse" data-parent="#menu1" aria-expanded="false">
+      <i class="fa fa-dashboard"></i> <span class="hidden-sm-down">&nbsp;Dashboard</span> </a>
+
+    <div class="collapse" id="menu1">
+      <a href="#menu1sub1" class="list-group-item" data-toggle="collapse" aria-expanded="false">Subitem 1 </a>
+      <div class="collapse" id="menu1sub1">
+        <a href="#" class="list-group-item" data-parent="#menu1sub1">Subitem 1 a</a>
+        <a href="#" class="list-group-item" data-parent="#menu1sub1">Subitem 2 b</a>
+        <a href="#menu1sub1sub1" class="list-group-item" data-toggle="collapse" aria-expanded="false">Subitem 3
+          c </a>
+        <div class="collapse" id="menu1sub1sub1">
+          <a href="#" class="list-group-item" data-parent="#menu1sub1sub1">Subitem 3 c.1</a>
+          <a href="#" class="list-group-item" data-parent="#menu1sub1sub1">Subitem 3 c.2</a>
+        </div>
+        <a href="#" class="list-group-item" data-parent="#menu1sub1">Subitem 4 d</a>
+        <a href="#menu1sub1sub2" class="list-group-item" data-toggle="collapse" aria-expanded="false">Subitem 5
+          e </a>
+        <div class="collapse" id="menu1sub1sub2">
+          <a href="#" class="list-group-item" data-parent="#menu1sub1sub2">Subitem 5 e.1</a>
+          <a href="#" class="list-group-item" data-parent="#menu1sub1sub2">Subitem 5 e.2</a>
+        </div>
+      </div>
+      <a href="#" class="list-group-item" data-parent="#menu1">Subitem 2</a>
+      <a href="#" class="list-group-item" data-parent="#menu1">Subitem 3</a>
+    </div>
+
+    <a href="#" class="list-group-item collapsed" data-parent="#sidebar"><i class="fa fa-film"></i> <span
+      class="hidden-sm-down">&nbsp;Item 2</span></a>
+
+    <a href="#menu3" class="list-group-item collapsed" data-toggle="collapse" data-parent="#menu3"
+       aria-expanded="false"><i class="fa fa-book"></i> <span class="hidden-sm-down">&nbsp;Item 3 </span></a>
+
+    <div class="collapse" id="menu3">
+      <a href="#" class="list-group-item" data-parent="#menu3">3.1</a>
+      <a href="#menu3sub2" class="list-group-item" data-toggle="collapse" aria-expanded="false">3.2 </a>
+      <div class="collapse" id="menu3sub2">
+        <a href="#" class="list-group-item" data-parent="#menu3sub2">3.2 a</a>
+        <a href="#" class="list-group-item" data-parent="#menu3sub2">3.2 b</a>
+        <a href="#" class="list-group-item" data-parent="#menu3sub2">3.2 c</a>
+      </div>
+      <a href="#" class="list-group-item" data-parent="#menu3">3.3</a>
+    </div>
+
+    <a href="#" class="list-group-item collapsed" data-parent="#sidebar"><i class="fa fa-heart"></i> <span
+      class="hidden-sm-down">&nbsp;Item 4</span></a>
+
+    <a href="#" class="list-group-item collapsed" data-parent="#sidebar"><i class="fa fa-list"></i> <span
+      class="hidden-sm-down">&nbsp;Item 5</span></a>
+
+    -->
+
+    <a [routerLink]="['/settings']" class="list-group-item collapsed"
+       data-parent="#sidebar" routerLinkActive="active">
+      <i class="fa fa-cog fa-fw"></i> <span class="hidden-sm-down">&nbsp;Settings</span>
+    </a>
+
+
+  </div>
+
+</div>

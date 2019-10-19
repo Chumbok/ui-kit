@@ -110,6 +110,9 @@ import {PatientHomeComponent} from './componant/dentist-point/patient-home/patie
 import {PatientAuthService} from "./service/patient.auth.service";
 import {PatientAuthHttpService} from "./service/patient.auth-http.service";
 import {PatientAuthMockService} from "./service/patient.auth-mock.service";
+import {PatientHomeLayoutComponent} from './layout/patient-home-layout/patient-home-layout.component';
+import {PatientDashboardHeadComponent} from "./layout/patient-home-layout/patient-dashboard-head/patient-dashboard-head.component";
+import {PatientDashboardSidenavComponent} from "./layout/patient-home-layout/patient-template-sidenav/patient-dashboard-sidenav.component";
 
 
 @NgModule({
@@ -179,6 +182,8 @@ import {PatientAuthMockService} from "./service/patient.auth-mock.service";
     AppLayoutComponent,
     SiteLayoutComponent,
     SiteHomeComponent,
+    PatientDashboardHeadComponent,
+    PatientDashboardSidenavComponent,
     DashboardComponent,
     FlashMessageComponent,
     LogoutComponent,
@@ -202,6 +207,7 @@ import {PatientAuthMockService} from "./service/patient.auth-mock.service";
     DoctorLogoutComponent,
     DoctorSignupComponent,
     PatientHomeComponent,
+    PatientHomeLayoutComponent,
 
   ],
   providers: [
