@@ -109,7 +109,7 @@ const routes: Routes = [
   {path: AppUrl.DOCTOR_LOGIN, component: DoctorLoginComponent},
   {path: AppUrl.DOCTOR_SIGNUP, component: DoctorSignupComponent}
   // otherwise redirect to home
-  // {path: '**', redirectTo: AppUrl.DOCTOR_CALENDER_VIEW}
+  // {path: '**', redirectTo: AppUrl.DOCTOR_LOGIN}
 ];
 
 @NgModule({
