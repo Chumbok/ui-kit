@@ -24,5 +24,7 @@ export class AppUrl {
   public static PATIENT = 'patient/';
   public static PATIENT_CREATE_PATIENT = AppUrl.PATIENT + 'create-patient';
   public static PATIENT_CREATE_APPOINTMENT = AppUrl.PATIENT + 'create-appointment';
+  public static PATIENT_SHOW_APPOINTMENT = AppUrl.PATIENT + 'show-appointment-list';
+  public static PATIENT_SHOW_PRESCRIPTION = AppUrl.PATIENT + 'show-prescription-list';
   public static PATIENT_HOME = AppUrl.PATIENT + 'patient-home';
 }
