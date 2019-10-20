@@ -116,7 +116,9 @@ import {PatientDashboardHeadComponent} from "./layout/patient-home-layout/patien
 import {PatientDashboardSidenavComponent} from "./layout/patient-home-layout/patient-template-sidenav/patient-dashboard-sidenav.component";
 
 import {DatePipe} from "@angular/common";
-
+import {PatientCreateAppointmentComponent} from './componant/dentist-point-mobiletoweb/patient-create-appointment/patient-create-appointment.component';
+import {PatientShowAppointmentComponent} from './componant/dentist-point-mobiletoweb/patient-show-appointment/patient-show-appointment.component';
+import {PatientShowPrescriptionComponent} from './componant/dentist-point-mobiletoweb/patient-show-prescription/patient-show-prescription.component';
 
 
 @NgModule({
@@ -212,6 +214,9 @@ import {DatePipe} from "@angular/common";
     DoctorSignupComponent,
     PatientHomeComponent,
     PatientHomeLayoutComponent,
+    PatientCreateAppointmentComponent,
+    PatientShowAppointmentComponent,
+    PatientShowPrescriptionComponent,
 
   ],
   providers: [
