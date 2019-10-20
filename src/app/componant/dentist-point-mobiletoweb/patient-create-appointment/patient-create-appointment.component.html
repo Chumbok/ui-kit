@@ -1,3 +1,90 @@
-<p>
-  patient-create-appointment works!
-</p>
+<div class="col-md-8 ibox">
+  <div class="ibox-head">
+    <div class="ibox-title">Create Appointment</div>
+  </div>
+  <form [formGroup]="form" class="form-horizontal" name="form">
+
+    <div class="ibox-body">
+
+      <div class="form-group mb-4 row">
+        <label class="col-sm-3 col-form-label">Date</label>
+        <div class="col-sm-9 input-group-prepend">
+          <input (ngModelChange)="setDateFetchFreeTimeSlots()" [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1"
+                 class="form-control" formControlName="date" id="dateff">
+          <owl-date-time #dt1 [pickerType]="'calendar'"></owl-date-time>
+        </div>
+      </div>
+
+
+      <div class="form-group mb-4 row">
+        <label class="col-sm-3 col-form-label">Select Doctor</label>
+        <div class="col-sm-9">
+          <select (ngModelChange)="onChange($event)" [ngClass]="{ 'is-invalid': submitted && f.patientName.errors }"
+                  class="form-control"
+                  formControlName="selectDoctor">
+            <option *ngFor="let doctor of doctorArrayList;" [value]="doctor.id">{{ doctor.name }}</option>
+          </select>
+          <!--          <input type="text" formControlName="patientName" class="form-control"-->
+          <!--                 [ngClass]="{ 'is-invalid': submitted && f.patientName.errors }"/>-->
+          <div *ngIf="submitted && f.patientName.errors" class="invalid-feedback">
+            <div *ngIf="f.patientName.errors.required">Patient Name is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group mb-4 row">
+        <label class="col-sm-3 col-form-label">Select Chamber</label>
+        <div class="col-sm-9">
+          <select [ngClass]="{ 'is-invalid': submitted && f.patientName.errors }" class="form-control"
+                  formControlName="selectChamber">
+            <option *ngFor="let chamber of doctorChamberArrayList;"
+                    [value]="chamber.chamberName">{{ chamber.chamberName }}</option>
+          </select>
+          <!--          <input type="text" formControlName="patientName" class="form-control"-->
+          <!--                 [ngClass]="{ 'is-invalid': submitted && f.patientName.errors }"/>-->
+          <div *ngIf="submitted && f.patientName.errors" class="invalid-feedback">
+            <div *ngIf="f.patientName.errors.required">Patient Name is required</div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-group mb-4 row">
+        <label class="col-sm-3 col-form-label">Free Slots</label>
+        <div *ngFor="let timeSlotArrayValue of timeSlotArray;" aria-label="Basic example" class="col-sm-9"
+             class="btn-group"
+             role="group">
+          <input (click)="getFreeSlotsValue(timeSlotArrayValue)" [formControl]="getFreeTime"
+                 [value]="timeSlotArrayValue"
+                 class=" btn btn-secondary ml-1" type="submit">&nbsp;
+        </div>
+      </div>
+
+    </div>
+    <div class="ibox-footer row">
+      <div class="col-sm-12 text-center">
+        <button (click)="onSubmit()" class="btn btn-primary mr-2">Submit</button>
+        <button (click)="onClose()" class="btn btn-secondary">Cancel</button>
+      </div>
+    </div>
+
+  </form>
+</div>
+<div>
+
+  <form class="example-form">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let state of appoinrmentList | filter:searchText">
+        <div class="card col-sm-9">
+          <div class="card-body">
+            <small>{{state.nameP}}</small>
+            |
+            <span>{{state.phoneno}}</span>
+          </div>
+        </div>
+      </mat-option>
+    </mat-autocomplete>
+
+  </form>
+</div>
+

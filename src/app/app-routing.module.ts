@@ -66,6 +66,8 @@ const routes: Routes = [
       {path: 'doctors/prescription/:id/prescription-view', component: PrescriptionViewComponent, canActivate: [AuthGuard]},
       {path: AppUrl.DOCTOR_CREATE_TEMPLATE, component: CreateTemplateComponent, canActivate: [AuthGuard]},
       {path: AppUrl.DOCTOR_LOGOUT, component: DoctorLogoutComponent, canActivate: [AuthGuard]},
+      {path: 'doctors/create-appointment', component: CreateAppointmentComponent, canActivate: [AuthGuard]},
+
       {path: AppUrl.PATIENT_CREATE_PATIENT, component: CreatePatientComponent, canActivate: [AuthGuard]},
 
       {path: 'doctors/template/:id/edit-template', component: EditTemplateComponent, canActivate: [AuthGuard]},
@@ -105,8 +107,6 @@ const routes: Routes = [
       {path: AppUrl.DOCTOR_CREATE_TEMPLATE, component: CreateTemplateComponent, canActivate: [AuthGuard]},
       {path: AppUrl.DOCTOR_LOGOUT, component: DoctorLogoutComponent, canActivate: [AuthGuard]},
       {path: AppUrl.PATIENT_CREATE_PATIENT, component: CreatePatientComponent, canActivate: [AuthGuard]},
-      {path: AppUrl.PATIENT_CREATE_APPOINTMENT, component: CreateAppointmentComponent, canActivate: [AuthGuard]},
-      {path: AppUrl.PATIENT_CREATE_APPOINTMENT, component: CreateAppointmentComponent, canActivate: [AuthGuard]},
       {path: 'doctors/template/:id/edit-template', component: EditTemplateComponent, canActivate: [AuthGuard]},
     ],
 
