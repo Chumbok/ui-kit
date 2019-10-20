@@ -4,7 +4,7 @@ Base Angular app for Chumbok Application
 
 ### How to deploy
 ```
-$ npm i -g angular-cli-ghpages
+$ npm i angular-cli-ghpages --save-dev
 $ ng build --prod --base-href https://chumbok.github.io/ui-kit
 $ ngh
 ```
