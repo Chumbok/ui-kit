@@ -24,6 +24,14 @@ export abstract class AppointmentService {
 
   abstract getAppointmentList(): Observable<any>;
 
+
+  abstract createAppointmentByPatient(
+    date: string,
+    doctorName: string,
+    doctorChamber: string,
+    timeSlot: string): Observable<any>;
+
+
   abstract getAppointmentListByDoctorId(): Observable<any>;
 
   abstract deleteAppointment(appointmentId: string): Observable<any>;
