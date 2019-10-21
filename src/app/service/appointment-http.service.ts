@@ -125,4 +125,26 @@ export class AppointmentHttpService implements AppointmentService {
     console.log(this.http.get(getDoctorChamberListEndpoint, httpOptions).map(res => res));
     return this.http.get(getDoctorChamberListEndpoint, httpOptions).map(res => res);
   }
+
+
+  createAppointmentByPatient(date: string, doctorID: string, doctorChamber: string, timeSlot: string): Observable<any> {
+    let httpHeaders = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken(),
+    });
+    const createAppointmentByPatientEndpoint: string = this.callThroughGateway ?
+      environment.chumbok.apiBaseEndpointLocalServer + '/android/api/appointments' : environment.chumbok.apiBaseEndpointLocalServer + '/api/appointment';
+
+    return this.http.post(createAppointmentByPatientEndpoint, {
+
+        "doctorId": doctorID,
+        "doctorChamber": doctorChamber,
+        "date": date,
+        "timeSlot": timeSlot
+      },
+      {
+        headers: httpHeaders,
+        observe: 'response'
+      }
+    );
+  }
 }

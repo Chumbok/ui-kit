@@ -211,4 +211,8 @@ export class AppointmentMockService implements AppointmentService {
       ']'
     return of(JSON.parse(chamberList));
   }
+
+  createAppointmentByPatient(date: string, doctorName: string, doctorChamber: string, timeSlot: string): Observable<any> {
+    return undefined;
+  }
 }
