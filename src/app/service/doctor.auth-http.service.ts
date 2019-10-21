@@ -29,7 +29,7 @@ export class DoctorAuthHttpService implements DoctorAuthService {
 
     return this.http.post<any>(this.loginEndPointLocalServer, {
       phoneNo: phoneNo, password: password
-    }, {withCredentials: true})
+    })
       .pipe(map(res => {
         if (res && res.token) {
           localStorage.setItem('token', res.token);
