@@ -49,13 +49,8 @@ export class PatientCreateAppointmentComponent implements OnInit {
 
     createAppointment.date = this.datePipe.transform(this.form.controls['date'].value, 'yyyy-MM-dd');
     createAppointment.timeSlot = this.startTimeOfFreeSlots;
-    this.appointmentService.createAppointment(
-      createAppointment.phoneNumber,
-      createAppointment.patientName,
-      createAppointment.address,
+    this.appointmentService.createAppointmentByPatient(
       createAppointment.date,
-      createAppointment.age,
-      createAppointment.bloodGroup,
       createAppointment.doctorName,
       createAppointment.doctorChamber,
       createAppointment.timeSlot).subscribe(res => {
