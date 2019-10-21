@@ -99,13 +99,17 @@ export class PrescriptionHttpService implements PrescriptionService {
   }
 
   patientApprove(patientId: string): Observable<any> {
-    const getPatientProfileEndpoint: string = this.callThroughLocalServer ?
+    const putPatientProfileEndpoint: string = this.callThroughLocalServer ?
       environment.chumbok.apiBaseEndpointLocalServer + '/api/doctor/approve/patient/' + patientId : environment.chumbok.apiBaseEndpointLocalServer + '/api/doctor/approve/patient/' + patientId;
 
-    const httpOptions = {
-      headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})
-    };
-    return this.http.put(getPatientProfileEndpoint, httpOptions).map(res => res);
+    let httpHeaders = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken(),
+    });
+    return this.http.put(putPatientProfileEndpoint, {httpHeaders},
+      {
+        headers: httpHeaders,
+        observe: 'response'
+      }).map(res => res);
   }
 
   createPrescriptionWithoutPatientId(name: string,
@@ -135,12 +139,13 @@ export class PrescriptionHttpService implements PrescriptionService {
   }
 
   isPatientApprove(patientId: string): Observable<any> {
-    const getPatientProfileEndpoint: string = this.callThroughLocalServer ?
-      environment.chumbok.apiBaseEndpointLocalServer + '/api/doctor/approve/patient/' + patientId : environment.chumbok.apiBaseEndpointLocalServer + '/api/doctor/approve/patient/' + patientId;
+    const checkPatientIsActive: string = this.callThroughLocalServer ?
+      environment.chumbok.apiBaseEndpointLocalServer + '/api/patient/check/approve/status/' + patientId : environment.chumbok.apiBaseEndpointLocalServer + '/api/patient/check/approve/status/' + patientId;
 
     const httpOptions = {
       headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})
     };
-    return this.http.get(getPatientProfileEndpoint, httpOptions).map(res => res);
+    return this.http.get(checkPatientIsActive, httpOptions).map(res => res);
+
   }
 }
