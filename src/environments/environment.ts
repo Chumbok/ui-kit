@@ -7,19 +7,12 @@ export const environment = {
   production: false,
   chumbok: {
     enableMock: false,
-
-    apiCallThroughLocalServer: true,
-    apiBaseEndpointLocalServer: 'http://localhost:33012',
-
-    /* apiCallThroughGateway: false,
-     apiBaseEndpoint: '//localhost:33002'*/
-
     apiCallThroughGateway: false,
-    apiBaseEndpoint: 'http://dev.chumbok.com:33001/gateway',
-
+    apiCallThroughLocalServer: true,
+    apiBaseEndpoint: '//localhost:33002',
     pingEndpoint: 'http://localhost:33002/ping',
-    authRefreshEndpoint: 'http://localhost:33002/refresh'
-
+    authRefreshEndpoint: 'http://localhost:33002/refresh',
+    apiBaseEndpointLocalServer: 'http://localhost:33012'
   }
 
 };
