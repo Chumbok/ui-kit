@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {DoctorAuthService} from "../../../../service/doctor.auth.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {DoctorChamber} from "../../../../model/doctor-chamber";
+import {PatientAuthService} from "../../../../service/patient.auth.service";
 
 @Component({
-  selector: 'app-doctor-signup',
-  templateUrl: './doctor-signup.component.html',
-  styleUrls: ['./doctor-signup.component.css']
+  selector: 'app-patient-signup',
+  templateUrl: './patient-signup.component.html',
+  styleUrls: ['./patient-signup.component.css']
 })
-export class DoctorSignupComponent implements OnInit {
+export class PatientSignupComponent implements OnInit {
 
   signUpForm: FormGroup;
   returnUrl: string;
@@ -17,7 +17,7 @@ export class DoctorSignupComponent implements OnInit {
 
 
   constructor(private formBuilder: FormBuilder,
-              private authService: DoctorAuthService,
+              private patientAuthService: PatientAuthService,
               private router: Router,
               private activatedRoute: ActivatedRoute) {
   }
@@ -31,15 +31,16 @@ export class DoctorSignupComponent implements OnInit {
       {
         name: ['', Validators.required],
         gender: ['', Validators.required],
-        qualification: ['', Validators.required],
+        username: ['', Validators.required],
         email: ['', Validators.required],
+        bGroup: ['', Validators.required],
         address: ['', Validators.required],
-        chambers: ['', Validators.required],
+        age: ['', Validators.required],
         phoneNo: ['', Validators.required],
         password: ['', Validators.required]
       }
     )
-    this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/doctorpoint/login';
+    this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || 'doctorpoint/login';
   }
 
   public onSubmit() {
@@ -49,15 +50,10 @@ export class DoctorSignupComponent implements OnInit {
     if (this.signUpForm.invalid) {
       return;
     }
-    var chamberList = new String(this.f.chambers.value).split("\n");
-    chamberList.forEach(function (chamberAddress) {
-      const doctorChamber: DoctorChamber = new DoctorChamber();
-      doctorChamber.chamberAddress = chamberAddress;
-      chamberLists.push(doctorChamber)
-    });
+
     console.log(this.f.gender.value);
-    this.authService.signUp(this.f.name.value, this.f.gender.value, this.f.qualification.value,
-      this.f.email.value, this.f.address.value, chamberLists, this.f.phoneNo.value,
+    this.patientAuthService.signUp(this.f.name.value, this.f.gender.value, this.f.bGroup.value, this.f.username.value,
+      this.f.email.value, this.f.address.value, this.f.age.value, this.f.phoneNo.value,
       this.f.password.value)
       .subscribe(
         data => {

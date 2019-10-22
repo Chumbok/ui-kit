@@ -12,6 +12,8 @@ export abstract class PrescriptionService {
 
   abstract getPrescriptionListByPatientId(currentPage): Observable<any>;
 
+  abstract getPrescriptionListByLoginPatientId(currentPage): Observable<any>;
+
   abstract getPrescriptionView(selectedTemplateId): Observable<any>;
   abstract getPatientProfile(patientId: string): Observable<any>;
 

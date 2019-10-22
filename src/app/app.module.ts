@@ -119,6 +119,7 @@ import {DatePipe} from "@angular/common";
 import {PatientCreateAppointmentComponent} from './componant/dentist-point-mobiletoweb/patient-create-appointment/patient-create-appointment.component';
 import {PatientShowAppointmentComponent} from './componant/dentist-point-mobiletoweb/patient-show-appointment/patient-show-appointment.component';
 import {PatientShowPrescriptionComponent} from './componant/dentist-point-mobiletoweb/patient-show-prescription/patient-show-prescription.component';
+import {PatientSignupComponent} from './componant/dentist-point/auth/patient-signup/patient-signup.component';
 
 
 @NgModule({
@@ -217,6 +218,8 @@ import {PatientShowPrescriptionComponent} from './componant/dentist-point-mobile
     PatientCreateAppointmentComponent,
     PatientShowAppointmentComponent,
     PatientShowPrescriptionComponent,
+    PatientSignupComponent,
+
 
   ],
   providers: [

@@ -4,7 +4,7 @@ import {AppointmentService} from "../../../service/appointment.service";
 import {Router} from "@angular/router";
 import {FlashMessageService} from "../../../service/flash-message.service";
 import {DatePipe} from "@angular/common";
-import {CreateAppointment} from "../../../model/create-appointment";
+import {CreateAppointmentPatient} from "../../../model/patient-create-appointment";
 
 @Component({
   selector: 'app-patient-create-appointment',
@@ -43,18 +43,18 @@ export class PatientCreateAppointmentComponent implements OnInit {
     if (this.form.invalid) {
       return true;
     }
-    const createAppointment: CreateAppointment = new CreateAppointment();
+    const createAppointment: CreateAppointmentPatient = new CreateAppointmentPatient();
     createAppointment.doctorName = this.form.controls['selectDoctor'].value;
     createAppointment.doctorChamber = this.form.controls['selectChamber'].value;
 
     createAppointment.date = this.datePipe.transform(this.form.controls['date'].value, 'yyyy-MM-dd');
-    createAppointment.timeSlot = this.startTimeOfFreeSlots;
+    createAppointment.time = this.startTimeOfFreeSlots;
     this.appointmentService.createAppointmentByPatient(
       createAppointment.date,
       createAppointment.doctorName,
       createAppointment.doctorChamber,
-      createAppointment.timeSlot).subscribe(res => {
-      this.router.navigate(['doctors/calendar-view']);
+      createAppointment.time).subscribe(res => {
+
       this.flashMessageService.showFlashMessage({
           messages: ['Appointment Create  Successfully '], dismissible: true,
           type: 'primary'
