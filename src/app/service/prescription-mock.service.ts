@@ -326,4 +326,8 @@ export class PrescriptionMockService implements PrescriptionService {
   getPrescriptionListByLoginPatientId(currentPage): Observable<any> {
     return undefined;
   }
+
+  getPatientPrescriptionView(selectedTemplateId): Observable<any> {
+    return undefined;
+  }
 }

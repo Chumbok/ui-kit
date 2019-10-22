@@ -120,6 +120,7 @@ import {PatientCreateAppointmentComponent} from './componant/dentist-point-mobil
 import {PatientShowAppointmentComponent} from './componant/dentist-point-mobiletoweb/patient-show-appointment/patient-show-appointment.component';
 import {PatientShowPrescriptionComponent} from './componant/dentist-point-mobiletoweb/patient-show-prescription/patient-show-prescription.component';
 import {PatientSignupComponent} from './componant/dentist-point/auth/patient-signup/patient-signup.component';
+import {PatientViewMedicineComponent} from './componant/dentist-point-mobiletoweb/patient-view-medicine/patient-view-medicine.component';
 
 
 @NgModule({
@@ -219,6 +220,7 @@ import {PatientSignupComponent} from './componant/dentist-point/auth/patient-sig
     PatientShowAppointmentComponent,
     PatientShowPrescriptionComponent,
     PatientSignupComponent,
+    PatientViewMedicineComponent,
 
 
   ],

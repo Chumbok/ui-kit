@@ -55,7 +55,7 @@ export class TemplateHttpService implements TemplateService {
 
   public getTemplateView(): Observable<any> {
     const getTemplateEndpoint: string = this.callThroughLocalServer ?
-      environment.chumbok.apiBaseEndpointLocalServer + '/api/show-templates' : environment.chumbok.apiBaseEndpointLocalServer + '/api/patient/profile';
+      environment.chumbok.apiBaseEndpointLocalServer + '/api/show-templates' : environment.chumbok.apiBaseEndpointLocalServer + '/api/show-templates';
 
     const httpOptions = {
       headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})

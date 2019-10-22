@@ -52,7 +52,7 @@ export class PrescriptionHttpService implements PrescriptionService {
   public getPrescriptionListByLoginPatientId(currentPage: String): Observable<any> {
     console.log("sfdsafsadfsdfsdgfvdsfgdsfgsd");
     const getPrescriptionListByLogginPatientIdEndpoint: string = this.callThroughLocalServer ?
-      environment.chumbok.apiBaseEndpointLocalServer + '/api/patient/prescriptions' : environment.chumbok.apiBaseEndpointLocalServer + '/api/doctor/prescription/doctorIdAndPatientId';
+      environment.chumbok.apiBaseEndpointLocalServer + '/api/patient/prescriptions' : environment.chumbok.apiBaseEndpointLocalServer + '/api/patient/prescriptions';
 
     const httpOptions = {
       headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})
@@ -73,6 +73,18 @@ export class PrescriptionHttpService implements PrescriptionService {
 
     return this.http.get(getPrescriptionEndpoint, httpOptions).map(res => res);
   }
+
+  public getPatientPrescriptionView(selectedTemplateId): Observable<any> {
+    const getPrescriptionPatientMobileEndpoint: string = this.callThroughLocalServer ?
+      environment.chumbok.apiBaseEndpointLocalServer + '/android/api/prescription/' + selectedTemplateId : environment.chumbok.apiBaseEndpointLocalServer + '/android/api/prescription/prescriptionId';
+
+    const httpOptions = {
+      headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})
+    };
+
+    return this.http.get(getPrescriptionPatientMobileEndpoint, httpOptions).map(res => res);
+  }
+
 
   public getPatientProfile(patientId: string): Observable<any> {
 
@@ -100,7 +112,7 @@ export class PrescriptionHttpService implements PrescriptionService {
     });
     const createPrescriptionEndpoint: string = this.callThroughLocalServer ?
 
-      environment.chumbok.apiBaseEndpointLocalServer + '/api/appointment/' + appointmentId + '/create-prescription' : environment.chumbok.apiBaseEndpointLocalServer + '/api/create-prescription';
+      environment.chumbok.apiBaseEndpointLocalServer + '/api/appointment/' + appointmentId + '/create-prescription' : environment.chumbok.apiBaseEndpointLocalServer + '/api/appointment/' + appointmentId + '/create-prescription';
 
     return this.http.post(createPrescriptionEndpoint, {
         nextVisitDate: date, chiefComplains, onExaminations, diagnosises, pharmacies
