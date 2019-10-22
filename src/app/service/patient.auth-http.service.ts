@@ -4,7 +4,6 @@ import {environment} from '../../environments/environment';
 import {throwError} from 'rxjs/internal/observable/throwError';
 import {map} from 'rxjs/operators';
 import {CookieService} from 'ngx-cookie-service';
-import {DoctorChamber} from "../model/doctor-chamber";
 import {Observable} from "rxjs";
 import {PatientAuthService} from "./patient.auth.service";
 
@@ -17,7 +16,7 @@ export class PatientAuthHttpService implements PatientAuthService {
     environment.chumbok.apiBaseEndpointLocalServer + '/public/patient/login' : environment.chumbok.apiBaseEndpointLocalServer + '/patient/login';
 
   private signUpEndPointLocalServer: string = this.callThroughLocalServer ?
-    environment.chumbok.apiBaseEndpointLocalServer + '/public/doctor/signup' : environment.chumbok.apiBaseEndpointLocalServer + '/login';
+    environment.chumbok.apiBaseEndpointLocalServer + '/public/patient/signup' : environment.chumbok.apiBaseEndpointLocalServer + '/patient/signup';
 
   private logoutEndPointLocalServer: string = this.callThroughLocalServer ?
     environment.chumbok.apiBaseEndpointLocalServer + '/public/doctor/logout' : environment.chumbok.apiBaseEndpointLocalServer + '/logout';
@@ -63,18 +62,20 @@ export class PatientAuthHttpService implements PatientAuthService {
     return localStorage.getItem('token');
   }
 
-  signUp(name: String, gender: String, qualification: String, email: String, address: String, chambers: Array<DoctorChamber>, phoneNo: String, password: String): Observable<any> {
+  signUp(name: String, gender: String, bGroup: String, username: String, email: String, address: String, age: String,
+         phoneNo: String, password: String): Observable<any> {
 
     console.log(gender);
     return this.http.post<any>(this.signUpEndPointLocalServer, {
       name: name,
       gander: gender,
-      qualification: qualification,
+      age: age,
+      bloodGroup: bGroup,
       phoneNo: phoneNo,
       email: email,
       address: address,
+      username: username,
       password: password,
-      chambers: chambers
     }, {withCredentials: true})
       .pipe(map(res => {
         if (res && res.id) {

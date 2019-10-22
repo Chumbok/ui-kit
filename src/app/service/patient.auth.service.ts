@@ -1,12 +1,11 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {DoctorChamber} from "../model/doctor-chamber";
 
 @Injectable()
 export abstract class PatientAuthService {
 
-  abstract signUp(name: String, gender: String, qualification: String, email: String, address: String,
-                  chambers: Array<DoctorChamber>, phoneNo: String, password: String,): Observable<any>
+  abstract signUp(name: String, gender: String, bGroup: String, username: String, email: String, address: String,
+                  age: String, phoneNo: String, password: String,): Observable<any>
 
   abstract loginPatient(phoneNo: string, password: string): Observable<any>;
 

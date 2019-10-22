@@ -128,6 +128,7 @@ export class AppointmentHttpService implements AppointmentService {
 
 
   createAppointmentByPatient(date: string, doctorID: string, doctorChamber: string, timeSlot: string): Observable<any> {
+    console.log("Time", timeSlot);
     let httpHeaders = new HttpHeaders({
       'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken(),
     });
@@ -136,10 +137,11 @@ export class AppointmentHttpService implements AppointmentService {
 
     return this.http.post(createAppointmentByPatientEndpoint, {
 
+
         "doctorId": doctorID,
         "doctorChamber": doctorChamber,
         "date": date,
-        "timeSlot": timeSlot
+        "time": timeSlot
       },
       {
         headers: httpHeaders,

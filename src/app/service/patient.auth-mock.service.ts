@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
-import {DoctorChamber} from "../model/doctor-chamber";
 import {PatientAuthService} from "./patient.auth.service";
 
 @Injectable({providedIn: 'root'})
@@ -38,9 +37,9 @@ export class PatientAuthMockService implements PatientAuthService {
     return 'mockToken';
   }
 
-  signUp(name: String, gender: String, qualification: String, email: String, address: String, chambers: Array<DoctorChamber>,
+  signUp(name: String, gender: String, bGroup: String, username: String, email: String, address: String, age: String,
          phoneNo: String, password: String): Observable<any> {
-    console.log(chambers);
+    console.log(age);
     const json = '{"id":"hg34-435hbg6-45hgy"}';
     return of(JSON.parse(json));
   }

@@ -5,7 +5,7 @@
 
       <div class="ibox">
         <div class="ibox-head">
-          <div class="ibox-title">Sign Up</div>
+          <div class="ibox-title">Patient Sign Up</div>
         </div>
         <div class="ibox-body">
 
@@ -36,12 +36,26 @@
             </div>
 
             <div class="form-group">
-              <label for="qualification">Qualification</label>
-              <input [ngClass]="{ 'is-invalid': submitted && f.qualification.errors }" class="form-control"
-                     formControlName="qualification" id="qualification"
+              <label for="gender">Blood Group</label>
+              <select [ngClass]="{ 'is-invalid': submitted && f.gender.errors }" class="form-control"
+                      formControlName="bGroup" id="bGroup" type="text">
+                <option value='a+'>A+</option>
+                <option value='A-'>A-</option>
+              </select>
+              <!--<input [ngClass]="{ 'is-invalid': submitted && f.gender.errors }" class="form-control"
+                     formControlName="gender" id="gender" type="text"/>-->
+              <div *ngIf="submitted && f.bGroup.errors" class="invalid-feedback">
+                <div *ngIf="f.bGroup.errors.required">Blood Group is required</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input [ngClass]="{ 'is-invalid': submitted && f.username.errors }" class="form-control"
+                     formControlName="username" id="username"
                      type="text"/>
-              <div *ngIf="submitted && f.qualification.errors" class="invalid-feedback">
-                <div *ngIf="f.qualification.errors.required">Qualification is required</div>
+              <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                <div *ngIf="f.username.errors.required">Username is required</div>
               </div>
             </div>
 
@@ -67,12 +81,12 @@
 
 
             <div class="form-group">
-              <label for="chambers">Chambers</label>
-              <textarea [ngClass]="{ 'is-invalid': submitted && f.chambers.errors }" class="form-control"
-                        formControlName="chambers" id="chambers"
-                        placeholder="Popular Hospital Ltd rode#23 house-32,Dhandondi,Dhaka" type="text"></textarea>
-              <div *ngIf="submitted && f.chambers.errors" class="invalid-feedback">
-                <div *ngIf="f.chambers.errors.required">Chambers no is required</div>
+              <label for="age">Age</label>
+              <input [ngClass]="{ 'is-invalid': submitted && f.age.errors }" class="form-control"
+                     formControlName="age" id="age"
+                     type="text"/>
+              <div *ngIf="submitted && f.age.errors" class="invalid-feedback">
+                <div *ngIf="f.age.errors.required">Age is required</div>
               </div>
             </div>
 

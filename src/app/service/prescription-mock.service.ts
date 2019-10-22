@@ -322,4 +322,8 @@ export class PrescriptionMockService implements PrescriptionService {
 
     return of(mockActiveStatus);
   }
+
+  getPrescriptionListByLoginPatientId(currentPage): Observable<any> {
+    return undefined;
+  }
 }
