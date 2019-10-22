@@ -215,4 +215,8 @@ export class AppointmentMockService implements AppointmentService {
   createAppointmentByPatient(date: string, doctorName: string, doctorChamber: string, timeSlot: string): Observable<any> {
     return undefined;
   }
+
+  getAppointmentListByDoctorIdMobile(): Observable<any> {
+    return undefined;
+  }
 }

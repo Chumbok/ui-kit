@@ -15,6 +15,9 @@ export class AppointmentHttpService implements AppointmentService {
   private getAppointmentByDoctorIdEndpoint: string = this.callThroughGateway ?
     environment.chumbok.apiBaseEndpointLocalServer + '/api/doctor/appointments' : environment.chumbok.apiBaseEndpointLocalServer + '/api/doctor/appointments';
 
+  private getAppointmentListByDoctorIdMobilet: string = this.callThroughGateway ?
+    environment.chumbok.apiBaseEndpointLocalServer + '/android/api/appointments' : environment.chumbok.apiBaseEndpointLocalServer + '/android/api/appointments';
+
   constructor(private doctorAuthService: DoctorAuthService, private http: HttpClient) {
   }
 
@@ -102,6 +105,16 @@ export class AppointmentHttpService implements AppointmentService {
     return this.http.get(this.getAppointmentByDoctorIdEndpoint, httpOptions).map(res => res);
   }
 
+  public getAppointmentListByDoctorIdMobile(): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()}),
+      withCredentials: true
+    };
+
+    console.log(this.http.get(this.getAppointmentListByDoctorIdMobilet, httpOptions).map(res => res));
+    return this.http.get(this.getAppointmentListByDoctorIdMobilet, httpOptions).map(res => res);
+  }
+
   public getDoctorList(): Observable<any> {
 
     const getDoctorListEndpoint: string = this.callThroughGateway ?
@@ -117,7 +130,7 @@ export class AppointmentHttpService implements AppointmentService {
 
   getDoctorChamberList(doctorId: string): Observable<any> {
     const getDoctorChamberListEndpoint: string = this.callThroughGateway ?
-      environment.chumbok.apiBaseEndpointLocalServer + '/android/api/doctor/' + doctorId + '/chamber' : environment.chumbok.apiBaseEndpointLocalServer + 'android/api/doctors';
+      environment.chumbok.apiBaseEndpointLocalServer + '/android/api/doctor/' + doctorId + '/chamber' : environment.chumbok.apiBaseEndpointLocalServer + '/android/api/doctor/{doctorId}/chamber';
 
     const httpOptions = {
       headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})
@@ -133,7 +146,7 @@ export class AppointmentHttpService implements AppointmentService {
       'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken(),
     });
     const createAppointmentByPatientEndpoint: string = this.callThroughGateway ?
-      environment.chumbok.apiBaseEndpointLocalServer + '/android/api/appointments' : environment.chumbok.apiBaseEndpointLocalServer + '/api/appointment';
+      environment.chumbok.apiBaseEndpointLocalServer + '/android/api/appointments' : environment.chumbok.apiBaseEndpointLocalServer + '/android/api/appointments';
 
     return this.http.post(createAppointmentByPatientEndpoint, {
 

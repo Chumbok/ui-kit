@@ -74,7 +74,7 @@ export class PatientShowPrescriptionComponent implements OnInit {
   }
 
   onPrescriptionView(prescriptionId) {
-    this.router.navigate(['doctors/' + 'prescription/' + prescriptionId + '/prescription-view']);
+    this.router.navigate(['patient/' + 'prescription/' + prescriptionId + '/show/medicine-list']);
   }
 
 
