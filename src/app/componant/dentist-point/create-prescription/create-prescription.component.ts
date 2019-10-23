@@ -602,4 +602,8 @@ export class CreatePrescriptionComponent implements OnInit {
     }
   }
 
+  deleteMedicine(medicine) {
+    this.medicineList.splice(this.medicineList.indexOf(medicine), 1);
+  }
+
 }
