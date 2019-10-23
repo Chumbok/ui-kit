@@ -442,7 +442,8 @@
               <td>{{ medicine.medicineStrength }}</td>
               <td>{{ medicine.instruction }}</td>
               <td>{{ medicine.noOfTime }}</td>
-              <button class="btn btn-outline-danger mt-2" type="button">Delete</button>
+              <button (click)="deleteMedicine(medicine)" class="btn btn-outline-danger mt-2" type="button">Delete
+              </button>
             </tr>
             </tbody>
           </table>
