@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {DoctorChamber} from "../../../../model/doctor-chamber";
 import {PatientAuthService} from "../../../../service/patient.auth.service";
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-patient-signup',
@@ -17,6 +18,7 @@ export class PatientSignupComponent implements OnInit {
 
 
   constructor(private formBuilder: FormBuilder,
+              private title: Title,
               private patientAuthService: PatientAuthService,
               private router: Router,
               private activatedRoute: ActivatedRoute) {
@@ -27,6 +29,7 @@ export class PatientSignupComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.title.setTitle('Patient signup | Doctors point');
     this.signUpForm = this.formBuilder.group(
       {
         name: ['', Validators.required],

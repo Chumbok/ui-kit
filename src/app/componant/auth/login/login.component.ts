@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../../../service/auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LoggedInUserInfoService} from '../../../service/logged-in-user-info.service';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
 
   constructor(private formBuilder: FormBuilder,
+              private title: Title,
               private authService: AuthService,
               private loggedInUserInfoService: LoggedInUserInfoService,
               private router: Router,
@@ -23,7 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.title.setTitle('Login | UI-KIT');
     this.loginForm = this.formBuilder.group({
       username: ['admin', Validators.required],
       password: ['admin', Validators.required]

@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {OrgTenantUserService} from '../../../../service/org-tenant-user.service';
 import {User} from '../../../../model/user';
+import {Title} from '@angular/platform-browser';
 
 
 @Component({
@@ -18,7 +19,9 @@ export class CreateUserComponent implements OnInit {
   submitted = false;
   serverError = '';
 
-  constructor(private formBuilder: FormBuilder, private orgTenantUserService: OrgTenantUserService,
+  constructor(private formBuilder: FormBuilder,
+              private title: Title,
+              private orgTenantUserService: OrgTenantUserService,
               private router: Router, private route: ActivatedRoute) {
     this.route.params.subscribe(params => {
       this.orgId = params['id'];
@@ -27,6 +30,7 @@ export class CreateUserComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.title.setTitle('Create user | Doctors point');
     this.form = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],

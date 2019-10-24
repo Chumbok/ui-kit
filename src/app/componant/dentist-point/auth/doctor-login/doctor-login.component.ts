@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {DoctorAuthService} from "../../../../service/doctor.auth.service";
 import {PatientAuthService} from "../../../../service/patient.auth.service";
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-doctor-login',
@@ -19,6 +20,7 @@ export class DoctorLoginComponent implements OnInit {
   submitted = false;
 
   constructor(private formBuilder: FormBuilder,
+              private title: Title,
               private authService: DoctorAuthService,
               private patientAuthService: PatientAuthService,
               private router: Router,
@@ -30,7 +32,7 @@ export class DoctorLoginComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.title.setTitle('Login | Doctors point');
     this.loginForm = this.formBuilder.group({
       username: ['admin', Validators.required],
       password: ['admin', Validators.required],
