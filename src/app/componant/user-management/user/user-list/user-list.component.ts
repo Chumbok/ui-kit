@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {OrgTenantUserService} from '../../../../service/org-tenant-user.service';
 import {ActivatedRoute} from '@angular/router';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-user-list',
@@ -18,7 +19,9 @@ export class UserListComponent implements OnInit {
   itemTo: number;
   totalElements: number;
 
-  constructor(private orgTenantUserService: OrgTenantUserService, private route: ActivatedRoute) {
+  constructor(private orgTenantUserService: OrgTenantUserService,
+              private title: Title,
+              private route: ActivatedRoute) {
     this.route.params.subscribe(params => {
       this.orgId = params['id'];
       this.tenantId = params['tid'];
@@ -26,6 +29,7 @@ export class UserListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.title.setTitle('User list | Doctors point');
     this.orgTenantUserService.getUserList(this.orgId, this.tenantId).subscribe(res => {
       this.usersResp = res;
       this.users = res['items'];
