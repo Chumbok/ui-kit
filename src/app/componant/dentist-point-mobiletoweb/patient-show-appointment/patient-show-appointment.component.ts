@@ -32,17 +32,21 @@ export class PatientShowAppointmentComponent implements OnInit {
   pageChange(newPage: number) {
 
     this.router.navigate(['patient/show-appointment-list'], {queryParams: {page: newPage}});
-    this.appointmentService.getAppointmentListByDoctorIdMobile().subscribe(res => {
+    this.appointmentService.getAppointmentListByLoggedInPatient().subscribe(res => {
+      this.appointmentList = [];
       res.forEach((values) => {
         this.appointmentList.push(values);
       });
+
     });
 
   }
 
   ngOnInit() {
+
     this.pageChange(1);
-    this.appointmentService.getAppointmentListByDoctorIdMobile().subscribe(res => {
+    this.appointmentService.getAppointmentListByLoggedInPatient().subscribe(res => {
+      this.appointmentList = [];
       res.forEach((values) => {
         this.appointmentList.push(values);
       });

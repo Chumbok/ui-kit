@@ -64,8 +64,12 @@ export class CreatePrescriptionComponent implements OnInit {
   public showSave: boolean;
   public showSave2: boolean;
 
-  constructor(private formBuilder: FormBuilder, private prescriptionService: PrescriptionService, private flashMessageService: FlashMessageService,
-              private templateService: TemplateService, private route: ActivatedRoute, private router: Router) {
+  constructor(private formBuilder: FormBuilder,
+              private prescriptionService: PrescriptionService,
+              private flashMessageService: FlashMessageService,
+              private templateService: TemplateService,
+              private route: ActivatedRoute,
+              private router: Router) {
 
     this.config = {
       currentPage: 1,
@@ -116,11 +120,10 @@ export class CreatePrescriptionComponent implements OnInit {
     this.selectPatient(this.patientId);
     this.isApprovePatient();
 
-    if(this.patientId == null) {
+    if (this.patientId == null) {
       this.showSave = false;
       this.showSave2 = true;
-    }
-    else {
+    } else {
       this.showSave = true;
       this.showSave2 = false;
     }
@@ -251,15 +254,13 @@ export class CreatePrescriptionComponent implements OnInit {
 
 
     this.prescriptionService.createPrescription(
-
       prescription.appointmentId,
       prescription.chiefComplain,
       prescription.onExaminations,
       prescription.diagnosis,
-
       this.date,
 
-    this.medicineList).subscribe(res => {
+      this.medicineList).subscribe(res => {
       this.router.navigate(['doctors/calendar-view']);
       this.flashMessageService.showFlashMessage({
           messages: ['Save Successfully '], dismissible: true,
@@ -445,7 +446,8 @@ export class CreatePrescriptionComponent implements OnInit {
       console.log(res.activeStatus);
     });
   }
-  onCreatePrescriptionWithoutPatientId(){
+
+  onCreatePrescriptionWithoutPatientId() {
     this.submitted = true;
 
     if (this.form.invalid) {
@@ -586,6 +588,7 @@ export class CreatePrescriptionComponent implements OnInit {
     });
     console.log(this.phoneNumber);
   }
+
   onSelectFile(event) {
     if (event.target.files && event.target.files[0]) {
       let filesAmount = event.target.files.length;

@@ -60,7 +60,7 @@
                     <input [ngClass]="{ 'is-invalid': submitted && f.username.errors }" class="form-control"
                            formControlName="usernamePatient" id="usernamePatient"
                            type="text"/>
-                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                    <div *ngIf="submitted && f.usernamePatient.errors" class="invalid-feedback">
                       <div *ngIf="f.username.errors.required">Phone is required</div>
                     </div>
                   </div>
@@ -69,7 +69,7 @@
                     <input [ngClass]="{ 'is-invalid': submitted && f.password.errors }" class="form-control"
                            formControlName="passwordPatient" id="passwordPatient"
                            type="password"/>
-                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="submitted && f.passwordPatient.errors" class="invalid-feedback">
                       <div *ngIf="f.password.errors.requirePatient">Password is required</div>
                     </div>
                   </div>

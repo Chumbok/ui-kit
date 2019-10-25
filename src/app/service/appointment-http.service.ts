@@ -105,7 +105,7 @@ export class AppointmentHttpService implements AppointmentService {
     return this.http.get(this.getAppointmentByDoctorIdEndpoint, httpOptions).map(res => res);
   }
 
-  public getAppointmentListByDoctorIdMobile(): Observable<any> {
+  public getAppointmentListByLoggedInPatient(): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()}),
       withCredentials: true

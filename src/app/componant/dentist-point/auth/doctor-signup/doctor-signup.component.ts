@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {DoctorAuthService} from "../../../../service/doctor.auth.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {DoctorChamber} from "../../../../model/doctor-chamber";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-doctor-signup',
@@ -55,16 +56,45 @@ export class DoctorSignupComponent implements OnInit {
       doctorChamber.chamberAddress = chamberAddress;
       chamberLists.push(doctorChamber)
     });
-    console.log(this.f.gender.value);
+
     this.authService.signUp(this.f.name.value, this.f.gender.value, this.f.qualification.value,
       this.f.email.value, this.f.address.value, chamberLists, this.f.phoneNo.value,
       this.f.password.value)
       .subscribe(
         data => {
-          console.log("This is a custom directive!" + data);
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+          })
+
+          Toast.fire({
+            type: 'success',
+            title: 'Sign Up in successfully'
+          })
+
           this.router.navigate([this.returnUrl]);
         },
         error => {
+          /*  const Toast = Swal.mixin({
+              toast: true,
+              position: 'center',
+              showConfirmButton: false,
+              timer: 3000
+            })
+
+            Toast.fire({
+              type: 'error',
+              title: 'Sign Up in error'
+            })*/
+          Swal.fire({
+            type: 'error',
+            title: 'Oops...',
+            text: 'Sign Up wrong!',
+
+          })
+
         });
 
   }

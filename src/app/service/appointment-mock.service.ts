@@ -216,7 +216,7 @@ export class AppointmentMockService implements AppointmentService {
     return undefined;
   }
 
-  getAppointmentListByDoctorIdMobile(): Observable<any> {
+  getAppointmentListByLoggedInPatient(): Observable<any> {
     return undefined;
   }
 }

@@ -12,6 +12,7 @@ import {SiteLayoutComponent} from './layout/site-layout/site-layout.component';
 import {SiteHomeComponent} from './componant/site-home/site-home.component';
 import {DashboardComponent} from './componant/dashboard/dashboard.component';
 import {FlashMessageComponent} from './directives/flash-message/flash-message.component';
+import {NgFlashMessagesModule} from "ng-flash-messages";
 import {AuthService} from './service/auth.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule, HttpClientXsrfModule} from '@angular/common/http';
@@ -35,6 +36,7 @@ import {CalendarComponent} from './componant/dentist-point/calendar/calendar.com
 import {CalendarModule, DateAdapter} from 'angular-calendar';
 import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
 import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
+import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
 import {AppointmentService} from './service/appointment.service';
 import {PrescriptionService} from './service/prescription.service';
 import {PrescriptionListComponent} from './componant/dentist-point/prescription-list/prescription-list.component';
@@ -147,6 +149,7 @@ import {PatientViewMedicineComponent} from './componant/dentist-point-mobiletowe
     Ng2SearchPipeModule,
     MatExpansionModule,
     MatGridListModule,
+    SweetAlert2Module.forRoot(),
     MatIconModule,
     MatInputModule,
     MatListModule,
@@ -169,6 +172,7 @@ import {PatientViewMedicineComponent} from './componant/dentist-point-mobiletowe
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
+    NgFlashMessagesModule.forRoot(),
     OwlNativeDateTimeModule,
     HttpClientXsrfModule.withOptions({
       cookieName: 'XSRF_TOKEN',
