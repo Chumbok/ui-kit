@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {FlashMessageService} from "../../../service/flash-message.service";
 import {DatePipe} from "@angular/common";
 import {CreateAppointmentPatient} from "../../../model/patient-create-appointment";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-patient-create-appointment',
@@ -62,7 +63,11 @@ export class PatientCreateAppointmentComponent implements OnInit {
       );
     }, error => {
       if (error.status === 400) {
-        this.serverError = error.error.message;
+        Swal.fire(
+          'Patient account is not active yet',
+          '',
+          'error'
+        )
       }
     });
 
