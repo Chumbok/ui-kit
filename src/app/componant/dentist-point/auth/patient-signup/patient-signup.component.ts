@@ -36,8 +36,8 @@ export class PatientSignupComponent implements OnInit {
         bGroup: ['', Validators.required],
         address: ['', Validators.required],
         age: ['', Validators.required],
-        phoneNo: ['', Validators.required],
-        password: ['', Validators.required]
+        phoneNo: ['', [Validators.required, Validators.minLength(6), Validators.pattern("^[0-9]*$")]],
+        password: ['', [Validators.required, Validators.minLength(6)]]
       }
     )
     this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || 'doctorpoint/login';

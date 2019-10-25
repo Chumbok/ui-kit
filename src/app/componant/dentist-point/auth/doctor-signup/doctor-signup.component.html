@@ -70,7 +70,7 @@
               <label for="chambers">Chambers</label>
               <textarea [ngClass]="{ 'is-invalid': submitted && f.chambers.errors }" class="form-control"
                         formControlName="chambers" id="chambers"
-                        placeholder="Popular Hospital Ltd rode#23 house-32,Dhandondi,Dhaka" type="text"></textarea>
+                        placeholder="Popular Hospital Ltd road#23 house-32,Dhanmondi,Dhaka" type="text"></textarea>
               <div *ngIf="submitted && f.chambers.errors" class="invalid-feedback">
                 <div *ngIf="f.chambers.errors.required">Chambers no is required</div>
               </div>
@@ -82,7 +82,7 @@
                      formControlName="phoneNo" id="phoneNo"
                      type="text"/>
               <div *ngIf="submitted && f.phoneNo.errors" class="invalid-feedback">
-                <div *ngIf="f.phoneNo.errors.required">Phone No is required</div>
+                <div *ngIf="f.phoneNo.errors.required">Valid phone no is required</div>
               </div>
             </div>
 
@@ -92,7 +92,7 @@
                      formControlName="password" id="password"
                      type="password"/>
               <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                <div *ngIf="f.password.errors.required">Password is required</div>
+                <div *ngIf="f.password.errors.required">Password must more then 6 digits</div>
               </div>
             </div>
 
