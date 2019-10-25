@@ -5,7 +5,6 @@ import {SiteLayoutComponent} from './layout/site-layout/site-layout.component';
 import {SiteHomeComponent} from './componant/site-home/site-home.component';
 import {DashboardComponent} from './componant/dashboard/dashboard.component';
 import {AuthGuard} from './guard/auth.guard';
-import {LogoutComponent} from './componant/auth/logout/logout.component';
 import {NgModule} from '@angular/core';
 import {OrgListComponent} from './componant/user-management/org/org-list/org-list.component';
 import {TenantListComponent} from './componant/user-management/tenant/tenant-list/tenant-list.component';
@@ -26,7 +25,6 @@ import {AppointmentListComponent} from './componant/dentist-point/appointment-li
 import {AppUrl} from "./app-url";
 import {DoctorLoginComponent} from "./componant/dentist-point/auth/doctor-login/doctor-login.component";
 import {DoctorSignupComponent} from "./componant/dentist-point/auth/doctor-signup/doctor-signup.component";
-import {DoctorLogoutComponent} from "./componant/dentist-point/auth/doctor-logout/doctor-logout.component";
 import {PatientHomeComponent} from "./componant/dentist-point/patient-home/patient-home.component";
 import {PatientHomeLayoutComponent} from "./layout/patient-home-layout/patient-home-layout.component";
 import {PatientCreateAppointmentComponent} from "./componant/dentist-point-mobiletoweb/patient-create-appointment/patient-create-appointment.component";
@@ -65,9 +63,13 @@ const routes: Routes = [
       {path: AppUrl.DOCTOR_CREATEP_PRESCRIPTION, component: CreatePrescriptionComponent, canActivate: [AuthGuard]},
       {path: AppUrl.DOCTOR_PRESCRIPTION_LIST, component: PrescriptionListComponent, canActivate: [AuthGuard]},
       {path: AppUrl.DOCTOR_APPOINTMENT_LIST, component: AppointmentListComponent, canActivate: [AuthGuard]},
-      {path: 'doctors/prescription/:id/prescription-view', component: PrescriptionViewComponent, canActivate: [AuthGuard]},
+      {
+        path: 'doctors/prescription/:id/prescription-view',
+        component: PrescriptionViewComponent,
+        canActivate: [AuthGuard]
+      },
       {path: AppUrl.DOCTOR_CREATE_TEMPLATE, component: CreateTemplateComponent, canActivate: [AuthGuard]},
-      {path: AppUrl.DOCTOR_LOGOUT, component: DoctorLogoutComponent, canActivate: [AuthGuard]},
+      //{path: AppUrl.DOCTOR_LOGOUT, component: DoctorLogoutComponent, canActivate: [AuthGuard]},
       {path: 'doctors/create-appointment', component: CreateAppointmentComponent, canActivate: [AuthGuard]},
       {path: AppUrl.PATIENT_CREATE_PATIENT, component: CreatePatientComponent, canActivate: [AuthGuard]},
       {path: 'doctors/template/:id/edit-template', component: EditTemplateComponent, canActivate: [AuthGuard]},
@@ -91,22 +93,16 @@ const routes: Routes = [
         canActivate: [AuthGuard]
       },
 
-
     ],
-
   },
 
   // No layout routes
   {path: AppUrl.LOGIN, component: LoginComponent},
-
-  {path: AppUrl.LOGOUT, component: LogoutComponent},
   {path: AppUrl.DOCTORPOINT_LOGIN, component: DoctorLoginComponent},
   {path: AppUrl.DOCTOR_SIGNUP, component: DoctorSignupComponent},
   {path: 'patient/signUp', component: PatientSignupComponent}
 
 
-  // otherwise redirect to home
-  // {path: '**', redirectTo: AppUrl.DOCTOR_LOGIN}
 ];
 
 @NgModule({

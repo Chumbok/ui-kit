@@ -34,7 +34,7 @@ export abstract class AppointmentService {
 
   abstract getAppointmentListByDoctorId(): Observable<any>;
 
-  abstract getAppointmentListByDoctorIdMobile(): Observable<any>;
+  abstract getAppointmentListByLoggedInPatient(): Observable<any>;
 
   abstract deleteAppointment(appointmentId: string): Observable<any>;
 }

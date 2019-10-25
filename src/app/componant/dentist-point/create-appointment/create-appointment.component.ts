@@ -26,9 +26,12 @@ export class CreateAppointmentComponent implements OnInit {
   appoinrmentList: Array<any>;
   searchText;
 
-  constructor(private appointmentService: AppointmentService, private router: Router, private flashMessageService: FlashMessageService,
+  constructor(private appointmentService: AppointmentService,
+              private router: Router,
+              private flashMessageService: FlashMessageService,
               private datePipe: DatePipe,
               private formBuilder: FormBuilder) {
+
     this.send_date.setMonth(this.send_date.getMonth());
     this.formattedDate = this.send_date.toISOString().slice(0, 10);
   }
@@ -140,6 +143,7 @@ export class CreateAppointmentComponent implements OnInit {
       });
     });
   }
+
   getFreeSlotsValue(startTime) {
     this.startTimeOfFreeSlots = startTime;
   }
@@ -147,6 +151,7 @@ export class CreateAppointmentComponent implements OnInit {
   onLiginPatient() {
     console.log("dddd");
   }
+
   onClose() {
     /* TODO: add back task*/
   }
