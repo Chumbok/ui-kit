@@ -12,6 +12,7 @@ import 'rxjs/add/operator/switchMap';
 
 export class PrescriptionListComponent implements OnInit {
 
+  searchText;
   config: any;
   prescription: any;
   patientId: string;
