@@ -32,10 +32,10 @@ export class DoctorLoginComponent implements OnInit {
   ngOnInit() {
 
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
-      usernamePatient: ['', Validators.required],
-      passwordPatient: ['', Validators.required]
+      username: ['admin', Validators.required],
+      password: ['admin', Validators.required],
+      usernamePatient: ['admin', Validators.required],
+      passwordPatient: ['admin', Validators.required]
     });
 
     this.authService.removeAuthToken();
