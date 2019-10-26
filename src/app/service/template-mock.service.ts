@@ -20,6 +20,7 @@ export class TemplateMockService implements TemplateService {
                         onExaminations: Array<OnExaminations>,
                         diagnosises: Array<Diagnosises>,
                         pharmacies: Pharmacies[]): Observable<any> {
+
     console.log('template', templateName);
     console.log(chiefComplains);
     console.log(onExaminations);
@@ -31,15 +32,14 @@ export class TemplateMockService implements TemplateService {
         dismissible: true,
         type: 'primary'
       }
-
     );
     return new EmptyObservable<Response>();
-
   }
 
   public editTemplate(tempId: string, tempName: string, complain: string, parameters: string,
                       remarks: string, dentalHistory: string, vaccinationHistory: string, investigation: string,
                       radiological: string, planning: string, prescriptionList: Array<Pharmacies>): Observable<any> {
+
     console.log(tempId);
     console.log('template name:', tempName);
     console.log(complain);
@@ -56,10 +56,8 @@ export class TemplateMockService implements TemplateService {
         dismissible: true,
         type: 'primary'
       }
-
     );
     return new EmptyObservable<Response>();
-
   }
 
   public getTemplateView(): Observable<any> {
@@ -270,6 +268,7 @@ export class TemplateMockService implements TemplateService {
   }
 
   public deleteTemplate(templateId: string): Observable<any> {
+
     console.log(templateId);
     const mockResp =
       [

@@ -52,7 +52,6 @@ export class AuthHttpService implements AuthService {
     const httpOptions = {
       headers: new HttpHeaders({'Authorization': 'Bearer ' + this.getAuthToken()})
     };
-
     return this.http.get(this.refreshEndpoint, httpOptions).pipe(map(
       res => {
         localStorage.setItem('token', res['accessToken']);
@@ -61,18 +60,22 @@ export class AuthHttpService implements AuthService {
   }
 
   public removeAuthToken(): void {
+
     localStorage.removeItem('token');
   }
 
   public isLoggedIn(): boolean {
+
     return localStorage.getItem('token') != null;
   }
 
   public getAuthToken(): string {
+
     return localStorage.getItem('token');
   }
 
   private handleError(err: HttpErrorResponse | any) {
+
     console.error('An error occurred', err);
     return throwError(err.message || err);
   }

@@ -12,6 +12,7 @@ export class AppointmentMockService implements AppointmentService {
   }
 
   public getFreeTimeSlots(selectedDate: string): Observable<any> {
+
     const freeSlots = [
       {
         startTime: '10:00',
@@ -33,7 +34,8 @@ export class AppointmentMockService implements AppointmentService {
     return of(freeSlots);
   }
 
-  public getAppointmentDetails(): Observable<any> {
+  public getAppointmentDetailsForAutoSuggestion(): Observable<any> {
+
     const appointmentDetails = [
       {
         phoneno: '01988841890',
@@ -55,6 +57,7 @@ export class AppointmentMockService implements AppointmentService {
                            doctorName: string,
                            doctorChamber: string,
                            timeSlot: string): Observable<any> {
+
     console.log(phoneNumber);
     console.log(patientName);
     console.log(address);
@@ -75,6 +78,7 @@ export class AppointmentMockService implements AppointmentService {
   }
 
   public getAppointmentList(): Observable<any> {
+
     const mockResp = '{\n' +
       '    "page": 0,\n' +
       '    "size": 10,\n' +
@@ -158,12 +162,15 @@ export class AppointmentMockService implements AppointmentService {
       '}';
     return of(JSON.parse(mockResp));
   }
- public deleteAppointment(appointmentId: string): Observable<any> {
-   console.log(appointmentId);
-   return new EmptyObservable<Response>();
-}
+
+  public deleteAppointment(appointmentId: string): Observable<any> {
+
+    console.log(appointmentId);
+    return new EmptyObservable<Response>();
+  }
 
   getAppointmentListByDoctorId(): Observable<any> {
+
     const mockResp = '[\n' +
       '    {\n' +
       '        "appointmentId": "2853dbac-0713-43f6-8bce-251752fb2e2b",\n' +
@@ -213,10 +220,12 @@ export class AppointmentMockService implements AppointmentService {
   }
 
   createAppointmentByPatient(date: string, doctorName: string, doctorChamber: string, timeSlot: string): Observable<any> {
+
     return undefined;
   }
 
   getAppointmentListByLoggedInPatient(): Observable<any> {
+
     return undefined;
   }
 }

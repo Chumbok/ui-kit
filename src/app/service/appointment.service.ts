@@ -10,7 +10,7 @@ export abstract class AppointmentService {
 
   abstract getDoctorList(): Observable<any>;
 
-  abstract getAppointmentDetails(): Observable<any>;
+  abstract getAppointmentDetailsForAutoSuggestion(): Observable<any>;
 
   abstract createAppointment(phoneNumber: string,
                              patientName: string,
@@ -24,13 +24,11 @@ export abstract class AppointmentService {
 
   abstract getAppointmentList(): Observable<any>;
 
-
   abstract createAppointmentByPatient(
     date: string,
     doctorName: string,
     doctorChamber: string,
     timeSlot: string): Observable<any>;
-
 
   abstract getAppointmentListByDoctorId(): Observable<any>;
 

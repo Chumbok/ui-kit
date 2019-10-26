@@ -21,12 +21,10 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let prescriptionlist of prescriptionListin | filter:searchText | paginate: config">
+      <tr *ngFor="let prescriptionlist of prescriptionListLoggedDoctor | filter:searchText | paginate: config">
         <td style="width: 30%">{{ prescriptionlist.patientName }}</td>
         <td style="width: 30%">{{ prescriptionlist.startDate }}</td>
-        <td *ngFor="let chiefComplains of prescriptionlist.chiefComplains; let i = index"
-            style="width: 50%">{{ chiefComplains.chiefComplain }}</td>
-
+        <td style="width: 50%">{{ prescriptionlist.chiefComplains[0].chiefComplain }}</td>
         <td><a (click)="onPrescriptionView(prescriptionlist.prescriptionId)"
                [routerLink]="[prescriptionlist.id]">View</a></td>
       </tr>

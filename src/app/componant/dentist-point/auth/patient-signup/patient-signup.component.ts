@@ -15,7 +15,6 @@ export class PatientSignupComponent implements OnInit {
   returnUrl: string;
   submitted = false;
 
-
   constructor(private formBuilder: FormBuilder,
               private patientAuthService: PatientAuthService,
               private router: Router,
@@ -23,10 +22,12 @@ export class PatientSignupComponent implements OnInit {
   }
 
   get f() {
+
     return this.signUpForm.controls;
   }
 
   ngOnInit() {
+
     this.signUpForm = this.formBuilder.group(
       {
         name: ['', Validators.required],
@@ -51,13 +52,11 @@ export class PatientSignupComponent implements OnInit {
       return;
     }
 
-    console.log(this.f.gender.value);
     this.patientAuthService.signUp(this.f.name.value, this.f.gender.value, this.f.bGroup.value, this.f.username.value,
       this.f.email.value, this.f.address.value, this.f.age.value, this.f.phoneNo.value,
       this.f.password.value)
       .subscribe(
         data => {
-          console.log("This is a custom directive!" + data);
           this.router.navigate([this.returnUrl]);
         },
         error => {

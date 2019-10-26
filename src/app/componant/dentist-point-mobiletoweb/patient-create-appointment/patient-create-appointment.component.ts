@@ -12,42 +12,44 @@ import Swal from "sweetalert2";
   templateUrl: './patient-create-appointment.component.html',
   styleUrls: ['./patient-create-appointment.component.css']
 })
+
 export class PatientCreateAppointmentComponent implements OnInit {
+
+  searchText;
   submitted = false;
   form: FormGroup;
   serverError = '';
-  timeSlotArray: Array<String> = [];
-  doctorArrayList: Array<String> = [];
-  doctorChamberArrayList: Array<String> = [];
   stateCtrl = new FormControl();
   getFreeTime = new FormControl();
   startTimeOfFreeSlots: string;
   send_date = new Date();
   formattedDate: any;
   appoinrmentList: Array<any>;
-  searchText;
+  timeSlotArray: Array<String> = [];
+  doctorArrayList: Array<String> = [];
+  doctorChamberArrayList: Array<String> = [];
 
-  constructor(private appointmentService: AppointmentService, private router: Router, private flashMessageService: FlashMessageService,
-              private datePipe: DatePipe,
+  constructor(private appointmentService: AppointmentService, private router: Router,
+              private flashMessageService: FlashMessageService, private datePipe: DatePipe,
               private formBuilder: FormBuilder) {
     this.send_date.setMonth(this.send_date.getMonth());
     this.formattedDate = this.send_date.toISOString().slice(0, 10);
   }
 
   get f() {
+
     return this.form.controls;
   }
 
   onSubmit() {
-    this.submitted = true;
 
+    this.submitted = true;
     if (this.form.invalid) {
       return true;
     }
     const createAppointment: CreateAppointmentPatient = new CreateAppointmentPatient();
     createAppointment.doctorName = this.form.controls['selectDoctor'].value;
     createAppointment.doctorChamber = this.form.controls['selectChamber'].value;
-
     createAppointment.date = this.datePipe.transform(this.form.controls['date'].value, 'yyyy-MM-dd');
     createAppointment.time = this.startTimeOfFreeSlots;
     this.appointmentService.createAppointmentByPatient(
@@ -55,7 +57,6 @@ export class PatientCreateAppointmentComponent implements OnInit {
       createAppointment.doctorName,
       createAppointment.doctorChamber,
       createAppointment.time).subscribe(res => {
-
       this.flashMessageService.showFlashMessage({
           messages: ['Appointment Create  Successfully '], dismissible: true,
           type: 'primary'
@@ -70,7 +71,6 @@ export class PatientCreateAppointmentComponent implements OnInit {
         )
       }
     });
-
   }
 
   ngOnInit() {
@@ -86,11 +86,6 @@ export class PatientCreateAppointmentComponent implements OnInit {
       date: [''],
       timeSlot: ['']
     });
-
-    this.appointmentService.getAppointmentDetails().subscribe(res => {
-      this.appoinrmentList = res;
-    });
-
     if (this.form.controls['date'].value === '') {
       this.form.controls['date'].setValue(this.formattedDate);
       this.fetchFreeTimeSlots(this.formattedDate);
@@ -99,10 +94,12 @@ export class PatientCreateAppointmentComponent implements OnInit {
   }
 
   setDateFetchFreeTimeSlots() {
+
     this.fetchFreeTimeSlots(this.form.controls['date'].value);
   }
 
   fetchFreeTimeSlots(date: string) {
+
     this.appointmentService.getFreeTimeSlots(date).subscribe(res => {
       this.timeSlotArray = [];
       res.forEach(freeSlot => {
@@ -112,8 +109,8 @@ export class PatientCreateAppointmentComponent implements OnInit {
   }
 
   fetchDoctorList() {
-    this.appointmentService.getDoctorList().subscribe(res => {
 
+    this.appointmentService.getDoctorList().subscribe(res => {
       res.forEach(doctorList => {
         console.log(doctorList)
         this.doctorArrayList.push(doctorList);
@@ -122,13 +119,14 @@ export class PatientCreateAppointmentComponent implements OnInit {
   }
 
   onChange(doctorId) {
+
     this.fetchDoctorChamberList(doctorId);
   }
 
   fetchDoctorChamberList(doctorId: string) {
+
     this.doctorChamberArrayList = [];
     this.appointmentService.getDoctorChamberList(doctorId).subscribe(res => {
-
       res.forEach(doctorChamberList => {
         console.log(doctorChamberList)
         this.doctorChamberArrayList.push(doctorChamberList);
@@ -137,11 +135,8 @@ export class PatientCreateAppointmentComponent implements OnInit {
   }
 
   getFreeSlotsValue(startTime) {
-    this.startTimeOfFreeSlots = startTime;
-  }
 
-  onLiginPatient() {
-    console.log("dddd");
+    this.startTimeOfFreeSlots = startTime;
   }
 
   onClose() {

@@ -14,34 +14,30 @@ import {FlashMessageService} from "../../../service/flash-message.service";
   templateUrl: './create-template.component.html',
   styleUrls: ['./create-template.component.css']
 })
+
 export class CreateTemplateComponent implements OnInit {
-  medicineList: Pharmacies[] = [];
+
   form: FormGroup;
   submitted = false;
   serverError = '';
   patientId: string;
-  createMedicinePrescription: Array<Pharmacies> = [];
-  chiefComplainArray: Array<any> = [];
-  chiefParametersArray: Array<any> = [];
-  chiefRemarksArray: Array<any> = [];
-  dentalHistoryArray: Array<any> = [];
-  vaccinationHistoryArray: Array<any> = [];
-  investigationArray: Array<any> = [];
-  radiologicalArray: Array<any> = [];
-  planningArray: Array<any> = [];
   templateName: string;
+  createMedicinePrescription: Array<Pharmacies> = [];
 
   constructor(private formBuilder: FormBuilder, private prescriptionService: TemplateService, private flashMessageService: FlashMessageService,
               private route: ActivatedRoute, private router: Router) {
-
     this.route.params.subscribe(params => {
       this.patientId = params['id'];
     });
-
   }
 
+  get f() {
+
+    return this.form.controls;
+  }
 
   ngOnInit() {
+
     this.form = this.formBuilder.group({
       templateName: [''],
       complain: [''],
@@ -57,22 +53,15 @@ export class CreateTemplateComponent implements OnInit {
       drugStrength: [''],
       drugDose: [''],
       drugDuration: ['']
-
-
     });
   }
 
-  get f() {
-    return this.form.controls;
-  }
-
   onSubmit() {
-    this.submitted = true;
 
+    this.submitted = true;
     if (this.form.invalid) {
       return true;
     }
-
     const prescription: CreatePrescription = new CreatePrescription();
     prescription.patientId = 'trt';
     var chiefComplain = new String(this.form.controls['complain'].value).split(",");
@@ -84,6 +73,7 @@ export class CreateTemplateComponent implements OnInit {
 
     var parameters = new String(this.form.controls['parameters'].value).split(",");
     var remarks = new String(this.form.controls['remarks'].value).split(",");
+
     for (let i = 0; i < Math.max(parameters.length, remarks.length); i++) {
       const onExamination: OnExaminations = new OnExaminations();
       if (remarks[i] == null) {
@@ -103,7 +93,6 @@ export class CreateTemplateComponent implements OnInit {
         onExamination.remark = 'null';
         prescription.onExaminations.push(onExamination)
       }
-
     }
 
     var dentalHistory = new String(this.form.controls['dentalHistory'].value).split(",");
@@ -115,7 +104,6 @@ export class CreateTemplateComponent implements OnInit {
     for (let i = 0; i < Math.max(dentalHistory.length, vaccinationHistory.length,
       investigation.length, radiological.length, planning.length); i++) {
       const diagonsises: Diagnosises = new Diagnosises();
-
       if (dentalHistory[i] == null) {
         diagonsises.medicalHistory = 'null';
         diagonsises.drugHistory = vaccinationHistory[i];
@@ -153,7 +141,6 @@ export class CreateTemplateComponent implements OnInit {
         prescription.diagnosis.push(diagonsises);
       } else if (dentalHistory[i] == null && vaccinationHistory[i] == null
         && investigation[i] == null && radiological[i] == null && planning[i] == null) {
-
         diagonsises.medicalHistory = 'null';
         diagonsises.drugHistory = 'null';
         diagonsises.investigation = 'null';
@@ -162,7 +149,6 @@ export class CreateTemplateComponent implements OnInit {
         prescription.diagnosis.push(diagonsises);
       } else if (dentalHistory[i] != null && vaccinationHistory[i] != null
         && investigation[i] != null && radiological[i] != null && planning[i] != null) {
-
         diagonsises.medicalHistory = dentalHistory[i];
         diagonsises.drugHistory = vaccinationHistory[i];
         diagonsises.investigation = investigation[i];
@@ -170,7 +156,6 @@ export class CreateTemplateComponent implements OnInit {
         diagonsises.clinicalFinDing = planning[i];
         prescription.diagnosis.push(diagonsises);
       }
-
     }
 
     const createDrug: Pharmacies = new Pharmacies();
@@ -180,14 +165,13 @@ export class CreateTemplateComponent implements OnInit {
     createDrug.noOfTime = this.form.controls['drugDose'].value;
     createDrug.instruction = this.form.controls['drugDuration'].value;
     prescription.createMedicinePrescription.push(createDrug);
-
     this.templateName = this.form.controls['templateName'].value;
+
     this.prescriptionService.createTemplate(
       this.templateName,
       prescription.chiefComplain,
       prescription.onExaminations,
       prescription.diagnosis,
-
 
       this.createMedicinePrescription).subscribe(res => {
       this.router.navigate(['doctors/calendar-view']);
@@ -196,33 +180,15 @@ export class CreateTemplateComponent implements OnInit {
           type: 'primary'
         }
       );
-
     }, error => {
       if (error.status === 400) {
         this.serverError = error.error.message;
       }
     });
-    /*this.chiefComplainArray.push(this.splitMultiLine(this.form.controls['complain'].value));
-    this.chiefParametersArray.push(this.splitMultiLine(this.form.controls['parameters'].value));
-    this.chiefRemarksArray.push(this.splitMultiLine(this.form.controls['remarks'].value));
-    this.dentalHistoryArray.push(this.splitMultiLine(this.form.controls['dentalHistory'].value));
-    this.vaccinationHistoryArray.push(this.splitMultiLine(this.form.controls['vaccinationHistory'].value));
-    this.investigationArray.push(this.splitMultiLine(this.form.controls['investigation'].value));
-    this.radiologicalArray.push(this.splitMultiLine(this.form.controls['radiological'].value));
-    this.planningArray.push(this.splitMultiLine(this.form.controls['planning'].value));
-    this.templateName = this.form.controls['templateName'].value;
-    this.prescriptionService.createTemplate(this.templateName, this.chiefComplainArray, this.chiefParametersArray,
-      this.chiefRemarksArray, this.dentalHistoryArray, this.vaccinationHistoryArray, this.investigationArray,
-      this.radiologicalArray, this.planningArray, this.createMedicinePrescription).subscribe(res => {
-
-    }, error => {
-      if (error.status === 400) {
-        this.serverError = error.error.message;
-      }
-    });*/
   }
 
   addMedicine() {
+
     const createDrug: Pharmacies = new Pharmacies();
     createDrug.medicineType = this.form.controls['drugType'].value;
     createDrug.name = this.form.controls['medicineName'].value;
@@ -232,8 +198,5 @@ export class CreateTemplateComponent implements OnInit {
     this.createMedicinePrescription.push(createDrug);
   }
 
-  splitMultiLine(str): Array<string> {
-    const splitted = str.split('\n', 200); // 200 is number of string
-    return splitted;
-  }
+
 }

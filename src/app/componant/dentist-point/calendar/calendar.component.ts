@@ -4,9 +4,7 @@ import {Subject} from 'rxjs';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, CalendarView} from 'angular-calendar';
 import {AppointmentService} from '../../../service/appointment.service';
-
 import {Router} from '@angular/router';
-
 
 const colors: any = {
   red: {
@@ -30,34 +28,26 @@ const colors: any = {
   styleUrls: ['./calendar.component.css'],
   encapsulation: ViewEncapsulation.None
 })
+
 export class CalendarComponent implements OnInit {
+
+  private appointmentId: string;
+  @ViewChild('modalContent', {static: false}) modalContent: TemplateRef<any>;
+  view: CalendarView = CalendarView.Month;
+  CalendarView = CalendarView;
+  viewDate: Date = new Date();
+  actions: CalendarEventAction[] = [];
+  refresh: Subject<any> = new Subject();
+  events: CalendarEvent[] = [];
+  activeDayIsOpen = false;
 
   constructor(private modal: NgbModal, private appointmentService: AppointmentService, private router: Router) {
   }
-  private appointmentId:string;
-
-  @ViewChild('modalContent', {static: false}) modalContent: TemplateRef<any>;
-
-  view: CalendarView = CalendarView.Month;
-
-  CalendarView = CalendarView;
-
-  viewDate: Date = new Date();
-
-  actions: CalendarEventAction[] = [];
-
-  refresh: Subject<any> = new Subject();
-
-  events: CalendarEvent[] = [];
-
-  activeDayIsOpen = false;
 
   ngOnInit() {
     this.appointmentService.getAppointmentListByDoctorId().subscribe(res => {
-
       res.forEach((appointment) => {
         let timeEpisode = new Date(appointment.startDateTime);
-        console.log(appointment.appointmentId)
         this.events.push({
           id: appointment.patientId,
           cssClass: appointment.appointmentId,
@@ -69,7 +59,6 @@ export class CalendarComponent implements OnInit {
           allDay: false,
         });
       });
-
       this.refresh.next();
     });
   }
@@ -88,11 +77,7 @@ export class CalendarComponent implements OnInit {
     }
   }
 
-  eventTimesChanged({
-                      event,
-                      newStart,
-                      newEnd
-                    }: CalendarEventTimesChangedEvent): void {
+  eventTimesChanged({event, newStart, newEnd}: CalendarEventTimesChangedEvent): void {
     event.start = newStart;
     event.end = newEnd;
     this.handleEvent('Dropped or resized', event);
@@ -100,11 +85,12 @@ export class CalendarComponent implements OnInit {
   }
 
   handleEvent(action: string, event: CalendarEvent): void {
-    this.router.navigate(['doctors/create-prescription'], {queryParams: {patientId: event.id,appointmentId: event.cssClass}});
+    this.router.navigate(['doctors/create-prescription'], {
+      queryParams: {
+        patientId: event.id,
+        appointmentId: event.cssClass
+      }
+    });
   }
 
-  onCreateAppointment() {
-    this.router.navigate(['patient/create-appointment']);
-
-  }
 }

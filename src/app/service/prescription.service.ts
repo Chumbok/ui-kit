@@ -31,6 +31,7 @@ export abstract class PrescriptionService {
                               nextVisitDate: string,
                               medicineList: Pharmacies[]
   ): Observable<any>;
+
   abstract createPrescriptionWithoutPatientId(patientName: string,
                                               phoneNumber:string,
                                               address:string,
