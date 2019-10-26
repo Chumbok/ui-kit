@@ -16,7 +16,6 @@ export class DoctorSignupComponent implements OnInit {
   returnUrl: string;
   submitted = false;
 
-
   constructor(private formBuilder: FormBuilder,
               private authService: DoctorAuthService,
               private router: Router,
@@ -24,10 +23,12 @@ export class DoctorSignupComponent implements OnInit {
   }
 
   get f() {
+
     return this.signUpForm.controls;
   }
 
   ngOnInit() {
+
     this.signUpForm = this.formBuilder.group(
       {
         name: ['', Validators.required],
@@ -50,6 +51,7 @@ export class DoctorSignupComponent implements OnInit {
     if (this.signUpForm.invalid) {
       return;
     }
+
     var chamberList = new String(this.f.chambers.value).split("\n");
     chamberList.forEach(function (chamberAddress) {
       const doctorChamber: DoctorChamber = new DoctorChamber();
@@ -69,33 +71,18 @@ export class DoctorSignupComponent implements OnInit {
             timer: 3000
           })
 
-          Toast.fire({
-            type: 'success',
-            title: 'Sign Up in successfully'
-          })
+          Toast.fire({type: 'success', title: 'Sign Up in successfully'})
 
           this.router.navigate([this.returnUrl]);
         },
         error => {
-          /*  const Toast = Swal.mixin({
-              toast: true,
-              position: 'center',
-              showConfirmButton: false,
-              timer: 3000
-            })
 
-            Toast.fire({
-              type: 'error',
-              title: 'Sign Up in error'
-            })*/
           Swal.fire({
             type: 'error',
             title: 'Oops...',
             text: 'Sign Up wrong!',
 
           })
-
         });
-
   }
 }

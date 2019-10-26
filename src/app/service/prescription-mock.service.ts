@@ -11,12 +11,10 @@ import {Diagnosises} from "../model/on-diagonsis";
 
 @Injectable({providedIn: 'root'})
 export class PrescriptionMockService implements PrescriptionService {
-
   constructor(private flashMessageService: FlashMessageService, private router: Router) {
   }
 
   public getPrescriptionList(currentPage): Observable<any> {
-    // console.log(currentPage);
     const mockResp = {
       page: currentPage,
       size: 3,
@@ -88,15 +86,13 @@ export class PrescriptionMockService implements PrescriptionService {
           patientName: 'Hasan',
           chiefComplain: 'faver'
         }]
-
-
     };
     return of(mockResp);
   }
 
 
   public getPrescriptionListByPatientId(currentPage): Observable<any> {
-    // console.log(currentPage);
+
     const mockResp = {
       page: currentPage,
       size: 3,
@@ -168,8 +164,6 @@ export class PrescriptionMockService implements PrescriptionService {
           patientName: 'Hasan',
           chiefComplain: 'faver'
         }]
-
-
     };
     return of(mockResp);
   }
@@ -254,8 +248,8 @@ export class PrescriptionMockService implements PrescriptionService {
   }
 
   public getPatientProfile(patientId: string): Observable<any> {
-    const mockResp = {
 
+    const mockResp = {
       name: 'Monirozzaman Roni',
       age: '29',
       bloodGroup: 'B+',
@@ -273,6 +267,7 @@ export class PrescriptionMockService implements PrescriptionService {
                             date: string,
                             medicineList: Pharmacies[]): Observable<any> {
 
+
     console.log(appointmentId);
     console.log(complain);
     console.log(onExaminations);
@@ -287,10 +282,10 @@ export class PrescriptionMockService implements PrescriptionService {
       }
     );
     return new EmptyObservable<Response>();
-
   }
 
   patientApprove(patientId: string): Observable<any> {
+
     return undefined;
   }
 
@@ -302,6 +297,7 @@ export class PrescriptionMockService implements PrescriptionService {
                                      parameters: Array<OnExaminations>,
                                      dentalHistory: Array<Diagnosises>,
                                      medicineList: Pharmacies[]): Observable<any> {
+
     console.log(patientName);
     console.log(phoneNumber);
     console.log(adress);
@@ -316,6 +312,7 @@ export class PrescriptionMockService implements PrescriptionService {
   }
 
   isPatientApprove(patientId: string): Observable<any> {
+
     const mockActiveStatus = '{\n' +
       '    "activeStatus": true\n' +
       '}'
@@ -324,10 +321,12 @@ export class PrescriptionMockService implements PrescriptionService {
   }
 
   getPrescriptionListByLoginPatientId(currentPage): Observable<any> {
+
     return undefined;
   }
 
   getPatientPrescriptionView(selectedTemplateId): Observable<any> {
+
     return undefined;
   }
 }

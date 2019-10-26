@@ -4,7 +4,7 @@
     <div class="ibox-title">Create Prescription</div>
     <div>
       <button (click)="onApprovePatient()" *ngIf="show" class="btn btn-warning">Approve Now</button>&nbsp;
-      <button class="btn btn-secondary"  (click)="onCancel()">Cancel</button>&nbsp;
+      <button (click)="onCancel()" class="btn btn-secondary">Cancel</button>&nbsp;
       <button class="btn btn-primary" *ngIf="showSave" (click)="onSubmit()">Save</button>
       <button class="btn btn-primary" *ngIf="showSave2" (click)="onCreatePrescriptionWithoutPatientId()">Save</button>
     </div>
@@ -173,7 +173,7 @@
                    *ngFor="let chiefComplain of chiefComplainArray; let i = index">
 
                 <button type="button" (click)="onClickTemplate(chiefComplain,'chiefComplain')" class="btn btn-light">{{
-                  chiefComplain }}
+                    chiefComplain }}
                 </button>
               </div>
             </div>
@@ -201,7 +201,7 @@
                    *ngFor="let chiefParameter of chiefParametersArray; let i = index">
 
                 <button type="button" (click)="onClickTemplate(chiefParameter,'parameters')" class="btn btn-light">{{
-                  chiefParameter }}
+                    chiefParameter }}
                 </button>
               </div>
             </div>
@@ -224,7 +224,7 @@
               <div class="btn disabled mb-2" role="alert" *ngFor="let chiefRemarks of chiefRemarksArray; let i = index">
 
                 <button type="button" (click)="onClickTemplate(chiefRemarks,'remarks')" class="btn btn-light">{{
-                  chiefRemarks }}
+                    chiefRemarks }}
                 </button>
               </div>
             </div>
@@ -252,7 +252,7 @@
                    *ngFor="let dentalHistory of dentalHistoryArray; let i = index">
 
                 <button type="button" (click)="onClickTemplate(dentalHistory,'dentalHistory')" class="btn btn-light">{{
-                  dentalHistory }}
+                    dentalHistory }}
                 </button>
               </div>
             </div>
@@ -300,7 +300,7 @@
                    *ngFor="let investigation of investigationArray; let i = index">
 
                 <button type="button" (click)="onClickTemplate(investigation,'investigation')" class="btn btn-light">{{
-                  investigation }}
+                    investigation }}
                 </button>
               </div>
             </div>
@@ -321,7 +321,7 @@
             <div class="col-sm-9">
               <div class="btn disabled mb-2" role="alert" *ngFor="let radiological of radiologicalArray; let i = index">
                 <button type="button" (click)="onClickTemplate(radiological,'radiological')" class="btn btn-light">{{
-                  radiological }}
+                    radiological }}
                 </button>
               </div>
             </div>

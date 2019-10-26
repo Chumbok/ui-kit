@@ -43,8 +43,8 @@ export class PatientShowPrescriptionComponent implements OnInit {
 
     if (this.patientId) {
       this.prescriptionService.getPrescriptionListByPatientId(this.patientId).subscribe(res => {
-        this.prescriptionListin = res;
 
+        this.prescriptionListin = res;
         res.forEach((patientInformation) => {
           if (patientInformation.id == this.patientId) {
 

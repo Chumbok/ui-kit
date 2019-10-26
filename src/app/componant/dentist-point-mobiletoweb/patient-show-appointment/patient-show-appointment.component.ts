@@ -7,15 +7,16 @@ import {ActivatedRoute, Router} from "@angular/router";
   templateUrl: './patient-show-appointment.component.html',
   styleUrls: ['./patient-show-appointment.component.css']
 })
+
 export class PatientShowAppointmentComponent implements OnInit {
 
+  searchText;
+  config: any;
   prescription: any;
   patientId: string;
   itemFrom: number;
   itemTo: number;
   totalElements: number;
-  config: any;
-  searchText;
   patientName: string;
   appointmentList: Array<any> = [];
 
@@ -37,9 +38,7 @@ export class PatientShowAppointmentComponent implements OnInit {
       res.forEach((values) => {
         this.appointmentList.push(values);
       });
-
     });
-
   }
 
   ngOnInit() {
@@ -55,7 +54,7 @@ export class PatientShowAppointmentComponent implements OnInit {
   }
 
   onAppointmentEdit(prescriptionId) {
-    // this.router.navigate(['doctors/'+'prescription/' + prescriptionId + '/prescription-view']);
+
   }
 
   onAppointmentDelete(appointmentId) {

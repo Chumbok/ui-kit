@@ -9,20 +9,18 @@ import 'rxjs/add/operator/switchMap';
   templateUrl: './prescription-list.component.html',
   styleUrls: ['./prescription-list.component.css']
 })
+
 export class PrescriptionListComponent implements OnInit {
 
+  config: any;
   prescription: any;
-  prescriptionListin: Array<any> = [];
-  prescriptionListin1: Array<any> = [];
   patientId: string;
   itemFrom: number;
   itemTo: number;
   totalElements: number;
-  config: any;
-  searchText;
   patientName: string;
-  phoneNumber: string;
   chiefComplainArray: Array<string> = [];
+  prescriptionListLoggedDoctor: Array<any> = [];
 
   constructor(private prescriptionService: PrescriptionService, private route: ActivatedRoute, private router: Router) {
     this.config = {
@@ -42,29 +40,20 @@ export class PrescriptionListComponent implements OnInit {
   pageChange(newPage: number) {
 
     this.chiefComplainArray = [];
-
     if (this.patientId) {
       this.prescriptionService.getPrescriptionListByPatientId(this.patientId).subscribe(res => {
-        this.prescriptionListin = res;
-
+        this.prescriptionListLoggedDoctor = res;
         res.forEach((patientInformation) => {
-          if (patientInformation.id == this.patientId ) {
-
-            this.prescriptionListin.push(patientInformation.chiefComplains);
+          if (patientInformation.id == this.patientId) {
+            this.prescriptionListLoggedDoctor.push(patientInformation.chiefComplains);
           }
         });
       });
     } else {
-
       this.router.navigate(['doctors/prescription-list'], {queryParams: {page: newPage}});
       this.prescriptionService.getPrescriptionList(newPage).subscribe(res => {
         this.prescription = res;
-        
-        console.log("Console");
-        this.prescriptionListin = res;
-
-
-
+        this.prescriptionListLoggedDoctor = res;
         this.itemFrom = this.prescription.page + 1;
         this.itemTo = (this.prescription.page + 1) * this.prescription.size;
         this.totalElements = this.prescription.totalElements;
@@ -73,10 +62,12 @@ export class PrescriptionListComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.pageChange(1);
   }
 
   onPrescriptionView(prescriptionId) {
+
     this.router.navigate(['doctors/' + 'prescription/' + prescriptionId + '/prescription-view']);
   }
 

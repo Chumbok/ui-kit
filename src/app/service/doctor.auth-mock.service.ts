@@ -8,7 +8,7 @@ export class DoctorAuthMockService implements DoctorAuthService {
 
   private loggedIn = false;
 
-  public login(username: string, password: string) {
+  public doctorLogin(username: string, password: string) {
     console.log('HTTP login is disabled because environment.chumbok.enableMock=true.');
     this.loggedIn = true;
     return of({});

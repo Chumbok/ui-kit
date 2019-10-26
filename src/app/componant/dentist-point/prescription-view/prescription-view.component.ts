@@ -9,6 +9,7 @@ import {Pharmacies} from '../../../model/create-medicine';
   templateUrl: './prescription-view.component.html',
   styleUrls: ['./prescription-view.component.css']
 })
+
 export class PrescriptionViewComponent implements OnInit {
 
   form: FormGroup;
@@ -44,10 +45,12 @@ export class PrescriptionViewComponent implements OnInit {
   }
 
   get f() {
+
     return this.form.controls;
   }
 
   ngOnInit() {
+
     this.form = this.formBuilder.group({
       chiefComplain: ['', Validators.required],
       parameters: [''],
@@ -62,13 +65,13 @@ export class PrescriptionViewComponent implements OnInit {
       drugStrength: [''],
       drugDose: [''],
       drugDuration: ['']
-
     });
     this.onPrescriptionView(this.templateId);
   }
 
 
   onPrescriptionView(selectedTemplateId) {
+
     this.chiefComplainArray = [];
     this.onExaminationsParametersArray = [];
     this.onExaminationsRemarkArray = [];
@@ -78,54 +81,41 @@ export class PrescriptionViewComponent implements OnInit {
     this.radiologicalArray = [];
     this.planningArray = [];
 
-
     this.prescriptionService1.getPrescriptionView(selectedTemplateId).subscribe(res => {
-
       this.selectedTemplateId = selectedTemplateId;
       this.selectedTemplate = res;
-      console.log(" Template Id" + selectedTemplateId);
-
       this.selectedTemplate['chiefComplains'].forEach((chiefComplains) => {
         this.chiefComplain = this.chiefComplain + chiefComplains.chiefComplain + ", ";
-
       });
       this.chiefComplainArray.push(this.chiefComplain);
-
       this.selectedTemplate['onExaminations'].forEach((onExaminations) => {
         this.parameters = this.parameters + onExaminations.parameter + ", ";
       });
       this.onExaminationsParametersArray.push(this.parameters);
-
       this.selectedTemplate['onExaminations'].forEach((onExaminations) => {
         this.remarks = this.remarks + onExaminations.remark + ", ";
       });
       this.onExaminationsRemarkArray.push(this.remarks);
-
       this.selectedTemplate['diagnosises'].forEach((diagnosises) => {
         this.vaccinationHistory = this.vaccinationHistory + diagnosises.medicalHistory + ", "
       });
       this.dentalHistoryArray.push(this.vaccinationHistory);
-
       this.selectedTemplate['diagnosises'].forEach((diagnosises) => {
         this.dentalHistory = this.dentalHistory + diagnosises.drugHistory + ", ";
       });
       this.vaccinationHistoryArray.push();
-
       this.selectedTemplate['diagnosises'].forEach((diagnosises) => {
         this.investigation = this.investigation + diagnosises.investigation + ", ";
       });
       this.investigationArray.push(this.investigation);
-
       this.selectedTemplate['diagnosises'].forEach((diagnosises) => {
         this.radiological = this.radiological + diagnosises.finalDiagnosis + ", ";
       });
       this.radiologicalArray.push(this.radiological);
-
       this.selectedTemplate['diagnosises'].forEach((diagnosises) => {
         this.planning = this.planning + diagnosises.clinicalFinDing + ", ";
       });
       this.planningArray.push(this.planning);
-
       this.selectedTemplate['pharmacies'].forEach((medicine) => {
         const createDrug: Pharmacies = new Pharmacies();
         createDrug.medicineType = medicine.medicineType;

@@ -17,19 +17,21 @@ import {FlashMessageService} from "../../../service/flash-message.service";
   templateUrl: './create-prescription.component.html',
   styleUrls: ['./create-prescription.component.css']
 })
+
 export class CreatePrescriptionComponent implements OnInit {
-  urls = [];
+
+  show: boolean;
+  showSave: boolean;
+  showSave2: boolean;
   selectedTemplate: any;
   selectedTemplateId: string;
-  templateList: Template[];
   prescriptionResp: any;
   form: FormGroup;
   submitted = false;
   serverError = '';
-  medicineList: Pharmacies[] = [];
-  public show_dialog = false;
-  public profileView = false;
-  public show_previousPrescription = false;
+  show_dialog = false;
+  profileView = false;
+  show_previousPrescription = false;
   patientId: string;
   appointmentId: string;
   patientName: string;
@@ -38,12 +40,12 @@ export class CreatePrescriptionComponent implements OnInit {
   date: string;
   age: string;
   bloodGroup: string;
-  prescriptionListin: Array<any> = [];
   prescription: any;
-  itemFrom: number;
-  itemTo: number;
   totalElements: number;
   config: any;
+  urls = [];
+  templateList: Template[];
+  medicineList: Pharmacies[] = [];
   chiefComplainArray: Array<string> = [];
   chiefComplainArrayView: Array<string> = [];
   chiefParametersArray: Array<string> = [];
@@ -60,9 +62,6 @@ export class CreatePrescriptionComponent implements OnInit {
   radiologicalArrayView: Array<string> = [];
   planningArray: Array<string> = [];
   planningArrayView: Array<string> = [];
-  public show: boolean;
-  public showSave: boolean;
-  public showSave2: boolean;
 
   constructor(private formBuilder: FormBuilder,
               private prescriptionService: PrescriptionService,
@@ -70,7 +69,6 @@ export class CreatePrescriptionComponent implements OnInit {
               private templateService: TemplateService,
               private route: ActivatedRoute,
               private router: Router) {
-
     this.config = {
       currentPage: 1,
       itemsPerPage: 5
@@ -84,7 +82,13 @@ export class CreatePrescriptionComponent implements OnInit {
     });
   }
 
+  get f() {
+
+    return this.form.controls;
+  }
+
   ngOnInit() {
+
     this.form = this.formBuilder.group({
       chiefComplain: ['', Validators.required],
       parameters: [''],
@@ -111,11 +115,11 @@ export class CreatePrescriptionComponent implements OnInit {
       res.forEach((template) => {
         const t = new Template();
         t.id = template.id;
-
         t.templateName = template.templateName;
         this.templateList.push(t);
       });
     });
+
     this.onPatientView();
     this.selectPatient(this.patientId);
     this.isApprovePatient();
@@ -129,17 +133,13 @@ export class CreatePrescriptionComponent implements OnInit {
     }
   }
 
-  get f() {
-    return this.form.controls;
-  }
-
   dateFetching() {
     this.date = this.form.controls['date'].value;
   }
 
   onSubmit() {
-    this.submitted = true;
 
+    this.submitted = true;
     if (this.form.invalid) {
       return true;
     }
@@ -174,7 +174,6 @@ export class CreatePrescriptionComponent implements OnInit {
         onExamination.remark = 'null';
         prescription.onExaminations.push(onExamination)
       }
-
     }
 
     var dentalHistory = new String(this.form.controls['dentalHistory'].value).split(",");
@@ -186,7 +185,6 @@ export class CreatePrescriptionComponent implements OnInit {
     for (let i = 0; i < Math.max(dentalHistory.length, vaccinationHistory.length,
       investigation.length, radiological.length, planning.length); i++) {
       const diagonsises: Diagnosises = new Diagnosises();
-
       if (dentalHistory[i] == null) {
         diagonsises.medicalHistory = 'null';
         diagonsises.drugHistory = vaccinationHistory[i];
@@ -224,7 +222,6 @@ export class CreatePrescriptionComponent implements OnInit {
         prescription.diagnosis.push(diagonsises);
       } else if (dentalHistory[i] == null && vaccinationHistory[i] == null
         && investigation[i] == null && radiological[i] == null && planning[i] == null) {
-
         diagonsises.medicalHistory = 'null';
         diagonsises.drugHistory = 'null';
         diagonsises.investigation = 'null';
@@ -233,7 +230,6 @@ export class CreatePrescriptionComponent implements OnInit {
         prescription.diagnosis.push(diagonsises);
       } else if (dentalHistory[i] != null && vaccinationHistory[i] != null
         && investigation[i] != null && radiological[i] != null && planning[i] != null) {
-
         diagonsises.medicalHistory = dentalHistory[i];
         diagonsises.drugHistory = vaccinationHistory[i];
         diagonsises.investigation = investigation[i];
@@ -241,7 +237,6 @@ export class CreatePrescriptionComponent implements OnInit {
         diagonsises.clinicalFinDing = planning[i];
         prescription.diagnosis.push(diagonsises);
       }
-
     }
 
     const createDrug: Pharmacies = new Pharmacies();
@@ -252,14 +247,12 @@ export class CreatePrescriptionComponent implements OnInit {
     createDrug.instruction = this.form.controls['drugDuration'].value;
     prescription.createMedicinePrescription.push(createDrug);
 
-
     this.prescriptionService.createPrescription(
       prescription.appointmentId,
       prescription.chiefComplain,
       prescription.onExaminations,
       prescription.diagnosis,
       this.date,
-
       this.medicineList).subscribe(res => {
       this.router.navigate(['doctors/calendar-view']);
       this.flashMessageService.showFlashMessage({
@@ -276,6 +269,7 @@ export class CreatePrescriptionComponent implements OnInit {
   }
 
   addMedicine() {
+
     const createDrug: Pharmacies = new Pharmacies();
     createDrug.medicineType = this.form.controls['drugType'].value;
     createDrug.name = this.form.controls['medicineName'].value;
@@ -283,10 +277,10 @@ export class CreatePrescriptionComponent implements OnInit {
     createDrug.noOfTime = this.form.controls['drugDose'].value;
     createDrug.instruction = this.form.controls['drugDuration'].value;
     this.medicineList.push(createDrug);
-
   }
 
   selectTemplate(selectedTemplateId) {
+
     this.chiefComplainArray = [];
     this.chiefParametersArray = [];
     this.chiefRemarksArray = [];
@@ -297,12 +291,9 @@ export class CreatePrescriptionComponent implements OnInit {
     this.planningArray = [];
     this.medicineList = [];
 
-
     this.templateService.getTemplateViewById(selectedTemplateId).subscribe(res => {
-
       this.selectedTemplateId = selectedTemplateId;
       this.selectedTemplate = res;
-      console.log(" Template Id" + selectedTemplateId)
       this.selectedTemplate.chiefComplains.forEach((chiefComplains) => {
         this.chiefComplainArray.push(chiefComplains.chiefComplain);
       });
@@ -342,6 +333,7 @@ export class CreatePrescriptionComponent implements OnInit {
   }
 
   onCancel() {
+
     this.router.navigate(['doctors/calendar-view']);
   }
 
@@ -352,10 +344,12 @@ export class CreatePrescriptionComponent implements OnInit {
   }
 
   editTemplate(templateId) {
+
     this.router.navigate(['doctors/' + 'template/' + templateId + '/edit-template']);
   }
 
   onPatientView() {
+
     if (this.patientId) {
       this.profileView = !this.profileView;
       this.show_dialog = this.show_dialog;
@@ -370,7 +364,6 @@ export class CreatePrescriptionComponent implements OnInit {
   selectPatient(patientId) {
 
     this.prescriptionService.getPatientProfile(patientId).subscribe(res => {
-
       this.patientName = res.name;
       this.phoneNumber = res.phoneNo;
       this.address = res.address;
@@ -380,20 +373,24 @@ export class CreatePrescriptionComponent implements OnInit {
   }
 
   previousPrescriptionView() {
+
     this.previousPrescription(this.patientId);
   }
 
 
   previousPrescription(patientId) {
+
     this.router.navigate(['doctors/prescription-list'], {queryParams: {patient: patientId}});
   }
 
 
   onPrescriptionView(prescriptionId) {
+
     this.router.navigate(['doctors/' + 'prescription/' + prescriptionId + '/prescription-view']);
   }
 
   onClickTemplate(value, controller) {
+
     if (controller == 'chiefComplain') {
       this.chiefComplainArrayView.push(value);
       this.form.controls['chiefComplain'].setValue(this.chiefComplainArrayView);
@@ -429,27 +426,27 @@ export class CreatePrescriptionComponent implements OnInit {
   }
 
   onApprovePatient() {
+
     this.prescriptionService.patientApprove(this.patientId).subscribe(res => {
       this.show = false;
     });
   }
 
   isApprovePatient() {
+
     this.prescriptionService.isPatientApprove(this.patientId).subscribe(res => {
       if (res.activeStatus) {
         this.show = false;
-        console.log("Already Approve");
+        console.log("Already Approve This Patient");
       } else {
         this.show = true;
       }
-
-      console.log(res.activeStatus);
     });
   }
 
   onCreatePrescriptionWithoutPatientId() {
-    this.submitted = true;
 
+    this.submitted = true;
     if (this.form.invalid) {
       return true;
     }
@@ -457,7 +454,6 @@ export class CreatePrescriptionComponent implements OnInit {
     this.phoneNumber = this.form.controls['phoneNumber'].value;
     this.address = this.form.controls['address'].value;
     this.date = this.form.controls['date'].value;
-
 
     const prescription: CreatePrescription = new CreatePrescription();
     prescription.patientId = this.patientId;
@@ -468,7 +464,6 @@ export class CreatePrescriptionComponent implements OnInit {
       chiefComplainObj.complain = chiefComplain;
       prescription.chiefComplain.push(chiefComplainObj)
     });
-
     var parameters = new String(this.form.controls['parameters'].value).split(",");
     var remarks = new String(this.form.controls['remarks'].value).split(",");
     for (let i = 0; i < Math.max(parameters.length, remarks.length); i++) {
@@ -490,7 +485,6 @@ export class CreatePrescriptionComponent implements OnInit {
         onExamination.remark = 'null';
         prescription.onExaminations.push(onExamination)
       }
-
     }
 
     var dentalHistory = new String(this.form.controls['dentalHistory'].value).split(",");
@@ -501,63 +495,60 @@ export class CreatePrescriptionComponent implements OnInit {
 
     for (let i = 0; i < Math.max(dentalHistory.length, vaccinationHistory.length,
       investigation.length, radiological.length, planning.length); i++) {
-      const diagonsises: Diagnosises = new Diagnosises();
 
+      const diagnosis: Diagnosises = new Diagnosises();
       if (dentalHistory[i] == null) {
-        diagonsises.medicalHistory = 'null';
-        diagonsises.drugHistory = vaccinationHistory[i];
-        diagonsises.investigation = investigation[i];
-        diagonsises.finalDiagnosis = radiological[i];
-        diagonsises.clinicalFinDing = planning[i];
-        prescription.diagnosis.push(diagonsises);
+        diagnosis.medicalHistory = 'null';
+        diagnosis.drugHistory = vaccinationHistory[i];
+        diagnosis.investigation = investigation[i];
+        diagnosis.finalDiagnosis = radiological[i];
+        diagnosis.clinicalFinDing = planning[i];
+        prescription.diagnosis.push(diagnosis);
       } else if (vaccinationHistory[i] == null) {
-        diagonsises.medicalHistory = dentalHistory[i];
-        diagonsises.drugHistory = 'null';
-        diagonsises.investigation = investigation[i];
-        diagonsises.finalDiagnosis = radiological[i];
-        diagonsises.clinicalFinDing = planning[i];
-        prescription.diagnosis.push(diagonsises);
+        diagnosis.medicalHistory = dentalHistory[i];
+        diagnosis.drugHistory = 'null';
+        diagnosis.investigation = investigation[i];
+        diagnosis.finalDiagnosis = radiological[i];
+        diagnosis.clinicalFinDing = planning[i];
+        prescription.diagnosis.push(diagnosis);
       } else if (investigation[i] == null) {
-        diagonsises.medicalHistory = dentalHistory[i];
-        diagonsises.drugHistory = vaccinationHistory[i];
-        diagonsises.investigation = 'null';
-        diagonsises.finalDiagnosis = radiological[i];
-        diagonsises.clinicalFinDing = planning[i];
-        prescription.diagnosis.push(diagonsises);
+        diagnosis.medicalHistory = dentalHistory[i];
+        diagnosis.drugHistory = vaccinationHistory[i];
+        diagnosis.investigation = 'null';
+        diagnosis.finalDiagnosis = radiological[i];
+        diagnosis.clinicalFinDing = planning[i];
+        prescription.diagnosis.push(diagnosis);
       } else if (radiological[i] == null) {
-        diagonsises.medicalHistory = dentalHistory[i];
-        diagonsises.drugHistory = vaccinationHistory[i];
-        diagonsises.investigation = investigation[i];
-        diagonsises.finalDiagnosis = 'null';
-        diagonsises.clinicalFinDing = planning[i];
-        prescription.diagnosis.push(diagonsises);
+        diagnosis.medicalHistory = dentalHistory[i];
+        diagnosis.drugHistory = vaccinationHistory[i];
+        diagnosis.investigation = investigation[i];
+        diagnosis.finalDiagnosis = 'null';
+        diagnosis.clinicalFinDing = planning[i];
+        prescription.diagnosis.push(diagnosis);
       } else if (planning[i] == null) {
-        diagonsises.medicalHistory = dentalHistory[i];
-        diagonsises.drugHistory = vaccinationHistory[i];
-        diagonsises.investigation = investigation[i];
-        diagonsises.finalDiagnosis = radiological[i];
-        diagonsises.clinicalFinDing = 'null';
-        prescription.diagnosis.push(diagonsises);
+        diagnosis.medicalHistory = dentalHistory[i];
+        diagnosis.drugHistory = vaccinationHistory[i];
+        diagnosis.investigation = investigation[i];
+        diagnosis.finalDiagnosis = radiological[i];
+        diagnosis.clinicalFinDing = 'null';
+        prescription.diagnosis.push(diagnosis);
       } else if (dentalHistory[i] == null && vaccinationHistory[i] == null
         && investigation[i] == null && radiological[i] == null && planning[i] == null) {
-
-        diagonsises.medicalHistory = 'null';
-        diagonsises.drugHistory = 'null';
-        diagonsises.investigation = 'null';
-        diagonsises.finalDiagnosis = 'null';
-        diagonsises.clinicalFinDing = 'null';
-        prescription.diagnosis.push(diagonsises);
+        diagnosis.medicalHistory = 'null';
+        diagnosis.drugHistory = 'null';
+        diagnosis.investigation = 'null';
+        diagnosis.finalDiagnosis = 'null';
+        diagnosis.clinicalFinDing = 'null';
+        prescription.diagnosis.push(diagnosis);
       } else if (dentalHistory[i] != null && vaccinationHistory[i] != null
         && investigation[i] != null && radiological[i] != null && planning[i] != null) {
-
-        diagonsises.medicalHistory = dentalHistory[i];
-        diagonsises.drugHistory = vaccinationHistory[i];
-        diagonsises.investigation = investigation[i];
-        diagonsises.finalDiagnosis = radiological[i];
-        diagonsises.clinicalFinDing = planning[i];
-        prescription.diagnosis.push(diagonsises);
+        diagnosis.medicalHistory = dentalHistory[i];
+        diagnosis.drugHistory = vaccinationHistory[i];
+        diagnosis.investigation = investigation[i];
+        diagnosis.finalDiagnosis = radiological[i];
+        diagnosis.clinicalFinDing = planning[i];
+        prescription.diagnosis.push(diagnosis);
       }
-
     }
 
     const createDrug: Pharmacies = new Pharmacies();
@@ -568,36 +559,30 @@ export class CreatePrescriptionComponent implements OnInit {
     createDrug.instruction = this.form.controls['drugDuration'].value;
     prescription.createMedicinePrescription.push(createDrug);
 
-
     this.prescriptionService.createPrescriptionWithoutPatientId(
       this.patientName,
       this.phoneNumber,
       this.address,
       this.date,
-
       prescription.chiefComplain,
       prescription.onExaminations,
       prescription.diagnosis,
-
       this.medicineList).subscribe(res => {
-
     }, error => {
       if (error.status === 400) {
         this.serverError = error.error.message;
       }
     });
-    console.log(this.phoneNumber);
   }
 
   onSelectFile(event) {
+
     if (event.target.files && event.target.files[0]) {
       let filesAmount = event.target.files.length;
       for (let i = 0; i < filesAmount; i++) {
         let reader = new FileReader();
-
         reader.onload = (event) => {
           this.urls.push(reader.result);
-
         };
         console.log(this.urls);
         reader.readAsDataURL(event.target.files[i]);
@@ -606,6 +591,7 @@ export class CreatePrescriptionComponent implements OnInit {
   }
 
   deleteMedicine(medicine) {
+
     this.medicineList.splice(this.medicineList.indexOf(medicine), 1);
   }
 

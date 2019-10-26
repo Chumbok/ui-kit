@@ -9,15 +9,13 @@ import {ActivatedRoute, Router} from "@angular/router";
   templateUrl: './patient-view-medicine.component.html',
   styleUrls: ['./patient-view-medicine.component.css']
 })
+
 export class PatientViewMedicineComponent implements OnInit {
 
   form: FormGroup;
   submitted = false;
-  serverError = '';
   templateId: string;
   createMedicinePrescription: Array<Pharmacies> = [];
-  selectedTemplateId: string;
-  selectedTemplate: any;
   chiefComplain: string = '';
   parameters: string = '';
   remarks: string = '';
@@ -26,15 +24,6 @@ export class PatientViewMedicineComponent implements OnInit {
   investigation: string = '';
   radiological: string = '';
   planning: string = '';
-  chiefComplainArray: Array<string> = [];
-  onExaminationsParametersArray: Array<string> = [];
-  onExaminationsRemarkArray: Array<string> = [];
-  dentalHistoryArray: Array<string> = [];
-  vaccinationHistoryArray: Array<string> = [];
-  investigationArray: Array<string> = [];
-  radiologicalArray: Array<string> = [];
-  planningArray: Array<string> = [];
-
 
   constructor(private formBuilder: FormBuilder, private prescriptionService1: PrescriptionService,
               private route: ActivatedRoute, private router: Router) {
@@ -44,10 +33,12 @@ export class PatientViewMedicineComponent implements OnInit {
   }
 
   get f() {
+
     return this.form.controls;
   }
 
   ngOnInit() {
+
     this.form = this.formBuilder.group({
       chiefComplain: ['', Validators.required],
       parameters: [''],
@@ -67,13 +58,9 @@ export class PatientViewMedicineComponent implements OnInit {
     this.onPrescriptionView(this.templateId);
   }
 
-
   onPrescriptionView(selectedTemplateId) {
 
-
     this.prescriptionService1.getPatientPrescriptionView(selectedTemplateId).subscribe(res => {
-
-
       res.forEach((medicine) => {
         const createDrug: Pharmacies = new Pharmacies();
         createDrug.medicineType = medicine.medicineType;
@@ -86,5 +73,4 @@ export class PatientViewMedicineComponent implements OnInit {
       });
     });
   }
-
 }

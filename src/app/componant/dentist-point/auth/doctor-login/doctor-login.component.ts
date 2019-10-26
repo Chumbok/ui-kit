@@ -46,13 +46,12 @@ export class DoctorLoginComponent implements OnInit {
   public onSubmit(value: String) {
 
     if (value == 'loginDoctor') {
-      this.submitted = true;
 
+      this.submitted = true;
       if (this.loginForm.invalid) {
         return;
       }
-
-      this.authService.login(this.f.username.value, this.f.password.value)
+      this.authService.doctorLogin(this.f.username.value, this.f.password.value)
         .subscribe(
           data => {
             Swal.fire(
@@ -60,25 +59,22 @@ export class DoctorLoginComponent implements OnInit {
               '',
               'success'
             )
-
             this.router.navigate([this.returnUrl]);
           },
-
           error => {
             Swal.fire(
-              'Invalid Phone Number And Password!',
+              'Invalid Phone Number Or Password!',
               '',
               'error'
             )
           });
+
     } else if (value == 'loginPatient') {
 
       this.submitted = true;
-
       if (this.loginForm.invalid) {
         return;
       }
-
       this.patientAuthService.loginPatient(this.f.usernamePatient.value, this.f.passwordPatient.value)
         .subscribe(
           data => {
@@ -87,19 +83,15 @@ export class DoctorLoginComponent implements OnInit {
               '',
               'success'
             )
-
             this.router.navigate([this.returnUrlForPatient]);
           },
-
           error => {
             Swal.fire(
-              'Invalid Phone Number And Password!',
+              'Invalid Phone Number Or Password!',
               '',
               'error'
             )
           });
     }
-
   }
-
 }
