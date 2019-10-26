@@ -1,0 +1,37 @@
+<a href="#dentistmanagement" class="list-group-item collapsed" data-toggle="collapse"
+   data-parent="#dentistmanagement" aria-expanded="false">
+  <i class="fas fa-user-md fa-fw"></i> <span class="hidden-sm-down">&nbsp;Doctor ONE</span>
+</a>
+
+<div class="collapse.show" id="dentistmanagement">
+  <a [routerLink]="['/doctors/calendar-view']" routerLinkActive="active"
+     class="list-group-item" data-parent="#dentistmanagement">
+    <i class="far fa-calendar-alt fa-fw"></i> <span class="hidden-sm-down">&nbsp;Calendar View</span></a>
+
+  <a [routerLink]="['/doctors/create-appointment']" routerLinkActive="active"
+     class="list-group-item" data-parent="#dentistmanagement">
+    <i class="far fa-calendar-check fa-fw"></i> <span class="hidden-sm-down">&nbsp;Create Appointment</span></a>
+
+  <a [routerLink]="['/doctors/create-prescription']" routerLinkActive="active"
+     class="list-group-item" data-parent="#dentistmanagement">
+    <i class="fas fa-pills fa-fw"></i> <span class="hidden-sm-down">&nbsp;Create Prescription</span></a>
+
+
+  <a [routerLink]="['/doctors/prescription-list']" routerLinkActive="active"
+     class="list-group-item" data-parent="#dentistmanagement">
+    <i class="fas fa-file-medical fa-fw"></i> <span class="hidden-sm-down">&nbsp;Prescription list</span></a>
+
+  <a [routerLink]="['/doctors/create-template']" routerLinkActive="active"
+     class="list-group-item" data-parent="#dentistmanagement">
+    <i class="far fa-list-alt fa-fw"></i> <span class="hidden-sm-down">&nbsp;Create Template</span></a>
+
+
+  <a [routerLink]="['/doctors/appointment-list']" routerLinkActive="active"
+     class="list-group-item" data-parent="#dentistmanagement">
+    <i class="fas fa-file-medical fa-fw"></i> <span class="hidden-sm-down">&nbsp;Appointment list</span></a>
+
+  <!--<a [routerLink]="['/doctors/prescription-view']" routerLinkActive="active"
+     class="list-group-item" data-parent="#dentistmanagement">
+    <i class="far fa-list-alt fa-fw"></i> <span class="hidden-sm-down">&nbsp;Prescription view</span></a>-->
+
+</div>

@@ -12,7 +12,7 @@ import {SiteLayoutComponent} from './layout/site-layout/site-layout.component';
 import {SiteHomeComponent} from './componant/site-home/site-home.component';
 import {DashboardComponent} from './componant/dashboard/dashboard.component';
 import {FlashMessageComponent} from './directives/flash-message/flash-message.component';
-import {NgFlashMessagesModule} from "ng-flash-messages";
+import {NgFlashMessagesModule} from 'ng-flash-messages';
 import {AuthService} from './service/auth.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule, HttpClientXsrfModule} from '@angular/common/http';
@@ -105,24 +105,27 @@ import {AppointmentListComponent} from './componant/dentist-point/appointment-li
 import {DoctorLoginComponent} from './componant/dentist-point/auth/doctor-login/doctor-login.component';
 import {DoctorLogoutComponent} from './componant/dentist-point/auth/doctor-logout/doctor-logout.component';
 import {DoctorSignupComponent} from './componant/dentist-point/auth/doctor-signup/doctor-signup.component';
-import {DoctorAuthService} from "./service/doctor.auth.service";
-import {DoctorAuthHttpService} from "./service/doctor.auth-http.service";
-import {DoctorAuthMockService} from "./service/doctor.auth-mock.service";
+import {DoctorAuthService} from './service/doctor.auth.service';
+import {DoctorAuthHttpService} from './service/doctor.auth-http.service';
+import {DoctorAuthMockService} from './service/doctor.auth-mock.service';
 
 import {PatientHomeComponent} from './componant/dentist-point/patient-home/patient-home.component';
-import {PatientAuthService} from "./service/patient.auth.service";
-import {PatientAuthHttpService} from "./service/patient.auth-http.service";
-import {PatientAuthMockService} from "./service/patient.auth-mock.service";
+import {PatientAuthService} from './service/patient.auth.service';
+import {PatientAuthHttpService} from './service/patient.auth-http.service';
+import {PatientAuthMockService} from './service/patient.auth-mock.service';
 import {PatientHomeLayoutComponent} from './layout/patient-home-layout/patient-home-layout.component';
-import {PatientDashboardHeadComponent} from "./layout/patient-home-layout/patient-dashboard-head/patient-dashboard-head.component";
-import {PatientDashboardSidenavComponent} from "./layout/patient-home-layout/patient-template-sidenav/patient-dashboard-sidenav.component";
+import {PatientDashboardHeadComponent} from './layout/patient-home-layout/patient-dashboard-head/patient-dashboard-head.component';
+import {PatientDashboardSidenavComponent} from './layout/patient-home-layout/patient-template-sidenav/patient-dashboard-sidenav.component';
 
-import {DatePipe} from "@angular/common";
+import {DatePipe} from '@angular/common';
 import {PatientCreateAppointmentComponent} from './componant/dentist-point-mobiletoweb/patient-create-appointment/patient-create-appointment.component';
 import {PatientShowAppointmentComponent} from './componant/dentist-point-mobiletoweb/patient-show-appointment/patient-show-appointment.component';
 import {PatientShowPrescriptionComponent} from './componant/dentist-point-mobiletoweb/patient-show-prescription/patient-show-prescription.component';
 import {PatientSignupComponent} from './componant/dentist-point/auth/patient-signup/patient-signup.component';
 import {PatientViewMedicineComponent} from './componant/dentist-point-mobiletoweb/patient-view-medicine/patient-view-medicine.component';
+import {UaaMenuComponent} from './layout/app-layout/uaa-menu/uaa-menu.component';
+import {DentistPointDoctorMenuComponent} from './layout/app-layout/dentist-point-doctor-menu/dentist-point-doctor-menu.component';
+import {DentistPointPatientMenuComponent} from './layout/app-layout/dentist-point-patient-menu/dentist-point-patient-menu.component';
 
 
 @NgModule({
@@ -225,8 +228,9 @@ import {PatientViewMedicineComponent} from './componant/dentist-point-mobiletowe
     PatientShowPrescriptionComponent,
     PatientSignupComponent,
     PatientViewMedicineComponent,
-
-
+    UaaMenuComponent,
+    DentistPointDoctorMenuComponent,
+    DentistPointPatientMenuComponent,
   ],
   providers: [
     DatePipe,

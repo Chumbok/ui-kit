@@ -22,16 +22,16 @@ import {CreateTemplateComponent} from './componant/dentist-point/create-template
 import {SettingsComponent} from './componant/dentist-point/settings/settings.component';
 import {EditTemplateComponent} from './componant/dentist-point/edit-template/edit-template.component';
 import {AppointmentListComponent} from './componant/dentist-point/appointment-list/appointment-list.component';
-import {AppUrl} from "./app-url";
-import {DoctorLoginComponent} from "./componant/dentist-point/auth/doctor-login/doctor-login.component";
-import {DoctorSignupComponent} from "./componant/dentist-point/auth/doctor-signup/doctor-signup.component";
-import {PatientHomeComponent} from "./componant/dentist-point/patient-home/patient-home.component";
-import {PatientHomeLayoutComponent} from "./layout/patient-home-layout/patient-home-layout.component";
-import {PatientCreateAppointmentComponent} from "./componant/dentist-point-mobiletoweb/patient-create-appointment/patient-create-appointment.component";
-import {PatientShowAppointmentComponent} from "./componant/dentist-point-mobiletoweb/patient-show-appointment/patient-show-appointment.component";
-import {PatientShowPrescriptionComponent} from "./componant/dentist-point-mobiletoweb/patient-show-prescription/patient-show-prescription.component";
-import {PatientSignupComponent} from "./componant/dentist-point/auth/patient-signup/patient-signup.component";
-import {PatientViewMedicineComponent} from "./componant/dentist-point-mobiletoweb/patient-view-medicine/patient-view-medicine.component";
+import {AppUrl} from './app-url';
+import {DoctorLoginComponent} from './componant/dentist-point/auth/doctor-login/doctor-login.component';
+import {DoctorSignupComponent} from './componant/dentist-point/auth/doctor-signup/doctor-signup.component';
+import {PatientHomeComponent} from './componant/dentist-point/patient-home/patient-home.component';
+import {PatientHomeLayoutComponent} from './layout/patient-home-layout/patient-home-layout.component';
+import {PatientCreateAppointmentComponent} from './componant/dentist-point-mobiletoweb/patient-create-appointment/patient-create-appointment.component';
+import {PatientShowAppointmentComponent} from './componant/dentist-point-mobiletoweb/patient-show-appointment/patient-show-appointment.component';
+import {PatientShowPrescriptionComponent} from './componant/dentist-point-mobiletoweb/patient-show-prescription/patient-show-prescription.component';
+import {PatientSignupComponent} from './componant/dentist-point/auth/patient-signup/patient-signup.component';
+import {PatientViewMedicineComponent} from './componant/dentist-point-mobiletoweb/patient-view-medicine/patient-view-medicine.component';
 
 
 const routes: Routes = [
@@ -63,17 +63,12 @@ const routes: Routes = [
       {path: AppUrl.DOCTOR_CREATEP_PRESCRIPTION, component: CreatePrescriptionComponent, canActivate: [AuthGuard]},
       {path: AppUrl.DOCTOR_PRESCRIPTION_LIST, component: PrescriptionListComponent, canActivate: [AuthGuard]},
       {path: AppUrl.DOCTOR_APPOINTMENT_LIST, component: AppointmentListComponent, canActivate: [AuthGuard]},
-      {
-        path: 'doctors/prescription/:id/prescription-view',
-        component: PrescriptionViewComponent,
-        canActivate: [AuthGuard]
-      },
+      {path: 'doctors/prescription/:id/prescription-view', component: PrescriptionViewComponent, canActivate: [AuthGuard]},
       {path: AppUrl.DOCTOR_CREATE_TEMPLATE, component: CreateTemplateComponent, canActivate: [AuthGuard]},
       //{path: AppUrl.DOCTOR_LOGOUT, component: DoctorLogoutComponent, canActivate: [AuthGuard]},
       {path: 'doctors/create-appointment', component: CreateAppointmentComponent, canActivate: [AuthGuard]},
       {path: AppUrl.PATIENT_CREATE_PATIENT, component: CreatePatientComponent, canActivate: [AuthGuard]},
       {path: 'doctors/template/:id/edit-template', component: EditTemplateComponent, canActivate: [AuthGuard]},
-
 
     ],
 
@@ -100,7 +95,6 @@ const routes: Routes = [
   {path: AppUrl.DOCTORPOINT_LOGIN, component: DoctorLoginComponent},
   {path: AppUrl.DOCTOR_SIGNUP, component: DoctorSignupComponent},
   {path: 'patient/signUp', component: PatientSignupComponent}
-
 
 ];
 
