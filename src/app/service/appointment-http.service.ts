@@ -140,14 +140,12 @@ export class AppointmentHttpService implements AppointmentService {
     const httpOptions = {
       headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})
     };
-    console.log(this.http.get(getDoctorChamberListEndpoint, httpOptions).map(res => res));
     return this.http.get(getDoctorChamberListEndpoint, httpOptions).map(res => res);
   }
 
 
   createAppointmentByPatient(date: string, doctorID: string, doctorChamber: string, timeSlot: string): Observable<any> {
 
-    console.log("Time", timeSlot);
     let httpHeaders = new HttpHeaders({
       'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken(),
     });

@@ -116,7 +116,6 @@ export class CreateAppointmentComponent implements OnInit {
   fetchDoctorList() {
     this.appointmentService.getDoctorList().subscribe(res => {
       res.forEach(doctorList => {
-        console.log(doctorList)
         this.doctorArrayList.push(doctorList);
       });
     });
@@ -130,7 +129,6 @@ export class CreateAppointmentComponent implements OnInit {
     this.doctorChamberArrayList = [];
     this.appointmentService.getDoctorChamberList(doctorId).subscribe(res => {
       res.forEach(doctorChamberList => {
-        console.log(doctorChamberList)
         this.doctorChamberArrayList.push(doctorChamberList);
       });
     });

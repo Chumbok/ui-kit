@@ -90,8 +90,6 @@ export class DoctorAuthHttpService implements DoctorAuthService {
   }
 
   private handleError(err: HttpErrorResponse | any) {
-
-    console.error('An error occurred', err);
     return throwError(err.message || err);
   }
 }

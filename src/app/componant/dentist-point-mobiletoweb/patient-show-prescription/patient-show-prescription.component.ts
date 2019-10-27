@@ -33,7 +33,6 @@ export class PatientShowPrescriptionComponent implements OnInit {
 
     this.route.params.subscribe(params => {
       this.patientId = this.route.snapshot.queryParams['patient'];
-      console.log(this.patientId);
     });
   }
 
@@ -57,8 +56,6 @@ export class PatientShowPrescriptionComponent implements OnInit {
       this.router.navigate(['patient/show-prescription-list'], {queryParams: {page: newPage}});
       this.prescriptionService.getPrescriptionListByLoginPatientId(newPage).subscribe(res => {
         this.prescription = res;
-
-        console.log("Console");
         this.prescriptionListin = res;
 
 
