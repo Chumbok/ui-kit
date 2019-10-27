@@ -1,4 +1,4 @@
-export class Diagnosises{
+export class Diagnosises {
   medicalHistory?: string;
   drugHistory?: string;
   investigation?: string;

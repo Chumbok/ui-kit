@@ -1,7 +1,7 @@
 import {Pharmacies} from './create-medicine';
-import {ChiefComplains} from "./chief-complain";
-import {OnExaminations} from "./on-examination";
-import {Diagnosises} from "./on-diagonsis";
+import {ChiefComplains} from './chief-complain';
+import {OnExaminations} from './on-examination';
+import {Diagnosises} from './on-diagonsis';
 
 export class CreatePrescription {
   patientId?: string;

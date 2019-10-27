@@ -6,15 +6,16 @@
 export const environment = {
   production: false,
   chumbok: {
-    enableMock: false,
+    enableMock: true,
     apiCallThroughGateway: false,
     apiCallThroughLocalServer: true,
     apiBaseEndpoint: '//localhost:33002',
     pingEndpoint: 'http://localhost:33002/ping',
     authRefreshEndpoint: 'http://localhost:33002/refresh',
     apiBaseEndpointLocalServer: 'http://localhost:33012',
-    appName: 'dentist-point',
-    // appName: 'uaa',
+    //appName: 'dentist-point',
+    //appName: 'uaa',
+    appName: 'xyz',
   }
 
 };
