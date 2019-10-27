@@ -50,26 +50,26 @@ const routes: Routes = [
     path: '',
     component: AppLayoutComponent,
     children: [
-      {path: AppUrl.DASHBOARD, component: DashboardComponent, canActivate: [AuthGuard]},
-      {path: AppUrl.SETTINGS, component: SettingsComponent, canActivate: [AuthGuard]},
+      {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+      {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
 
-      {path: AppUrl.ORGS, component: OrgListComponent, canActivate: [AuthGuard]},
-      {path: AppUrl.ORGS_CREATE, component: CreateOrgComponent, canActivate: [AuthGuard]},
+      {path: 'orgs', component: OrgListComponent, canActivate: [AuthGuard]},
+      {path: 'orgs/create', component: CreateOrgComponent, canActivate: [AuthGuard]},
       {path: 'orgs/:id/tenants', component: TenantListComponent, canActivate: [AuthGuard]},
       {path: 'orgs/:id/tenants/create', component: CreateTenantComponent, canActivate: [AuthGuard]},
       {path: 'orgs/:id/tenants/:tid/users', component: UserListComponent, canActivate: [AuthGuard]},
       {path: 'orgs/:id/tenants/:tid/users/create', component: CreateUserComponent, canActivate: [AuthGuard]},
+
       {path: AppUrl.DOCTOR_CALENDER_VIEW, component: CalendarComponent, canActivate: [AuthGuard]},
       {path: AppUrl.DOCTOR_CREATEP_PRESCRIPTION, component: CreatePrescriptionComponent, canActivate: [AuthGuard]},
       {path: AppUrl.DOCTOR_PRESCRIPTION_LIST, component: PrescriptionListComponent, canActivate: [AuthGuard]},
       {path: AppUrl.DOCTOR_APPOINTMENT_LIST, component: AppointmentListComponent, canActivate: [AuthGuard]},
       {path: 'doctors/prescription/:id/prescription-view', component: PrescriptionViewComponent, canActivate: [AuthGuard]},
       {path: AppUrl.DOCTOR_CREATE_TEMPLATE, component: CreateTemplateComponent, canActivate: [AuthGuard]},
-      //{path: AppUrl.DOCTOR_LOGOUT, component: DoctorLogoutComponent, canActivate: [AuthGuard]},
       {path: 'doctors/create-appointment', component: CreateAppointmentComponent, canActivate: [AuthGuard]},
       {path: AppUrl.PATIENT_CREATE_PATIENT, component: CreatePatientComponent, canActivate: [AuthGuard]},
       {path: 'doctors/template/:id/edit-template', component: EditTemplateComponent, canActivate: [AuthGuard]},
-
+      // {path: AppUrl.DOCTOR_LOGOUT, component: DoctorLogoutComponent, canActivate: [AuthGuard]},
     ],
 
   },

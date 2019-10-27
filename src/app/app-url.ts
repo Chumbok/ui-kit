@@ -3,14 +3,9 @@
  */
 export class AppUrl {
 
-  public static DASHBOARD = 'dashboard';
-  public static SETTINGS = 'settings';
   public static LOGIN = 'login';
   public static DOCTORPOINT_LOGIN = 'doctorpoint/login';
   public static LOGOUT = 'logout';
-
-  public static ORGS = 'orgs/';
-  public static ORGS_CREATE = AppUrl.ORGS + 'create';
 
   public static DOCTOR = 'doctors/';
   public static DOCTOR_LOGIN = AppUrl.DOCTOR + 'login';

@@ -2,8 +2,27 @@
 
   <div class="list-group panel">
 
-    <app-dentist-point-doctor-menu></app-dentist-point-doctor-menu>
-<!--    <app-uaa-menu></app-uaa-menu>-->
+    <div *ngFor="let menu of menus;let i = index" [attr.data-index]="i">
+
+      <a *ngIf="menu.routerLink !== undefined" [routerLink]="getMenuURL(i)" href="{{menu.id}}"
+         class="list-group-item collapsed" data-toggle="collapse" data-parent="getId(i)" aria-expanded="false">
+        <i class="{{menu.iconCssClass}}"></i> <span class="hidden-sm-down">&nbsp;{{menu.title}}</span>
+      </a>
+
+      <a *ngIf="menu.routerLink === undefined" href="{{menu.id}}" class="list-group-item collapsed"
+         data-toggle="collapse" data-parent="getId(i)" aria-expanded="false">
+        <i class="{{menu.iconCssClass}}"></i> <span class="hidden-sm-down">&nbsp;{{menu.title}}</span>
+      </a>
+
+      <div class="collapse.show" id="{{menu.id}}"
+           *ngFor="let menuItem of menu.menuItems;let j = index"
+           [attr.data-index]="j">
+        <a [routerLink]="getMenuItemURL(i, j)" routerLinkActive="active" class="list-group-item" data-parent="getId(i)">
+          <i class="{{menuItem.iconCssClass}}"></i> <span class="hidden-sm-down">&nbsp;{{menuItem.text}}</span>
+        </a>
+      </div>
+
+    </div>
 
   </div>
 

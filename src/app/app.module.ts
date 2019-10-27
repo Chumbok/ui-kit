@@ -126,6 +126,9 @@ import {PatientViewMedicineComponent} from './componant/dentist-point-mobiletowe
 import {UaaMenuComponent} from './layout/app-layout/uaa-menu/uaa-menu.component';
 import {DentistPointDoctorMenuComponent} from './layout/app-layout/dentist-point-doctor-menu/dentist-point-doctor-menu.component';
 import {DentistPointPatientMenuComponent} from './layout/app-layout/dentist-point-patient-menu/dentist-point-patient-menu.component';
+import {MenuService} from './service/menu.service';
+import {MenuDentistPointDoctorService} from './service/menu-dentist-point-doctor.service';
+import {MenuUaaService} from './service/menu-uaa.service';
 
 
 @NgModule({
@@ -280,7 +283,11 @@ import {DentistPointPatientMenuComponent} from './layout/app-layout/dentist-poin
     AppointmentMockService,
     PrescriptionMockService,
     TemplateHttpService,
-    TemplateMockService
+    TemplateMockService,
+    {
+      provide: MenuService,
+      useClass: environment.chumbok.appName === 'dentist-point' ? MenuDentistPointDoctorService : MenuUaaService
+    },
   ],
   bootstrap: [
     AppComponent
