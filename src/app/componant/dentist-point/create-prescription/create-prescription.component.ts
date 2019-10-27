@@ -437,7 +437,6 @@ export class CreatePrescriptionComponent implements OnInit {
     this.prescriptionService.isPatientApprove(this.patientId).subscribe(res => {
       if (res.activeStatus) {
         this.show = false;
-        console.log("Already Approve This Patient");
       } else {
         this.show = true;
       }
@@ -584,7 +583,6 @@ export class CreatePrescriptionComponent implements OnInit {
         reader.onload = (event) => {
           this.urls.push(reader.result);
         };
-        console.log(this.urls);
         reader.readAsDataURL(event.target.files[i]);
       }
     }
