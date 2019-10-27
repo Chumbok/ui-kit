@@ -6,7 +6,7 @@
 export const environment = {
   production: false,
   chumbok: {
-    enableMock: true,
+    enableMock: false,
     apiCallThroughGateway: false,
     apiCallThroughLocalServer: true,
     apiBaseEndpoint: '//localhost:33002',
@@ -14,7 +14,8 @@ export const environment = {
     authRefreshEndpoint: 'http://localhost:33002/refresh',
     apiBaseEndpointLocalServer: 'http://localhost:33012',
     appName: 'dentist-point',
-    //appName: 'uaa'
+    //appName: 'uaa',
+    //appName: 'server-manager',
   }
 
 };
