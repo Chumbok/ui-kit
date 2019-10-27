@@ -567,6 +567,7 @@ export class CreatePrescriptionComponent implements OnInit {
       prescription.onExaminations,
       prescription.diagnosis,
       this.medicineList).subscribe(res => {
+      this.router.navigate(['doctors/prescription-list']);
     }, error => {
       if (error.status === 400) {
         this.serverError = error.error.message;
