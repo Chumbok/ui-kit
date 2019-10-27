@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {OrgTenantUserService} from '../../../../service/org-tenant-user.service';
+import {OrgTenantUserService} from '../../../service/org-tenant-user.service';
 
 @Component({
   selector: 'app-create-org',

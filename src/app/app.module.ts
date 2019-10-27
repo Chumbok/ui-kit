@@ -23,13 +23,6 @@ import {FlashMessageService} from './service/flash-message.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {Http401Interceptor} from './interceptor/Http401Interceptor';
 import {LoggedInUserInfoService} from './service/logged-in-user-info.service';
-import {OrgListComponent} from './componant/user-management/org/org-list/org-list.component';
-import {TenantListComponent} from './componant/user-management/tenant/tenant-list/tenant-list.component';
-import {UserListComponent} from './componant/user-management/user/user-list/user-list.component';
-import {OrgTenantUserService} from './service/org-tenant-user.service';
-import {CreateOrgComponent} from './componant/user-management/org/create-org/create-org.component';
-import {CreateTenantComponent} from './componant/user-management/tenant/create-tenant/create-tenant.component';
-import {CreateUserComponent} from './componant/user-management/user/create-user/create-user.component';
 import {CreatePrescriptionComponent} from './componant/dentist-point/create-prescription/create-prescription.component';
 import {CreatePatientComponent} from './componant/dentist-point/create-patient/create-patient.component';
 import {CalendarComponent} from './componant/dentist-point/calendar/calendar.component';
@@ -123,12 +116,12 @@ import {PatientShowAppointmentComponent} from './componant/dentist-point-mobilet
 import {PatientShowPrescriptionComponent} from './componant/dentist-point-mobiletoweb/patient-show-prescription/patient-show-prescription.component';
 import {PatientSignupComponent} from './componant/dentist-point/auth/patient-signup/patient-signup.component';
 import {PatientViewMedicineComponent} from './componant/dentist-point-mobiletoweb/patient-view-medicine/patient-view-medicine.component';
-import {UaaMenuComponent} from './layout/app-layout/uaa-menu/uaa-menu.component';
 import {DentistPointDoctorMenuComponent} from './layout/app-layout/dentist-point-doctor-menu/dentist-point-doctor-menu.component';
 import {DentistPointPatientMenuComponent} from './layout/app-layout/dentist-point-patient-menu/dentist-point-patient-menu.component';
 import {MenuService} from './service/menu.service';
 import {MenuDentistPointDoctorService} from './service/menu-dentist-point-doctor.service';
-import {MenuUaaService} from './service/menu-uaa.service';
+import {UAAModule} from './uaa/uaa.module';
+import {MenuDefaultService} from './service/menu-default.service';
 
 
 @NgModule({
@@ -188,8 +181,8 @@ import {MenuUaaService} from './service/menu-uaa.service';
       provide: DateAdapter,
       useFactory: adapterFactory
     }),
-    NgbModalModule
-
+    NgbModalModule,
+    UAAModule
   ],
   declarations: [
     AppComponent,
@@ -205,12 +198,6 @@ import {MenuUaaService} from './service/menu-uaa.service';
     DashboardComponent,
     FlashMessageComponent,
     LogoutComponent,
-    OrgListComponent,
-    TenantListComponent,
-    UserListComponent,
-    CreateOrgComponent,
-    CreateTenantComponent,
-    CreateUserComponent,
     CreatePrescriptionComponent,
     CreatePatientComponent,
     CalendarComponent,
@@ -231,7 +218,6 @@ import {MenuUaaService} from './service/menu-uaa.service';
     PatientShowPrescriptionComponent,
     PatientSignupComponent,
     PatientViewMedicineComponent,
-    UaaMenuComponent,
     DentistPointDoctorMenuComponent,
     DentistPointPatientMenuComponent,
   ],
@@ -265,7 +251,6 @@ import {MenuUaaService} from './service/menu-uaa.service';
       provide: LoggedInUserInfoService,
       useClass: environment.chumbok.enableMock ? LoggedInUserInfoMockService : LoggedInUserInfoHttpService
     },
-    OrgTenantUserService,
     {
       provide: AppointmentService,
       useClass: environment.chumbok.enableMock ? AppointmentMockService : AppointmentHttpService
@@ -286,7 +271,7 @@ import {MenuUaaService} from './service/menu-uaa.service';
     TemplateMockService,
     {
       provide: MenuService,
-      useClass: environment.chumbok.appName === 'dentist-point' ? MenuDentistPointDoctorService : MenuUaaService
+      useClass: environment.chumbok.appName === 'dentist-point' ? MenuDentistPointDoctorService : MenuDefaultService
     },
   ],
   bootstrap: [

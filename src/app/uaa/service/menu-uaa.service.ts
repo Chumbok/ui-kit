@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Menu, MenuItem} from '../model/menu';
-import {MenuService} from './menu.service';
 import {Observable, of} from 'rxjs';
+import {Menu, MenuItem} from '../../model/menu';
+import {MenuService} from '../../service/menu.service';
 
 @Injectable()
 export class MenuUaaService implements MenuService {
@@ -20,7 +20,7 @@ export class MenuUaaService implements MenuService {
     menu1.title = 'User Management';
     menu1.iconCssClass = 'fas fa-user-astronaut fa-fw';
     menu1.routerLink = '/orgs';
-    menu1.menuItems = []
+    menu1.menuItems = [];
 
     const menu2 = new Menu();
     menu2.id = '#settings';

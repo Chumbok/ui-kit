@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import {environment} from '../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {AuthService} from './auth.service';
 import {Observable, of} from 'rxjs';
 import {User} from '../model/user';
+import {environment} from '../../../environments/environment';
+import {AuthService} from '../../service/auth.service';
 
 @Injectable()
 export class OrgTenantUserService {

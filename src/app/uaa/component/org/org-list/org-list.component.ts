@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {OrgTenantUserService} from '../../../../service/org-tenant-user.service';
-
+import {OrgTenantUserService} from '../../../service/org-tenant-user.service';
 
 @Component({
   selector: 'app-org-list',
@@ -20,7 +19,5 @@ export class OrgListComponent implements OnInit {
       this.orgsResp = res;
       this.orgs = res['items'];
     });
-
   }
-
 }
