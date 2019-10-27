@@ -16,6 +16,7 @@ export class DoctorLoginComponent implements OnInit {
   returnUrl: string;
   returnUrlForPatient: string;
   submitted = false;
+  serverError = '';
 
   constructor(private formBuilder: FormBuilder,
               private authService: DoctorAuthService,
@@ -62,11 +63,10 @@ export class DoctorLoginComponent implements OnInit {
             this.router.navigate([this.returnUrl]);
           },
           error => {
-            Swal.fire(
-              'Invalid Phone Number Or Password!',
-              '',
-              'error'
-            )
+
+            if (error.status === 403) {
+              this.serverError = error.error.message;
+            }
           });
 
     } else if (value == 'loginPatient') {
@@ -86,11 +86,9 @@ export class DoctorLoginComponent implements OnInit {
             this.router.navigate([this.returnUrlForPatient]);
           },
           error => {
-            Swal.fire(
-              'Invalid Phone Number Or Password!',
-              '',
-              'error'
-            )
+            if (error.status === 403) {
+              this.serverError = error.error.message;
+            }
           });
     }
   }

@@ -65,7 +65,6 @@ export class PatientAuthHttpService implements PatientAuthService {
   signUp(name: String, gender: String, bGroup: String, username: String, email: String, address: String, age: String,
          phoneNo: String, password: String): Observable<any> {
 
-    console.log(gender);
     return this.http.post<any>(this.signUpEndPointLocalServer, {
       name: name,
       gander: gender,
