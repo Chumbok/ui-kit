@@ -437,7 +437,6 @@ export class CreatePrescriptionComponent implements OnInit {
     this.prescriptionService.isPatientApprove(this.patientId).subscribe(res => {
       if (res.activeStatus) {
         this.show = false;
-        console.log("Already Approve This Patient");
       } else {
         this.show = true;
       }
@@ -568,6 +567,7 @@ export class CreatePrescriptionComponent implements OnInit {
       prescription.onExaminations,
       prescription.diagnosis,
       this.medicineList).subscribe(res => {
+      this.router.navigate(['doctors/prescription-list']);
     }, error => {
       if (error.status === 400) {
         this.serverError = error.error.message;
@@ -584,7 +584,6 @@ export class CreatePrescriptionComponent implements OnInit {
         reader.onload = (event) => {
           this.urls.push(reader.result);
         };
-        console.log(this.urls);
         reader.readAsDataURL(event.target.files[i]);
       }
     }

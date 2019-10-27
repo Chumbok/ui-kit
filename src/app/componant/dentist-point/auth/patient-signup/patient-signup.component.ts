@@ -14,6 +14,7 @@ export class PatientSignupComponent implements OnInit {
   signUpForm: FormGroup;
   returnUrl: string;
   submitted = false;
+  serverError = '';
 
   constructor(private formBuilder: FormBuilder,
               private patientAuthService: PatientAuthService,
@@ -60,6 +61,9 @@ export class PatientSignupComponent implements OnInit {
           this.router.navigate([this.returnUrl]);
         },
         error => {
+          if (error.status === 500) {
+            this.serverError = "Already taken phone number";
+          }
         });
 
   }

@@ -40,7 +40,7 @@ export class DoctorAuthMockService implements DoctorAuthService {
 
   signUp(name: String, gender: String, qualification: String, email: String, address: String, chambers: Array<DoctorChamber>,
          phoneNo: String, password: String): Observable<any> {
-    console.log(chambers);
+
     const json = '{"id":"hg34-435hbg6-45hgy"}';
     return of(JSON.parse(json));
   }
