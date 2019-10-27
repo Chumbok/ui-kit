@@ -13,9 +13,8 @@ export const environment = {
     pingEndpoint: 'http://localhost:33002/ping',
     authRefreshEndpoint: 'http://localhost:33002/refresh',
     apiBaseEndpointLocalServer: 'http://localhost:33012',
-    //appName: 'dentist-point',
-    //appName: 'uaa',
-    appName: 'xyz',
+    appName: 'dentist-point',
+    //appName: 'uaa'
   }
 
 };
