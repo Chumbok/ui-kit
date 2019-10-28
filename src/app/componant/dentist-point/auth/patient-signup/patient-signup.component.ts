@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
-import {DoctorChamber} from "../../../../model/doctor-chamber";
 import {PatientAuthService} from "../../../../service/patient.auth.service";
 
 @Component({
@@ -11,6 +10,8 @@ import {PatientAuthService} from "../../../../service/patient.auth.service";
 })
 export class PatientSignupComponent implements OnInit {
 
+  show: boolean;
+  showPatienInfo: boolean;
   signUpForm: FormGroup;
   returnUrl: string;
   submitted = false;
@@ -33,27 +34,28 @@ export class PatientSignupComponent implements OnInit {
       {
         name: ['', Validators.required],
         gender: ['', Validators.required],
-        username: ['', Validators.required],
         email: ['', Validators.required],
         bGroup: ['', Validators.required],
         address: ['', Validators.required],
         age: ['', Validators.required],
         phoneNo: ['', [Validators.required, Validators.minLength(6), Validators.pattern("^[0-9]*$")]],
-        password: ['', [Validators.required, Validators.minLength(6)]]
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
       }
     )
     this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || 'doctorpoint/login';
+    this.show = true;
+    this.showPatienInfo = false;
   }
 
   public onSubmit() {
 
     this.submitted = true;
-    const chamberLists: Array<DoctorChamber> = [];
     if (this.signUpForm.invalid) {
       return;
     }
 
-    this.patientAuthService.signUp(this.f.name.value, this.f.gender.value, this.f.bGroup.value, this.f.username.value,
+    this.patientAuthService.signUp(this.f.name.value, this.f.gender.value, this.f.bGroup.value, this.f.phoneNo.value,
       this.f.email.value, this.f.address.value, this.f.age.value, this.f.phoneNo.value,
       this.f.password.value)
       .subscribe(
@@ -66,5 +68,21 @@ export class PatientSignupComponent implements OnInit {
           }
         });
 
+  }
+
+  nextToPatientInfo() {
+    if (this.f.password.value == this.f.confirmPassword.value) {
+      this.serverError = '';
+      this.show = false;
+      this.showPatienInfo = true;
+    } else {
+      this.serverError = "Password Cannot Match";
+    }
+
+  }
+
+  back() {
+    this.show = true;
+    this.showPatienInfo = false;
   }
 }
