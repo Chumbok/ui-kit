@@ -10,11 +10,15 @@ import Swal from "sweetalert2";
   templateUrl: './doctor-signup.component.html',
   styleUrls: ['./doctor-signup.component.css']
 })
+
 export class DoctorSignupComponent implements OnInit {
 
   signUpForm: FormGroup;
   returnUrl: string;
   submitted = false;
+  show: boolean;
+  showDoctorInfo: boolean;
+  serverError = '';
 
   constructor(private formBuilder: FormBuilder,
               private authService: DoctorAuthService,
@@ -23,7 +27,6 @@ export class DoctorSignupComponent implements OnInit {
   }
 
   get f() {
-
     return this.signUpForm.controls;
   }
 
@@ -34,14 +37,17 @@ export class DoctorSignupComponent implements OnInit {
         name: ['', Validators.required],
         gender: ['', Validators.required],
         qualification: ['', Validators.required],
-        email: ['', Validators.required],
+        email: [''],
         address: ['', Validators.required],
         chambers: ['', Validators.required],
         phoneNo: ['', [Validators.required, Validators.minLength(6), Validators.pattern("^[0-9]*$")]],
-        password: ['', [Validators.required, Validators.minLength(6)]]
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
       }
     )
     this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/doctorpoint/login';
+    this.show = true;
+    this.showDoctorInfo = false;
   }
 
   public onSubmit() {
@@ -70,19 +76,30 @@ export class DoctorSignupComponent implements OnInit {
             showConfirmButton: false,
             timer: 3000
           })
-
           Toast.fire({type: 'success', title: 'Sign Up in successfully'})
-
           this.router.navigate([this.returnUrl]);
         },
         error => {
-
-          Swal.fire({
-            type: 'error',
-            title: 'Oops...',
-            text: 'Sign Up wrong!',
-
-          })
+          if (error.status === 500) {
+            this.serverError = "Already taken phone number";
+          }
         });
+  }
+
+  nextToPatientInfo() {
+
+    if (this.f.password.value == this.f.confirmPassword.value) {
+      this.serverError = '';
+      this.show = false;
+      this.showDoctorInfo = true;
+    } else {
+      this.serverError = "Password Cannot Match";
+    }
+  }
+
+  back() {
+
+    this.show = true;
+    this.showDoctorInfo = false;
   }
 }

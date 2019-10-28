@@ -8,6 +8,7 @@ import {PatientAuthService} from "../../../../service/patient.auth.service";
   templateUrl: './patient-signup.component.html',
   styleUrls: ['./patient-signup.component.css']
 })
+
 export class PatientSignupComponent implements OnInit {
 
   show: boolean;
@@ -24,7 +25,6 @@ export class PatientSignupComponent implements OnInit {
   }
 
   get f() {
-
     return this.signUpForm.controls;
   }
 
@@ -34,7 +34,7 @@ export class PatientSignupComponent implements OnInit {
       {
         name: ['', Validators.required],
         gender: ['', Validators.required],
-        email: ['', Validators.required],
+        email: [''],
         bGroup: ['', Validators.required],
         address: ['', Validators.required],
         age: ['', Validators.required],
@@ -54,7 +54,6 @@ export class PatientSignupComponent implements OnInit {
     if (this.signUpForm.invalid) {
       return;
     }
-
     this.patientAuthService.signUp(this.f.name.value, this.f.gender.value, this.f.bGroup.value, this.f.phoneNo.value,
       this.f.email.value, this.f.address.value, this.f.age.value, this.f.phoneNo.value,
       this.f.password.value)
@@ -67,10 +66,10 @@ export class PatientSignupComponent implements OnInit {
             this.serverError = "Already taken phone number";
           }
         });
-
   }
 
   nextToPatientInfo() {
+
     if (this.f.password.value == this.f.confirmPassword.value) {
       this.serverError = '';
       this.show = false;
@@ -78,10 +77,10 @@ export class PatientSignupComponent implements OnInit {
     } else {
       this.serverError = "Password Cannot Match";
     }
-
   }
 
   back() {
+
     this.show = true;
     this.showPatienInfo = false;
   }
