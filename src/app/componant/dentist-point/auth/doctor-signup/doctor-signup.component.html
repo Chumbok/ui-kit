@@ -13,6 +13,16 @@
 
             <div *ngIf="show">
               <div class="form-group">
+                <label for="email">Email</label>
+                <input [ngClass]="{ 'is-invalid': submitted && f.email.errors }" class="form-control"
+                       formControlName="email" id="email"
+                       type="text"/>
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                  <div *ngIf="f.email.errors.required">Email is required</div>
+                </div>
+              </div>
+
+              <div class="form-group">
                 <label for="phoneNo">Phone no.</label>
                 <input [ngClass]="{ 'is-invalid': submitted && f.phoneNo.errors }" class="form-control"
                        formControlName="phoneNo" id="phoneNo"
@@ -83,16 +93,6 @@
                        type="text"/>
                 <div *ngIf="submitted && f.qualification.errors" class="invalid-feedback">
                   <div *ngIf="f.qualification.errors.required">Qualification is required</div>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input [ngClass]="{ 'is-invalid': submitted && f.email.errors }" class="form-control"
-                       formControlName="email" id="email"
-                       type="text"/>
-                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                  <div *ngIf="f.email.errors.required">Email is required</div>
                 </div>
               </div>
 
