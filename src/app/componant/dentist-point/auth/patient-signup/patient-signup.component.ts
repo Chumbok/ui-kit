@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {PatientAuthService} from "../../../../service/patient.auth.service";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-patient-signup',
@@ -21,6 +22,7 @@ export class PatientSignupComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private patientAuthService: PatientAuthService,
               private router: Router,
+              private datePipe: DatePipe,
               private activatedRoute: ActivatedRoute) {
   }
 
@@ -49,13 +51,18 @@ export class PatientSignupComponent implements OnInit {
   }
 
   public onSubmit() {
+    var birthOfDate = parseInt(this.datePipe.transform(this.signUpForm.controls['age'].value, 'yyyy-MM-dd'));
+    /*  console.log("Age"+birthOfDate);
+      var birthDay:number = parseInt(birthOfDate);*/
 
+
+    console.log("birthDay" + birthOfDate);
     this.submitted = true;
     if (this.signUpForm.invalid) {
       return;
     }
     this.patientAuthService.signUp(this.f.name.value, this.f.gender.value, this.f.bGroup.value, this.f.phoneNo.value,
-      this.f.email.value, this.f.address.value, this.f.age.value, this.f.phoneNo.value,
+      this.f.email.value, this.f.address.value, birthOfDate, this.f.phoneNo.value,
       this.f.password.value)
       .subscribe(
         data => {
