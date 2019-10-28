@@ -122,6 +122,7 @@ import {MenuService} from './service/menu.service';
 import {MenuDentistPointDoctorService} from './service/menu-dentist-point-doctor.service';
 import {UAAModule} from './uaa/uaa.module';
 import {MenuDefaultService} from './service/menu-default.service';
+import {ServerManagerModule} from './server-manager/server-manager.module';
 
 
 @NgModule({
@@ -182,7 +183,8 @@ import {MenuDefaultService} from './service/menu-default.service';
       useFactory: adapterFactory
     }),
     NgbModalModule,
-    UAAModule
+    UAAModule,
+    ServerManagerModule
   ],
   declarations: [
     AppComponent,
