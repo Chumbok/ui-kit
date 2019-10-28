@@ -2,7 +2,7 @@ export class Menu {
   id: string;
   title: string;
   iconCssClass: string;
-  routerLink: string;
+  routerLink?: string;
   menuItems: MenuItem[];
 }
 
