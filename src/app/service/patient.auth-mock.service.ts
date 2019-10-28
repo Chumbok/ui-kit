@@ -37,7 +37,7 @@ export class PatientAuthMockService implements PatientAuthService {
     return 'mockToken';
   }
 
-  signUp(name: String, gender: String, bGroup: String, username: String, email: String, address: String, age: String,
+  signUp(name: String, gender: String, bGroup: String, username: String, email: String, address: String, age: number,
          phoneNo: String, password: String): Observable<any> {
     console.log(age);
     const json = '{"id":"hg34-435hbg6-45hgy"}';

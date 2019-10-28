@@ -62,12 +62,12 @@ export class PatientAuthHttpService implements PatientAuthService {
     return localStorage.getItem('token');
   }
 
-  signUp(name: String, gender: String, bGroup: String, username: String, email: String, address: String, age: String,
+  signUp(name: String, gender: String, bGroup: String, username: String, email: String, address: String, age: number,
          phoneNo: String, password: String): Observable<any> {
 
     return this.http.post<any>(this.signUpEndPointLocalServer, {
       name: name,
-      gander: gender,
+      gender: gender,
       age: age,
       bloodGroup: bGroup,
       phoneNo: phoneNo,

@@ -73,7 +73,7 @@
               </div>
 
               <div class="form-group">
-                <label for="gender">Gender</label>
+                <label for="gender">Birth Of Date</label>
                 <select [ngClass]="{ 'is-invalid': submitted && f.gender.errors }" class="form-control"
                         formControlName="gender" id="gender" type="text">
                   <option value='male'>Male</option>
@@ -87,8 +87,8 @@
               </div>
 
               <div class="form-group">
-                <label for="gender">Blood Group</label>
-                <select [ngClass]="{ 'is-invalid': submitted && f.gender.errors }" class="form-control"
+                <label for="bGroup">Blood Group</label>
+                <select [ngClass]="{ 'is-invalid': submitted && f.bGroup.errors }" class="form-control"
                         formControlName="bGroup" id="bGroup" type="text">
                   <option value='a+'>A+</option>
                   <option value='A-'>A-</option>
@@ -115,9 +115,11 @@
 
               <div class="form-group">
                 <label for="age">Age</label>
+
                 <input [ngClass]="{ 'is-invalid': submitted && f.age.errors }" class="form-control"
                        formControlName="age" id="age"
-                       type="text"/>
+                       [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" class="form-control">
+                <owl-date-time #dt1 [pickerType]="'calendar'"></owl-date-time>
                 <div *ngIf="submitted && f.age.errors" class="invalid-feedback">
                   <div *ngIf="f.age.errors.required">Age is required</div>
                 </div>
