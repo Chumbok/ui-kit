@@ -7,15 +7,13 @@ export const environment = {
   production: false,
   chumbok: {
     enableMock: false,
-    apiCallThroughGateway: false,
     apiCallThroughLocalServer: true,
-    apiBaseEndpoint: '//localhost:33002',
     pingEndpoint: 'http://localhost:33002/ping',
-    authRefreshEndpoint: 'http://localhost:33002/refresh',
     apiBaseEndpointLocalServer: 'http://localhost:33012',
+    uaaApiBaseEndpoint: 'http://localhost:33002',
     appName: 'dentist-point',
-    //appName: 'uaa',
-    //appName: 'server-manager',
+    // appName: 'uaa',
+    // appName: 'server-manager',
   }
 
 };

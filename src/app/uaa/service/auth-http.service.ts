@@ -1,31 +1,28 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
-import {environment} from '../../environments/environment';
 import {throwError} from 'rxjs/internal/observable/throwError';
 import {map} from 'rxjs/operators';
 import {CookieService} from 'ngx-cookie-service';
 import {AuthService} from './auth.service';
+import {environment} from '../../../environments/environment';
 
 @Injectable({providedIn: 'root'})
 export class AuthHttpService implements AuthService {
 
-  private callThroughGateway: boolean = environment.chumbok.apiCallThroughGateway;
-
-  private loginEndpoint: string = this.callThroughGateway ?
-    environment.chumbok.apiBaseEndpoint + '/uaa/login' : '/login';
-
-  private logoutEndpoint: string = this.callThroughGateway ?
-    environment.chumbok.apiBaseEndpoint + '/uaa/logout' : '/logout';
-
-  private refreshEndpoint: string = environment.chumbok.authRefreshEndpoint;
+  private uaaApiBaseEndpoint: string = environment.chumbok.uaaApiBaseEndpoint;
+  private loginEndpoint: string = this.uaaApiBaseEndpoint + '/login';
+  private logoutEndpoint: string = this.uaaApiBaseEndpoint + '/logout';
+  private refreshEndpoint: string = this.uaaApiBaseEndpoint + '/refresh';
 
   constructor(private cookieService: CookieService, private http: HttpClient) {
   }
 
-  public login(phoneNo: string, password: string) {
+  public login(username: string, password: string) {
+
+    this.removeAuthToken();
 
     return this.http.post<any>(this.loginEndpoint, {
-      phoneNo: phoneNo, password: password
+      username: username, password: password, org: 'Chumbok', tenant: 'Chumbok'
     }, {withCredentials: true})
       .pipe(map(res => {
         if (res && res.accessToken) {
@@ -33,7 +30,6 @@ export class AuthHttpService implements AuthService {
         }
         return res;
       }));
-
   }
 
   public logout() {
@@ -59,25 +55,16 @@ export class AuthHttpService implements AuthService {
     ));
   }
 
-  public removeAuthToken(): void {
-
-    localStorage.removeItem('token');
-  }
-
-  public isLoggedIn(): boolean {
-
-    return localStorage.getItem('token') != null;
-  }
-
-  public getAuthToken(): string {
-
+  private getAuthToken(): string {
     return localStorage.getItem('token');
   }
 
-  private handleError(err: HttpErrorResponse | any) {
+  private removeAuthToken(): void {
+    localStorage.removeItem('token');
+  }
 
+  private handleError(err: HttpErrorResponse | any) {
     console.error('An error occurred', err);
     return throwError(err.message || err);
   }
-
 }

@@ -3,8 +3,6 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export abstract class LoggedInUserInfoService {
 
-  abstract fetchLoggedInUserInfo();
-
   abstract getDisplayName(): string;
 
   abstract getProfilePicture28x28pxUrl?(): string;

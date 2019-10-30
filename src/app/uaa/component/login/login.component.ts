@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AuthService} from '../../../service/auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {LoggedInUserInfoService} from '../../../service/logged-in-user-info.service';
+import {AuthService} from '../../service/auth.service';
+import {UserInfoService} from '../../service/user-info.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private authService: AuthService,
-              private loggedInUserInfoService: LoggedInUserInfoService,
+              private userInfoService: UserInfoService,
               private router: Router,
               private activatedRoute: ActivatedRoute) {
   }
@@ -29,12 +29,12 @@ export class LoginComponent implements OnInit {
       password: ['admin', Validators.required]
     });
 
-    this.authService.removeAuthToken();
-
     this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/dashboard';
   }
 
-  get f() { return this.loginForm.controls; }
+  get f() {
+    return this.loginForm.controls;
+  }
 
   public onSubmit() {
 
@@ -47,13 +47,11 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.f.username.value, this.f.password.value)
       .subscribe(
         data => {
-          this.loggedInUserInfoService.fetchLoggedInUserInfo().subscribe(res => {
-
+          this.userInfoService.fetchLoggedInUserInfo().subscribe(res => {
             this.router.navigate([this.returnUrl]);
           });
         },
         error => {
         });
   }
-
 }

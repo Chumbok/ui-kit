@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {OrgTenantUserService} from '../../../service/org-tenant-user.service';
+import {OrgTenantUserService} from '../../../service/org-tenant-user';
 
 @Component({
   selector: 'app-create-org',
@@ -13,7 +13,9 @@ export class CreateOrgComponent implements OnInit {
   form: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder, private orgTenantUserService: OrgTenantUserService, private router: Router) {
+  constructor(private formBuilder: FormBuilder,
+              private orgTenantUserService: OrgTenantUserService,
+              private router: Router) {
   }
 
   ngOnInit() {

@@ -9,11 +9,4 @@ export abstract class AuthService {
   abstract logout();
 
   abstract refreshToken(): Observable<any>;
-
-  abstract removeAuthToken();
-
-  abstract isLoggedIn(): boolean;
-
-  abstract getAuthToken(): string;
-
 }

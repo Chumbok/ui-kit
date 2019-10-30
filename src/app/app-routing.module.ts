@@ -1,5 +1,4 @@
 import {RouterModule, Routes} from '@angular/router';
-import {LoginComponent} from './componant/auth/login/login.component';
 import {AppLayoutComponent} from './layout/app-layout/app-layout.component';
 import {SiteLayoutComponent} from './layout/site-layout/site-layout.component';
 import {SiteHomeComponent} from './componant/site-home/site-home.component';
@@ -26,6 +25,8 @@ import {PatientShowAppointmentComponent} from './componant/dentist-point-mobilet
 import {PatientShowPrescriptionComponent} from './componant/dentist-point-mobiletoweb/patient-show-prescription/patient-show-prescription.component';
 import {PatientSignupComponent} from './componant/dentist-point/auth/patient-signup/patient-signup.component';
 import {PatientViewMedicineComponent} from './componant/dentist-point-mobiletoweb/patient-view-medicine/patient-view-medicine.component';
+import {LoginComponent} from './uaa/component/login/login.component';
+import {LogoutComponent} from './uaa/component/logout/logout.component';
 
 
 const routes: Routes = [
@@ -80,7 +81,8 @@ const routes: Routes = [
   },
 
   // No layout routes
-  {path: AppUrl.LOGIN, component: LoginComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'logout', component: LogoutComponent},
   {path: AppUrl.DOCTORPOINT_LOGIN, component: DoctorLoginComponent},
   {path: AppUrl.DOCTOR_SIGNUP, component: DoctorSignupComponent},
   {path: 'patient/signUp', component: PatientSignupComponent}

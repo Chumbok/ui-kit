@@ -6,23 +6,19 @@ import {AppComponent} from './app.component';
 import {TemplateHeadComponent} from './layout/app-layout/template-head/template-head.component';
 import {TemplateTopnavComponent} from './layout/app-layout/template-topnav/template-topnav.component';
 import {TemplateSidenavComponent} from './layout/app-layout/template-sidenav/template-sidenav.component';
-import {LoginComponent} from './componant/auth/login/login.component';
 import {AppLayoutComponent} from './layout/app-layout/app-layout.component';
 import {SiteLayoutComponent} from './layout/site-layout/site-layout.component';
 import {SiteHomeComponent} from './componant/site-home/site-home.component';
 import {DashboardComponent} from './componant/dashboard/dashboard.component';
 import {FlashMessageComponent} from './directives/flash-message/flash-message.component';
 import {NgFlashMessagesModule} from 'ng-flash-messages';
-import {AuthService} from './service/auth.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule, HttpClientXsrfModule} from '@angular/common/http';
 import {CookieService} from 'ngx-cookie-service';
 import {AuthGuard} from './guard/auth.guard';
-import {LogoutComponent} from './componant/auth/logout/logout.component';
 import {FlashMessageService} from './service/flash-message.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {Http401Interceptor} from './interceptor/Http401Interceptor';
-import {LoggedInUserInfoService} from './service/logged-in-user-info.service';
 import {CreatePrescriptionComponent} from './componant/dentist-point/create-prescription/create-prescription.component';
 import {CreatePatientComponent} from './componant/dentist-point/create-patient/create-patient.component';
 import {CalendarComponent} from './componant/dentist-point/calendar/calendar.component';
@@ -80,10 +76,6 @@ import {environment} from '../environments/environment';
 import {PingHttpService} from './service/ping-http.service';
 import {PingMockService} from './service/ping-mock.service';
 import {PingService} from './service/ping.service';
-import {AuthHttpService} from './service/auth-http.service';
-import {AuthMockService} from './service/auth-mock.service';
-import {LoggedInUserInfoHttpService} from './service/logged-in-user-info-http.service';
-import {LoggedInUserInfoMockService} from './service/logged-in-user-info-mock.service';
 import {SettingsComponent} from './componant/dentist-point/settings/settings.component';
 import {AppointmentHttpService} from './service/appointment-http.service';
 import {AppointmentMockService} from './service/appointment-mock.service';
@@ -123,6 +115,12 @@ import {MenuDentistPointDoctorService} from './service/menu-dentist-point-doctor
 import {UAAModule} from './uaa/uaa.module';
 import {MenuDefaultService} from './service/menu-default.service';
 import {ServerManagerModule} from './server-manager/server-manager.module';
+import {AuthTokenService} from './service/auth-token.service';
+import {AuthTokenMockService} from './service/auth-token-mock.service';
+import {AuthTokenHttpService} from './service/auth-token-http.service';
+import {LoggedInUserInfoMockService} from './service/logged-in-user-info-mock.service';
+import {LoggedInUserInfoHttpService} from './service/logged-in-user-info-http.service';
+import {LoggedInUserInfoService} from './service/logged-in-user-info.service';
 
 
 @NgModule({
@@ -191,7 +189,6 @@ import {ServerManagerModule} from './server-manager/server-manager.module';
     TemplateHeadComponent,
     TemplateTopnavComponent,
     TemplateSidenavComponent,
-    LoginComponent,
     AppLayoutComponent,
     SiteLayoutComponent,
     SiteHomeComponent,
@@ -199,7 +196,6 @@ import {ServerManagerModule} from './server-manager/server-manager.module';
     PatientDashboardSidenavComponent,
     DashboardComponent,
     FlashMessageComponent,
-    LogoutComponent,
     CreatePrescriptionComponent,
     CreatePatientComponent,
     CalendarComponent,
@@ -232,8 +228,12 @@ import {ServerManagerModule} from './server-manager/server-manager.module';
       multi: true
     },
     {
-      provide: AuthService,
-      useClass: environment.chumbok.enableMock ? AuthMockService : AuthHttpService
+      provide: AuthTokenService,
+      useClass: environment.chumbok.enableMock ? AuthTokenMockService : AuthTokenHttpService
+    },
+    {
+      provide: LoggedInUserInfoService,
+      useClass: environment.chumbok.enableMock ? LoggedInUserInfoMockService : LoggedInUserInfoHttpService
     },
     {
       provide: DoctorAuthService,
@@ -249,10 +249,6 @@ import {ServerManagerModule} from './server-manager/server-manager.module';
       useClass: environment.chumbok.enableMock ? PingMockService : PingHttpService
     },
     FlashMessageService,
-    {
-      provide: LoggedInUserInfoService,
-      useClass: environment.chumbok.enableMock ? LoggedInUserInfoMockService : LoggedInUserInfoHttpService
-    },
     {
       provide: AppointmentService,
       useClass: environment.chumbok.enableMock ? AppointmentMockService : AppointmentHttpService
