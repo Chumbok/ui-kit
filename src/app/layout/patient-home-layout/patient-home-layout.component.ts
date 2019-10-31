@@ -3,7 +3,6 @@ import {AuthTokenService} from "../../service/auth-token.service";
 import {PingService} from "../../service/ping.service";
 import {FlashMessageService} from "../../service/flash-message.service";
 import {timer} from "rxjs";
-import {first} from "rxjs/operators";
 
 @Component({
   selector: 'app-patient-home-layout',
