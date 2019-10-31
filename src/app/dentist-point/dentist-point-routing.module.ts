@@ -48,8 +48,8 @@ const routes: Routes = [
     children: [
       {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
       {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
-      {path: '', loadChildren: '../uaa/uaa.module#UAAModule'},
-      {path: '', loadChildren: '../server-manager/server-manager.module#ServerManagerModule'},
+      /* {path: '', loadChildren: '../uaa/uaa.module#UAAModule'},
+       {path: '', loadChildren: '../server-manager/server-manager.module#ServerManagerModule'},*/
 
       {path: AppUrl.DOCTOR_CALENDER_VIEW, component: CalendarComponent, canActivate: [AuthGuard]},
       {path: AppUrl.DOCTOR_CREATEP_PRESCRIPTION, component: CreatePrescriptionComponent, canActivate: [AuthGuard]},

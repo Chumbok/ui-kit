@@ -56,7 +56,7 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatTreeModule,
+  MatTreeModule
 } from '@angular/material';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import {environment} from '../environments/environment';
@@ -175,4 +175,6 @@ import {DentistPointModule} from "./dentist-point/dentist-point.module";
   ]
 })
 export class AppModule {
+
 }
+
