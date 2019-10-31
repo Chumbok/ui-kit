@@ -64,15 +64,15 @@ export class CreateTemplateComponent implements OnInit {
     }
     const prescription: CreatePrescription = new CreatePrescription();
     prescription.patientId = 'trt';
-    var chiefComplain = new String(this.form.controls['complain'].value).split(",");
+    var chiefComplain = String(this.form.controls['complain'].value).split(",");
     chiefComplain.forEach(function (chiefComplain) {
       const chiefComplainObj: ChiefComplains = new ChiefComplains();
       chiefComplainObj.complain = chiefComplain;
       prescription.chiefComplain.push(chiefComplainObj)
     });
 
-    var parameters = new String(this.form.controls['parameters'].value).split(",");
-    var remarks = new String(this.form.controls['remarks'].value).split(",");
+    var parameters = String(this.form.controls['parameters'].value).split(",");
+    var remarks = String(this.form.controls['remarks'].value).split(",");
 
     for (let i = 0; i < Math.max(parameters.length, remarks.length); i++) {
       const onExamination: OnExaminations = new OnExaminations();
@@ -95,11 +95,11 @@ export class CreateTemplateComponent implements OnInit {
       }
     }
 
-    var dentalHistory = new String(this.form.controls['dentalHistory'].value).split(",");
-    var vaccinationHistory = new String(this.form.controls['vaccinationHistory'].value).split(",");
-    var investigation = new String(this.form.controls['investigation'].value).split(",");
-    var radiological = new String(this.form.controls['radiological'].value).split(",");
-    var planning = new String(this.form.controls['planning'].value).split(",");
+    var dentalHistory = String(this.form.controls['dentalHistory'].value).split(",");
+    var vaccinationHistory = String(this.form.controls['vaccinationHistory'].value).split(",");
+    var investigation = String(this.form.controls['investigation'].value).split(",");
+    var radiological = String(this.form.controls['radiological'].value).split(",");
+    var planning = String(this.form.controls['planning'].value).split(",");
 
     for (let i = 0; i < Math.max(dentalHistory.length, vaccinationHistory.length,
       investigation.length, radiological.length, planning.length); i++) {
@@ -196,6 +196,11 @@ export class CreateTemplateComponent implements OnInit {
     createDrug.instruction = this.form.controls['drugDose'].value;
     createDrug.noOfTime = this.form.controls['drugDuration'].value;
     this.createMedicinePrescription.push(createDrug);
+  }
+
+  deleteMedicineInTemplate(medicine) {
+
+    this.createMedicinePrescription.splice(this.createMedicinePrescription.indexOf(medicine), 1);
   }
 
 
