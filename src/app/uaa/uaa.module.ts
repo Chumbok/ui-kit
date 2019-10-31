@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
-import {UAARoutingModule} from './uaa-routing.module';
+
 import {OrgListComponent} from './component/org/org-list/org-list.component';
 import {TenantListComponent} from './component/tenant/tenant-list/tenant-list.component';
 import {UserListComponent} from './component/user/user-list/user-list.component';
@@ -25,6 +25,7 @@ import {AuthMockService} from './service/auth-mock.service';
 import {UserInfoService} from './service/user-info.service';
 import {UserInfoMockService} from './service/user-info-mock.service';
 import {UserInfoHttpService} from './service/user-info-http.service';
+import {UAARoutingModule} from "./uaa-routing.module";
 
 @NgModule({
   declarations: [

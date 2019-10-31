@@ -25,6 +25,7 @@
     "@angular/router": "8.0.0",
     "@fortawesome/fontawesome-free": "^5.8.2",
     "@ng-bootstrap/ng-bootstrap": "4.2.0",
+    "@nguniversal/module-map-ngfactory-loader": "^8.1.1",
     "@sweetalert2/ngx-sweetalert2": "^6.0.1",
     "ajv": "^6.10.0",
     "angular-bootstrap-datepicker": "^0.1.0",
