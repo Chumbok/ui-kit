@@ -4,7 +4,7 @@ import {CommonModule, DatePipe} from '@angular/common';
 import {DentistPointRoutingModule} from './dentist-point-routing.module';
 import {PatientDashboardHeadComponent} from "../layout/patient-home-layout/patient-dashboard-head/patient-dashboard-head.component";
 import {PatientDashboardSidenavComponent} from "../layout/patient-home-layout/patient-template-sidenav/patient-dashboard-sidenav.component";
-import {DashboardComponent} from "../componant/dashboard/dashboard.component";
+
 import {FlashMessageComponent} from "../directives/flash-message/flash-message.component";
 import {PatientHomeLayoutComponent} from "../layout/patient-home-layout/patient-home-layout.component";
 import {DentistPointDoctorMenuComponent} from "../layout/app-layout/dentist-point-doctor-menu/dentist-point-doctor-menu.component";
@@ -54,6 +54,7 @@ import {CalendarCommonModule, CalendarDayModule, CalendarMonthModule, CalendarWe
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {Ng2SearchPipeModule} from "ng2-search-filter";
 import {AppointmentService} from "./services/appointment.service";
+import {DashboardComponent} from "../componant/dashboard/dashboard.component";
 
 @NgModule({
   declarations: [
@@ -102,7 +103,7 @@ import {AppointmentService} from "./services/appointment.service";
     {
       provide: TemplateService,
       useClass: environment.chumbok.enableMock ? TemplateMockService : TemplateHttpService
-    }, ,
+    },
     {
       provide: AppointmentService,
       useClass: environment.chumbok.enableMock ? AppointmentMockService : AppointmentHttpService

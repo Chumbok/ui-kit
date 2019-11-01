@@ -48,6 +48,7 @@ export class AppointmentListComponent implements OnInit {
 
     this.pageChange(1);
     this.appointmentService.getAppointmentListByDoctorId().subscribe(res => {
+      this.appointmentList = [];
       res.forEach((values) => {
         this.appointmentList.push(values);
       });
