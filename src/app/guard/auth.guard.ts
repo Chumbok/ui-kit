@@ -1,7 +1,7 @@
 import {Injectable, OnInit} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
 import {Observable} from 'rxjs';
-import {AuthService} from '../service/auth.service';
+import {AuthTokenService} from '../service/auth-token.service';
 import {environment} from '../../environments/environment';
 
 @Injectable()
@@ -9,7 +9,7 @@ export class AuthGuard implements CanActivate, OnInit {
 
   private enableMock: boolean = environment.chumbok.enableMock;
 
-  constructor(private loginService: AuthService, private router: Router) {
+  constructor(private authTokenService: AuthTokenService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -23,12 +23,12 @@ export class AuthGuard implements CanActivate, OnInit {
       return true;
     }
 
-    if (!this.loginService.isLoggedIn()) {
+    if (!this.authTokenService.isLoggedIn()) {
       this.router.navigate(['/login']);
       return false;
     }
-    return true;
 
+    return true;
   }
 
 }

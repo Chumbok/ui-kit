@@ -1,14 +1,8 @@
 import {Injectable} from '@angular/core';
 import {LoggedInUserInfoService} from './logged-in-user-info.service';
-import {of} from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class LoggedInUserInfoMockService implements LoggedInUserInfoService {
-
-  public fetchLoggedInUserInfo() {
-    console.log('HTTP fetchLoggedInUserInfo is disabled because environment.chumbok.enableMock=true.');
-    return of({});
-  }
 
   public getDisplayName(): string {
     console.log('Returning mock displayName because environment.chumbok.enableMock=true.');

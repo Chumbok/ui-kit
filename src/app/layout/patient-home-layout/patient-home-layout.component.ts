@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from "../../service/auth.service";
+import {AuthTokenService} from "../../service/auth-token.service";
 import {PingService} from "../../service/ping.service";
 import {FlashMessageService} from "../../service/flash-message.service";
 import {timer} from "rxjs";
-import {first} from "rxjs/operators";
 
 @Component({
   selector: 'app-patient-home-layout',
@@ -16,7 +15,8 @@ export class PatientHomeLayoutComponent implements OnInit {
   private pingInProgress = false;
   private internetGotDisconnected = false;
 
-  constructor(private authService: AuthService, private pingService: PingService, private flashMessageService: FlashMessageService) {
+  constructor(private authService: AuthTokenService, private pingService: PingService,
+              private flashMessageService: FlashMessageService) {
   }
 
   ngOnInit() {
@@ -29,9 +29,9 @@ export class PatientHomeLayoutComponent implements OnInit {
     timer(5000, 30 * 60 * 1000).subscribe(x => {
       if (!this.refreshTokenInProgress) {
         this.refreshTokenInProgress = true;
-        this.authService.refreshToken().pipe(first()).subscribe(res => {
-          this.refreshTokenInProgress = false;
-        });
+        // this.authService.refreshToken().pipe(first()).subscribe(res => {
+        //   this.refreshTokenInProgress = false;
+        // });
       }
     });
   }

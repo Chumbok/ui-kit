@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Router} from '@angular/router';
-import {AppointmentService} from '../../../service/appointment.service';
+import {AppointmentService} from '../../../dentist-point/services/appointment.service';
 
 
 @Component({
