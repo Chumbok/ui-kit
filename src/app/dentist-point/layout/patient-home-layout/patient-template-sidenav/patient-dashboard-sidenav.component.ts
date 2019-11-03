@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Router} from '@angular/router';
-import {AppointmentService} from '../../../dentist-point/services/appointment.service';
-
+import {AppointmentService} from '../../../services/appointment.service';
 
 @Component({
   selector: 'patient-app-template-sidenav',

@@ -14,7 +14,7 @@ export class MenuUaaService implements MenuService {
     menu1.id = '#usermanagement';
     menu1.title = 'User Management';
     menu1.iconCssClass = 'fas fa-user-astronaut fa-fw';
-    menu1.routerLink = '/orgs';
+    menu1.routerLink = '/uaa/orgs';
     menu1.menuItems = [];
 
     const menu2 = new Menu();

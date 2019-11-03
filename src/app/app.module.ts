@@ -74,7 +74,7 @@ import {AuthTokenHttpService} from './service/auth-token-http.service';
 import {LoggedInUserInfoMockService} from './service/logged-in-user-info-mock.service';
 import {LoggedInUserInfoHttpService} from './service/logged-in-user-info-http.service';
 import {LoggedInUserInfoService} from './service/logged-in-user-info.service';
-import {DentistPointModule} from "./dentist-point/dentist-point.module";
+import {DentistPointModule} from './dentist-point/dentist-point.module';
 
 
 @NgModule({

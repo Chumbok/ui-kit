@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthTokenService} from "../../service/auth-token.service";
-import {PingService} from "../../service/ping.service";
-import {FlashMessageService} from "../../service/flash-message.service";
-import {timer} from "rxjs";
+
+import {timer} from 'rxjs';
+import {AuthTokenService} from '../../../service/auth-token.service';
+import {PingService} from '../../../service/ping.service';
+import {FlashMessageService} from '../../../service/flash-message.service';
 
 @Component({
   selector: 'app-patient-home-layout',

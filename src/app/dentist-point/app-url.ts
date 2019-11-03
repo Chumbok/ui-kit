@@ -23,4 +23,5 @@ export class AppUrl {
   public static PATIENT_SHOW_APPOINTMENT = AppUrl.PATIENT + 'show-appointment-list';
   public static PATIENT_SHOW_PRESCRIPTION = AppUrl.PATIENT + 'show-prescription-list';
   public static PATIENT_HOME = AppUrl.PATIENT + 'patient-home';
+  public static PATIENT_MEDICINE_LIST = AppUrl.PATIENT + 'prescription/:id/show/medicine-list';
 }

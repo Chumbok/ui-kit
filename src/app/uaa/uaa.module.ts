@@ -12,7 +12,6 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MenuService} from '../service/menu.service';
 import {environment} from '../../environments/environment';
-import {MenuUaaService} from './service/menu-uaa.service';
 import {MenuDefaultService} from '../service/menu-default.service';
 import {OrgTenantUserMockService} from './service/org-tenant-user-mock.service';
 import {OrgTenantUserService} from './service/org-tenant-user';
@@ -25,7 +24,7 @@ import {AuthMockService} from './service/auth-mock.service';
 import {UserInfoService} from './service/user-info.service';
 import {UserInfoMockService} from './service/user-info-mock.service';
 import {UserInfoHttpService} from './service/user-info-http.service';
-import {UAARoutingModule} from "./uaa-routing.module";
+import {UAARoutingModule} from './uaa-routing.module';
 
 @NgModule({
   declarations: [
@@ -60,7 +59,7 @@ import {UAARoutingModule} from "./uaa-routing.module";
     },
     {
       provide: MenuService,
-      useClass: environment.chumbok.appName === 'uaa' ? MenuUaaService : MenuDefaultService
+      useClass: MenuDefaultService
     },
   ]
 })

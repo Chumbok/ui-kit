@@ -2,13 +2,30 @@ import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {Menu, MenuItem} from '../model/menu';
 import {MenuService} from './menu.service';
+import {MenuUaaService} from '../uaa/service/menu-uaa.service';
+import {MenuDentistPointDoctorService} from '../dentist-point/services/menu-dentist-point-doctor.service';
+import {MenuServerManagerService} from '../server-manager/service/menu-server-manager.service';
+import {environment} from '../../environments/environment';
 
 @Injectable()
 export class MenuDefaultService implements MenuService {
 
-  menus: Menu[];
-
   constructor() {
+  }
+
+  getMenus(): Observable<Menu[]> {
+    if (environment.chumbok['appName'] === 'uaa') {
+      return new MenuUaaService().getMenus();
+    } else if (environment.chumbok['appName'] === 'dentist-point') {
+      return new MenuDentistPointDoctorService().getMenus();
+    } else if (environment.chumbok['appName'] === 'server-manager') {
+      return new MenuServerManagerService().getMenus();
+    } else {
+      return this.defaultMenu();
+    }
+  }
+
+  private defaultMenu(): Observable<Menu[]> {
 
     const menuItem1: MenuItem = new MenuItem();
     menuItem1.iconCssClass = 'fas fa-bug fa-fw';
@@ -29,10 +46,6 @@ export class MenuDefaultService implements MenuService {
     menu2.routerLink = '';
     menu2.menuItems = [];
 
-    this.menus = [menu1, menu2];
-  }
-
-  getMenus(): Observable<Menu[]> {
-    return of(this.menus);
+    return of([menu1, menu2]);
   }
 }
