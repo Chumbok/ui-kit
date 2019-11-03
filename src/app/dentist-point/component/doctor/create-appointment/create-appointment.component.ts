@@ -1,12 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {AppointmentService} from '../../../service/appointment.service';
+import {Router} from '@angular/router';
+import {FlashMessageService} from '../../../../shared/service/flash-message.service';
+import {DatePipe} from '@angular/common';
+import {CreateAppointment} from '../../../model/create-appointment';
 
-import {Router} from "@angular/router";
-
-import {DatePipe} from "@angular/common";
-import {AppointmentService} from "../../../services/appointment.service";
-import {FlashMessageService} from "../../../../service/flash-message.service";
-import {CreateAppointment} from "../../../model/create-appointment";
 
 @Component({
   selector: 'app-create-appointment',

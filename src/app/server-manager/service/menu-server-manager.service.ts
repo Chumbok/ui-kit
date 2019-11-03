@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
-import {Menu, MenuItem} from '../../model/menu';
-import {MenuService} from '../../service/menu.service';
+import {MenuService} from '../../shared/service/menu.service';
+import {Menu, MenuItem} from '../../shared/model/menu';
 
 @Injectable()
 export class MenuServerManagerService implements MenuService {

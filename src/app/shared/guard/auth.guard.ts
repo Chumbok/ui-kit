@@ -2,7 +2,7 @@ import {Injectable, OnInit} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
 import {Observable} from 'rxjs';
 import {AuthTokenService} from '../service/auth-token.service';
-import {environment} from '../../environments/environment';
+import {environment} from '../../../environments/environment';
 
 @Injectable()
 export class AuthGuard implements CanActivate, OnInit {
@@ -30,5 +30,4 @@ export class AuthGuard implements CanActivate, OnInit {
 
     return true;
   }
-
 }

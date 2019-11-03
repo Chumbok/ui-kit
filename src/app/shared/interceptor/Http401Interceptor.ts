@@ -1,12 +1,10 @@
-
 import {tap} from 'rxjs/operators';
-
 import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
-import {environment} from '../../environments/environment';
 import {EmptyObservable} from 'rxjs-compat/observable/EmptyObservable';
+import {environment} from '../../../environments/environment';
 
 @Injectable()
 export class Http401Interceptor implements HttpInterceptor {

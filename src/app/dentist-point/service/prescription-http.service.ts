@@ -4,11 +4,11 @@ import {PrescriptionService} from './prescription.service';
 import {environment} from '../../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-import {DoctorAuthService} from "./doctor.auth.service";
-import {ChiefComplains} from "../model/chief-complain";
-import {OnExaminations} from "../model/on-examination";
-import {Diagnosises} from "../model/on-diagonsis";
-import {Pharmacies} from "../model/create-medicine";
+import {DoctorAuthService} from './doctor.auth.service';
+import {ChiefComplains} from '../model/chief-complain';
+import {OnExaminations} from '../model/on-examination';
+import {Diagnosises} from '../model/on-diagonsis';
+import {Pharmacies} from '../model/create-medicine';
 
 
 @Injectable({providedIn: 'root'})

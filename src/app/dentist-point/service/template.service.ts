@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Pharmacies} from '../model/create-medicine';
-import {ChiefComplains} from "../model/chief-complain";
-import {OnExaminations} from "../model/on-examination";
-import {Diagnosises} from "../model/on-diagonsis";
+import {ChiefComplains} from '../model/chief-complain';
+import {OnExaminations} from '../model/on-examination';
+import {Diagnosises} from '../model/on-diagonsis';
 
 @Injectable()
 export abstract class TemplateService {

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
-import {ActivatedRoute, Router} from "@angular/router";
-import {PrescriptionService} from "../../../services/prescription.service";
+import {ActivatedRoute, Router} from '@angular/router';
+import {PrescriptionService} from '../../../service/prescription.service';
 
 @Component({
   selector: 'app-patient-show-prescription',
@@ -74,8 +74,6 @@ export class PatientShowPrescriptionComponent implements OnInit {
   onPrescriptionView(prescriptionId) {
     this.router.navigate(['dentist-point/patient/' + 'prescription/' + prescriptionId + '/show/medicine-list']);
   }
-
-
 
 
 }

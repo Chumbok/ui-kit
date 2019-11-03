@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {Pharmacies} from "../../../model/create-medicine";
-import {TemplateService} from "../../../services/template.service";
-import {FlashMessageService} from "../../../../service/flash-message.service";
-import {CreatePrescription} from "../../../model/create-prescription";
-import {ChiefComplains} from "../../../model/chief-complain";
-import {OnExaminations} from "../../../model/on-examination";
-import {Diagnosises} from "../../../model/on-diagonsis";
+import {Pharmacies} from '../../../model/create-medicine';
+import {CreatePrescription} from '../../../model/create-prescription';
+import {ChiefComplains} from '../../../model/chief-complain';
+import {OnExaminations} from '../../../model/on-examination';
+import {Diagnosises} from '../../../model/on-diagonsis';
+import {TemplateService} from '../../../service/template.service';
+import {FlashMessageService} from '../../../../shared/service/flash-message.service';
 
 
 @Component({
@@ -25,7 +25,8 @@ export class CreateTemplateComponent implements OnInit {
   templateName: string;
   createMedicinePrescription: Array<Pharmacies> = [];
 
-  constructor(private formBuilder: FormBuilder, private prescriptionService: TemplateService, private flashMessageService: FlashMessageService,
+  constructor(private formBuilder: FormBuilder, private prescriptionService: TemplateService,
+              private flashMessageService: FlashMessageService,
               private route: ActivatedRoute, private router: Router) {
     this.route.params.subscribe(params => {
       this.patientId = params['id'];
@@ -65,42 +66,42 @@ export class CreateTemplateComponent implements OnInit {
     }
     const prescription: CreatePrescription = new CreatePrescription();
     prescription.patientId = 'trt';
-    var chiefComplain = String(this.form.controls['complain'].value).split(",");
+    var chiefComplain = String(this.form.controls['complain'].value).split(',');
     chiefComplain.forEach(function (chiefComplain) {
       const chiefComplainObj: ChiefComplains = new ChiefComplains();
       chiefComplainObj.complain = chiefComplain;
-      prescription.chiefComplain.push(chiefComplainObj)
+      prescription.chiefComplain.push(chiefComplainObj);
     });
 
-    var parameters = String(this.form.controls['parameters'].value).split(",");
-    var remarks = String(this.form.controls['remarks'].value).split(",");
+    var parameters = String(this.form.controls['parameters'].value).split(',');
+    var remarks = String(this.form.controls['remarks'].value).split(',');
 
     for (let i = 0; i < Math.max(parameters.length, remarks.length); i++) {
       const onExamination: OnExaminations = new OnExaminations();
       if (remarks[i] == null) {
         onExamination.remark = 'null';
         onExamination.parameter = parameters[i];
-        prescription.onExaminations.push(onExamination)
+        prescription.onExaminations.push(onExamination);
       } else if (parameters[i] == null) {
         onExamination.parameter = 'null';
         onExamination.remark = remarks[i];
-        prescription.onExaminations.push(onExamination)
+        prescription.onExaminations.push(onExamination);
       } else if (parameters[i] != null && remarks[i] != null) {
         onExamination.parameter = parameters[i];
         onExamination.remark = remarks[i];
-        prescription.onExaminations.push(onExamination)
+        prescription.onExaminations.push(onExamination);
       } else if (parameters[i] == null && parameters[i] == null) {
         onExamination.parameter = 'null';
         onExamination.remark = 'null';
-        prescription.onExaminations.push(onExamination)
+        prescription.onExaminations.push(onExamination);
       }
     }
 
-    var dentalHistory = String(this.form.controls['dentalHistory'].value).split(",");
-    var vaccinationHistory = String(this.form.controls['vaccinationHistory'].value).split(",");
-    var investigation = String(this.form.controls['investigation'].value).split(",");
-    var radiological = String(this.form.controls['radiological'].value).split(",");
-    var planning = String(this.form.controls['planning'].value).split(",");
+    const dentalHistory = String(this.form.controls['dentalHistory'].value).split(',');
+    const vaccinationHistory = String(this.form.controls['vaccinationHistory'].value).split(',');
+    const investigation = String(this.form.controls['investigation'].value).split(',');
+    const radiological = String(this.form.controls['radiological'].value).split(',');
+    const planning = String(this.form.controls['planning'].value).split(',');
 
     for (let i = 0; i < Math.max(dentalHistory.length, vaccinationHistory.length,
       investigation.length, radiological.length, planning.length); i++) {

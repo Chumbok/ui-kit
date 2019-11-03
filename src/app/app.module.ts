@@ -1,21 +1,12 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
-
 import {AppComponent} from './app.component';
-import {TemplateHeadComponent} from './layout/app-layout/template-head/template-head.component';
-import {TemplateTopnavComponent} from './layout/app-layout/template-topnav/template-topnav.component';
-import {TemplateSidenavComponent} from './layout/app-layout/template-sidenav/template-sidenav.component';
-import {AppLayoutComponent} from './layout/app-layout/app-layout.component';
-import {SiteLayoutComponent} from './layout/site-layout/site-layout.component';
-import {SiteHomeComponent} from './componant/site-home/site-home.component';
 import {NgFlashMessagesModule} from 'ng-flash-messages';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule, HttpClientXsrfModule} from '@angular/common/http';
 import {CookieService} from 'ngx-cookie-service';
-import {AuthGuard} from './guard/auth.guard';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {Http401Interceptor} from './interceptor/Http401Interceptor';
 import {CalendarModule, DateAdapter} from 'angular-calendar';
 import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
 import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
@@ -60,22 +51,28 @@ import {
 } from '@angular/material';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import {environment} from '../environments/environment';
-import {PingHttpService} from './service/ping-http.service';
-import {PingMockService} from './service/ping-mock.service';
-import {PingService} from './service/ping.service';
 import {NgxPaginationModule} from 'ngx-pagination';
-
 import {DatePipe} from '@angular/common';
 import {UAAModule} from './uaa/uaa.module';
 import {ServerManagerModule} from './server-manager/server-manager.module';
-import {AuthTokenService} from './service/auth-token.service';
-import {AuthTokenMockService} from './service/auth-token-mock.service';
-import {AuthTokenHttpService} from './service/auth-token-http.service';
-import {LoggedInUserInfoMockService} from './service/logged-in-user-info-mock.service';
-import {LoggedInUserInfoHttpService} from './service/logged-in-user-info-http.service';
-import {LoggedInUserInfoService} from './service/logged-in-user-info.service';
 import {DentistPointModule} from './dentist-point/dentist-point.module';
-
+import {TemplateHeadComponent} from './shared/layout/app-layout/template-head/template-head.component';
+import {TemplateTopnavComponent} from './shared/layout/app-layout/template-topnav/template-topnav.component';
+import {TemplateSidenavComponent} from './shared/layout/app-layout/template-sidenav/template-sidenav.component';
+import {AppLayoutComponent} from './shared/layout/app-layout/app-layout.component';
+import {SiteLayoutComponent} from './shared/layout/site-layout/site-layout.component';
+import {SiteHomeComponent} from './shared/componant/site-home/site-home.component';
+import {AuthGuard} from './shared/guard/auth.guard';
+import {Http401Interceptor} from './shared/interceptor/Http401Interceptor';
+import {AuthTokenService} from './shared/service/auth-token.service';
+import {AuthTokenMockService} from './shared/service/auth-token-mock.service';
+import {AuthTokenHttpService} from './shared/service/auth-token-http.service';
+import {LoggedInUserInfoService} from './shared/service/logged-in-user-info.service';
+import {LoggedInUserInfoMockService} from './shared/service/logged-in-user-info-mock.service';
+import {LoggedInUserInfoHttpService} from './shared/service/logged-in-user-info-http.service';
+import {PingService} from './shared/service/ping.service';
+import {PingMockService} from './shared/service/ping-mock.service';
+import {PingHttpService} from './shared/service/ping-http.service';
 
 @NgModule({
   imports: [
@@ -177,4 +174,3 @@ import {DentistPointModule} from './dentist-point/dentist-point.module';
 export class AppModule {
 
 }
-

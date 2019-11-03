@@ -8,6 +8,4 @@ export class CreateAppointment {
   doctorChamber?: string;
   date?: string;
   timeSlot?: string;
-
-
 }

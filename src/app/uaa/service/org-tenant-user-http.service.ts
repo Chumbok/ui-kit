@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {User} from '../model/user';
 import {environment} from '../../../environments/environment';
 import {OrgTenantUserService} from './org-tenant-user';
-import {AuthTokenService} from '../../service/auth-token.service';
+import {AuthTokenService} from '../../shared/service/auth-token.service';
 
 @Injectable({providedIn: 'root'})
 export class OrgTenantUserHttpService implements OrgTenantUserService {

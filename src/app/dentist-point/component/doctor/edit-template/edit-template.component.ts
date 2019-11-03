@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-
 import {ActivatedRoute} from '@angular/router';
-import {Pharmacies} from "../../../model/create-medicine";
-import {TemplateService} from "../../../services/template.service";
-import {PrescriptionService} from "../../../services/prescription.service";
-import {CreateTemplate} from "../../../model/create-template";
+import {Pharmacies} from '../../../model/create-medicine';
+import {CreateTemplate} from '../../../model/create-template';
+import {PrescriptionService} from '../../../service/prescription.service';
+import {TemplateService} from '../../../service/template.service';
 
 
 @Component({

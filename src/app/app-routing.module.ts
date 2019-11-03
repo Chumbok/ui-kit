@@ -1,10 +1,5 @@
 import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
-import {SiteLayoutComponent} from './layout/site-layout/site-layout.component';
-import {SiteHomeComponent} from './componant/site-home/site-home.component';
-import {AppLayoutComponent} from './layout/app-layout/app-layout.component';
-import {DashboardComponent} from './componant/dashboard/dashboard.component';
-import {AuthGuard} from './guard/auth.guard';
 import {SettingsComponent} from './dentist-point/component/doctor/settings/settings.component';
 import {LoginComponent} from './uaa/component/login/login.component';
 import {LogoutComponent} from './uaa/component/logout/logout.component';
@@ -12,6 +7,11 @@ import {DoctorLoginComponent} from './dentist-point/component/doctor/auth/doctor
 import {DoctorSignupComponent} from './dentist-point/component/doctor/auth/doctor-signup/doctor-signup.component';
 import {PatientSignupComponent} from './dentist-point/component/doctor/auth/patient-signup/patient-signup.component';
 import {environment} from '../environments/environment';
+import {SiteLayoutComponent} from './shared/layout/site-layout/site-layout.component';
+import {SiteHomeComponent} from './shared/componant/site-home/site-home.component';
+import {AppLayoutComponent} from './shared/layout/app-layout/app-layout.component';
+import {DashboardComponent} from './shared/componant/dashboard/dashboard.component';
+import {AuthGuard} from './shared/guard/auth.guard';
 
 
 const routes: Routes = [

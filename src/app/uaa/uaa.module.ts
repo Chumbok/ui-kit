@@ -1,7 +1,5 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-
-
 import {OrgListComponent} from './component/org/org-list/org-list.component';
 import {TenantListComponent} from './component/tenant/tenant-list/tenant-list.component';
 import {UserListComponent} from './component/user/user-list/user-list.component';
@@ -10,9 +8,7 @@ import {CreateTenantComponent} from './component/tenant/create-tenant/create-ten
 import {CreateUserComponent} from './component/user/create-user/create-user.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MenuService} from '../service/menu.service';
 import {environment} from '../../environments/environment';
-import {MenuDefaultService} from '../service/menu-default.service';
 import {OrgTenantUserMockService} from './service/org-tenant-user-mock.service';
 import {OrgTenantUserService} from './service/org-tenant-user';
 import {OrgTenantUserHttpService} from './service/org-tenant-user-http.service';
@@ -25,6 +21,8 @@ import {UserInfoService} from './service/user-info.service';
 import {UserInfoMockService} from './service/user-info-mock.service';
 import {UserInfoHttpService} from './service/user-info-http.service';
 import {UAARoutingModule} from './uaa-routing.module';
+import {MenuService} from '../shared/service/menu.service';
+import {MenuDefaultService} from '../shared/service/menu-default.service';
 
 @NgModule({
   declarations: [

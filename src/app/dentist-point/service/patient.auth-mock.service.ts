@@ -1,14 +1,13 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
-import {DoctorAuthService} from "./doctor.auth.service";
-import {DoctorChamber} from "../model/doctor-chamber";
+import {PatientAuthService} from './patient.auth.service';
 
 @Injectable({providedIn: 'root'})
-export class DoctorAuthMockService implements DoctorAuthService {
+export class PatientAuthMockService implements PatientAuthService {
 
   private loggedIn = false;
 
-  public doctorLogin(username: string, password: string) {
+  public loginPatient(username: string, password: string) {
     console.log('HTTP login is disabled because environment.chumbok.enableMock=true.');
     this.loggedIn = true;
     return of({});
@@ -38,11 +37,12 @@ export class DoctorAuthMockService implements DoctorAuthService {
     return 'mockToken';
   }
 
-  signUp(name: String, gender: String, qualification: String, email: String, address: String, chambers: Array<DoctorChamber>,
+  signUp(name: String, gender: String, bGroup: String, username: String, email: String, address: String, age: number,
          phoneNo: String, password: String): Observable<any> {
-
+    console.log(age);
     const json = '{"id":"hg34-435hbg6-45hgy"}';
     return of(JSON.parse(json));
   }
+
 
 }

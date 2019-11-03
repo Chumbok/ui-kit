@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-
-import {ActivatedRoute, Router} from "@angular/router";
-import {Pharmacies} from "../../../model/create-medicine";
-import {PrescriptionService} from "../../../services/prescription.service";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Pharmacies} from '../../../model/create-medicine';
+import {PrescriptionService} from '../../../service/prescription.service';
 
 @Component({
   selector: 'app-patient-view-medicine',

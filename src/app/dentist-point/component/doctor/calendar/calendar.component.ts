@@ -3,9 +3,8 @@ import {isSameDay, isSameMonth} from 'date-fns';
 import {Subject} from 'rxjs';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, CalendarView} from 'angular-calendar';
-
 import {Router} from '@angular/router';
-import {AppointmentService} from "../../../services/appointment.service";
+import {AppointmentService} from '../../../service/appointment.service';
 
 const colors: any = {
   red: {

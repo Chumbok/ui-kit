@@ -3,11 +3,11 @@ import {Observable, of} from 'rxjs';
 import {EmptyObservable} from 'rxjs-compat/observable/EmptyObservable';
 import {PrescriptionService} from './prescription.service';
 import {Pharmacies} from '../model/create-medicine';
-import {FlashMessageService} from '../../service/flash-message.service';
 import {Router} from '@angular/router';
-import {ChiefComplains} from "../model/chief-complain";
-import {OnExaminations} from "../model/on-examination";
-import {Diagnosises} from "../model/on-diagonsis";
+import {ChiefComplains} from '../model/chief-complain';
+import {OnExaminations} from '../model/on-examination';
+import {Diagnosises} from '../model/on-diagonsis';
+import {FlashMessageService} from '../../shared/service/flash-message.service';
 
 @Injectable({providedIn: 'root'})
 export class PrescriptionMockService implements PrescriptionService {
@@ -315,7 +315,7 @@ export class PrescriptionMockService implements PrescriptionService {
 
     const mockActiveStatus = '{\n' +
       '    "activeStatus": true\n' +
-      '}'
+      '}';
 
     return of(mockActiveStatus);
   }

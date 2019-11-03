@@ -1,11 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-
-import {ActivatedRoute, Router} from "@angular/router";
-
-import Swal from "sweetalert2";
-import {DoctorAuthService} from "../../../../services/doctor.auth.service";
-import {DoctorChamber} from "../../../../model/doctor-chamber";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import Swal from 'sweetalert2';
+import {DoctorChamber} from '../../../../model/doctor-chamber';
+import {DoctorAuthService} from '../../../../service/doctor.auth.service';
 
 @Component({
   selector: 'app-doctor-signup',
@@ -42,11 +40,11 @@ export class DoctorSignupComponent implements OnInit {
         email: [''],
         address: ['', Validators.required],
         chambers: ['', Validators.required],
-        phoneNo: ['', [Validators.required, Validators.minLength(6), Validators.pattern("^[0-9]*$")]],
+        phoneNo: ['', [Validators.required, Validators.minLength(6), Validators.pattern('^[0-9]*$')]],
         password: ['', [Validators.required, Validators.minLength(6)]],
         confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
       }
-    )
+    );
     this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/login';
     this.show = true;
     this.showDoctorInfo = false;
@@ -60,11 +58,11 @@ export class DoctorSignupComponent implements OnInit {
       return;
     }
 
-    var chamberList = new String(this.f.chambers.value).split("\n");
+    var chamberList = new String(this.f.chambers.value).split('\n');
     chamberList.forEach(function (chamberAddress) {
       const doctorChamber: DoctorChamber = new DoctorChamber();
       doctorChamber.chamberAddress = chamberAddress;
-      chamberLists.push(doctorChamber)
+      chamberLists.push(doctorChamber);
     });
 
     this.authService.signUp(this.f.name.value, this.f.gender.value, this.f.qualification.value,
@@ -77,25 +75,25 @@ export class DoctorSignupComponent implements OnInit {
             position: 'top-end',
             showConfirmButton: false,
             timer: 3000
-          })
-          Toast.fire({type: 'success', title: 'Sign Up in successfully'})
+          });
+          Toast.fire({type: 'success', title: 'Sign Up in successfully'});
           this.router.navigate([this.returnUrl]);
         },
         error => {
           if (error.status === 500) {
-            this.serverError = "Already taken phone number";
+            this.serverError = 'Already taken phone number';
           }
         });
   }
 
   nextToPatientInfo() {
 
-    if (this.f.password.value == this.f.confirmPassword.value) {
+    if (this.f.password.value === this.f.confirmPassword.value) {
       this.serverError = '';
       this.show = false;
       this.showDoctorInfo = true;
     } else {
-      this.serverError = "Password Cannot Match";
+      this.serverError = 'Password Cannot Match';
     }
   }
 

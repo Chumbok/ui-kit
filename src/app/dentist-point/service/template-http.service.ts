@@ -5,10 +5,10 @@ import {environment} from '../../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Pharmacies} from '../model/create-medicine';
 import {TemplateService} from './template.service';
-import {DoctorAuthService} from "./doctor.auth.service";
-import {ChiefComplains} from "../model/chief-complain";
-import {OnExaminations} from "../model/on-examination";
-import {Diagnosises} from "../model/on-diagonsis";
+import {DoctorAuthService} from './doctor.auth.service';
+import {ChiefComplains} from '../model/chief-complain';
+import {OnExaminations} from '../model/on-examination';
+import {Diagnosises} from '../model/on-diagonsis';
 
 @Injectable({providedIn: 'root'})
 export class TemplateHttpService implements TemplateService {

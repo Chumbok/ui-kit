@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {EmptyObservable} from 'rxjs-compat/observable/EmptyObservable';
 import {AppointmentService} from './appointment.service';
-import {FlashMessageService} from '../../service/flash-message.service';
 import {Router} from '@angular/router';
+import {FlashMessageService} from '../../shared/service/flash-message.service';
 
 @Injectable({providedIn: 'root'})
 export class AppointmentMockService implements AppointmentService {
@@ -187,7 +187,7 @@ export class AppointmentMockService implements AppointmentService {
       '        "endDateTime": "2019-12-12 13:30"\n' +
       '    }]';
 
-    console.log(JSON.parse(mockResp))
+    console.log(JSON.parse(mockResp));
     return of(JSON.parse(mockResp));
   }
 
@@ -206,7 +206,7 @@ export class AppointmentMockService implements AppointmentService {
       '        "name": "gvjhfgv",\n' +
       '        "id": "4a6e2ed4-82f6-476b-ad9d-133641120be1"\n' +
       '    }\n' +
-      ']'
+      ']';
     return of(JSON.parse(doctorMock));
   }
 
@@ -215,7 +215,7 @@ export class AppointmentMockService implements AppointmentService {
       '    {\n' +
       '        "chamberName": "Gazipur"\n' +
       '    }\n' +
-      ']'
+      ']';
     return of(JSON.parse(chamberList));
   }
 

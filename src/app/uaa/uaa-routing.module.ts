@@ -1,12 +1,12 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {AuthGuard} from '../guard/auth.guard';
 import {OrgListComponent} from './component/org/org-list/org-list.component';
 import {CreateOrgComponent} from './component/org/create-org/create-org.component';
 import {TenantListComponent} from './component/tenant/tenant-list/tenant-list.component';
 import {CreateTenantComponent} from './component/tenant/create-tenant/create-tenant.component';
 import {UserListComponent} from './component/user/user-list/user-list.component';
 import {CreateUserComponent} from './component/user/create-user/create-user.component';
+import {AuthGuard} from '../shared/guard/auth.guard';
 
 const routes: Routes = [
 

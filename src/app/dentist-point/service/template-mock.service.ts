@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {EmptyObservable} from 'rxjs-compat/observable/EmptyObservable';
-import {Pharmacies} from "../model/create-medicine";
+import {Pharmacies} from '../model/create-medicine';
 import {TemplateService} from './template.service';
-import {FlashMessageService} from '../../service/flash-message.service';
 import {Router} from '@angular/router';
-import {ChiefComplains} from "../model/chief-complain";
-import {OnExaminations} from "../model/on-examination";
-import {Diagnosises} from "../model/on-diagonsis";
+import {ChiefComplains} from '../model/chief-complain';
+import {OnExaminations} from '../model/on-examination';
+import {Diagnosises} from '../model/on-diagonsis';
+import {FlashMessageService} from '../../shared/service/flash-message.service';
 
 @Injectable({providedIn: 'root'})
 export class TemplateMockService implements TemplateService {

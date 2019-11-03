@@ -3,8 +3,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {UserInfoService} from './user-info.service';
 import {environment} from '../../../environments/environment';
-import {AuthTokenService} from '../../service/auth-token.service';
 import {LoggedInUserInfo} from '../model/logged-in-user-info';
+import {AuthTokenService} from '../../shared/service/auth-token.service';
 
 @Injectable({providedIn: 'root'})
 export class UserInfoHttpService implements UserInfoService {

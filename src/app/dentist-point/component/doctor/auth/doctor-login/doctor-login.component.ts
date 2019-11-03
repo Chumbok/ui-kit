@@ -1,10 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
+import {DoctorAuthService} from '../../../../service/doctor.auth.service';
+import {PatientAuthService} from '../../../../service/patient.auth.service';
 
-import Swal from 'sweetalert2';
-import {DoctorAuthService} from '../../../../services/doctor.auth.service';
-import {PatientAuthService} from '../../../../services/patient.auth.service';
 
 @Component({
   selector: 'app-doctor-login',

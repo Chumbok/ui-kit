@@ -4,7 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {EmptyObservable} from 'rxjs-compat/observable/EmptyObservable';
 import {AppointmentService} from './appointment.service';
-import {DoctorAuthService} from "./doctor.auth.service";
+import {DoctorAuthService} from './doctor.auth.service';
 
 @Injectable({providedIn: 'root'})
 export class AppointmentHttpService implements AppointmentService {
@@ -74,15 +74,15 @@ export class AppointmentHttpService implements AppointmentService {
       environment.chumbok.apiBaseEndpointLocalServer + '/api/appointment';
 
     return this.http.post(createPrescriptionEndpoint, {
-        "phoneNumber": phoneNumber,
-        "patientName": patientName,
-        "address": address,
-        "age": age,
-        "bloodGroup": bloodGroup,
-        "doctorId": doctorId,
-        "doctorChamber": doctorChamber,
-        "date": date,
-        "timeSlot": timeSlot
+        'phoneNumber': phoneNumber,
+        'patientName': patientName,
+        'address': address,
+        'age': age,
+        'bloodGroup': bloodGroup,
+        'doctorId': doctorId,
+        'doctorChamber': doctorChamber,
+        'date': date,
+        'timeSlot': timeSlot
       },
       {
         headers: httpHeaders,
@@ -155,10 +155,10 @@ export class AppointmentHttpService implements AppointmentService {
 
     return this.http.post(createAppointmentByPatientEndpoint, {
 
-        "doctorId": doctorID,
-        "doctorChamber": doctorChamber,
-        "date": date,
-        "time": timeSlot
+        'doctorId': doctorID,
+        'doctorChamber': doctorChamber,
+        'date': date,
+        'time': timeSlot
       },
       {
         headers: httpHeaders,

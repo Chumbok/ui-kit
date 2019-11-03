@@ -2,11 +2,11 @@ import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {Menu, MenuItem} from '../model/menu';
 import {MenuService} from './menu.service';
-import {MenuUaaService} from '../uaa/service/menu-uaa.service';
-import {MenuDentistPointDoctorService} from '../dentist-point/services/menu-dentist-point-doctor.service';
-import {MenuServerManagerService} from '../server-manager/service/menu-server-manager.service';
-import {environment} from '../../environments/environment';
-import {MenuDentistPointPatientService} from '../dentist-point/services/menu-dentist-point-patient.service';
+import {environment} from '../../../environments/environment';
+import {MenuUaaService} from '../../uaa/service/menu-uaa.service';
+import {MenuDentistPointDoctorService} from '../../dentist-point/service/menu-dentist-point-doctor.service';
+import {MenuDentistPointPatientService} from '../../dentist-point/service/menu-dentist-point-patient.service';
+import {MenuServerManagerService} from '../../server-manager/service/menu-server-manager.service';
 
 @Injectable()
 export class MenuDefaultService implements MenuService {

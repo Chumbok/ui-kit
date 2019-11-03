@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
-import {DatePipe} from "@angular/common";
+import {DatePipe} from '@angular/common';
 
-import Swal from "sweetalert2";
-import {AppointmentService} from "../../../services/appointment.service";
-import {FlashMessageService} from "../../../../service/flash-message.service";
-import {CreateAppointmentPatient} from "../../../model/patient-create-appointment";
+import Swal from 'sweetalert2';
+import {CreateAppointmentPatient} from '../../../model/patient-create-appointment';
+import {AppointmentService} from '../../../service/appointment.service';
+import {FlashMessageService} from '../../../../shared/service/flash-message.service';
 
 @Component({
   selector: 'app-patient-create-appointment',
@@ -71,7 +71,7 @@ export class PatientCreateAppointmentComponent implements OnInit {
           'Patient account is not active yet',
           '',
           'error'
-        )
+        );
       }
     });
   }
@@ -115,7 +115,7 @@ export class PatientCreateAppointmentComponent implements OnInit {
 
     this.appointmentService.getDoctorList().subscribe(res => {
       res.forEach(doctorList => {
-        console.log(doctorList)
+        console.log(doctorList);
         this.doctorArrayList.push(doctorList);
       });
     });
@@ -131,7 +131,7 @@ export class PatientCreateAppointmentComponent implements OnInit {
     this.doctorChamberArrayList = [];
     this.appointmentService.getDoctorChamberList(doctorId).subscribe(res => {
       res.forEach(doctorChamberList => {
-        console.log(doctorChamberList)
+        console.log(doctorChamberList);
         this.doctorChamberArrayList.push(doctorChamberList);
       });
     });

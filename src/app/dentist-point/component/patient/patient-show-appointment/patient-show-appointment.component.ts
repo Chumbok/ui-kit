@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-
-import {ActivatedRoute, Router} from "@angular/router";
-import {AppointmentService} from "../../../services/appointment.service";
+import {ActivatedRoute, Router} from '@angular/router';
+import {AppointmentService} from '../../../service/appointment.service';
 
 @Component({
   selector: 'app-patient-show-appointment',

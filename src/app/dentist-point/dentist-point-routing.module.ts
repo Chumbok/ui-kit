@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {AuthGuard} from '../guard/auth.guard';
 
 import {CalendarComponent} from './component/doctor/calendar/calendar.component';
 import {CreatePrescriptionComponent} from './component/doctor/create-prescription/create-prescription.component';
@@ -16,6 +15,7 @@ import {PatientShowAppointmentComponent} from './component/patient/patient-show-
 import {PatientShowPrescriptionComponent} from './component/patient/patient-show-prescription/patient-show-prescription.component';
 import {PatientViewMedicineComponent} from './component/patient/patient-view-medicine/patient-view-medicine.component';
 import {AppUrl} from './app-url';
+import {AuthGuard} from '../shared/guard/auth.guard';
 
 
 const routes: Routes = [

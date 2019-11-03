@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
-import {PrescriptionService} from "../../../services/prescription.service";
+import {PrescriptionService} from '../../../service/prescription.service';
 
 @Component({
   selector: 'app-prescription-list',

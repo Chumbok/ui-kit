@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {AuthGuard} from '../guard/auth.guard';
 import {InitMasterKeyComponent} from './component/init-master-key/init-master-key.component';
 import {DbConnectionListComponent} from './component/db-connection-list/db-connection-list.component';
 import {SshConnectionListComponent} from './component/ssh-connection-list/ssh-connection-list.component';
@@ -11,6 +10,7 @@ import {FileBackupJobListComponent} from './component/file-backup-job-list/file-
 import {CreateDbBackupJobsComponent} from './component/create-db-backup-jobs/create-db-backup-jobs.component';
 import {CreateFileBackupJobsComponent} from './component/create-file-backup-jobs/create-file-backup-jobs.component';
 import {NotificationListComponent} from './component/notification-list/notification-list.component';
+import {AuthGuard} from '../shared/guard/auth.guard';
 
 const routes: Routes = [
   {
