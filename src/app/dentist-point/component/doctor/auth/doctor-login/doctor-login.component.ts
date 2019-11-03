@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 
-import Swal from "sweetalert2";
-import {DoctorAuthService} from "../../../../services/doctor.auth.service";
-import {PatientAuthService} from "../../../../services/patient.auth.service";
+import Swal from 'sweetalert2';
+import {DoctorAuthService} from '../../../../services/doctor.auth.service';
+import {PatientAuthService} from '../../../../services/patient.auth.service';
 
 @Component({
   selector: 'app-doctor-login',
@@ -41,8 +41,9 @@ export class DoctorLoginComponent implements OnInit {
     });
 
     this.authService.removeAuthToken();
-    this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/dashboard';
-    this.returnUrlForPatient = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/dashboard';
+    this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/dentist-point/doctors/calendar-view';
+    this.returnUrlForPatient = this.activatedRoute.snapshot.queryParams['returnUrl']
+      || '/dentist-point/patient/show-prescription-list';
   }
 
   public onSubmit(value: string) {
@@ -56,11 +57,6 @@ export class DoctorLoginComponent implements OnInit {
       this.authService.doctorLogin(this.f.username.value, this.f.password.value)
         .subscribe(
           data => {
-            Swal.fire(
-              'Successfully Login!',
-              '',
-              'success'
-            );
             localStorage.setItem('loginType', value);
             this.router.navigate([this.returnUrl]);
           },
@@ -80,11 +76,6 @@ export class DoctorLoginComponent implements OnInit {
       this.patientAuthService.loginPatient(this.f.usernamePatient.value, this.f.passwordPatient.value)
         .subscribe(
           data => {
-            Swal.fire(
-              'Successfully Login!',
-              '',
-              'success'
-            );
             localStorage.setItem('loginType', value);
             this.router.navigate([this.returnUrlForPatient]);
           },

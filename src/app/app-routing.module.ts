@@ -11,6 +11,7 @@ import {LogoutComponent} from './uaa/component/logout/logout.component';
 import {DoctorLoginComponent} from './dentist-point/component/doctor/auth/doctor-login/doctor-login.component';
 import {DoctorSignupComponent} from './dentist-point/component/doctor/auth/doctor-signup/doctor-signup.component';
 import {PatientSignupComponent} from './dentist-point/component/doctor/auth/patient-signup/patient-signup.component';
+import {environment} from '../environments/environment';
 
 
 const routes: Routes = [
@@ -51,7 +52,6 @@ const routes: Routes = [
   {
     path: 'dentist-point',
     children: [
-      {path: 'doctorpoint/login', component: DoctorLoginComponent},
       {path: 'doctors/signUp', component: DoctorSignupComponent},
       {path: 'patient/signUp', component: PatientSignupComponent}
     ]
@@ -66,13 +66,13 @@ const routes: Routes = [
   },
 
   // No layout routes
-  {path: 'login', component: LoginComponent},
+  {path: 'login', component: environment.chumbok.appName === 'dentist-point' ? DoctorLoginComponent : LoginComponent},
   {path: 'logout', component: LogoutComponent},
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { useHash: true })
+    RouterModule.forRoot(routes, {useHash: true})
   ],
   exports: [
     RouterModule

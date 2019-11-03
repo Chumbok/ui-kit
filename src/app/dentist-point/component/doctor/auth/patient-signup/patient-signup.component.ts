@@ -46,7 +46,7 @@ export class PatientSignupComponent implements OnInit {
         confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
       }
     )
-    this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || 'doctorpoint/login';
+    this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || 'login';
     this.show = true;
     this.showPatienInfo = false;
   }
