@@ -35,7 +35,6 @@ import {AppointmentListComponent} from './component/doctor/appointment-list/appo
 import {DoctorLoginComponent} from './component/doctor/auth/doctor-login/doctor-login.component';
 import {DoctorLogoutComponent} from './component/doctor/auth/doctor-logout/doctor-logout.component';
 import {DoctorSignupComponent} from './component/doctor/auth/doctor-signup/doctor-signup.component';
-import {PatientHomeComponent} from './component/doctor/patient-home/patient-home.component';
 import {PatientSignupComponent} from './component/doctor/auth/patient-signup/patient-signup.component';
 import {PatientCreateAppointmentComponent} from './component/patient/patient-create-appointment/patient-create-appointment.component';
 import {PatientViewMedicineComponent} from './component/patient/patient-view-medicine/patient-view-medicine.component';
@@ -50,14 +49,9 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import {AppointmentService} from './services/appointment.service';
 import {DashboardComponent} from '../componant/dashboard/dashboard.component';
-import {PatientDashboardHeadComponent} from './layout/patient-home-layout/patient-dashboard-head/patient-dashboard-head.component';
-import {PatientDashboardSidenavComponent} from './layout/patient-home-layout/patient-template-sidenav/patient-dashboard-sidenav.component';
-import {PatientHomeLayoutComponent} from './layout/patient-home-layout/patient-home-layout.component';
 
 @NgModule({
   declarations: [
-    PatientDashboardHeadComponent,
-    PatientDashboardSidenavComponent,
     DashboardComponent,
     FlashMessageComponent,
     CreatePrescriptionComponent,
@@ -73,8 +67,6 @@ import {PatientHomeLayoutComponent} from './layout/patient-home-layout/patient-h
     DoctorLoginComponent,
     DoctorLogoutComponent,
     DoctorSignupComponent,
-    PatientHomeComponent,
-    PatientHomeLayoutComponent,
     PatientCreateAppointmentComponent,
     PatientShowAppointmentComponent,
     PatientShowPrescriptionComponent,

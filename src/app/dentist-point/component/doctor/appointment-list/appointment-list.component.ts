@@ -35,7 +35,7 @@ export class AppointmentListComponent implements OnInit {
 
   pageChange(newPage: number) {
 
-    this.router.navigate(['doctors/appointment-list'], {queryParams: {page: newPage}});
+    this.router.navigate(['dentist-point/doctors/appointment-list'], {queryParams: {page: newPage}});
     this.appointmentService.getAppointmentListByDoctorId().subscribe(res => {
       this.appointmentList = [];
       res.forEach((values) => {

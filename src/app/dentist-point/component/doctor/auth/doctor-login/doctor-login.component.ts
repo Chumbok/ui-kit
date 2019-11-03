@@ -42,12 +42,12 @@ export class DoctorLoginComponent implements OnInit {
 
     this.authService.removeAuthToken();
     this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/dashboard';
-    this.returnUrlForPatient = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/patient/patient-home';
+    this.returnUrlForPatient = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/dashboard';
   }
 
-  public onSubmit(value: String) {
+  public onSubmit(value: string) {
 
-    if (value == 'loginDoctor') {
+    if (value === 'loginDoctor') {
 
       this.submitted = true;
       if (this.loginForm.invalid) {
@@ -60,7 +60,8 @@ export class DoctorLoginComponent implements OnInit {
               'Successfully Login!',
               '',
               'success'
-            )
+            );
+            localStorage.setItem('loginType', value);
             this.router.navigate([this.returnUrl]);
           },
           error => {
@@ -70,7 +71,7 @@ export class DoctorLoginComponent implements OnInit {
             }
           });
 
-    } else if (value == 'loginPatient') {
+    } else if (value === 'loginPatient') {
 
       this.submitted = true;
       if (this.loginForm.invalid) {
@@ -83,7 +84,8 @@ export class DoctorLoginComponent implements OnInit {
               'Successfully Login!',
               '',
               'success'
-            )
+            );
+            localStorage.setItem('loginType', value);
             this.router.navigate([this.returnUrlForPatient]);
           },
           error => {

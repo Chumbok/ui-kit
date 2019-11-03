@@ -6,6 +6,7 @@ import {MenuUaaService} from '../uaa/service/menu-uaa.service';
 import {MenuDentistPointDoctorService} from '../dentist-point/services/menu-dentist-point-doctor.service';
 import {MenuServerManagerService} from '../server-manager/service/menu-server-manager.service';
 import {environment} from '../../environments/environment';
+import {MenuDentistPointPatientService} from '../dentist-point/services/menu-dentist-point-patient.service';
 
 @Injectable()
 export class MenuDefaultService implements MenuService {
@@ -17,7 +18,13 @@ export class MenuDefaultService implements MenuService {
     if (environment.chumbok['appName'] === 'uaa') {
       return new MenuUaaService().getMenus();
     } else if (environment.chumbok['appName'] === 'dentist-point') {
-      return new MenuDentistPointDoctorService().getMenus();
+      if (localStorage.getItem('loginType') === 'loginDoctor') {
+        return new MenuDentistPointDoctorService().getMenus();
+      } else if (localStorage.getItem('loginType') === 'loginPatient') {
+        return new MenuDentistPointPatientService().getMenus();
+      } else {
+        return this.defaultMenu();
+      }
     } else if (environment.chumbok['appName'] === 'server-manager') {
       return new MenuServerManagerService().getMenus();
     } else {

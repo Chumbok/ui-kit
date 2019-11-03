@@ -51,7 +51,7 @@ export class PrescriptionListComponent implements OnInit {
         });
       });
     } else {
-      this.router.navigate(['doctors/prescription-list'], {queryParams: {page: newPage}});
+      this.router.navigate(['dentist-point/doctors/prescription-list'], {queryParams: {page: newPage}});
       this.prescriptionService.getPrescriptionList(newPage).subscribe(res => {
         this.prescription = res;
         this.prescriptionListLoggedDoctor = res;
@@ -69,7 +69,7 @@ export class PrescriptionListComponent implements OnInit {
 
   onPrescriptionView(prescriptionId) {
 
-    this.router.navigate(['doctors/' + 'prescription/' + prescriptionId + '/prescription-view']);
+    this.router.navigate(['dentist-point/doctors/' + 'prescription/' + prescriptionId + '/prescription-view']);
   }
 
 

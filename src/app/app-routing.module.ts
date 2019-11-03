@@ -8,6 +8,9 @@ import {AuthGuard} from './guard/auth.guard';
 import {SettingsComponent} from './dentist-point/component/doctor/settings/settings.component';
 import {LoginComponent} from './uaa/component/login/login.component';
 import {LogoutComponent} from './uaa/component/logout/logout.component';
+import {DoctorLoginComponent} from './dentist-point/component/doctor/auth/doctor-login/doctor-login.component';
+import {DoctorSignupComponent} from './dentist-point/component/doctor/auth/doctor-signup/doctor-signup.component';
+import {PatientSignupComponent} from './dentist-point/component/doctor/auth/patient-signup/patient-signup.component';
 
 
 const routes: Routes = [
@@ -29,6 +32,7 @@ const routes: Routes = [
       {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]}
     ],
   },
+
   {
     path: 'uaa',
     component: AppLayoutComponent,
@@ -36,9 +40,23 @@ const routes: Routes = [
       {path: '', loadChildren: './uaa/uaa.module#UAAModule'},
     ]
   },
-  // {
-  //   path: 'dentist-point', loadChildren: './dentist-point/dentist-point.module#DentistPointModule'
-  // },
+
+  {
+    path: 'dentist-point',
+    component: AppLayoutComponent,
+    children: [
+      {path: '', loadChildren: './dentist-point/dentist-point.module#DentistPointModule'}
+    ]
+  },
+  {
+    path: 'dentist-point',
+    children: [
+      {path: 'doctorpoint/login', component: DoctorLoginComponent},
+      {path: 'doctors/signUp', component: DoctorSignupComponent},
+      {path: 'patient/signUp', component: PatientSignupComponent}
+    ]
+  },
+
   {
     path: 'server-manager',
     component: AppLayoutComponent,
@@ -54,7 +72,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forChild(routes)
+    RouterModule.forRoot(routes, { useHash: true })
   ],
   exports: [
     RouterModule

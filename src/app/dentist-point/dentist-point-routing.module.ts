@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {AppLayoutComponent} from '../layout/app-layout/app-layout.component';
 import {AuthGuard} from '../guard/auth.guard';
 
 import {CalendarComponent} from './component/doctor/calendar/calendar.component';
@@ -12,54 +11,33 @@ import {CreateTemplateComponent} from './component/doctor/create-template/create
 import {CreateAppointmentComponent} from './component/doctor/create-appointment/create-appointment.component';
 import {CreatePatientComponent} from './component/doctor/create-patient/create-patient.component';
 import {EditTemplateComponent} from './component/doctor/edit-template/edit-template.component';
-import {PatientHomeComponent} from './component/doctor/patient-home/patient-home.component';
-import {DoctorLoginComponent} from './component/doctor/auth/doctor-login/doctor-login.component';
-import {DoctorSignupComponent} from './component/doctor/auth/doctor-signup/doctor-signup.component';
-import {PatientSignupComponent} from './component/doctor/auth/patient-signup/patient-signup.component';
 import {PatientCreateAppointmentComponent} from './component/patient/patient-create-appointment/patient-create-appointment.component';
 import {PatientShowAppointmentComponent} from './component/patient/patient-show-appointment/patient-show-appointment.component';
 import {PatientShowPrescriptionComponent} from './component/patient/patient-show-prescription/patient-show-prescription.component';
 import {PatientViewMedicineComponent} from './component/patient/patient-view-medicine/patient-view-medicine.component';
 import {AppUrl} from './app-url';
-import {PatientHomeLayoutComponent} from './layout/patient-home-layout/patient-home-layout.component';
 
 
 const routes: Routes = [
-  {
-    path: '',
-    component: AppLayoutComponent,
-    children: [
-      {path: AppUrl.DOCTOR_CALENDER_VIEW, component: CalendarComponent, canActivate: [AuthGuard]},
-      {path: AppUrl.DOCTOR_CREATEP_PRESCRIPTION, component: CreatePrescriptionComponent, canActivate: [AuthGuard]},
-      {path: AppUrl.DOCTOR_PRESCRIPTION_LIST, component: PrescriptionListComponent, canActivate: [AuthGuard]},
-      {path: AppUrl.DOCTOR_APPOINTMENT_LIST, component: AppointmentListComponent, canActivate: [AuthGuard]},
-      {path: 'doctors/prescription/:id/prescription-view', component: PrescriptionViewComponent, canActivate: [AuthGuard]},
-      {path: AppUrl.DOCTOR_CREATE_TEMPLATE, component: CreateTemplateComponent, canActivate: [AuthGuard]},
-      {path: 'doctors/create-appointment', component: CreateAppointmentComponent, canActivate: [AuthGuard]},
-      {path: AppUrl.PATIENT_CREATE_PATIENT, component: CreatePatientComponent, canActivate: [AuthGuard]},
-      {path: 'doctors/template/:id/edit-template', component: EditTemplateComponent, canActivate: [AuthGuard]},
-      // {path: AppUrl.DOCTOR_LOGOUT, component: DoctorLogoutComponent, canActivate: [AuthGuard]},
-    ],
-  },
-  {
-    path: '',
-    component: PatientHomeLayoutComponent,
-    children: [
-      {path: AppUrl.PATIENT_HOME, component: PatientHomeComponent, canActivate: [AuthGuard]},
-      {path: AppUrl.PATIENT_CREATE_APPOINTMENT, component: PatientCreateAppointmentComponent, canActivate: [AuthGuard]},
-      {path: AppUrl.PATIENT_SHOW_APPOINTMENT, component: PatientShowAppointmentComponent, canActivate: [AuthGuard]},
-      {path: AppUrl.PATIENT_SHOW_PRESCRIPTION, component: PatientShowPrescriptionComponent, canActivate: [AuthGuard]},
-      {path: AppUrl.PATIENT_MEDICINE_LIST, component: PatientViewMedicineComponent, canActivate: [AuthGuard]},
-    ],
-  },
-  // No layout routes
-  {path: AppUrl.DOCTORPOINT_LOGIN, component: DoctorLoginComponent},
-  {path: AppUrl.DOCTOR_SIGNUP, component: DoctorSignupComponent},
-  {path: 'patient/signUp', component: PatientSignupComponent}
+
+  {path: AppUrl.DOCTOR_CALENDER_VIEW, component: CalendarComponent, canActivate: [AuthGuard]},
+  {path: AppUrl.DOCTOR_CREATEP_PRESCRIPTION, component: CreatePrescriptionComponent, canActivate: [AuthGuard]},
+  {path: AppUrl.DOCTOR_PRESCRIPTION_LIST, component: PrescriptionListComponent, canActivate: [AuthGuard]},
+  {path: AppUrl.DOCTOR_APPOINTMENT_LIST, component: AppointmentListComponent, canActivate: [AuthGuard]},
+  {path: 'doctors/prescription/:id/prescription-view', component: PrescriptionViewComponent, canActivate: [AuthGuard]},
+  {path: AppUrl.DOCTOR_CREATE_TEMPLATE, component: CreateTemplateComponent, canActivate: [AuthGuard]},
+  {path: 'doctors/create-appointment', component: CreateAppointmentComponent, canActivate: [AuthGuard]},
+  {path: AppUrl.PATIENT_CREATE_PATIENT, component: CreatePatientComponent, canActivate: [AuthGuard]},
+  {path: 'doctors/template/:id/edit-template', component: EditTemplateComponent, canActivate: [AuthGuard]},
+  // {path: AppUrl.DOCTOR_LOGOUT, component: DoctorLogoutComponent, canActivate: [AuthGuard]},
+  {path: AppUrl.PATIENT_CREATE_APPOINTMENT, component: PatientCreateAppointmentComponent, canActivate: [AuthGuard]},
+  {path: AppUrl.PATIENT_SHOW_APPOINTMENT, component: PatientShowAppointmentComponent, canActivate: [AuthGuard]},
+  {path: AppUrl.PATIENT_SHOW_PRESCRIPTION, component: PatientShowPrescriptionComponent, canActivate: [AuthGuard]},
+  {path: AppUrl.PATIENT_MEDICINE_LIST, component: PatientViewMedicineComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class DentistPointRoutingModule {

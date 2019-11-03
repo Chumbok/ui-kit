@@ -54,7 +54,7 @@ export class PatientShowPrescriptionComponent implements OnInit {
       });
     } else {
 
-      this.router.navigate(['patient/show-prescription-list'], {queryParams: {page: newPage}});
+      this.router.navigate(['dentist-point/patient/show-prescription-list'], {queryParams: {page: newPage}});
       this.prescriptionService.getPrescriptionListByLoginPatientId(newPage).subscribe(res => {
         this.prescription = res;
         this.prescriptionListin = res;
@@ -72,7 +72,7 @@ export class PatientShowPrescriptionComponent implements OnInit {
   }
 
   onPrescriptionView(prescriptionId) {
-    this.router.navigate(['patient/' + 'prescription/' + prescriptionId + '/show/medicine-list']);
+    this.router.navigate(['dentist-point/patient/' + 'prescription/' + prescriptionId + '/show/medicine-list']);
   }
 
 

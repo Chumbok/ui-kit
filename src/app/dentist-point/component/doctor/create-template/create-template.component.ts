@@ -175,7 +175,7 @@ export class CreateTemplateComponent implements OnInit {
       prescription.diagnosis,
 
       this.createMedicinePrescription).subscribe(res => {
-      this.router.navigate(['doctors/calendar-view']);
+      this.router.navigate(['dentist-point/doctors/calendar-view']);
       this.flashMessageService.showFlashMessage({
           messages: ['Save Successfully '], dismissible: true,
           type: 'primary'
