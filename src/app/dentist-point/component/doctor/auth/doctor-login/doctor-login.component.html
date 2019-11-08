@@ -11,21 +11,10 @@
 
 
           <div class="ibox-body" id="ff1">
-            <ul class="nav nav-tabs" role="tablist">
-              <li class="mr-3 nav-item" role="presentation">
-                <a aria-controls="Template" class="nav-link active" data-toggle="tab" href="#doctor"
-                   role="tab">Doctor</a>
-              </li>
-              <li class="mr-3 nav-item" role="presentation">
-                <a aria-controls="Template" class="nav-link" data-toggle="tab" href="#patient"
-                   role="tab">Patient</a>
-              </li>
-            </ul>
 
             <div class="tab-content">
-
               <div class="tab-pane fade active show" id="doctor" role="tabpanel">
-                <form (ngSubmit)="onSubmit('loginDoctor')" [formGroup]="loginForm">
+                <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
                   <div class="form-group">
                     <label for="username">Phone No</label>
                     <input [ngClass]="{ 'is-invalid': submitted && f.username.errors }" class="form-control"
@@ -52,42 +41,8 @@
                   </div>
                   <div class="form-group">
                     <button class="btn btn-primary">Login</button>
-                    <a [routerLink]="['/dentist-point/doctors/signUp']" class="btn btn-link">Register</a>
-                  </div>
-                </form>
-              </div>
-
-
-              <div class="tab-pane fade" id="patient" role="tabpanel">
-
-                <form (ngSubmit)="onSubmit('loginPatient')" [formGroup]="loginForm">
-                  <div class="form-group">
-                    <label for="username">Phone No</label>
-                    <input [ngClass]="{ 'is-invalid': submitted && f.username.errors }" class="form-control"
-                           formControlName="usernamePatient" id="usernamePatient"
-                           type="text"/>
-                    <div *ngIf="submitted && f.usernamePatient.errors" class="invalid-feedback">
-                      <div *ngIf="f.username.errors.required">Phone is required</div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="password">Password</label>
-                    <input [ngClass]="{ 'is-invalid': submitted && f.password.errors }" class="form-control"
-                           formControlName="passwordPatient" id="passwordPatient"
-                           type="password"/>
-                    <div *ngIf="submitted && f.passwordPatient.errors" class="invalid-feedback">
-                      <div *ngIf="f.password.errors.requirePatient">Password is required</div>
-                    </div>
-                  </div>
-                  <div *ngIf="submitted && serverError!=''" class="form-group mb-4 row">
-                    <label class="col-sm-3 col-form-label"></label>
-                    <div class="col-sm-9">
-                      <div class="text-danger">{{ serverError }}</div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <button class="btn btn-primary">Login</button>
-                    <a [routerLink]="['/dentist-point/patient/signUp']" class="btn btn-link">Register</a>
+                    <a [routerLink]="['/dentist-point/doctors/signUp']" class="btn btn-link">Doctor Register</a>
+                    <a [routerLink]="['/dentist-point/patient/signUp']" class="btn btn-link">Patient Register</a>
                   </div>
                 </form>
               </div>
