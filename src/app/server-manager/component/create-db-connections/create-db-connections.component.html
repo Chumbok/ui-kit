@@ -1,3 +1,117 @@
-<p>
-  create-db-connections works!
-</p>
+<div class="col-md-8 ibox">
+
+  <div class="ibox-head">
+    <div class="ibox-title">Create DB Connections</div>
+  </div>
+
+  <form [formGroup]="form" class="form-horizontal" (ngSubmit)="onSubmit()">
+
+    <div class="ibox-body">
+
+      <div class="form-group mb-4 row">
+        <label class="col-sm-3 col-form-label">Connection Name</label>
+        <div class="col-sm-9">
+          <input type="text" formControlName="connectionName" class="form-control"
+                 [ngClass]="{ 'is-invalid': submitted && f.connectionName.errors }"/>
+          <div *ngIf="submitted && f.connectionName.errors" class="invalid-feedback">
+            <div *ngIf="f.connectionName.errors.required">Connection name is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group mb-4 row">
+        <label class="col-sm-3 col-form-label">Server Host</label>
+        <div class="col-sm-9">
+          <input type="text" formControlName="serverHost" class="form-control"
+                 [ngClass]="{ 'is-invalid': submitted && f.serverHost.errors }"/>
+          <div *ngIf="submitted && f.serverHost.errors" class="invalid-feedback">
+            <div *ngIf="f.serverHost.errors.required">Server host is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group mb-4 row">
+        <label class="col-sm-3 col-form-label">Port</label>
+        <div class="col-sm-9">
+          <input type="number" formControlName="port" class="form-control"
+                 [ngClass]="{ 'is-invalid': submitted && f.port.errors }"/>
+          <div *ngIf="submitted && f.port.errors" class="invalid-feedback">
+            <div *ngIf="f.port.errors.required">Port is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group mb-4 row">
+        <label class="col-sm-3 col-form-label">Username</label>
+        <div class="col-sm-9">
+          <input type="text" formControlName="username" class="form-control"
+                 [ngClass]="{ 'is-invalid': submitted && f.username.errors }"/>
+          <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">Username is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group mb-4 row">
+        <label class="col-sm-3 col-form-label">Password</label>
+        <div class="col-sm-9">
+          <input type="password" formControlName="password" class="form-control"
+                 [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group mb-4 row">
+        <label class="col-sm-3 col-form-label">Database Schema</label>
+        <div class="col-sm-9">
+          <input type="text" formControlName="databaseSchema" class="form-control"
+                 [ngClass]="{ 'is-invalid': submitted && f.databaseSchema.errors }"/>
+          <div *ngIf="submitted && f.databaseSchema.errors" class="invalid-feedback">
+            <div *ngIf="f.databaseSchema.errors.required">Database Schema is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group mb-4 row">
+        <label class="col-sm-3 col-form-label">Tunnel over SSH</label>
+        <div class="col-sm-2">
+          <input type="checkbox" formControlName="overSshTunnel" class="form-control"
+                 [ngClass]="{ 'is-invalid': submitted && f.overSshTunnel.errors }"/>
+          <div *ngIf="submitted && f.overSshTunnel.errors" class="invalid-feedback">
+            <div *ngIf="f.overSshTunnel.errors.required">Tunnel over SSH is required</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-group mb-4 row">
+        <label class="col-sm-3 col-form-label">SSH Connection</label>
+        <div class="col-sm-4">
+          <select formControlName="sshConnectionId">
+            <option value="{{sshConnection.id}}" *ngFor="let sshConnection of sshConnections">
+              {{sshConnection.name}}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div *ngIf="submitted && serverError!=''" class="form-group mb-4 row">
+        <label class="col-sm-1 col-form-label"></label>
+        <div class="col-sm-11">
+          <div class="text-danger">{{ serverError }}</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ibox-footer row">
+      <div class="form-group col-sm-12 text-right">
+        <button class="btn btn-secondary">Test Connection</button>&nbsp;
+        <button class="btn btn-primary pull-right">Create</button>
+      </div>
+    </div>
+
+  </form>
+
+</div>
