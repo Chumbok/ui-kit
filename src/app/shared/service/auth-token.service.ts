@@ -6,4 +6,6 @@ export abstract class AuthTokenService {
   abstract getAuthToken(): string;
 
   abstract isLoggedIn(): boolean;
+
+  abstract getAuthTokenScopes(): string[];
 }

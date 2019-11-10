@@ -6,12 +6,12 @@ import {UserInfoService} from './user-info.service';
 export class UserInfoMockService implements UserInfoService {
 
   public fetchLoggedInUserInfo() {
-    console.log('HTTP fetchLoggedInUserInfo is disabled because environment.chumbok.enableMock=true.');
+
     return of({});
   }
 
   public getDisplayName(): string {
-    console.log('Returning mock displayName because environment.chumbok.enableMock=true.');
+
     return 'John Doe';
   }
 

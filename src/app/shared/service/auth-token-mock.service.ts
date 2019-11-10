@@ -13,4 +13,8 @@ export class AuthTokenMockService implements AuthTokenService {
     console.log('removeAuthToken is not needed because environment.chumbok.enableMock=true.');
     return false;
   }
+
+  getAuthTokenScopes(): string[] {
+    return [];
+  }
 }
