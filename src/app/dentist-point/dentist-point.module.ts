@@ -3,7 +3,6 @@ import {CommonModule, DatePipe} from '@angular/common';
 
 import {DentistPointRoutingModule} from './dentist-point-routing.module';
 import {CreatePrescriptionComponent} from './component/doctor/create-prescription/create-prescription.component';
-import {CreatePatientComponent} from './component/doctor/create-patient/create-patient.component';
 import {CreateAppointmentComponent} from './component/doctor/create-appointment/create-appointment.component';
 import {CalendarComponent} from './component/doctor/calendar/calendar.component';
 import {PrescriptionListComponent} from './component/doctor/prescription-list/prescription-list.component';
@@ -55,7 +54,6 @@ import {FlashMessageService} from '../shared/service/flash-message.service';
     DashboardComponent,
     FlashMessageComponent,
     CreatePrescriptionComponent,
-    CreatePatientComponent,
     CalendarComponent,
     PrescriptionListComponent,
     PrescriptionViewComponent,
