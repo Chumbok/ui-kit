@@ -111,7 +111,7 @@
                 <label for="chambers">Chambers</label>
                 <textarea [ngClass]="{ 'is-invalid': submitted && f.chambers.errors }" class="form-control"
                           formControlName="chambers" id="chambers"
-                          placeholder="Popular Hospital Ltd road#23 house-32,Dhanmondi,Dhaka" type="text"></textarea>
+                          type="text"></textarea>
                 <div *ngIf="submitted && f.chambers.errors" class="invalid-feedback">
                   <div *ngIf="f.chambers.errors.required">Chambers no is required</div>
                 </div>

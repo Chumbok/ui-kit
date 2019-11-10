@@ -5,6 +5,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, CalendarView} from 'angular-calendar';
 import {Router} from '@angular/router';
 import {AppointmentService} from '../../../service/appointment.service';
+import {DoctorAuthService} from "../../../service/doctor.auth.service";
 
 const colors: any = {
   red: {
@@ -41,7 +42,8 @@ export class CalendarComponent implements OnInit {
   events: CalendarEvent[] = [];
   activeDayIsOpen = false;
 
-  constructor(private modal: NgbModal, private appointmentService: AppointmentService, private router: Router) {
+  constructor(private modal: NgbModal, private appointmentService: AppointmentService, private router: Router
+    , private doctorAuthService: DoctorAuthService) {
   }
 
   ngOnInit() {
@@ -61,6 +63,7 @@ export class CalendarComponent implements OnInit {
       });
       this.refresh.next();
     });
+
   }
 
   dayClicked({date, events}: { date: Date; events: CalendarEvent[] }): void {
@@ -92,5 +95,6 @@ export class CalendarComponent implements OnInit {
       }
     });
   }
+
 
 }

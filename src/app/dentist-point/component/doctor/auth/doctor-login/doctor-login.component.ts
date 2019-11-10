@@ -45,10 +45,7 @@ export class DoctorLoginComponent implements OnInit {
       || '/dentist-point/patient/show-prescription-list';
   }
 
-  public onSubmit(value: string) {
-
-    if (value === 'loginDoctor') {
-
+  public onSubmit() {
       this.submitted = true;
       if (this.loginForm.invalid) {
         return;
@@ -56,33 +53,38 @@ export class DoctorLoginComponent implements OnInit {
       this.authService.doctorLogin(this.f.username.value, this.f.password.value)
         .subscribe(
           data => {
-            localStorage.setItem('loginType', value);
             this.router.navigate([this.returnUrl]);
+            console.log(this.getRole()[0]);
+            if (this.getRole()[0] == 'ROLE_DOCTOR') {
+              localStorage.setItem('loginType', 'loginDoctor');
+              this.router.navigate([this.returnUrl]);
+            }
+            if (this.getRole()[0] == 'ROLE_USER') {
+              localStorage.setItem('loginType', 'loginPatient');
+              this.router.navigate([this.returnUrlForPatient]);
+
+            }
           },
           error => {
 
             if (error.status === 403) {
               this.serverError = error.error.message;
             }
-          });
-
-    } else if (value === 'loginPatient') {
-
-      this.submitted = true;
-      if (this.loginForm.invalid) {
-        return;
-      }
-      this.patientAuthService.loginPatient(this.f.usernamePatient.value, this.f.passwordPatient.value)
-        .subscribe(
-          data => {
-            localStorage.setItem('loginType', value);
-            this.router.navigate([this.returnUrlForPatient]);
-          },
-          error => {
-            if (error.status === 403) {
+            if (error.status === 500) {
               this.serverError = error.error.message;
             }
           });
-    }
+
+
+  }
+
+  getRole(): string {
+
+    let jwtData = this.authService.getAuthToken().split('.')[1];
+    let decodedJwtJsonData = window.atob(jwtData);
+    let decodedJwtData = JSON.parse(decodedJwtJsonData);
+    let role = decodedJwtData.scopes;
+
+    return role;
   }
 }
