@@ -55,7 +55,7 @@ export class DoctorLoginComponent implements OnInit {
           data => {
             this.router.navigate([this.returnUrl]);
             console.log(this.getRole()[0]);
-            if (this.getRole()[0] == 'ROLE_SUPERADMIN') {
+            if (this.getRole()[0] == 'ROLE_DOCTOR') {
               localStorage.setItem('loginType', 'loginDoctor');
               this.router.navigate([this.returnUrl]);
             }
