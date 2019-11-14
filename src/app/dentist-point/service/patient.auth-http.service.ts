@@ -10,16 +10,15 @@ import {PatientAuthService} from './patient.auth.service';
 @Injectable({providedIn: 'root'})
 export class PatientAuthHttpService implements PatientAuthService {
 
-  private callThroughLocalServer: boolean = environment.chumbok.apiCallThroughLocalServer;
 
-  private loginEndPointLocalServer: string = this.callThroughLocalServer ?
-    environment.chumbok.apiBaseEndpointLocalServer + '/public/patient/login' : environment.chumbok.apiBaseEndpointLocalServer + '/patient/login';
+  private loginEndPointLocalServer: string =
+    environment.chumbok.apiBaseEndpointLocalServer + '/public/patient/login';
 
-  private signUpEndPointLocalServer: string = this.callThroughLocalServer ?
-    environment.chumbok.apiBaseEndpointLocalServer + '/public/patient/signup' : environment.chumbok.apiBaseEndpointLocalServer + '/patient/signup';
+  private signUpEndPointLocalServer: string =
+    environment.chumbok.apiBaseEndpointLocalServer + '/public/patient/signup';
 
-  private logoutEndPointLocalServer: string = this.callThroughLocalServer ?
-    environment.chumbok.apiBaseEndpointLocalServer + '/public/doctor/logout' : environment.chumbok.apiBaseEndpointLocalServer + '/logout';
+  private logoutEndPointLocalServer: string =
+    environment.chumbok.apiBaseEndpointLocalServer + '/public/doctor/logout';
 
   constructor(private cookieService: CookieService, private http: HttpClient) {
   }

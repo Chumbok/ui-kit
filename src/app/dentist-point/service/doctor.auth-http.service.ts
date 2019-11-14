@@ -11,19 +11,18 @@ import {Observable} from 'rxjs';
 @Injectable({providedIn: 'root'})
 export class DoctorAuthHttpService implements DoctorAuthService {
 
-  private callThroughLocalServer: boolean = environment.chumbok.apiCallThroughLocalServer;
 
-  private loginEndPointLocalServer: string = this.callThroughLocalServer ?
-    environment.chumbok.apiBaseEndpointLocalServer + '/public/doctor/login' :
-    environment.chumbok.apiBaseEndpointLocalServer + '/login';
+  private loginEndPointLocalServer: string =
+    environment.chumbok.apiBaseEndpointLocalServer + '/public/doctor/login';
 
-  private signUpEndPointLocalServer: string = this.callThroughLocalServer ?
-    environment.chumbok.apiBaseEndpointLocalServer + '/public/doctor/signup' :
-    environment.chumbok.apiBaseEndpointLocalServer + '/login';
 
-  private logoutEndPointLocalServer: string = this.callThroughLocalServer ?
-    environment.chumbok.apiBaseEndpointLocalServer + '/public/doctor/logout' :
-    environment.chumbok.apiBaseEndpointLocalServer + '/logout';
+  private signUpEndPointLocalServer: string =
+    environment.chumbok.apiBaseEndpointLocalServer + '/public/doctor/signup';
+
+
+  private logoutEndPointLocalServer: string =
+    environment.chumbok.apiBaseEndpointLocalServer + '/public/doctor/logout';
+
 
   constructor(private cookieService: CookieService, private http: HttpClient) {
   }

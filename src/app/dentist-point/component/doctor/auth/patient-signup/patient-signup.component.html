@@ -90,12 +90,14 @@
                 <label for="bGroup">Blood Group</label>
                 <select [ngClass]="{ 'is-invalid': submitted && f.bGroup.errors }" class="form-control"
                         formControlName="bGroup" id="bGroup" type="text">
-                  <option value='a+'>A+</option>
-                  <option value='A-'>A-</option>
-                  <option value='B-'>B-</option>
+                  <option value='A+'>A+</option>
+                  <option value='A+'>A-</option>
+                  <option value='A+'>AB+</option>
+                  <option value='A-'>AB-</option>
                   <option value='B+'>B+</option>
+                  <option value='B+'>B-</option>
                   <option value='O+'>O+</option>
-                  <option value='O-'>O-</option>
+                  <option value='O+'>O-</option>
                 </select>
 
                 <div *ngIf="submitted && f.bGroup.errors" class="invalid-feedback">

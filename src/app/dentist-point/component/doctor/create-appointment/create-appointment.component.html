@@ -47,10 +47,13 @@
           <select [ngClass]="{ 'is-invalid': submitted && f.patientName.errors }" class="form-control"
                   formControlName="bloodGroup">
             <option value='A+'>A+</option>
+            <option value='A+'>A-</option>
+            <option value='A+'>AB+</option>
+            <option value='A-'>AB-</option>
             <option value='B+'>B+</option>
-            <option value='A-'>A-</option>
+            <option value='B+'>B-</option>
             <option value='O+'>O+</option>
-            <option value='AB+'>AB+</option>
+            <option value='O+'>O-</option>
           </select>
           <!--          <input type="text" formControlName="patientName" class="form-control"-->
           <!--                 [ngClass]="{ 'is-invalid': submitted && f.patientName.errors }"/>-->
