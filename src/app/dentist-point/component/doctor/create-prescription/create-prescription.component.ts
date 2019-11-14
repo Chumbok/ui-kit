@@ -254,7 +254,7 @@ export class CreatePrescriptionComponent implements OnInit {
       prescription.diagnosis,
       this.date,
       this.medicineList).subscribe(res => {
-      this.router.navigate(['doctors/calendar-view']);
+      this.router.navigate(['dentist-point/doctors/calendar-view']);
       this.flashMessageService.showFlashMessage({
           messages: ['Save Successfully '], dismissible: true,
           type: 'primary'
@@ -334,7 +334,7 @@ export class CreatePrescriptionComponent implements OnInit {
 
   onCancel() {
 
-    this.router.navigate(['doctors/calendar-view']);
+    this.router.navigate(['dentist-point/doctors/calendar-view']);
   }
 
   deleteTemplate(templateId) {

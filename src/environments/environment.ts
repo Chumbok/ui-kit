@@ -7,7 +7,6 @@ export const environment = {
   production: false,
   chumbok: {
     enableMock: false,
-    apiCallThroughLocalServer: true,
     pingEndpoint: 'http://localhost:33002/ping',
     apiBaseEndpointLocalServer: 'http://localhost:33012',
     uaaApiBaseEndpoint: 'http://localhost:33002',

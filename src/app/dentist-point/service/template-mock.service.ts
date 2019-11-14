@@ -26,7 +26,7 @@ export class TemplateMockService implements TemplateService {
     console.log(onExaminations);
     console.log(diagnosises);
     console.log(pharmacies);
-    this.router.navigate(['doctors/calendar-view']);
+    this.router.navigate(['dentist-point/doctors/calendar-view']);
     this.flashMessageService.showFlashMessage({
         messages: ['Save Successfully '],
         dismissible: true,
@@ -50,7 +50,7 @@ export class TemplateMockService implements TemplateService {
     console.log(investigation);
     console.log(radiological);
     console.log(prescriptionList);
-    this.router.navigate(['doctors/calendar-view']);
+    this.router.navigate(['dentist-point/doctors/calendar-view']);
     this.flashMessageService.showFlashMessage({
         messages: ['Update Successfully '],
         dismissible: true,

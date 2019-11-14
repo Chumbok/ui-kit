@@ -13,7 +13,7 @@ import {Diagnosises} from '../model/on-diagonsis';
 @Injectable({providedIn: 'root'})
 export class TemplateHttpService implements TemplateService {
 
-  private callThroughLocalServer: boolean = environment.chumbok.apiCallThroughLocalServer;
+
 
   constructor(private doctorAuthService: DoctorAuthService, private http: HttpClient) {
   }
@@ -27,9 +27,7 @@ export class TemplateHttpService implements TemplateService {
     let httpHeaders = new HttpHeaders({
       'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken(),
     });
-    const createPrescriptionWithoutIdEndpoint: string = this.callThroughLocalServer ?
-
-      environment.chumbok.apiBaseEndpointLocalServer + '/api/create-template' :
+    const createPrescriptionWithoutIdEndpoint: string =
       environment.chumbok.apiBaseEndpointLocalServer + '/api/create-template';
 
     return this.http.post(createPrescriptionWithoutIdEndpoint, {
@@ -53,8 +51,7 @@ export class TemplateHttpService implements TemplateService {
 
   public getTemplateView(): Observable<any> {
 
-    const getTemplateEndpoint: string = this.callThroughLocalServer ?
-      environment.chumbok.apiBaseEndpointLocalServer + '/api/show-templates' :
+    const getTemplateEndpoint: string =
       environment.chumbok.apiBaseEndpointLocalServer + '/api/show-templates';
 
     const httpOptions = {
@@ -67,9 +64,8 @@ export class TemplateHttpService implements TemplateService {
 
   public getTemplateViewById(selectedTemplateId: string): Observable<any> {
 
-    const getTemplateByIdEndpoint: string = this.callThroughLocalServer ?
-      environment.chumbok.apiBaseEndpointLocalServer + '/api/template/' + selectedTemplateId + '/show-template' :
-      environment.chumbok.apiBaseEndpointLocalServer + '/api/show-template';
+    const getTemplateByIdEndpoint: string =
+      environment.chumbok.apiBaseEndpointLocalServer + '/api/template/' + selectedTemplateId + '/show-template';
     const httpOptions = {
       headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})
     };
