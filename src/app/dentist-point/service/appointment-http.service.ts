@@ -11,6 +11,8 @@ export class AppointmentHttpService implements AppointmentService {
 
   private getAppointmentByDoctorIdEndpoint: string =
     environment.chumbok.apiBaseEndpointLocalServer + '/api/doctor/appointments';
+  private getPatientDetailsForAutoSuggestion: string =
+    environment.chumbok.apiBaseEndpointLocalServer + '/api/patient/details';
 
   private getAppointmentListByDoctorIdMobilet: string =
     environment.chumbok.apiBaseEndpointLocalServer + '/android/api/appointments';
@@ -43,19 +45,12 @@ export class AppointmentHttpService implements AppointmentService {
 
   public getAppointmentDetailsForAutoSuggestion(): Observable<any> {
 
-    const appointmentDetails = [
-      {
-        phoneno: '01988841890',
-        nameP: 'Monirozzaman Roni',
-        addressP: 'asulia,savar,dhaka'
-      },
-      {
-        phoneno: '01745675456',
-        nameP: 'Asraful Alom Rassel',
-        addressP: 'united state,UK'
-      }
-    ];
-    return of(appointmentDetails);
+    const httpOptions = {
+      headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()}),
+      withCredentials: true
+    };
+    return this.http.get(this.getPatientDetailsForAutoSuggestion, httpOptions).map(res => res);
+
   }
 
   public createAppointment(phoneNumber: string, patientName: string, address: string, date: string, age: string,
