@@ -38,7 +38,7 @@ export class AppointmentHttpService implements AppointmentService {
       {
         startTime: '11:30',
         endTime: '12:00',
-      },
+      }
     ];
     return of(freeSlots);
   }
