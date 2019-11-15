@@ -41,11 +41,31 @@ export class TemplateHttpService implements TemplateService {
 
   }
 
-  public editTemplate(tempId: string, tempName: string, complain: string, parameters: string,
-                      remarks: string, dentalHistory: string, vaccinationHistory: string, investigation: string,
-                      radiological: string, planning: string, prescriptionList: Array<Pharmacies>): Observable<any> {
+  public editTemplate(tempId: string,
+                      templateName: string,
+                      chiefComplains: Array<ChiefComplains>,
+                      onExaminations: Array<OnExaminations>,
+                      diagnosises: Array<Diagnosises>,
+                      pharmacies: Pharmacies[]): Observable<any> {
+    console.log(tempId);
+    console.log(templateName);
 
-    return new EmptyObservable<Response>();
+    let httpHeaders = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken(),
+    });
+    const editTemplateEndPoint: string =
+
+      environment.chumbok.apiBaseEndpointLocalServer + '/api/template/' + tempId + '/edit-template';
+    return this.http.put(editTemplateEndPoint, {
+        templateName: templateName, chiefComplains, onExaminations, diagnosises, pharmacies
+      },
+      {
+        headers: httpHeaders,
+        observe: 'response'
+      }
+    );
+
+
 
   }
 
