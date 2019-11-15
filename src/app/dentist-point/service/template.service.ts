@@ -16,13 +16,18 @@ export abstract class TemplateService {
   ): Observable<any>;
 
 
-  abstract editTemplate(tempId: string, tempName: string, complain: string, parameters: string,
-                        remarks: string, dentalHistory: string, vaccinationHistory: string, investigation: string,
-                        radiological: string, planning: string, prescriptionList: Array<Pharmacies>): Observable<any>;
+  abstract editTemplate(templateId: string,
+                        templateName: string,
+                        complain: Array<ChiefComplains>,
+                        parameters: Array<OnExaminations>,
+                        dentalHistory: Array<Diagnosises>,
+                        medicineList: Pharmacies[]
+  ): Observable<any>;
 
   abstract getTemplateView(): Observable<any>;
 
   abstract getTemplateViewById(selectedTemplateId: string): Observable<any>;
+
 
   abstract deleteTemplate(templateId: string): Observable<any>;
 }
