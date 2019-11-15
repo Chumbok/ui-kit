@@ -1,7 +1,7 @@
 export class Diagnosises {
-  medicalHistory?: string;
-  drugHistory?: string;
-  investigation?: string;
-  clinicalFinDing?: string;
-  finalDiagnosis?: string;
+  medicalHistory: string;
+  drugHistory: string;
+  investigation: string;
+  clinicalFinDing: string;
+  finalDiagnosis: string;
 }
