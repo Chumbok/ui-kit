@@ -380,7 +380,7 @@ export class CreatePrescriptionComponent implements OnInit {
 
   previousPrescription(patientId) {
 
-    this.router.navigate(['doctors/prescription-list'], {queryParams: {patient: patientId}});
+    this.router.navigate(['/dentist-point/doctors/prescription-list'], {queryParams: {patient: patientId}});
   }
 
 
@@ -567,7 +567,7 @@ export class CreatePrescriptionComponent implements OnInit {
       prescription.onExaminations,
       prescription.diagnosis,
       this.medicineList).subscribe(res => {
-      this.router.navigate(['doctors/prescription-list']);
+      this.router.navigate(['/dentist-point/doctors/prescription-list']);
     }, error => {
       if (error.status === 400) {
         this.serverError = error.error.message;
