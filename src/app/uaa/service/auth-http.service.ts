@@ -64,7 +64,6 @@ export class AuthHttpService implements AuthService {
   }
 
   private handleError(err: HttpErrorResponse | any) {
-    console.error('An error occurred', err);
     return throwError(err.message || err);
   }
 }

@@ -103,7 +103,7 @@ export class PrescriptionViewComponent implements OnInit {
       this.selectedTemplate['diagnosises'].forEach((diagnosises) => {
         this.dentalHistory = this.dentalHistory + diagnosises.drugHistory + ', ';
       });
-      this.vaccinationHistoryArray.push();
+      this.vaccinationHistoryArray.push(this.dentalHistory);
       this.selectedTemplate['diagnosises'].forEach((diagnosises) => {
         this.investigation = this.investigation + diagnosises.investigation + ', ';
       });

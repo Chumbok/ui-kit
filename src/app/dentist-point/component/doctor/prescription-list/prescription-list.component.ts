@@ -34,7 +34,7 @@ export class PrescriptionListComponent implements OnInit {
 
     this.route.params.subscribe(params => {
       this.patientId = this.route.snapshot.queryParams['patient'];
-      console.log(this.patientId);
+
     });
   }
 

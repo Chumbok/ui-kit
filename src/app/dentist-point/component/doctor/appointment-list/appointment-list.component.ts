@@ -8,11 +8,10 @@ import {AppointmentService} from '../../../service/appointment.service';
   templateUrl: './appointment-list.component.html',
   styleUrls: ['./appointment-list.component.css']
 })
+
 export class AppointmentListComponent implements OnInit {
   prescription: any;
   patientId: string;
-  itemFrom: number;
-  itemTo: number;
   totalElements: number;
   config: any;
   searchText;
@@ -55,13 +54,8 @@ export class AppointmentListComponent implements OnInit {
     });
   }
 
-  onAppointmentEdit(prescriptionId) {
-
-  }
-
   onAppointmentDelete(appointmentId) {
     this.appointmentService.deleteAppointment(appointmentId).subscribe(res => {
-
     });
   }
 

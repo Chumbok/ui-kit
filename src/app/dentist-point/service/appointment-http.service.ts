@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {environment} from '../../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 import {EmptyObservable} from 'rxjs-compat/observable/EmptyObservable';
 import {AppointmentService} from './appointment.service';
 import {DoctorAuthService} from './doctor.auth.service';
@@ -9,57 +9,38 @@ import {DoctorAuthService} from './doctor.auth.service';
 @Injectable({providedIn: 'root'})
 export class AppointmentHttpService implements AppointmentService {
 
-  private callThroughGateway: boolean = environment.chumbok.apiCallThroughLocalServer;
-
-  private getAppointmentByDoctorIdEndpoint: string = this.callThroughGateway ?
-    environment.chumbok.apiBaseEndpointLocalServer + '/api/doctor/appointments' :
+  private getAppointmentByDoctorIdEndpoint: string =
     environment.chumbok.apiBaseEndpointLocalServer + '/api/doctor/appointments';
 
-  private getAppointmentListByDoctorIdMobilet: string = this.callThroughGateway ?
-    environment.chumbok.apiBaseEndpointLocalServer + '/android/api/appointments' :
+  private getPatientDetailsForAutoSuggestion: string =
+    environment.chumbok.apiBaseEndpointLocalServer + '/api/patient/details';
+
+  private getFreeSlots: string =
+    environment.chumbok.apiBaseEndpointLocalServer + '/api/doctor/f3gdf4-fg4-45656f343/freeSlots';
+
+  private getAppointmentListByDoctorIdMobilet: string =
     environment.chumbok.apiBaseEndpointLocalServer + '/android/api/appointments';
 
   constructor(private doctorAuthService: DoctorAuthService, private http: HttpClient) {
   }
 
   public getFreeTimeSlots(selectedDate: string): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()}),
+      withCredentials: true
+    };
+    return this.http.get(this.getFreeSlots, httpOptions).map(res => res);
 
-    const freeSlots = [
-      {
-        startTime: '10:00',
-        endTime: '10:30',
-      },
-      {
-        startTime: '10:30',
-        endTime: '11:00',
-      },
-      {
-        startTime: '11:00',
-        endTime: '11:30',
-      },
-      {
-        startTime: '11:30',
-        endTime: '12:00',
-      },
-    ];
-    return of(freeSlots);
   }
 
   public getAppointmentDetailsForAutoSuggestion(): Observable<any> {
 
-    const appointmentDetails = [
-      {
-        phoneno: '01988841890',
-        nameP: 'Monirozzaman Roni',
-        addressP: 'asulia,savar,dhaka'
-      },
-      {
-        phoneno: '01745675456',
-        nameP: 'Asraful Alom Rassel',
-        addressP: 'united state,UK'
-      }
-    ];
-    return of(appointmentDetails);
+    const httpOptions = {
+      headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()}),
+      withCredentials: true
+    };
+    return this.http.get(this.getPatientDetailsForAutoSuggestion, httpOptions).map(res => res);
+
   }
 
   public createAppointment(phoneNumber: string, patientName: string, address: string, date: string, age: string,
@@ -69,8 +50,7 @@ export class AppointmentHttpService implements AppointmentService {
     let httpHeaders = new HttpHeaders({
       'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken(),
     });
-    const createPrescriptionEndpoint: string = this.callThroughGateway ?
-      environment.chumbok.apiBaseEndpointLocalServer + '/api/appointment' :
+    const createPrescriptionEndpoint: string =
       environment.chumbok.apiBaseEndpointLocalServer + '/api/appointment';
 
     return this.http.post(createPrescriptionEndpoint, {
@@ -122,9 +102,8 @@ export class AppointmentHttpService implements AppointmentService {
 
   public getDoctorList(): Observable<any> {
 
-    const getDoctorListEndpoint: string = this.callThroughGateway ?
-      environment.chumbok.apiBaseEndpointLocalServer + '/android/api/doctors' :
-      environment.chumbok.apiBaseEndpointLocalServer + 'android/api/doctors';
+    const getDoctorListEndpoint: string =
+      environment.chumbok.apiBaseEndpointLocalServer + '/android/api/doctors';
     const httpOptions = {
       headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})
     };
@@ -133,9 +112,9 @@ export class AppointmentHttpService implements AppointmentService {
 
   getDoctorChamberList(doctorId: string): Observable<any> {
 
-    const getDoctorChamberListEndpoint: string = this.callThroughGateway ?
-      environment.chumbok.apiBaseEndpointLocalServer + '/android/api/doctor/' + doctorId + '/chamber' :
-      environment.chumbok.apiBaseEndpointLocalServer + '/android/api/doctor/{doctorId}/chamber';
+    const getDoctorChamberListEndpoint: string =
+      environment.chumbok.apiBaseEndpointLocalServer + '/android/api/doctor/' + doctorId + '/chamber';
+
 
     const httpOptions = {
       headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})
@@ -149,8 +128,7 @@ export class AppointmentHttpService implements AppointmentService {
     let httpHeaders = new HttpHeaders({
       'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken(),
     });
-    const createAppointmentByPatientEndpoint: string = this.callThroughGateway ?
-      environment.chumbok.apiBaseEndpointLocalServer + '/android/api/appointments' :
+    const createAppointmentByPatientEndpoint: string =
       environment.chumbok.apiBaseEndpointLocalServer + '/android/api/appointments';
 
     return this.http.post(createAppointmentByPatientEndpoint, {

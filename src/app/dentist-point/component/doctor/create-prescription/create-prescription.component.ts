@@ -146,15 +146,15 @@ export class CreatePrescriptionComponent implements OnInit {
     const prescription: CreatePrescription = new CreatePrescription();
     prescription.patientId = this.patientId;
     prescription.appointmentId = this.appointmentId;
-    const chiefComplain = this.form.controls['chiefComplain'].value.split(',');
+    const chiefComplain = this.form.controls['chiefComplain'].value;
     chiefComplain.forEach(function (chiefComplain) {
       const chiefComplainObj: ChiefComplains = new ChiefComplains();
       chiefComplainObj.complain = chiefComplain;
       prescription.chiefComplain.push(chiefComplainObj);
     });
 
-    const parameters = this.form.controls['parameters'].value.split(',');
-    const remarks = this.form.controls['remarks'].value.split(',');
+    const parameters = this.form.controls['parameters'].value;
+    const remarks = this.form.controls['remarks'].value;
     for (let i = 0; i < Math.max(parameters.length, remarks.length); i++) {
       const onExamination: OnExaminations = new OnExaminations();
       if (remarks[i] == null) {
@@ -176,11 +176,11 @@ export class CreatePrescriptionComponent implements OnInit {
       }
     }
 
-    const dentalHistory = this.form.controls['dentalHistory'].value.split(',');
-    const vaccinationHistory = this.form.controls['vaccinationHistory'].value.split(',');
-    const investigation = this.form.controls['investigation'].value.split(',');
-    const radiological = this.form.controls['radiological'].value.split(',');
-    const planning = this.form.controls['planning'].value.split(',');
+    const dentalHistory = this.form.controls['dentalHistory'].value;
+    const vaccinationHistory = this.form.controls['vaccinationHistory'].value;
+    const investigation = this.form.controls['investigation'].value;
+    const radiological = this.form.controls['radiological'].value;
+    const planning = this.form.controls['planning'].value;
 
     for (let i = 0; i < Math.max(dentalHistory.length, vaccinationHistory.length,
       investigation.length, radiological.length, planning.length); i++) {
@@ -254,7 +254,7 @@ export class CreatePrescriptionComponent implements OnInit {
       prescription.diagnosis,
       this.date,
       this.medicineList).subscribe(res => {
-      this.router.navigate(['doctors/calendar-view']);
+      this.router.navigate(['dentist-point/doctors/calendar-view']);
       this.flashMessageService.showFlashMessage({
           messages: ['Save Successfully '], dismissible: true,
           type: 'primary'
@@ -334,7 +334,7 @@ export class CreatePrescriptionComponent implements OnInit {
 
   onCancel() {
 
-    this.router.navigate(['doctors/calendar-view']);
+    this.router.navigate(['dentist-point/doctors/calendar-view']);
   }
 
   deleteTemplate(templateId) {
@@ -457,14 +457,14 @@ export class CreatePrescriptionComponent implements OnInit {
     const prescription: CreatePrescription = new CreatePrescription();
     prescription.patientId = this.patientId;
     prescription.appointmentId = this.appointmentId;
-    const chiefComplain = this.form.controls['chiefComplain'].value.split(',');
+    const chiefComplain = this.form.controls['chiefComplain'].value;
     chiefComplain.forEach(function (chiefComplain) {
       const chiefComplainObj: ChiefComplains = new ChiefComplains();
       chiefComplainObj.complain = chiefComplain;
       prescription.chiefComplain.push(chiefComplainObj);
     });
-    const parameters = this.form.controls['parameters'].value.split(',');
-    const remarks = this.form.controls['remarks'].value.split(',');
+    const parameters = this.form.controls['parameters'].value;
+    const remarks = this.form.controls['remarks'].value;
     for (let i = 0; i < Math.max(parameters.length, remarks.length); i++) {
       const onExamination: OnExaminations = new OnExaminations();
       if (remarks[i] == null) {
@@ -486,11 +486,11 @@ export class CreatePrescriptionComponent implements OnInit {
       }
     }
 
-    const dentalHistory = this.form.controls['dentalHistory'].value.split(',');
-    const vaccinationHistory = this.form.controls['vaccinationHistory'].value.split(',');
-    const investigation = this.form.controls['investigation'].value.split(',');
-    const radiological = this.form.controls['radiological'].value.split(',');
-    const planning = this.form.controls['planning'].value.split(',');
+    const dentalHistory = this.form.controls['dentalHistory'].value;
+    const vaccinationHistory = this.form.controls['vaccinationHistory'].value;
+    const investigation = this.form.controls['investigation'].value;
+    const radiological = this.form.controls['radiological'].value;
+    const planning = this.form.controls['planning'].value;
 
     for (let i = 0; i < Math.max(dentalHistory.length, vaccinationHistory.length,
       investigation.length, radiological.length, planning.length); i++) {

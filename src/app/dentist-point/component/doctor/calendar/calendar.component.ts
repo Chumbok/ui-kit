@@ -88,7 +88,7 @@ export class CalendarComponent implements OnInit {
   }
 
   handleEvent(action: string, event: CalendarEvent): void {
-    this.router.navigate(['doctors/create-prescription'], {
+    this.router.navigate(['dentist-point/doctors/create-prescription'], {
       queryParams: {
         patientId: event.id,
         appointmentId: event.cssClass

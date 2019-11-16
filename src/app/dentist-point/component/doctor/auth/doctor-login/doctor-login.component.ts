@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DoctorAuthService} from '../../../../service/doctor.auth.service';
-import {PatientAuthService} from '../../../../service/patient.auth.service';
+import {AuthTokenService} from "../../../../../shared/service/auth-token.service";
 
 
 @Component({
@@ -20,7 +20,7 @@ export class DoctorLoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private authService: DoctorAuthService,
-              private patientAuthService: PatientAuthService,
+              private authTokenService: AuthTokenService,
               private router: Router,
               private activatedRoute: ActivatedRoute) {
   }
@@ -54,12 +54,11 @@ export class DoctorLoginComponent implements OnInit {
         .subscribe(
           data => {
             this.router.navigate([this.returnUrl]);
-            console.log(this.getRole()[0]);
-            if (this.getRole()[0] == 'ROLE_DOCTOR') {
+            if (this.authTokenService.getAuthTokenScopes()[0] == 'ROLE_DOCTOR') {
               localStorage.setItem('loginType', 'loginDoctor');
               this.router.navigate([this.returnUrl]);
             }
-            if (this.getRole()[0] == 'ROLE_USER') {
+            if (this.authTokenService.getAuthTokenScopes()[0] == 'ROLE_USER') {
               localStorage.setItem('loginType', 'loginPatient');
               this.router.navigate([this.returnUrlForPatient]);
 
@@ -74,17 +73,5 @@ export class DoctorLoginComponent implements OnInit {
               this.serverError = error.error.message;
             }
           });
-
-
-  }
-
-  getRole(): string {
-
-    let jwtData = this.authService.getAuthToken().split('.')[1];
-    let decodedJwtJsonData = window.atob(jwtData);
-    let decodedJwtData = JSON.parse(decodedJwtJsonData);
-    let role = decodedJwtData.scopes;
-
-    return role;
   }
 }

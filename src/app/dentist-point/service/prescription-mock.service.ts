@@ -274,7 +274,7 @@ export class PrescriptionMockService implements PrescriptionService {
     console.log(diagnosis);
     console.log(medicineList);
     console.log(date);
-    this.router.navigate(['doctors/calendar-view']);
+    this.router.navigate(['dentist-point/doctors/calendar-view']);
     this.flashMessageService.showFlashMessage({
         messages: ['Save Successfully '],
         dismissible: true,

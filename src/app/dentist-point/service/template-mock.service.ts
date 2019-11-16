@@ -26,7 +26,7 @@ export class TemplateMockService implements TemplateService {
     console.log(onExaminations);
     console.log(diagnosises);
     console.log(pharmacies);
-    this.router.navigate(['doctors/calendar-view']);
+    this.router.navigate(['dentist-point/doctors/calendar-view']);
     this.flashMessageService.showFlashMessage({
         messages: ['Save Successfully '],
         dismissible: true,
@@ -36,29 +36,7 @@ export class TemplateMockService implements TemplateService {
     return new EmptyObservable<Response>();
   }
 
-  public editTemplate(tempId: string, tempName: string, complain: string, parameters: string,
-                      remarks: string, dentalHistory: string, vaccinationHistory: string, investigation: string,
-                      radiological: string, planning: string, prescriptionList: Array<Pharmacies>): Observable<any> {
 
-    console.log(tempId);
-    console.log('template name:', tempName);
-    console.log(complain);
-    console.log(parameters);
-    console.log(remarks);
-    console.log(dentalHistory);
-    console.log(vaccinationHistory);
-    console.log(investigation);
-    console.log(radiological);
-    console.log(prescriptionList);
-    this.router.navigate(['doctors/calendar-view']);
-    this.flashMessageService.showFlashMessage({
-        messages: ['Update Successfully '],
-        dismissible: true,
-        type: 'primary'
-      }
-    );
-    return new EmptyObservable<Response>();
-  }
 
   public getTemplateView(): Observable<any> {
 
@@ -284,5 +262,9 @@ export class TemplateMockService implements TemplateService {
         {id: 5, phnNo: '01488841890', patientName: 'nabil', chiefComplain: 'faver'},
       ];
     return of(mockResp);
+  }
+
+  editTemplate(templateId: string, templateName: string, complain: Array<ChiefComplains>, parameters: Array<OnExaminations>, dentalHistory: Array<Diagnosises>, medicineList: Pharmacies[]): Observable<any> {
+    return undefined;
   }
 }

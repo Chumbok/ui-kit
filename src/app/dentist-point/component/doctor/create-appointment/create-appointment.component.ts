@@ -64,7 +64,7 @@ export class CreateAppointmentComponent implements OnInit {
       createAppointment.address, createAppointment.date, createAppointment.age, createAppointment.bloodGroup,
       createAppointment.doctorName, createAppointment.doctorChamber,
       createAppointment.timeSlot).subscribe(res => {
-      this.router.navigate(['doctors/calendar-view']);
+      this.router.navigate(['dentist-point/doctors/calendar-view']);
       this.flashMessageService.showFlashMessage({
           messages: ['Appointment Create  Successfully '], dismissible: true,
           type: 'primary'
