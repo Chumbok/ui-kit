@@ -10,6 +10,7 @@ export const environment = {
     pingEndpoint: 'http://localhost:33002/ping',
     apiBaseEndpointLocalServer: 'http://localhost:33012',
     uaaApiBaseEndpoint: 'http://localhost:33002',
+    serverManagerApiBaseEndpoint: 'http://localhost:33020',
     appName: 'dentist-point',
     // appName: 'uaa',
     // appName: 'server-manager',
