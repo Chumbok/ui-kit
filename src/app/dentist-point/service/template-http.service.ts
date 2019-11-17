@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {EmptyObservable} from 'rxjs-compat/observable/EmptyObservable';
 import {environment} from '../../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Pharmacies} from '../model/create-medicine';
@@ -28,7 +27,7 @@ export class TemplateHttpService implements TemplateService {
       'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken(),
     });
     const createPrescriptionWithoutIdEndpoint: string =
-      environment.chumbok.apiBaseEndpointLocalServer + '/api/create-template';
+      environment.chumbok.dentistPointApiBaseEndPoint + '/api/create-template';
 
     return this.http.post(createPrescriptionWithoutIdEndpoint, {
         templateName: templateName, chiefComplains, onExaminations, diagnosises, pharmacies
@@ -55,7 +54,7 @@ export class TemplateHttpService implements TemplateService {
     });
     const editTemplateEndPoint: string =
 
-      environment.chumbok.apiBaseEndpointLocalServer + '/api/template/' + tempId + '/edit-template';
+      environment.chumbok.dentistPointApiBaseEndPoint + '/api/template/' + tempId + '/edit-template';
     return this.http.put(editTemplateEndPoint, {
         templateName: templateName, chiefComplains, onExaminations, diagnosises, pharmacies
       },
@@ -72,7 +71,7 @@ export class TemplateHttpService implements TemplateService {
   public getTemplateView(): Observable<any> {
 
     const getTemplateEndpoint: string =
-      environment.chumbok.apiBaseEndpointLocalServer + '/api/show-templates';
+      environment.chumbok.dentistPointApiBaseEndPoint + '/api/show-templates';
 
     const httpOptions = {
 
@@ -85,7 +84,7 @@ export class TemplateHttpService implements TemplateService {
   public getTemplateViewById(selectedTemplateId: string): Observable<any> {
 
     const getTemplateByIdEndpoint: string =
-      environment.chumbok.apiBaseEndpointLocalServer + '/api/template/' + selectedTemplateId + '/show-template';
+      environment.chumbok.dentistPointApiBaseEndPoint + '/api/template/' + selectedTemplateId + '/show-template';
     const httpOptions = {
       headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})
     };
@@ -94,6 +93,11 @@ export class TemplateHttpService implements TemplateService {
 
   public deleteTemplate(templateId: string): Observable<any> {
 
-    return new EmptyObservable<Response>();
+    const deleteTemplateByIdEndpoint: string =
+      environment.chumbok.dentistPointApiBaseEndPoint + '/api/template/' + templateId + '/delete';
+    const httpOptions = {
+      headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})
+    };
+    return this.http.delete(deleteTemplateByIdEndpoint, httpOptions).map(res => res);
   }
 }

@@ -10,16 +10,16 @@ import {DoctorAuthService} from './doctor.auth.service';
 export class AppointmentHttpService implements AppointmentService {
 
   private getAppointmentByDoctorIdEndpoint: string =
-    environment.chumbok.apiBaseEndpointLocalServer + '/api/doctor/appointments';
+    environment.chumbok.dentistPointApiBaseEndPoint + '/api/doctor/appointments';
 
   private getPatientDetailsForAutoSuggestion: string =
-    environment.chumbok.apiBaseEndpointLocalServer + '/api/patient/details';
+    environment.chumbok.dentistPointApiBaseEndPoint + '/api/patient/details';
 
   private getFreeSlots: string =
-    environment.chumbok.apiBaseEndpointLocalServer + '/api/doctor/f3gdf4-fg4-45656f343/freeSlots';
+    environment.chumbok.dentistPointApiBaseEndPoint + '/api/doctor/f3gdf4-fg4-45656f343/freeSlots';
 
   private getAppointmentListByDoctorIdMobilet: string =
-    environment.chumbok.apiBaseEndpointLocalServer + '/android/api/appointments';
+    environment.chumbok.dentistPointApiBaseEndPoint + '/android/api/appointments';
 
   constructor(private doctorAuthService: DoctorAuthService, private http: HttpClient) {
   }
@@ -51,7 +51,7 @@ export class AppointmentHttpService implements AppointmentService {
       'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken(),
     });
     const createPrescriptionEndpoint: string =
-      environment.chumbok.apiBaseEndpointLocalServer + '/api/appointment';
+      environment.chumbok.dentistPointApiBaseEndPoint + '/api/appointment';
 
     return this.http.post(createPrescriptionEndpoint, {
         'phoneNumber': phoneNumber,
@@ -103,7 +103,7 @@ export class AppointmentHttpService implements AppointmentService {
   public getDoctorList(): Observable<any> {
 
     const getDoctorListEndpoint: string =
-      environment.chumbok.apiBaseEndpointLocalServer + '/android/api/doctors';
+      environment.chumbok.dentistPointApiBaseEndPoint + '/android/api/doctors';
     const httpOptions = {
       headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})
     };
@@ -113,7 +113,7 @@ export class AppointmentHttpService implements AppointmentService {
   getDoctorChamberList(doctorId: string): Observable<any> {
 
     const getDoctorChamberListEndpoint: string =
-      environment.chumbok.apiBaseEndpointLocalServer + '/android/api/doctor/' + doctorId + '/chamber';
+      environment.chumbok.dentistPointApiBaseEndPoint + '/android/api/doctor/' + doctorId + '/chamber';
 
 
     const httpOptions = {
@@ -129,7 +129,7 @@ export class AppointmentHttpService implements AppointmentService {
       'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken(),
     });
     const createAppointmentByPatientEndpoint: string =
-      environment.chumbok.apiBaseEndpointLocalServer + '/android/api/appointments';
+      environment.chumbok.dentistPointApiBaseEndPoint + '/android/api/appointments';
 
     return this.http.post(createAppointmentByPatientEndpoint, {
 

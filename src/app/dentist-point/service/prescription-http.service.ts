@@ -22,7 +22,7 @@ export class PrescriptionHttpService implements PrescriptionService {
   public getPrescriptionList(currentPage): Observable<any> {
 
     const getPrescriptionEndpoint: string =
-      environment.chumbok.apiBaseEndpointLocalServer + '/api/doctor/prescriptions';
+      environment.chumbok.dentistPointApiBaseEndPoint + '/api/doctor/prescriptions';
     const httpOptions = {
       headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})
     };
@@ -33,7 +33,7 @@ export class PrescriptionHttpService implements PrescriptionService {
   public getPrescriptionListByPatientId(currentPage: String): Observable<any> {
 
     const getPrescriptionListByPatientIdEndpoint: string =
-      environment.chumbok.apiBaseEndpointLocalServer + '/api/doctor/prescription/' + currentPage;
+      environment.chumbok.dentistPointApiBaseEndPoint + '/api/doctor/prescription/' + currentPage;
     const httpOptions = {
       headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})
     };
@@ -46,7 +46,7 @@ export class PrescriptionHttpService implements PrescriptionService {
   public getPrescriptionListByLoginPatientId(currentPage: String): Observable<any> {
 
     const getPrescriptionListByLogginPatientIdEndpoint: string =
-      environment.chumbok.apiBaseEndpointLocalServer + '/api/patient/prescriptions';
+      environment.chumbok.dentistPointApiBaseEndPoint + '/api/patient/prescriptions';
     const httpOptions = {
       headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})
     };
@@ -58,7 +58,7 @@ export class PrescriptionHttpService implements PrescriptionService {
   public getPrescriptionView(selectedTemplateId): Observable<any> {
 
     const getPrescriptionEndpoint: string =
-      environment.chumbok.apiBaseEndpointLocalServer + '/api/prescription/' + selectedTemplateId + '/prescription-view';
+      environment.chumbok.dentistPointApiBaseEndPoint + '/api/prescription/' + selectedTemplateId + '/prescription-view';
 
     const httpOptions = {
       headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})
@@ -69,7 +69,7 @@ export class PrescriptionHttpService implements PrescriptionService {
   public getPatientPrescriptionView(selectedTemplateId): Observable<any> {
 
     const getPrescriptionPatientMobileEndpoint: string =
-      environment.chumbok.apiBaseEndpointLocalServer + '/android/api/prescription/' + selectedTemplateId;
+      environment.chumbok.dentistPointApiBaseEndPoint + '/android/api/prescription/' + selectedTemplateId;
 
     const httpOptions = {
       headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})
@@ -81,7 +81,7 @@ export class PrescriptionHttpService implements PrescriptionService {
   public getPatientProfile(patientId: string): Observable<any> {
 
     const getPatientProfileEndpoint: string =
-      environment.chumbok.apiBaseEndpointLocalServer + '/api/patient/' + patientId + '/profile';
+      environment.chumbok.dentistPointApiBaseEndPoint + '/api/patient/' + patientId + '/profile';
     const httpOptions = {
       headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})
     };
@@ -99,7 +99,7 @@ export class PrescriptionHttpService implements PrescriptionService {
     });
     const createPrescriptionEndpoint: string =
 
-      environment.chumbok.apiBaseEndpointLocalServer + '/api/appointment/' + appointmentId + '/create-prescription';
+      environment.chumbok.dentistPointApiBaseEndPoint + '/api/appointment/' + appointmentId + '/create-prescription';
     return this.http.post(createPrescriptionEndpoint, {
         nextVisitDate: date, chiefComplains, onExaminations, diagnosises, pharmacies
       },
@@ -113,7 +113,7 @@ export class PrescriptionHttpService implements PrescriptionService {
   patientApprove(patientId: string): Observable<any> {
 
     const putPatientProfileEndpoint: string =
-      environment.chumbok.apiBaseEndpointLocalServer + '/api/doctor/approve/patient/' + patientId;
+      environment.chumbok.dentistPointApiBaseEndPoint + '/api/doctor/approve/patient/' + patientId;
     let httpHeaders = new HttpHeaders({
       'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken(),
     });
@@ -137,7 +137,7 @@ export class PrescriptionHttpService implements PrescriptionService {
       'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken(),
     });
     const createPrescriptionWithoutIdEndpoint: string =
-      environment.chumbok.apiBaseEndpointLocalServer + '/api/doctor/create-prescription';
+      environment.chumbok.dentistPointApiBaseEndPoint + '/api/doctor/create-prescription';
 
     return this.http.post(createPrescriptionWithoutIdEndpoint, {
         name: name, mobile, address, nextVisitDate, chiefComplains, onExaminations, diagnosises, pharmacies,
@@ -151,7 +151,7 @@ export class PrescriptionHttpService implements PrescriptionService {
 
   isPatientApprove(patientId: string): Observable<any> {
     const checkPatientIsActive: string =
-      environment.chumbok.apiBaseEndpointLocalServer + '/api/patient/check/approve/status/' + patientId;
+      environment.chumbok.dentistPointApiBaseEndPoint + '/api/patient/check/approve/status/' + patientId;
     const httpOptions = {
       headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()})
     };
