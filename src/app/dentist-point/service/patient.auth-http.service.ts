@@ -12,13 +12,13 @@ export class PatientAuthHttpService implements PatientAuthService {
 
 
   private loginEndPointLocalServer: string =
-    environment.chumbok.apiBaseEndpointLocalServer + '/public/patient/login';
+    environment.chumbok.dentistPointApiBaseEndPoint + '/public/patient/login';
 
   private signUpEndPointLocalServer: string =
-    environment.chumbok.apiBaseEndpointLocalServer + '/public/patient/signup';
+    environment.chumbok.dentistPointApiBaseEndPoint + '/public/patient/signup';
 
   private logoutEndPointLocalServer: string =
-    environment.chumbok.apiBaseEndpointLocalServer + '/public/doctor/logout';
+    environment.chumbok.dentistPointApiBaseEndPoint + '/public/doctor/logout';
 
   constructor(private cookieService: CookieService, private http: HttpClient) {
   }
