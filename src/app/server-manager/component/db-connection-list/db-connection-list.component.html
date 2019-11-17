@@ -1,3 +1,34 @@
-<p>
-  db-connection-list works!
-</p>
+<div class="col-md-8 ibox">
+  <div class="ibox-head">
+    <div class="ibox-title">DB Connection List</div>
+    <a [routerLink]="['/server-manager/create-db-connections']">Add DB Connection</a>
+  </div>
+  <div class="ibox-body">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">Connection Name</th>
+        <th scope="col">Tunnel over SSH</th>
+        <th scope="col">SSH Connection Name</th>
+        <th scope="col">Options</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let dbConn of dbConnections">
+        <td>{{ dbConn.connectionName }}</td>
+        <td>{{ dbConn.overSshTunnel }}</td>
+        <td>{{ dbConn.sshConnectionName }}</td>
+        <td>
+          <a [routerLink]="[dbConn.id]">Edit</a> |
+          <a [routerLink]="[dbConn.id]">Delete</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div>Showing {{ itemFrom }} to {{ itemTo }} of {{ totalElements }} entries</div>
+
+  </div>
+</div>
+
+

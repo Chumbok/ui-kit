@@ -1,3 +1,40 @@
-<p>
-  init-master-key works!
-</p>
+<div class="col-md-6 ibox">
+
+  <div class="ibox-head">
+    <div class="ibox-title">Init Master Key</div>
+  </div>
+
+
+  <form [formGroup]="form" class="form-horizontal" (ngSubmit)="onSubmit()">
+
+    <div class="ibox-body">
+
+      <div class="form-group mb-4 row">
+        <label class="col-sm-1 col-form-label">Key</label>
+        <div class="col-sm-11">
+          <input type="text" formControlName="key" class="form-control"
+                 [ngClass]="{ 'is-invalid': submitted && f.key.errors }"/>
+          <div *ngIf="submitted && f.key.errors" class="invalid-feedback">
+            <div *ngIf="f.key.errors.required">Key is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="submitted && serverError!=''" class="form-group mb-4 row">
+        <label class="col-sm-1 col-form-label"></label>
+        <div class="col-sm-11">
+          <div class="text-danger">{{ serverError }}</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ibox-footer row">
+      <div class="col-sm-12">
+        <button class="btn btn-primary float-right">Initialize</button>
+      </div>
+    </div>
+
+  </form>
+
+</div>

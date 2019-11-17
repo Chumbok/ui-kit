@@ -15,6 +15,10 @@ import {CreateDbBackupJobsComponent} from './component/create-db-backup-jobs/cre
 import {NotificationListComponent} from './component/notification-list/notification-list.component';
 import {MenuService} from '../shared/service/menu.service';
 import {MenuDefaultService} from '../shared/service/menu-default.service';
+import {InitMasterKeyService} from './service/init-master-key.service';
+import {InitMasterKeyHttpService} from './service/init-master-key-http.service';
+import {DbConnectionService} from './service/db-connection.service';
+import {DbConnectionHttpService} from './service/db-connection-http.service';
 
 @NgModule({
   declarations: [
@@ -40,6 +44,14 @@ import {MenuDefaultService} from '../shared/service/menu-default.service';
     {
       provide: MenuService,
       useClass: MenuDefaultService
+    },
+    {
+      provide: InitMasterKeyService,
+      useClass: InitMasterKeyHttpService
+    },
+    {
+      provide: DbConnectionService,
+      useClass: DbConnectionHttpService
     },
   ]
 })
