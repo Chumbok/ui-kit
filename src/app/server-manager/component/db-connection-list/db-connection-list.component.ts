@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {DbConnectionService} from '../../service/db-connection.service';
 
 @Component({
   selector: 'app-db-connection-list',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DbConnectionListComponent implements OnInit {
 
-  constructor() { }
+  dbConnections: Array<any>;
+  itemFrom: number;
+  itemTo: number;
+  totalElements: number;
 
-  ngOnInit() {
+  constructor(private dbConnectionService: DbConnectionService) {
   }
 
+  ngOnInit() {
+    this.dbConnectionService.getDbConnectionList().subscribe(res => {
+      this.dbConnections = res['items'];
+      this.itemFrom = res['page'] + 1;
+      this.itemTo = (res['page'] + 1) * res['pageSize'];
+      this.totalElements = res['totalElements'];
+    });
+  }
 }

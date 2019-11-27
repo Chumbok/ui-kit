@@ -340,12 +340,14 @@ export class CreatePrescriptionComponent implements OnInit {
   deleteTemplate(templateId) {
 
     this.templateService.deleteTemplate(templateId).subscribe(res => {
+      this.router.navigate(['dentist-point/doctors/calendar-view']);
+
     });
   }
 
   editTemplate(templateId) {
 
-    this.router.navigate(['doctors/' + 'template/' + templateId + '/edit-template']);
+    this.router.navigate(['dentist-point/doctors/' + 'template/' + templateId + '/edit-template']);
   }
 
   onPatientView() {
