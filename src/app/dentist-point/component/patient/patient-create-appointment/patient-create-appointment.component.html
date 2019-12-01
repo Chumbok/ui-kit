@@ -6,15 +6,6 @@
 
     <div class="ibox-body">
 
-      <div class="form-group mb-4 row">
-        <label class="col-sm-3 col-form-label">Date</label>
-        <div class="col-sm-9 input-group-prepend">
-          <input (ngModelChange)="setDateFetchFreeTimeSlots()" [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1"
-                 class="form-control" formControlName="date" id="dateff">
-          <owl-date-time #dt1 [pickerType]="'calendar'"></owl-date-time>
-        </div>
-      </div>
-
 
       <div class="form-group mb-4 row">
         <label class="col-sm-3 col-form-label">Select Doctor</label>
@@ -48,6 +39,14 @@
         </div>
       </div>
 
+      <div class="form-group mb-4 row">
+        <label class="col-sm-3 col-form-label">Date</label>
+        <div class="col-sm-9 input-group-prepend">
+          <input (ngModelChange)="setDateFetchFreeTimeSlots()" [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1"
+                 class="form-control" formControlName="date" id="dateff">
+          <owl-date-time #dt1 [pickerType]="'calendar'"></owl-date-time>
+        </div>
+      </div>
 
       <div class="form-group mb-4 row">
         <label class="col-sm-3 col-form-label">Free Slots</label>

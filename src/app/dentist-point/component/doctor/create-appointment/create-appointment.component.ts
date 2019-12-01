@@ -106,6 +106,9 @@ export class CreateAppointmentComponent implements OnInit {
   }
 
   fetchFreeTimeSlots(date: string) {
+    /*
+    * TODO: date Must be Convert YYYY-MM-DD format
+    **/
     this.appointmentService.getFreeTimeSlots(this.form.controls['selectDoctor'].value, date).subscribe(res => {
       this.timeSlotArray = [];
       res.forEach(freeSlot => {
