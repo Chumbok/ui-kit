@@ -112,7 +112,6 @@ export class PatientCreateAppointmentComponent implements OnInit {
   }
 
   fetchDoctorList() {
-
     this.appointmentService.getDoctorList().subscribe(res => {
       res.forEach(doctorList => {
 
@@ -122,12 +121,10 @@ export class PatientCreateAppointmentComponent implements OnInit {
   }
 
   onChange(doctorId) {
-
     this.fetchDoctorChamberList(doctorId);
   }
 
   fetchDoctorChamberList(doctorId: string) {
-
     this.doctorChamberArrayList = [];
     this.appointmentService.getDoctorChamberList(doctorId).subscribe(res => {
       res.forEach(doctorChamberList => {
@@ -138,7 +135,6 @@ export class PatientCreateAppointmentComponent implements OnInit {
   }
 
   getFreeSlotsValue(startTime) {
-
     this.startTimeOfFreeSlots = startTime;
   }
 
