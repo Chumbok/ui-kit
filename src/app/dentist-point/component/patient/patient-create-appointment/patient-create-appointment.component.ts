@@ -51,13 +51,13 @@ export class PatientCreateAppointmentComponent implements OnInit {
       return true;
     }
     const createAppointment: CreateAppointmentPatient = new CreateAppointmentPatient();
-    createAppointment.doctorName = this.form.controls['selectDoctor'].value;
+    createAppointment.doctorId = this.form.controls['selectDoctor'].value;
     createAppointment.doctorChamber = this.form.controls['selectChamber'].value;
     createAppointment.date = this.datePipe.transform(this.form.controls['date'].value, 'yyyy-MM-dd');
     createAppointment.time = this.startTimeOfFreeSlots;
     this.appointmentService.createAppointmentByPatient(
       createAppointment.date,
-      createAppointment.doctorName,
+      createAppointment.doctorId,
       createAppointment.doctorChamber,
       createAppointment.time).subscribe(res => {
       this.flashMessageService.showFlashMessage({
@@ -103,7 +103,7 @@ export class PatientCreateAppointmentComponent implements OnInit {
 
   fetchFreeTimeSlots(date: string) {
 
-    this.appointmentService.getFreeTimeSlots(date).subscribe(res => {
+    this.appointmentService.getFreeTimeSlots(this.form.controls['selectDoctor'].value, date).subscribe(res => {
       this.timeSlotArray = [];
       res.forEach(freeSlot => {
         this.timeSlotArray.push(freeSlot.startTime);

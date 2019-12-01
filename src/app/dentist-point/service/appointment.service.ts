@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 @Injectable()
 export abstract class AppointmentService {
 
-  abstract getFreeTimeSlots(selectedDate: string): Observable<any>;
+  abstract getFreeTimeSlots(doctorId: String, selectedDate: string): Observable<any>;
 
   abstract getDoctorChamberList(selectedDate: string): Observable<any>;
 
@@ -18,7 +18,7 @@ export abstract class AppointmentService {
                              date: string,
                              age: string,
                              bloodGroup: string,
-                             doctorName: string,
+                             doctorId: string,
                              doctorChamber: string,
                              timeSlot: string): Observable<any>;
 

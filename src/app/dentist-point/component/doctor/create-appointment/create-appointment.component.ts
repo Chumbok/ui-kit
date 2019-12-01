@@ -55,14 +55,14 @@ export class CreateAppointmentComponent implements OnInit {
     createAppointment.address = this.form.controls['address'].value;
     createAppointment.age = this.form.controls['age'].value;
     createAppointment.bloodGroup = this.form.controls['bloodGroup'].value;
-    createAppointment.doctorName = this.form.controls['selectDoctor'].value;
+    createAppointment.doctorId = this.form.controls['selectDoctor'].value;
     createAppointment.doctorChamber = this.form.controls['selectChamber'].value;
     createAppointment.date = this.datePipe.transform(this.form.controls['date'].value, 'yyyy-MM-dd');
     createAppointment.timeSlot = this.startTimeOfFreeSlots;
 
     this.appointmentService.createAppointment(createAppointment.phoneNumber, createAppointment.patientName,
       createAppointment.address, createAppointment.date, createAppointment.age, createAppointment.bloodGroup,
-      createAppointment.doctorName, createAppointment.doctorChamber,
+      createAppointment.doctorId, createAppointment.doctorChamber,
       createAppointment.timeSlot).subscribe(res => {
       this.router.navigate(['dentist-point/doctors/calendar-view']);
       this.flashMessageService.showFlashMessage({
@@ -106,7 +106,7 @@ export class CreateAppointmentComponent implements OnInit {
   }
 
   fetchFreeTimeSlots(date: string) {
-    this.appointmentService.getFreeTimeSlots(date).subscribe(res => {
+    this.appointmentService.getFreeTimeSlots(this.form.controls['selectDoctor'].value, date).subscribe(res => {
       this.timeSlotArray = [];
       res.forEach(freeSlot => {
         this.timeSlotArray.push(freeSlot.startTime);
