@@ -11,7 +11,7 @@ export class AppointmentMockService implements AppointmentService {
   constructor(private flashMessageService: FlashMessageService, private router: Router) {
   }
 
-  public getFreeTimeSlots(selectedDate: string): Observable<any> {
+  public getFreeTimeSlots(doctorId: String, selectedDate: string): Observable<any> {
 
     const freeSlots = [
       {

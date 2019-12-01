@@ -1,5 +1,5 @@
 export class CreateAppointmentPatient {
-  doctorName?: string;
+  doctorId?: string;
   doctorChamber?: string;
   date?: string;
   time?: string;

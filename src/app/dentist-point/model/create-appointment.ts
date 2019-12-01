@@ -3,7 +3,7 @@ export class CreateAppointment {
   patientName?: string;
   age?: string;
   bloodGroup?: string;
-  doctorName?: string;
+  doctorId?: string;
   address?: string;
   doctorChamber?: string;
   date?: string;

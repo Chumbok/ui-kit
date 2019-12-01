@@ -15,8 +15,7 @@ export class AppointmentHttpService implements AppointmentService {
   private getPatientDetailsForAutoSuggestion: string =
     environment.chumbok.dentistPointApiBaseEndPoint + '/api/patient/details';
 
-  private getFreeSlots: string =
-    environment.chumbok.dentistPointApiBaseEndPoint + '/api/doctor/f3gdf4-fg4-45656f343/freeSlots';
+
 
   private getAppointmentListByDoctorIdMobilet: string =
     environment.chumbok.dentistPointApiBaseEndPoint + '/android/api/appointments';
@@ -24,12 +23,15 @@ export class AppointmentHttpService implements AppointmentService {
   constructor(private doctorAuthService: DoctorAuthService, private http: HttpClient) {
   }
 
-  public getFreeTimeSlots(selectedDate: string): Observable<any> {
+  public getFreeTimeSlots(doctorId: String, selectedDate: string): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()}),
       withCredentials: true
     };
-    return this.http.get(this.getFreeSlots, httpOptions).map(res => res);
+    console.log(doctorId);
+    const getFreeSlots: string =
+      environment.chumbok.dentistPointApiBaseEndPoint + '/api/doctor/' + doctorId + '/freeSlots';
+    return this.http.get(getFreeSlots, httpOptions).map(res => res);
 
   }
 
@@ -52,7 +54,7 @@ export class AppointmentHttpService implements AppointmentService {
     });
     const createPrescriptionEndpoint: string =
       environment.chumbok.dentistPointApiBaseEndPoint + '/api/appointment';
-
+    console.log(doctorId);
     return this.http.post(createPrescriptionEndpoint, {
         'phoneNumber': phoneNumber,
         'patientName': patientName,
