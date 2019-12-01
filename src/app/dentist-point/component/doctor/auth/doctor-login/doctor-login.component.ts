@@ -70,7 +70,7 @@ export class DoctorLoginComponent implements OnInit {
               this.serverError = error.error.message;
             }
             if (error.status === 500) {
-              this.serverError = error.error.message;
+              this.serverError = 'User Not Found';
             }
           });
   }
