@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {EmptyObservable} from 'rxjs-compat/observable/EmptyObservable';
 import {AppointmentService} from './appointment.service';
 import {DoctorAuthService} from './doctor.auth.service';
+import {DatePipe} from "@angular/common";
 
 @Injectable({providedIn: 'root'})
 export class AppointmentHttpService implements AppointmentService {
@@ -20,17 +21,19 @@ export class AppointmentHttpService implements AppointmentService {
   private getAppointmentListByDoctorIdMobilet: string =
     environment.chumbok.dentistPointApiBaseEndPoint + '/android/api/appointments';
 
-  constructor(private doctorAuthService: DoctorAuthService, private http: HttpClient) {
+  constructor(private doctorAuthService: DoctorAuthService, private http: HttpClient, private datePipe: DatePipe) {
   }
 
   public getFreeTimeSlots(doctorId: String, selectedDate: string): Observable<any> {
+
+    let newDate = new Date(selectedDate);
+    let latest_date = this.datePipe.transform(newDate, 'yyyy-MM-dd');
     const httpOptions = {
       headers: new HttpHeaders({'Authorization': 'Bearer ' + this.doctorAuthService.getAuthToken()}),
       withCredentials: true
     };
-    console.log(doctorId);
     const getFreeSlots: string =
-      environment.chumbok.dentistPointApiBaseEndPoint + '/api/doctor/' + doctorId + '/freeSlots/' + selectedDate;
+      environment.chumbok.dentistPointApiBaseEndPoint + '/api/doctor/' + doctorId + '/freeSlots/' + latest_date;
     return this.http.get(getFreeSlots, httpOptions).map(res => res);
 
   }
