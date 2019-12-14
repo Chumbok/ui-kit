@@ -33,7 +33,7 @@ export class AppointmentHttpService implements AppointmentService {
       withCredentials: true
     };
     const getFreeSlots: string =
-      environment.chumbok.dentistPointApiBaseEndPoint + '/api/doctor/' + doctorId + '/freeSlots/' + latest_date;
+      environment.chumbok.dentistPointApiBaseEndPoint + '/api/doctor/' + '252814e9-3423-4258-b77f-6b9dcb552871' + '/freeSlots/' + latest_date;
     return this.http.get(getFreeSlots, httpOptions).map(res => res);
 
   }

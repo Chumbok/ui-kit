@@ -106,7 +106,7 @@ export class PatientCreateAppointmentComponent implements OnInit {
     this.appointmentService.getFreeTimeSlots(this.form.controls['selectDoctor'].value, date).subscribe(res => {
       this.timeSlotArray = [];
       res.forEach(freeSlot => {
-        this.timeSlotArray.push(freeSlot.startTime);
+        this.timeSlotArray.push(freeSlot.startDateTime);
       });
     });
   }
